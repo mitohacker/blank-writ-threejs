@@ -1,0 +1,1919 @@
+{
+ "events": [
+  {
+   "id": "a3_open",
+   "kind": "story",
+   "act": 3,
+   "title": "A Core Like a Coin",
+   "art": "cave",
+   "text": "The core settles in your belly like a coin in a well: round, warm, finished. The old ache of the road is gone. Outside the cave the seasons have turned without asking you, and disciples bow as you pass, lower than they used to. Under the bowing there is a smell you know from the first inspector's room: fresh paper, cold ink. A Golden Core is the kind of thing that gets counted. A messenger waits by the spring with a sealed note that is not for you. It is for the sect. It is about you.",
+   "req": {
+    "realm_min": 3
+   },
+   "prio": 100,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine"
+   ],
+   "choices": [
+    {
+     "label": "Bow, and take the sealed note",
+     "hint": "Notice +5",
+     "fx": [
+      {
+       "op": "notice",
+       "v": 5
+      },
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "flag",
+       "k": "a3_open_done"
+      },
+      {
+       "op": "queue",
+       "id": "a3_ascension",
+       "delay": 1
+      }
+     ],
+     "after": "The Registry congratulates the sect and says it looks forward to your ascension. It is signed with a flourish."
+    },
+    {
+     "label": "Slip away before the messenger sees you",
+     "hint": "Agility test",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "speed",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "notice",
+         "v": -5
+        },
+        {
+         "op": "cult",
+         "v": 15
+        },
+        {
+         "op": "text",
+         "t": "You are three valleys off before he finishes his tea."
+        }
+       ],
+       "fail": [
+        {
+         "op": "notice",
+         "v": 8
+        },
+        {
+         "op": "text",
+         "t": "He is waiting at the next ford, with a second cup poured."
+        }
+       ]
+      },
+      {
+       "op": "flag",
+       "k": "a3_open_done"
+      },
+      {
+       "op": "queue",
+       "id": "a3_ascension",
+       "delay": 1
+      }
+     ]
+    },
+    {
+     "label": "You are not on the note's list. Read your own absence.",
+     "hint": "Needs the memory of a blank page",
+     "req": {
+      "meta": [
+       "t_blank"
+      ]
+     },
+     "fx": [
+      {
+       "op": "notice",
+       "v": -8
+      },
+      {
+       "op": "cult",
+       "v": 25
+      },
+      {
+       "op": "flag",
+       "k": "a3_open_done"
+      },
+      {
+       "op": "queue",
+       "id": "a3_ascension",
+       "delay": 1
+      }
+     ],
+     "after": "Thirty names, none yours. The messenger's eyes slide off you like rain off a roof tile."
+    }
+   ]
+  },
+  {
+   "id": "a3_ascension",
+   "kind": "story",
+   "act": 3,
+   "title": "Her Shoes at the Stone",
+   "art": "sect",
+   "portrait": "elder",
+   "text": "An elder of your mountain ascends today and the whole sect turns out in white. She steps onto the stone, hands folded, and the light takes her upward like a held note. Her shoes remain: two grey slippers, toes to the sky. A clerk you had not noticed kneels, lifts them, and writes in a ledger with a short brush. You are near enough to read the line. Her name. A number. One word: applied. The ink is the ink of the inspector's scroll. The line above is the master who ascended before her. The line above that is his teacher. All of them are in the same hand.",
+   "req": {
+    "realm_min": 3
+   },
+   "prio": 95,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "truth"
+   ],
+   "choices": [
+    {
+     "label": "Read the ledger's margin over the clerk's shoulder",
+     "hint": "Notice +12",
+     "fx": [
+      {
+       "op": "notice",
+       "v": 12
+      },
+      {
+       "op": "cult",
+       "v": 30
+      },
+      {
+       "op": "truth",
+       "id": "t_filing"
+      },
+      {
+       "op": "truth",
+       "id": "t_crack"
+      },
+      {
+       "op": "offer",
+       "card": "c_ledger_page",
+       "expires": 4
+      },
+      {
+       "op": "flag",
+       "k": "ascension_known"
+      },
+      {
+       "op": "queue",
+       "id": "a3_heng_chosen",
+       "delay": 1
+      }
+     ],
+     "after": "Beside her name, small and neat: patch, section seven. The sky has a seam, and she was thread."
+    },
+    {
+     "label": "Pick up the shoes and ask the clerk where they go",
+     "hint": "Heart +1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": 5
+      },
+      {
+       "op": "truth",
+       "id": "t_filing"
+      },
+      {
+       "op": "flag",
+       "k": "ascension_known"
+      },
+      {
+       "op": "queue",
+       "id": "a3_heng_chosen",
+       "delay": 1
+      }
+     ],
+     "after": "“Up,” he says, pleasantly, and holds out his hands for them. The shoes are still warm."
+    },
+    {
+     "label": "You remember what the ledger says. Read the last line aloud.",
+     "hint": "Needs the memory: Ascension is filing",
+     "req": {
+      "meta": [
+       "t_filing"
+      ]
+     },
+     "fx": [
+      {
+       "op": "notice",
+       "v": 20
+      },
+      {
+       "op": "cult",
+       "v": 40
+      },
+      {
+       "op": "rel",
+       "k": "xuanxiao",
+       "v": -1
+      },
+      {
+       "op": "flag",
+       "k": "ascension_known"
+      },
+      {
+       "op": "flag",
+       "k": "a3_sect_doubts"
+      },
+      {
+       "op": "queue",
+       "id": "a3_heng_chosen",
+       "delay": 1
+      }
+     ],
+     "after": "The mountain goes quiet in rows. Someone laughs, once, and stops. The clerk does not look up from his line."
+    }
+   ]
+  },
+  {
+   "id": "a3_heng_chosen",
+   "kind": "story",
+   "act": 3,
+   "title": "Gold Ink on the Sky",
+   "art": "town",
+   "portrait": "xiaoheng",
+   "text": "Gold ink runs down the sky above the nine provinces, line by line, the way rain finds a roof. Farmers kneel in the road. Cultivators read with their sleeves over their mouths. The Registry rejoices: Xiao Heng's writ is perfect and shall be raised at the next Ascension. You find him at a well outside the gate, perfectly dressed, drawing water for no one. He has read it. He is checking the rope for fraying. “It is an honour,” he says, and his voice is exactly right. You have seen that fixed look on a patient whose fever has just broken, or just begun.",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "ascension_known"
+    ]
+   },
+   "prio": 90,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "heng"
+   ],
+   "choices": [
+    {
+     "label": "Warn him. Tell him what the ledger says.",
+     "hint": "Notice +8, Xiao Heng trusts you",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "xiaoheng",
+       "v": 2
+      },
+      {
+       "op": "notice",
+       "v": 8
+      },
+      {
+       "op": "truth",
+       "id": "t_heng"
+      },
+      {
+       "op": "flag",
+       "k": "heng_chosen"
+      },
+      {
+       "op": "flag",
+       "k": "heng_warned"
+      },
+      {
+       "op": "queue",
+       "id": "a3_yunzhi_sword",
+       "delay": 1
+      }
+     ],
+     "after": "He listens to the end, rope still in his hands. “I knew the numbers were too good,” he says. “Thank you for the arithmetic.”"
+    },
+    {
+     "label": "Offer to take his place. You have no writ to spoil.",
+     "hint": "Life -1, Notice +25, a bond",
+     "fx": [
+      {
+       "op": "life",
+       "v": -1
+      },
+      {
+       "op": "notice",
+       "v": 25
+      },
+      {
+       "op": "rel",
+       "k": "xiaoheng",
+       "v": 3
+      },
+      {
+       "op": "truth",
+       "id": "t_heng"
+      },
+      {
+       "op": "flag",
+       "k": "heng_chosen"
+      },
+      {
+       "op": "flag",
+       "k": "heng_place"
+      },
+      {
+       "op": "queue",
+       "id": "a3_yunzhi_sword",
+       "delay": 1
+      }
+     ],
+     "after": "He stares as if you had spoken a language he studied and never heard. Far above, a clerk's pen lifts, hesitates, and writes your name beside his."
+    },
+    {
+     "label": "Finish your tea. You cannot carry everyone's sky.",
+     "hint": "Cult +25, he is alone",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 25
+      },
+      {
+       "op": "rel",
+       "k": "xiaoheng",
+       "v": -1
+      },
+      {
+       "op": "truth",
+       "id": "t_heng"
+      },
+      {
+       "op": "flag",
+       "k": "heng_chosen"
+      },
+      {
+       "op": "flag",
+       "k": "heng_lost"
+      },
+      {
+       "op": "queue",
+       "id": "a3_yunzhi_sword",
+       "delay": 1
+      }
+     ],
+     "after": "You look away. It is a small movement, and it will be the one you remember most clearly."
+    }
+   ]
+  },
+  {
+   "id": "a3_yunzhi_sword",
+   "kind": "story",
+   "act": 3,
+   "title": "The Sword That Is Warm",
+   "art": "sect",
+   "portrait": "yunzhi",
+   "text": "Yun Zhi finds you at the practice yard after dark. She carries a sword you have never seen: no ornament, no tassel, a blade the grey of rained-on slate. She does not draw it. She sets it across her knees and tells you, in the voice she uses for weather, that it is warm. It has been warm since the sky wrote Xiao Heng's name. “It is not choosing him,” she says. “It is not choosing anyone. It is waiting to be carried to the roof.” She laughs once, startled by how that sounds, and covers her mouth. Then she takes her hand away and does not laugh again.",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "ascension_known"
+    ]
+   },
+   "prio": 85,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "yunzhi"
+   ],
+   "choices": [
+    {
+     "label": "Stay beside her until the sword is cold",
+     "hint": "Cult +25, a quiet night",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "yunzhi",
+       "v": 2
+      },
+      {
+       "op": "cult",
+       "v": 25
+      },
+      {
+       "op": "truth",
+       "id": "t_yunzhi"
+      },
+      {
+       "op": "flag",
+       "k": "yz_sword"
+      },
+      {
+       "op": "queue",
+       "id": "a3_ye_offer",
+       "delay": 1
+      }
+     ],
+     "after": "It does not go cold. At dawn she shows you three forms she has never taught anyone, one after another, as if tidying a room."
+    },
+    {
+     "label": "Take the sword and carry it yourself",
+     "hint": "Heart test; failure wounds",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "heart",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "rel",
+         "k": "yunzhi",
+         "v": 3
+        },
+        {
+         "op": "cult",
+         "v": 20
+        },
+        {
+         "op": "text",
+         "t": "The blade lies in your arms like a sleeping animal. It does not know whose it is."
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.4
+        },
+        {
+         "op": "rel",
+         "k": "yunzhi",
+         "v": 1
+        },
+        {
+         "op": "text",
+         "t": "It burns the length of your forearm. She takes it back gently, and winds your sleeve for you."
+        }
+       ]
+      },
+      {
+       "op": "truth",
+       "id": "t_yunzhi"
+      },
+      {
+       "op": "flag",
+       "k": "yz_sword"
+      },
+      {
+       "op": "queue",
+       "id": "a3_ye_offer",
+       "delay": 1
+      }
+     ]
+    },
+    {
+     "label": "Tell her to run. You will hide her.",
+     "hint": "Needs trust (bond 3); Notice +15",
+     "req": {
+      "rel": {
+       "yunzhi": 3
+      }
+     },
+     "fx": [
+      {
+       "op": "rel",
+       "k": "yunzhi",
+       "v": 3
+      },
+      {
+       "op": "notice",
+       "v": 15
+      },
+      {
+       "op": "truth",
+       "id": "t_yunzhi"
+      },
+      {
+       "op": "flag",
+       "k": "yz_sword"
+      },
+      {
+       "op": "flag",
+       "k": "yz_run"
+      },
+      {
+       "op": "queue",
+       "id": "a3_ye_offer",
+       "delay": 1
+      }
+     ],
+     "after": "“Where?” she asks, and the question is not a refusal. You both look at the sky, which is the answer."
+    }
+   ]
+  },
+  {
+   "id": "a3_ye_offer",
+   "kind": "story",
+   "act": 3,
+   "title": "Tea for Two, Poured",
+   "art": "netherworld",
+   "portrait": "ye",
+   "text": "A black lacquer boat waits at the dry ford and no one rows it. Ye Wujin sits in the stern pouring tea for two and drinking neither. At his collar is a jade pin you almost recognise: the kind a Registry clerk wears when trusted with a scroll. “Devoured,” he says, noticing your eyes, as one names a vintage. “It tasted of ink, and of three thousand years of other people's names.” He slides your cup across the water. “They will pour you into the sky, Wuming. I offer something else. Twenty years of your life, and I will put a hundred in your hands.”",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "ascension_known"
+    ]
+   },
+   "prio": 80,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "ye"
+   ],
+   "choices": [
+    {
+     "label": "Drink. Take the power.",
+     "hint": "Life -2, cult +60, corruption +25",
+     "fx": [
+      {
+       "op": "life",
+       "v": -2
+      },
+      {
+       "op": "cult",
+       "v": 60
+      },
+      {
+       "op": "corrupt",
+       "v": 25
+      },
+      {
+       "op": "notice",
+       "v": 10
+      },
+      {
+       "op": "rel",
+       "k": "ye",
+       "v": 2
+      },
+      {
+       "op": "truth",
+       "id": "t_ye"
+      },
+      {
+       "op": "flag",
+       "k": "ye_offer"
+      },
+      {
+       "op": "flag",
+       "k": "ye_accepted"
+      },
+      {
+       "op": "queue",
+       "id": "a3_war",
+       "delay": 1
+      }
+     ],
+     "after": "It tastes of rain on a grave, and then of nothing at all. Twenty years go out of you quietly, like a lamp turned down in the next room."
+    },
+    {
+     "label": "Pour the tea into the river",
+     "hint": "Heart +1; he is not offended",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "rel",
+       "k": "ye",
+       "v": -1
+      },
+      {
+       "op": "truth",
+       "id": "t_ye"
+      },
+      {
+       "op": "flag",
+       "k": "ye_offer"
+      },
+      {
+       "op": "queue",
+       "id": "a3_war",
+       "delay": 1
+      }
+     ],
+     "after": "“A pity,” Ye Wujin says, and refills your cup for the river. “The offer does not spoil. Neither do I.”"
+    },
+    {
+     "label": "Ask him what the Dao tastes like",
+     "hint": "Needs Spirit 9; a hard truth",
+     "req": {
+      "stats": {
+       "spirit": 9
+      }
+     },
+     "fx": [
+      {
+       "op": "cult",
+       "v": 40
+      },
+      {
+       "op": "corrupt",
+       "v": 5
+      },
+      {
+       "op": "rel",
+       "k": "ye",
+       "v": 1
+      },
+      {
+       "op": "truth",
+       "id": "t_ye"
+      },
+      {
+       "op": "flag",
+       "k": "ye_offer"
+      },
+      {
+       "op": "queue",
+       "id": "a3_war",
+       "delay": 1
+      }
+     ],
+     "after": "“Like a very old form,” he says, delighted, “that wishes someone would stop reading it aloud.” He tells you where he plans to bite."
+    }
+   ]
+  },
+  {
+   "id": "a3_war",
+   "kind": "story",
+   "act": 3,
+   "title": "The Quota Letters",
+   "art": "sect",
+   "portrait": "disciple",
+   "text": "The Registry's quota letters went out in spring: every sect to send its best young to the next Ascension, a hundred names each. Three sects complied. Yours did not. In the grey hour a bell rings from the lower gate and does not stop. Below the wall are banners of a coalition you have eaten with and learned beside; the Registry pays by the head, and a refusing sect, cleansed, counts as three. The disciples look at you the way a house looks at its roof. You are the Golden Core on this wall.",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "ascension_known"
+    ]
+   },
+   "prio": 75,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "war"
+   ],
+   "choices": [
+    {
+     "label": "Hold the wall yourself",
+     "hint": "A hard fight; cult and stones if you win",
+     "fx": [
+      {
+       "op": "flag",
+       "k": "sect_war"
+      },
+      {
+       "op": "battle",
+       "enemy": "rival_disciple",
+       "scale": 1.3,
+       "win": [
+        {
+         "op": "cult",
+         "v": 40
+        },
+        {
+         "op": "stone",
+         "v": 40
+        },
+        {
+         "op": "event",
+         "id": "a3_war_gate"
+        }
+       ],
+       "lose": [
+        {
+         "op": "hp_pct",
+         "v": -0.5
+        },
+        {
+         "op": "event",
+         "id": "a3_war_gate"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Go down to the gate with a white cloth",
+     "hint": "Heart test; failure is a fight",
+     "fx": [
+      {
+       "op": "flag",
+       "k": "sect_war"
+      },
+      {
+       "op": "roll",
+       "stat": "heart",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "notice",
+         "v": 5
+        },
+        {
+         "op": "cult",
+         "v": 25
+        },
+        {
+         "op": "text",
+         "t": "They do not lower their spears. They do not raise them either."
+        },
+        {
+         "op": "event",
+         "id": "a3_war_gate"
+        }
+       ],
+       "fail": [
+        {
+         "op": "battle",
+         "enemy": "demon_cultivator",
+         "scale": 1.0,
+         "win": [
+          {
+           "op": "cult",
+           "v": 30
+          },
+          {
+           "op": "event",
+           "id": "a3_war_gate"
+          }
+         ],
+         "lose": [
+          {
+           "op": "hp_pct",
+           "v": -0.4
+          },
+          {
+           "op": "event",
+           "id": "a3_war_gate"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Send the young down the back road",
+     "hint": "Costs 30 stones for guides and silence",
+     "cost": {
+      "stone": 30
+     },
+     "fx": [
+      {
+       "op": "flag",
+       "k": "sect_war"
+      },
+      {
+       "op": "flag",
+       "k": "a3_evacuated"
+      },
+      {
+       "op": "rel",
+       "k": "xuanxiao",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "event",
+       "id": "a3_war_gate"
+      }
+     ],
+     "after": "They go in single file, carrying bowls. The youngest turns to wave, and you wave back, which is a poor kind of command."
+    }
+   ]
+  },
+  {
+   "id": "a3_war_gate",
+   "kind": "chain",
+   "act": 3,
+   "title": "Stone or Soul",
+   "art": "sect",
+   "portrait": "disciple",
+   "text": "By noon the wall is a drawn bowstring. The coalition's commander, a lean woman you once shared a library lamp with, rides up under truce and speaks without raising her voice. She will withdraw if you do one of two things. Open the lower granary, ten years of the mountain's yield, and she calls the quota met. Or give her the list: forty names, the youngest, the ones who still ask what ascending is like. Behind you the old walls shake. You have a third thing, which is the mountain itself, if you are willing to bring it down on the pass.",
+   "req": {},
+   "weight": 1,
+   "tags": [
+    "act3",
+    "war"
+   ],
+   "choices": [
+    {
+     "label": "Give the stone. Open the granary.",
+     "hint": "Costs 60 stones; the sect keeps its people",
+     "cost": {
+      "stone": 60
+     },
+     "fx": [
+      {
+       "op": "notice",
+       "v": -10
+      },
+      {
+       "op": "rel",
+       "k": "xuanxiao",
+       "v": 1
+      },
+      {
+       "op": "flag",
+       "k": "a3_stone_given"
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_1",
+       "delay": 1
+      }
+     ],
+     "after": "The coin goes out in carts. She counts it herself, and for a moment looks as tired as you."
+    },
+    {
+     "label": "Give the soul. Hand over the list.",
+     "hint": "Stones +80, Heart -1, the shame is yours",
+     "fx": [
+      {
+       "op": "stone",
+       "v": 80
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": -1
+      },
+      {
+       "op": "notice",
+       "v": -20
+      },
+      {
+       "op": "rel",
+       "k": "xuanxiao",
+       "v": -2
+      },
+      {
+       "op": "flag",
+       "k": "a3_names_given"
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_1",
+       "delay": 1
+      }
+     ],
+     "after": "They file out in good order. Several of them thank you. You keep the list, afterwards, because it is the only record of their faces."
+    },
+    {
+     "label": "Bring the mountain down on the pass",
+     "hint": "HP -40%, Notice +25; take her blade from the rubble",
+     "fx": [
+      {
+       "op": "hp_pct",
+       "v": -0.4
+      },
+      {
+       "op": "notice",
+       "v": 25
+      },
+      {
+       "op": "cult",
+       "v": 35
+      },
+      {
+       "op": "item",
+       "id": "blade_blood"
+      },
+      {
+       "op": "flag",
+       "k": "a3_pass_fallen"
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_1",
+       "delay": 1
+      }
+     ],
+     "after": "The mountain goes with a sound like a long exhale. In the dust, one blade lies unbroken, warm to the hilt, and not entirely finished with its owner."
+    }
+   ]
+  },
+  {
+   "id": "a3_brush_1",
+   "kind": "story",
+   "act": 3,
+   "title": "A Rumour Between Lanterns",
+   "art": "town",
+   "portrait": "sujiu",
+   "text": "Su Jiu sells the rumour in the dark between two lanterns, for once at half her price. The Registry's scrolls are written with a Brush, she says, and the Brush broke the night the Registry was founded: three pieces, scattered like seed. She says it as a joke and then does not smile. “A thing that can write a writ,” she says, “can write one over.” Her eyes go to your sleeve, where a splinter of black wood has been warm for a year, its grain like a hand's slow script. She does not ask where you found it. She is, for once, afraid of being right.",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "sect_war"
+    ]
+   },
+   "prio": 70,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "brush"
+   ],
+   "choices": [
+    {
+     "label": "Pay her price for where the second piece sleeps",
+     "hint": "Costs 40 stones",
+     "cost": {
+      "stone": 40
+     },
+     "fx": [
+      {
+       "op": "if",
+       "req": {
+        "items": [
+         "brush_fragment"
+        ]
+       },
+       "then": [
+        {
+         "op": "text",
+         "t": "She draws a map on your palm in fox-fire. You already hold the first piece."
+        }
+       ],
+       "else": [
+        {
+         "op": "item",
+         "id": "brush_fragment"
+        },
+        {
+         "op": "text",
+         "t": "She sells you the first piece from her own sleeve, as if she had been waiting to be rid of it."
+        }
+       ]
+      },
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": 1
+      },
+      {
+       "op": "flag",
+       "k": "a3_brush_1_done"
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_2",
+       "delay": 1
+      }
+     ]
+    },
+    {
+     "label": "Trade her a secret of your own",
+     "hint": "Needs her trust (rel 2)",
+     "req": {
+      "rel": {
+       "sujiu": 2
+      }
+     },
+     "fx": [
+      {
+       "op": "if",
+       "req": {
+        "items": [
+         "brush_fragment"
+        ]
+       },
+       "then": [],
+       "else": [
+        {
+         "op": "item",
+         "id": "brush_fragment"
+        }
+       ]
+      },
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": 2
+      },
+      {
+       "op": "notice",
+       "v": 5
+      },
+      {
+       "op": "flag",
+       "k": "a3_brush_1_done"
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_2",
+       "delay": 1
+      }
+     ],
+     "after": "You tell her the one thing you have never told anyone. She laughs, and stops, and keeps it carefully, like a coin she will not spend."
+    },
+    {
+     "label": "Follow the splinter's warmth yourself",
+     "hint": "Insight test; slower",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "insight",
+       "dc": 8,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 25
+        },
+        {
+         "op": "if",
+         "req": {
+          "items": [
+           "brush_fragment"
+          ]
+         },
+         "then": [],
+         "else": [
+          {
+           "op": "item",
+           "id": "brush_fragment"
+          }
+         ]
+        }
+       ],
+       "fail": [
+        {
+         "op": "notice",
+         "v": 5
+        },
+        {
+         "op": "if",
+         "req": {
+          "items": [
+           "brush_fragment"
+          ]
+         },
+         "then": [],
+         "else": [
+          {
+           "op": "item",
+           "id": "brush_fragment"
+          }
+         ]
+        },
+        {
+         "op": "text",
+         "t": "It takes a season. The piece was in a river-bed, and so were you."
+        }
+       ]
+      },
+      {
+       "op": "flag",
+       "k": "a3_brush_1_done"
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_2",
+       "delay": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a3_brush_2",
+   "kind": "story",
+   "act": 3,
+   "title": "The Door Is White Tonight",
+   "art": "registry",
+   "portrait": "clerk",
+   "text": "The Registry keeps a branch office in every provincial capital, behind a door that changes colour each year. Tonight it is white. Inside: desks, lamps that burn without oil, a hundred clerks who do not look up. The second piece of the Brush is the chief clerk's paperweight. You wear a stolen grey sleeve and the confidence of a person who has never been asked a question. The chief clerk lifts his head. “Your seal?” he says, mildly. Then, before you can lie: “Forgive me. The new boy. Hold it to the lamp, there.”",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "a3_brush_1_done"
+    ]
+   },
+   "prio": 68,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "brush",
+    "registry"
+   ],
+   "choices": [
+    {
+     "label": "Hold out the stolen seal and smile",
+     "hint": "Insight test; failure is a fight",
+     "fx": [
+      {
+       "op": "flag",
+       "k": "registry_infiltrated"
+      },
+      {
+       "op": "flag",
+       "k": "a3_brush_2_done"
+      },
+      {
+       "op": "roll",
+       "stat": "insight",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "item",
+         "id": "brush_fragment"
+        },
+        {
+         "op": "notice",
+         "v": 5
+        },
+        {
+         "op": "queue",
+         "id": "a3_brush_3",
+         "delay": 1
+        }
+       ],
+       "fail": [
+        {
+         "op": "battle",
+         "enemy": "inspector",
+         "scale": 1.0,
+         "win": [
+          {
+           "op": "item",
+           "id": "brush_fragment"
+          },
+          {
+           "op": "notice",
+           "v": 15
+          },
+          {
+           "op": "queue",
+           "id": "a3_brush_3",
+           "delay": 1
+          }
+         ],
+         "lose": [
+          {
+           "op": "hp_pct",
+           "v": -0.4
+          },
+          {
+           "op": "item",
+           "id": "brush_fragment"
+          },
+          {
+           "op": "notice",
+           "v": 20
+          },
+          {
+           "op": "queue",
+           "id": "a3_brush_3",
+           "delay": 1
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Stand still and let him read your empty line",
+     "hint": "Needs the memory of a blank page",
+     "req": {
+      "meta": [
+       "t_blank"
+      ]
+     },
+     "fx": [
+      {
+       "op": "flag",
+       "k": "registry_infiltrated"
+      },
+      {
+       "op": "flag",
+       "k": "a3_brush_2_done"
+      },
+      {
+       "op": "item",
+       "id": "brush_fragment"
+      },
+      {
+       "op": "cult",
+       "v": 30
+      },
+      {
+       "op": "queue",
+       "id": "a3_brush_3",
+       "delay": 1
+      }
+     ],
+     "after": "He finds no line. He signs the place where one would be, and hands you the paperweight to hold while he looks for a pen."
+    },
+    {
+     "label": "Put out the lamp and take it",
+     "hint": "A fight; Notice +20",
+     "fx": [
+      {
+       "op": "flag",
+       "k": "registry_infiltrated"
+      },
+      {
+       "op": "flag",
+       "k": "a3_brush_2_done"
+      },
+      {
+       "op": "notice",
+       "v": 20
+      },
+      {
+       "op": "battle",
+       "enemy": "inspector",
+       "scale": 1.1,
+       "win": [
+        {
+         "op": "item",
+         "id": "brush_fragment"
+        },
+        {
+         "op": "cult",
+         "v": 35
+        },
+        {
+         "op": "queue",
+         "id": "a3_brush_3",
+         "delay": 1
+        }
+       ],
+       "lose": [
+        {
+         "op": "hp_pct",
+         "v": -0.5
+        },
+        {
+         "op": "item",
+         "id": "brush_fragment"
+        },
+        {
+         "op": "queue",
+         "id": "a3_brush_3",
+         "delay": 1
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a3_brush_3",
+   "kind": "story",
+   "act": 3,
+   "title": "What the Pawnbroker Stocks",
+   "art": "town",
+   "portrait": "moshan",
+   "text": "The third piece sits in a pawnshop in Fallen-Star Town that buys what people cannot afford to remember. The pawnbroker will sell it for the one thing she does not stock, and sets a small scale on the counter. In the corner an old beggar with one sleeve pinned empty sleeps over a gourd. He wakes when you lay the three pieces side by side. He has the voice of someone who was once a very good clerk. “Do not touch it with a clean hand,” Old Mo says. “Ink is cheap. Use a good bad memory.”",
+   "req": {
+    "realm_min": 3,
+    "flags": [
+     "a3_brush_2_done"
+    ]
+   },
+   "prio": 66,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "brush",
+    "moshan"
+   ],
+   "choices": [
+    {
+     "label": "Weigh out the first thing you ever lost",
+     "hint": "Heart -1; the Brush is yours",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": -1
+      },
+      {
+       "op": "item",
+       "id": "brush_fragment"
+      },
+      {
+       "op": "unitem",
+       "id": "brush_fragment",
+       "n": 3
+      },
+      {
+       "op": "item",
+       "id": "writ_brush"
+      },
+      {
+       "op": "truth",
+       "id": "t_brush"
+      },
+      {
+       "op": "flag",
+       "k": "brush_found"
+      },
+      {
+       "op": "queue",
+       "id": "a3_hunt",
+       "delay": 1
+      }
+     ],
+     "after": "She nods and the scale goes down on your side. The pieces knit with a sound like a breath in. You feel lighter in a place you will not find again."
+    },
+    {
+     "label": "Pay in coin and be done",
+     "hint": "Costs 80 stones",
+     "cost": {
+      "stone": 80
+     },
+     "fx": [
+      {
+       "op": "item",
+       "id": "brush_fragment"
+      },
+      {
+       "op": "unitem",
+       "id": "brush_fragment",
+       "n": 3
+      },
+      {
+       "op": "item",
+       "id": "writ_brush"
+      },
+      {
+       "op": "truth",
+       "id": "t_brush"
+      },
+      {
+       "op": "flag",
+       "k": "brush_found"
+      },
+      {
+       "op": "queue",
+       "id": "a3_hunt",
+       "delay": 1
+      }
+     ],
+     "after": "“Everyone says that,” the pawnbroker says, counting. “It is always the harder price they were afraid of.”"
+    },
+    {
+     "label": "Let Old Mo write the receipt with his stump",
+     "hint": "Needs you to have met him; he asks nothing",
+     "req": {
+      "any": [
+       {
+        "flags": [
+         "mo_met"
+        ]
+       },
+       {
+        "meta": [
+         "t_mo_arm"
+        ]
+       }
+      ]
+     },
+     "fx": [
+      {
+       "op": "rel",
+       "k": "moshan",
+       "v": 3
+      },
+      {
+       "op": "item",
+       "id": "brush_fragment"
+      },
+      {
+       "op": "unitem",
+       "id": "brush_fragment",
+       "n": 3
+      },
+      {
+       "op": "item",
+       "id": "writ_brush"
+      },
+      {
+       "op": "truth",
+       "id": "t_brush"
+      },
+      {
+       "op": "flag",
+       "k": "brush_found"
+      },
+      {
+       "op": "cult",
+       "v": 30
+      },
+      {
+       "op": "queue",
+       "id": "a3_hunt",
+       "delay": 1
+      }
+     ],
+     "after": "The stump moves over the counter and a name appears on the pawn ticket, in your own hand. The pawnbroker reads it, and goes pale, and gives you the thing for free."
+    }
+   ]
+  },
+  {
+   "id": "a3_hunt",
+   "kind": "story",
+   "act": 3,
+   "title": "I Am Only Filing",
+   "art": "wilds",
+   "portrait": "siming",
+   "text": "The birds stop first. Then the river, which keeps flowing but forgets its sound. On the road a man in plain grey walks toward you with a scroll under his arm and a boy carrying his inkstone. Behind him, in a ring that closes without footsteps, eleven inspectors stand with lowered eyes. He is smiling like someone who has waited a long time for a form to arrive. “Wuming,” the Magistrate says, with real pleasure. “There you are. I am only filing. It will not take long.” You understand, the way you understand a step that is not there, that this is not a fight you can win, and that the first task is not to lose it.",
+   "req": {
+    "realm_min": 3,
+    "any": [
+     {
+      "notice_min": 100
+     },
+     {
+      "flags": [
+       "hunted"
+      ]
+     },
+     {
+      "flags": [
+       "brush_found"
+      ]
+     }
+    ]
+   },
+   "prio": 97,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "magistrate"
+   ],
+   "choices": [
+    {
+     "label": "Run for the river gorge",
+     "hint": "Agility test; failure is a fight you must flee",
+     "fx": [
+      {
+       "op": "flag",
+       "k": "magistrate_met"
+      },
+      {
+       "op": "roll",
+       "stat": "speed",
+       "dc": 11,
+       "pass": [
+        {
+         "op": "notice",
+         "v": -50
+        },
+        {
+         "op": "hp_pct",
+         "v": -0.2
+        },
+        {
+         "op": "flag",
+         "k": "a3_hunt_survived"
+        }
+       ],
+       "fail": [
+        {
+         "op": "event",
+         "id": "a3_hunt_run"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Show him the empty page. You are not in his book.",
+     "hint": "Needs the memory of a blank page",
+     "req": {
+      "meta": [
+       "t_blank"
+      ]
+     },
+     "fx": [
+      {
+       "op": "flag",
+       "k": "magistrate_met"
+      },
+      {
+       "op": "notice",
+       "v": -60
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "flag",
+       "k": "a3_hunt_survived"
+      }
+     ],
+     "after": "He turns the scroll, finds the place where a line should be, and tilts his head. “Curious,” he says. “Next year, then.” He is truly not upset. That is the worst of it."
+    },
+    {
+     "label": "Burn an escape talisman and scatter",
+     "hint": "Spends a talisman of escape",
+     "cost": {
+      "item": "talisman_escape"
+     },
+     "fx": [
+      {
+       "op": "flag",
+       "k": "magistrate_met"
+      },
+      {
+       "op": "notice",
+       "v": -35
+      },
+      {
+       "op": "flag",
+       "k": "a3_hunt_survived"
+      }
+     ],
+     "after": "You are seven shadows on seven roads. The Magistrate writes seven small notes, patiently, and does not hurry."
+    },
+    {
+     "label": "Stand and answer his questions politely",
+     "hint": "Heart test; failure is a fight you must flee",
+     "fx": [
+      {
+       "op": "flag",
+       "k": "magistrate_met"
+      },
+      {
+       "op": "roll",
+       "stat": "heart",
+       "dc": 10,
+       "pass": [
+        {
+         "op": "notice",
+         "v": -30
+        },
+        {
+         "op": "cult",
+         "v": 30
+        },
+        {
+         "op": "flag",
+         "k": "a3_hunt_survived"
+        }
+       ],
+       "fail": [
+        {
+         "op": "event",
+         "id": "a3_hunt_run"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a3_hunt_run",
+   "kind": "chain",
+   "act": 3,
+   "title": "A Corridor of Paper",
+   "art": "registry",
+   "portrait": "clerk",
+   "text": "The ring closes. An inspector's sleeve comes up and the road folds into a corridor of paper walls: rooms without doors, lamps without flame, a stationery of cells. The nearest guardian is a heavenly soldier made of gilded bureaucracy, a man-shaped stack of forms in plate armour. He bows. At the far end the Magistrate uncaps his brush, unhurried. You can fight this one. You cannot fight the man behind it. Every blow you land is a form he must fill out, and he has all the time that is.",
+   "req": {},
+   "weight": 1,
+   "tags": [
+    "act3",
+    "magistrate"
+   ],
+   "choices": [
+    {
+     "label": "Fight your way through the paper",
+     "hint": "Lethal fight; flee is possible",
+     "fx": [
+      {
+       "op": "battle",
+       "enemy": "heavenly_soldier",
+       "scale": 0.8,
+       "lethal": true,
+       "win": [
+        {
+         "op": "notice",
+         "v": -40
+        },
+        {
+         "op": "cult",
+         "v": 50
+        },
+        {
+         "op": "flag",
+         "k": "a3_hunt_survived"
+        }
+       ],
+       "lose": [
+        {
+         "op": "die",
+         "cause": "struck"
+        }
+       ],
+       "flee": [
+        {
+         "op": "notice",
+         "v": -30
+        },
+        {
+         "op": "hp_pct",
+         "v": -0.4
+        },
+        {
+         "op": "flag",
+         "k": "a3_hunt_survived"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Write a door with the Brush",
+     "hint": "Needs the Brush; costs a year of life",
+     "req": {
+      "items": [
+       "writ_brush"
+      ]
+     },
+     "fx": [
+      {
+       "op": "life",
+       "v": -1
+      },
+      {
+       "op": "notice",
+       "v": -40
+      },
+      {
+       "op": "flag",
+       "k": "a3_hunt_survived"
+      }
+     ],
+     "after": "One short stroke, and the wall has a door in it, which you had not known walls could be asked for. The Magistrate looks up, interested, for the first time."
+    }
+   ]
+  },
+  {
+   "id": "a3_tribulation",
+   "kind": "story",
+   "act": 3,
+   "title": "Nine Strokes of Lightning",
+   "art": "wilds",
+   "text": "You have filled the last layer of the Golden Core and the sky takes notice. Not the Registry's notice, but a smaller, older interest, like a dog hearing its name. Clouds stack over the mountain in rows. The air tastes of struck iron. At the edge of the clearing a squirrel has simply sat down and is not afraid. Whatever comes will come in nine strokes, each heavier, each with the exact patience of a ledger being balanced. The sky is asking whether you are worth patching with, and in the asking is the threat.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3,
+    "layer_min": 3
+   },
+   "prio": 60,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine",
+    "tribulation"
+   ],
+   "choices": [
+    {
+     "label": "Take it open-handed on the peak",
+     "hint": "A hard fight; a lost one costs HP and cultivation",
+     "fx": [
+      {
+       "op": "battle",
+       "enemy": "tribulation_nascent",
+       "scale": 1.0,
+       "win": [
+        {
+         "op": "cult",
+         "v": 80
+        },
+        {
+         "op": "stat",
+         "k": "body",
+         "v": 1
+        },
+        {
+         "op": "item",
+         "id": "pill_nascent"
+        },
+        {
+         "op": "flag",
+         "k": "a3_trib_won"
+        }
+       ],
+       "lose": [
+        {
+         "op": "hp_pct",
+         "v": -0.7
+        },
+        {
+         "op": "cult",
+         "v": -30
+        },
+        {
+         "op": "flag",
+         "k": "a3_trib_scarred"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Hire the old ward-stones of the ridge",
+     "hint": "Costs 50 stones; the strokes are weaker",
+     "cost": {
+      "stone": 50
+     },
+     "fx": [
+      {
+       "op": "battle",
+       "enemy": "tribulation_nascent",
+       "scale": 0.8,
+       "win": [
+        {
+         "op": "cult",
+         "v": 60
+        },
+        {
+         "op": "item",
+         "id": "pill_nascent"
+        },
+        {
+         "op": "flag",
+         "k": "a3_trib_won"
+        }
+       ],
+       "lose": [
+        {
+         "op": "hp_pct",
+         "v": -0.5
+        },
+        {
+         "op": "flag",
+         "k": "a3_trib_scarred"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Hold your heart still. The sky tests; it does not hate.",
+     "hint": "Needs Heart 9; the strokes are gentler",
+     "req": {
+      "stats": {
+       "heart": 9
+      }
+     },
+     "fx": [
+      {
+       "op": "battle",
+       "enemy": "tribulation_nascent",
+       "scale": 0.7,
+       "win": [
+        {
+         "op": "cult",
+         "v": 100
+        },
+        {
+         "op": "stat",
+         "k": "heart",
+         "v": 1
+        },
+        {
+         "op": "item",
+         "id": "pill_nascent"
+        },
+        {
+         "op": "flag",
+         "k": "a3_trib_won"
+        }
+       ],
+       "lose": [
+        {
+         "op": "hp_pct",
+         "v": -0.4
+        },
+        {
+         "op": "flag",
+         "k": "a3_trib_scarred"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "a3_core_end",
+   "kind": "story",
+   "act": 3,
+   "title": "A Letter Under a Pebble",
+   "art": "cave",
+   "text": "The Nascent Soul is the size of your thumb and sits cross-legged in the dantian, looking embarrassed. Your body is a house it lives in now. The mountain no longer looks like a mountain but like a patch of old ink, and you can read it: here a cliff, here a stream, here the slow smudge where a village was filed and forgotten. You have been counted. You have also, you realise, begun to count back. At the cave mouth under a pebble lies a letter in handwriting you almost know. It says only: Come up. They are expecting you.",
+   "req": {
+    "realm_min": 4
+   },
+   "prio": 100,
+   "once": true,
+   "tags": [
+    "act3",
+    "spine"
+   ],
+   "choices": [
+    {
+     "label": "Tear it up and go on as you were",
+     "hint": "Cult +40",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 40
+      },
+      {
+       "op": "queue",
+       "id": "a4_open",
+       "delay": 1
+      }
+     ],
+     "after": "The pieces go down the valley like a few late petals. You can feel something noting the exact moment."
+    },
+    {
+     "label": "Keep it. It may be a way in.",
+     "hint": "Notice +5, a door later",
+     "fx": [
+      {
+       "op": "notice",
+       "v": 5
+      },
+      {
+       "op": "cult",
+       "v": 25
+      },
+      {
+       "op": "flag",
+       "k": "a3_letter_kept"
+      },
+      {
+       "op": "queue",
+       "id": "a4_open",
+       "delay": 1
+      }
+     ],
+     "after": "You fold it into your sleeve beside the Brush's last warmth. Both feel like promises made by someone else."
+    },
+    {
+     "label": "Go down to the valley first and see who is left",
+     "hint": "A few quiet terms; Heart +1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 15
+      },
+      {
+       "op": "queue",
+       "id": "a4_open",
+       "delay": 2
+      }
+     ],
+     "after": "You eat a bowl of noodles at a stall you remember, whose owner does not remember you. The noodles are the same."
+    }
+   ]
+  }
+ ]
+}

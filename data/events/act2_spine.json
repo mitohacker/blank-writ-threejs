@@ -1,0 +1,4462 @@
+{
+	"events": [
+		{
+			"id": "a2_open",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Third Pillar Sets",
+			"art": "cave",
+			"text": "The last of the Foundation lands the way a door closes in a quiet house: you hear it before you feel it. The mist you have drunk for years stops being weather and becomes a floor. Your body is a hall now, and something in it is yours. Outside the cave the birds begin again, one at a time, as if checking that noise is allowed. Under all of it there is a long thin sound you cannot place, like a plate set down on a table that was never quite level.",
+			"req": {},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"spine",
+				"foundation"
+			],
+			"choices": [
+				{
+					"label": "Sit with it until it settles",
+					"hint": "Quiet and safe.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "event",
+									"id": "a2_open_azure"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"herb"
+										]
+									},
+									"then": [
+										{
+											"op": "event",
+											"id": "a2_open_herb"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"netherworld"
+												]
+											},
+											"then": [
+												{
+													"op": "event",
+													"id": "a2_open_nether"
+												}
+											],
+											"else": [
+												{
+													"op": "event",
+													"id": "a2_open_rogue"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "The floor holds. The sound does not go away, but you stop leaning toward it."
+				},
+				{
+					"label": "Walk out and meet the morning",
+					"hint": "A little fresh air, a little loose change.",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.25
+						},
+						{
+							"op": "stone",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "event",
+									"id": "a2_open_azure"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"herb"
+										]
+									},
+									"then": [
+										{
+											"op": "event",
+											"id": "a2_open_herb"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"netherworld"
+												]
+											},
+											"then": [
+												{
+													"op": "event",
+													"id": "a2_open_nether"
+												}
+											],
+											"else": [
+												{
+													"op": "event",
+													"id": "a2_open_rogue"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "The ridge looks sharper, as if someone had gone over the whole mountain with a finer brush."
+				}
+			]
+		},
+		{
+			"id": "a2_open_net",
+			"kind": "story",
+			"act": 2,
+			"title": "The Third Pillar Sets",
+			"art": "cave",
+			"text": "The last of the Foundation lands the way a door closes in a quiet house: you hear it before you feel it. The mist you have drunk for years stops being weather and becomes a floor. Your body is a hall now, and something in it is yours. Outside the cave the birds begin again, one at a time, as if checking that noise is allowed. Under all of it there is a long thin sound you cannot place, like a plate set down on a table that was never quite level.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"not_flags": [
+					"a2_opened"
+				]
+			},
+			"prio": 10,
+			"once": true,
+			"tags": [
+				"spine",
+				"foundation"
+			],
+			"choices": [
+				{
+					"label": "Sit with it until it settles",
+					"hint": "Quiet and safe.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "event",
+									"id": "a2_open_azure"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"herb"
+										]
+									},
+									"then": [
+										{
+											"op": "event",
+											"id": "a2_open_herb"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"netherworld"
+												]
+											},
+											"then": [
+												{
+													"op": "event",
+													"id": "a2_open_nether"
+												}
+											],
+											"else": [
+												{
+													"op": "event",
+													"id": "a2_open_rogue"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "The floor holds. The sound does not go away, but you stop leaning toward it."
+				},
+				{
+					"label": "Walk out and meet the morning",
+					"hint": "A little fresh air, a little loose change.",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.25
+						},
+						{
+							"op": "stone",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "event",
+									"id": "a2_open_azure"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"herb"
+										]
+									},
+									"then": [
+										{
+											"op": "event",
+											"id": "a2_open_herb"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"netherworld"
+												]
+											},
+											"then": [
+												{
+													"op": "event",
+													"id": "a2_open_nether"
+												}
+											],
+											"else": [
+												{
+													"op": "event",
+													"id": "a2_open_rogue"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "The ridge looks sharper, as if someone had gone over the whole mountain with a finer brush."
+				}
+			]
+		},
+		{
+			"id": "a2_open_azure",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Jade Slip",
+			"art": "sect",
+			"portrait": "xuanxiao",
+			"text": "Master Xuanxiao receives you in the Hall of Rising Clouds, where the floor has been polished by four hundred years of kneeling. He reads your Foundation like a man reading a good letter, and smiles. 'Inner disciple,' he says, and hands you a slip of jade engraved with the roll: three hundred names, each with a small red mark. 'Two hundred and ninety-eight ascended. Two did not; we do not discuss them. Be at ease.' He is proud the way a farmer is proud of a field. At the back of the hall a young woman with a plain sword stands exactly as long as protocol requires, and not a breath longer.",
+			"req": {},
+			"prio": 99,
+			"once": true,
+			"tags": [
+				"spine",
+				"sect"
+			],
+			"choices": [
+				{
+					"label": "Kneel and take the slip",
+					"hint": "A stipend and a smile.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 30
+						},
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "sect"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "queue",
+							"id": "a2_yunzhi_1",
+							"delay": 5
+						}
+					],
+					"after": "The jade is warm from his hand. The stipend that comes with it is heavy and real."
+				},
+				{
+					"label": "Ask who the two were",
+					"hint": "He may remember who asked.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": 3
+						},
+						{
+							"op": "flag",
+							"k": "a2_asked_two"
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "sect"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "queue",
+							"id": "a2_yunzhi_1",
+							"delay": 5
+						}
+					],
+					"after": "He tells you. You are the first to ask in sixty years, and for a moment he looks almost frightened, then pleased."
+				},
+				{
+					"label": "Look at the red marks, and say nothing",
+					"hint": "Needs a sharp spirit.",
+					"req": {
+						"stats": {
+							"spirit": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_seal_seen"
+						},
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "sect"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "queue",
+							"id": "a2_yunzhi_1",
+							"delay": 5
+						}
+					],
+					"after": "They are not ink. They are the grey-red of a seal pressed in by a hand that was not the sect's. You thank him for the roll as if you had seen nothing."
+				}
+			]
+		},
+		{
+			"id": "a2_open_herb",
+			"kind": "chain",
+			"act": 2,
+			"title": "Plot Nine",
+			"art": "valley",
+			"portrait": "qingnang",
+			"text": "Granny Qingnang looks at your Foundation the way she looks at a pulse: with her thumb and a great deal of contempt. 'Took you long enough,' she says, and hands you a hoe, a bucket and the key to Plot Nine, which nobody else will touch because the soil is sour and the last warden died in it. 'He was old,' she adds. 'Mostly.' The valley breathes around you, three hundred shades of green, and every one of them is trying to poison someone.",
+			"req": {},
+			"prio": 99,
+			"once": true,
+			"tags": [
+				"spine",
+				"sect"
+			],
+			"choices": [
+				{
+					"label": "Take Plot Nine without a word",
+					"hint": "Safe, and she notices.",
+					"fx": [
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 4
+						},
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "valley"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "She grunts. It is the nearest thing to praise she owns."
+				},
+				{
+					"label": "Ask what the last warden died of",
+					"hint": "Roll: Body. On a fail the root wins.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "item",
+									"id": "herb_spirit"
+								},
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "You dig where he dug, and you find the root before it finds you."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 2
+								},
+								{
+									"op": "text",
+									"t": "The root finds you first. She sets your arm without comment, and stays to watch it heal."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "valley"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "'A root,' she says. 'And a grudge. The root was worse.'"
+				},
+				{
+					"label": "Offer her twenty stones for Plot One, the good one",
+					"hint": "Costs stones; costs her good opinion more.",
+					"cost": {
+						"stone": 20
+					},
+					"fx": [
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 7
+						},
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": -1
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "valley"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "She takes the money, laughs until she coughs, and gives you the key. Plot One has been fallow for a reason."
+				}
+			]
+		},
+		{
+			"id": "a2_open_rogue",
+			"kind": "chain",
+			"act": 2,
+			"title": "No Roof, No Roll",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "There is no hall for rogues, which is rather the point. There is a tavern at the third bridge of Fallen-Star Town with a loose floorboard and a back door, and Old Mo is at the table nearest the back door, peeling an egg one-handed with the care of a surgeon. 'Seven,' he says before you sit. 'Seven people watched you come in. Two sell what they see. Back to the wall, kid, and don't stare at anyone who counts.' He pushes the egg across the table. It is the best egg of your life, which is the sort of thing he would know.",
+			"req": {},
+			"prio": 99,
+			"once": true,
+			"tags": [
+				"spine",
+				"sect"
+			],
+			"choices": [
+				{
+					"label": "Sit with your back to the wall",
+					"hint": "Quiet and safe.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": -4
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "Seven becomes six by the time you finish the egg. He doesn't say who left."
+				},
+				{
+					"label": "Count them yourself",
+					"hint": "Needs a sharp spirit.",
+					"req": {
+						"stats": {
+							"spirit": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "'Eight,' you say. He closes his eye. 'Eight,' he agrees. 'And the eighth is the one that matters, and I am annoyed.'"
+				},
+				{
+					"label": "Ask why he never sits anywhere else",
+					"hint": "He may pay for a good question.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_mo_asked"
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "'They know where I live,' he says. 'It's less rude if they don't have to ask.' He slides a coin across the table, which is as close to a compliment as he comes."
+				}
+			]
+		},
+		{
+			"id": "a2_open_nether",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Hall Counts Its Own",
+			"art": "netherworld",
+			"portrait": "ye",
+			"text": "The Nine-Netherworld Hall does not welcome; it enrolls. A pale attendant presses a bone token into your palm - not a gift, a receipt - and you are Foundation now: a number with a name beside it. Ye Wujin does not come down. He watches from a balcony of black glass without hiding it, and when your eyes find his he lifts two fingers: a greeting, or a count. 'He saw the pillar set,' the attendant whispers, almost envious. 'He sees everything that finishes.' Under your feet the stone is cold in a way that feels like patience.",
+			"req": {},
+			"prio": 99,
+			"once": true,
+			"tags": [
+				"spine",
+				"sect"
+			],
+			"choices": [
+				{
+					"label": "Wear the token and bow to the balcony",
+					"hint": "The Hall feeds you. The Hall writes it down.",
+					"fx": [
+						{
+							"op": "corrupt",
+							"v": 5
+						},
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "rel",
+							"k": "ye",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": -4
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "netherworld"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "The cold goes into you pleasantly, like a good drink on an empty stomach. Above, two fingers fall."
+				},
+				{
+					"label": "Pocket the token, skip the bow",
+					"hint": "Nobody stops you.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "stone",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "netherworld"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "Nobody objects. That is the unsettling part: you realise the Hall has already filed the omission."
+				},
+				{
+					"label": "Ask what became of the first four thousand",
+					"hint": "Asking is a kind of answer.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_nether_asked"
+						},
+						{
+							"op": "flag",
+							"k": "a2_opened"
+						},
+						{
+							"op": "place",
+							"k": "netherworld"
+						},
+						{
+							"op": "queue",
+							"id": "a2_rivals",
+							"delay": 3
+						}
+					],
+					"after": "'The Hall kept them,' the attendant says, and then, quickly: 'The ones who left were the ones who asked. Don't ask me how many asked.'"
+				}
+			]
+		},
+		{
+			"id": "a2_rivals",
+			"kind": "chain",
+			"act": 2,
+			"title": "A Name Written in Gold",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "Registration for the Cloud-Ladder Assembly is a trestle table, a registrar with ink to the wrists, and a line forty people long. The wind has been tugging at the banners all morning, and the moment a young man at the table gives his name - Xiao Heng - it drops, as though the mountain wanted to hear it. The registrar writes it twice, once in ink and once in something that shines. The man turns, sees you waiting behind him, and winces. 'I think I took the last place on the east ladder. I'm sorry. That's one I owe you.' He writes it down, in a little ledger, with a ribbon.",
+			"req": {},
+			"prio": 95,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest"
+			],
+			"choices": [
+				{
+					"label": "Take the debt: 'Then you owe me one'",
+					"hint": "He will remember it.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng_owes"
+						},
+						{
+							"op": "flag",
+							"k": "contest_entered"
+						},
+						{
+							"op": "flag",
+							"k": "heng_rival"
+						},
+						{
+							"op": "flag",
+							"k": "a2_rivals_seen"
+						},
+						{
+							"op": "queue",
+							"id": "a2_contest_1",
+							"delay": 1
+						}
+					],
+					"after": "He writes it down with a care that is nearly worse than an insult. 'Thank you,' he says, and means it."
+				},
+				{
+					"label": "Wave it off: 'Nobody owes anybody here'",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "contest_entered"
+						},
+						{
+							"op": "flag",
+							"k": "heng_rival"
+						},
+						{
+							"op": "flag",
+							"k": "a2_rivals_seen"
+						},
+						{
+							"op": "queue",
+							"id": "a2_contest_1",
+							"delay": 1
+						}
+					],
+					"after": "He writes it anyway. 'Only so I don't forget,' he explains. 'And then it would be true.'"
+				},
+				{
+					"label": "Look at him gently. You know what is stitched under that gold.",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_heng"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng_pity"
+						},
+						{
+							"op": "flag",
+							"k": "contest_entered"
+						},
+						{
+							"op": "flag",
+							"k": "heng_rival"
+						},
+						{
+							"op": "flag",
+							"k": "a2_rivals_seen"
+						},
+						{
+							"op": "queue",
+							"id": "a2_contest_1",
+							"delay": 1
+						}
+					],
+					"after": "You say nothing about it. He feels it all the same, the way you feel a draught, and glances round as if for the door."
+				},
+				{
+					"label": "Step out of the line: you did not come to fight",
+					"hint": "No bouts, no prize, no stele.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_contest_declined"
+						},
+						{
+							"op": "flag",
+							"k": "heng_rival"
+						},
+						{
+							"op": "flag",
+							"k": "a2_rivals_seen"
+						},
+						{
+							"op": "queue",
+							"id": "a2_contest_out",
+							"delay": 1
+						}
+					],
+					"after": "The line closes over your place like water. Somewhere behind you a ledger gets a new entry."
+				}
+			]
+		},
+		{
+			"id": "a2_contest_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Stone Rung",
+			"art": "sect",
+			"portrait": "disciple",
+			"text": "The Stone Rung is a platform no wider than a threshing floor, set over a drop the organisers have not bothered to rail. Fall off, yield, or be unable to stand: those are the rules, and a pavilion of grey-robed clerks watches you learn them. Your opponent is a rival sect's disciple with a handsome jaw and a banner on a stick. He bows exactly as low as a rival must. 'No hard feelings,' he says, in the voice of a man whose feelings are very hard indeed.",
+			"req": {},
+			"prio": 90,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest",
+				"battle"
+			],
+			"choices": [
+				{
+					"label": "Strike first, strike hard",
+					"hint": "A fair fight. Lose and you leave the ladder.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "rival_disciple",
+							"win": [
+								{
+									"op": "flag",
+									"k": "a2_b1_won"
+								},
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_2"
+								}
+							],
+							"lose": [
+								{
+									"op": "text",
+									"t": "You wake on the lowest rung of the ladder with a cup of water in your hand."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.6
+						}
+					],
+					"after": "The horn sounds. The first rung is always the shortest."
+				},
+				{
+					"label": "Read his footwork before you move",
+					"hint": "Needs a sharp spirit. An easier fight.",
+					"req": {
+						"stats": {
+							"spirit": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "rival_disciple",
+							"win": [
+								{
+									"op": "flag",
+									"k": "a2_b1_won"
+								},
+								{
+									"op": "cult",
+									"v": 18
+								},
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_2"
+								}
+							],
+							"lose": [
+								{
+									"op": "text",
+									"t": "You wake on the lowest rung of the ladder with a cup of water in your hand."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.5
+						}
+					],
+					"after": "He steps left every time he lies. You wait for the lie."
+				},
+				{
+					"label": "Slip the judge's attendant a purse to match you softly",
+					"hint": "An easy fight, and a story someone will tell.",
+					"cost": {
+						"stone": 30
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_cheated"
+						},
+						{
+							"op": "notice",
+							"v": 6
+						},
+						{
+							"op": "battle",
+							"enemy": "rival_disciple",
+							"win": [
+								{
+									"op": "flag",
+									"k": "a2_b1_won"
+								},
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "stone",
+									"v": 8
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_2"
+								}
+							],
+							"lose": [
+								{
+									"op": "text",
+									"t": "You wake on the lowest rung of the ladder with a cup of water in your hand."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.4
+						}
+					],
+					"after": "The attendant's face does not move. The draw changes anyway."
+				}
+			]
+		},
+		{
+			"id": "a2_contest_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Wind Rung",
+			"art": "sect",
+			"portrait": "disciple",
+			"text": "The second rung is a bridge of rope and board that sways whether or not anyone stands on it, and someone has done a very neat job of making sure your opponent is not who the roll says. The roll says: a wandering swordsman from the south. His hands say otherwise, black under the nails, and when he lifts the cup of fellowship the judges allow each fighter there is a smell of grave-lilies with it. Halfway across the planks he stops, smiling, and offers you the same cup. 'Thirsty?'",
+			"req": {},
+			"prio": 89,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest",
+				"battle"
+			],
+			"choices": [
+				{
+					"label": "Call him out before the judges",
+					"hint": "Roll: Dao-heart. A fail means a harder fight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a2_b2_won"
+								},
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "The judges lift the cup, sniff, and the argument ends. He is led away smiling."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_3"
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "They will not believe a loser's accusation until the poison is in someone. He lifts his hands and the bridge sways."
+								},
+								{
+									"op": "battle",
+									"enemy": "demon_cultivator",
+									"win": [
+										{
+											"op": "flag",
+											"k": "a2_b2_won"
+										},
+										{
+											"op": "cult",
+											"v": 16
+										},
+										{
+											"op": "rand",
+											"opts": [
+												{
+													"w": 1,
+													"fx": [
+														{
+															"op": "item",
+															"id": "ore_black"
+														}
+													]
+												},
+												{
+													"w": 1,
+													"fx": [
+														{
+															"op": "stone",
+															"v": 20
+														}
+													]
+												}
+											]
+										},
+										{
+											"op": "event",
+											"id": "a2_contest_3"
+										}
+									],
+									"lose": [
+										{
+											"op": "notice",
+											"v": 2
+										},
+										{
+											"op": "text",
+											"t": "The bridge sways. You find the water below very quickly."
+										},
+										{
+											"op": "event",
+											"id": "a2_contest_out"
+										}
+									],
+									"scale": 0.55
+								}
+							]
+						}
+					],
+					"after": "You raise your voice. Several hundred people stop pretending not to listen."
+				},
+				{
+					"label": "Refuse the cup and fight",
+					"hint": "A fair fight, a little poisoned.",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": -0.1
+						},
+						{
+							"op": "battle",
+							"enemy": "demon_cultivator",
+							"win": [
+								{
+									"op": "flag",
+									"k": "a2_b2_won"
+								},
+								{
+									"op": "cult",
+									"v": 16
+								},
+								{
+									"op": "rand",
+									"opts": [
+										{
+											"w": 1,
+											"fx": [
+												{
+													"op": "item",
+													"id": "ore_black"
+												}
+											]
+										},
+										{
+											"w": 1,
+											"fx": [
+												{
+													"op": "stone",
+													"v": 20
+												}
+											]
+										}
+									]
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_3"
+								}
+							],
+							"lose": [
+								{
+									"op": "notice",
+									"v": 2
+								},
+								{
+									"op": "text",
+									"t": "The bridge sways. You find the water below very quickly."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.45
+						}
+					],
+					"after": "The mist off the cup finds the back of your throat all the same."
+				},
+				{
+					"label": "Drink it. You have the antidote.",
+					"hint": "Spends an antidote. An easier fight.",
+					"cost": {
+						"item": "pill_antidote"
+					},
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "demon_cultivator",
+							"win": [
+								{
+									"op": "flag",
+									"k": "a2_b2_won"
+								},
+								{
+									"op": "cult",
+									"v": 16
+								},
+								{
+									"op": "rand",
+									"opts": [
+										{
+											"w": 1,
+											"fx": [
+												{
+													"op": "item",
+													"id": "ore_black"
+												}
+											]
+										},
+										{
+											"w": 1,
+											"fx": [
+												{
+													"op": "stone",
+													"v": 20
+												}
+											]
+										}
+									]
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_3"
+								}
+							],
+							"lose": [
+								{
+									"op": "notice",
+									"v": 2
+								},
+								{
+									"op": "text",
+									"t": "The bridge sways. You find the water below very quickly."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.35
+						}
+					],
+					"after": "He watches you swallow with the expression of a man shown the wrong card."
+				},
+				{
+					"label": "Tell him quietly that the Hall knows his lilies",
+					"hint": "Only the Hall's own. A colleague's favour.",
+					"req": {
+						"sect": [
+							"netherworld"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_b2_won"
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "corrupt",
+							"v": 3
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_3"
+						}
+					],
+					"after": "He looks at you, then at the water far below, then he slips on a plank with great sincerity."
+				}
+			]
+		},
+		{
+			"id": "a2_contest_3",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Gold Rung",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "The Gold Rung has no walls and no judges' pavilion, only a flat of white stone with the wind gone quiet around it. Across from you Xiao Heng stands with his hands at his sides, not in any stance, apologising with his whole face. The crowd is silent the way a crowd is silent before a thing it has already seen. A Registry clerk in the nearest pavilion lifts his brush to write the result, and you have the odd feeling he will write it whatever you do. Heng bows. 'Please don't be hurt,' he says. 'I never know how to lose.'",
+			"req": {},
+			"prio": 88,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest",
+				"battle"
+			],
+			"choices": [
+				{
+					"label": "Fight him honestly",
+					"hint": "The hardest fight so far. Lose and the Assembly ends without a prize.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "xiaoheng_assembly",
+							"win": [
+								{
+									"op": "flag",
+									"k": "contest_won"
+								},
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "stone",
+									"v": 30
+								},
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_end"
+								}
+							],
+							"lose": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "You are on your back, looking at a perfect sky. He is already kneeling, apologising."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.45
+						}
+					],
+					"after": "He draws. The wind comes back, all at once, as if it had been holding its breath."
+				},
+				{
+					"label": "Look at his writ before you move",
+					"hint": "Needs a keen spirit. The Registry notices who looks.",
+					"req": {
+						"stats": {
+							"spirit": 11
+						}
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_heng"
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng_saw"
+						},
+						{
+							"op": "notice",
+							"v": 8
+						},
+						{
+							"op": "battle",
+							"enemy": "xiaoheng_assembly",
+							"win": [
+								{
+									"op": "flag",
+									"k": "contest_won"
+								},
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "stone",
+									"v": 30
+								},
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_end"
+								}
+							],
+							"lose": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "You are on your back, looking at a perfect sky. He is already kneeling, apologising."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.4
+						}
+					],
+					"after": "Gold, and whole, and not a thread out of place. Except one, at the margin: a seam where another name was unpicked, and the thread leads back to you."
+				},
+				{
+					"label": "Call in the debt: ask him to fight without his luck",
+					"hint": "He owes you one.",
+					"req": {
+						"flags": [
+							"a2_heng_owes"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "battle",
+							"enemy": "xiaoheng_assembly",
+							"win": [
+								{
+									"op": "flag",
+									"k": "contest_won"
+								},
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "stone",
+									"v": 30
+								},
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_end"
+								}
+							],
+							"lose": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "You are on your back, looking at a perfect sky. He is already kneeling, apologising."
+								},
+								{
+									"op": "event",
+									"id": "a2_contest_out"
+								}
+							],
+							"scale": 0.33
+						}
+					],
+					"after": "'That's two I owe you,' he says. He takes off his jade charm and sets it on the stone. 'It's the nearest I can get to fair.'"
+				},
+				{
+					"label": "Yield, and bow",
+					"hint": "Keep your strength. Lose the prize.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_out"
+						}
+					],
+					"after": "He seems unable to decide whether to be relieved or ashamed, and settles on both."
+				}
+			]
+		},
+		{
+			"id": "a2_contest_end",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Chisel Slips",
+			"art": "sect",
+			"portrait": "clerk",
+			"text": "The stele's chisel is a clerk's brush dipped in light. It carves your name into the Stele of Names a stroke at a time, and on the sixth stroke the light slips: it drags off the stone like a finger across wet paper and leaves a smooth place where a name should be. The clerk frowns, wipes the brush, begins again. Nothing holds. In the end he writes 'Victor' and the date, apologetically, and the crowd cheers a blessing: a name too pure to be carved. Then the treasurer unrolls the prize list and invites you to choose one.",
+			"req": {},
+			"prio": 87,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest"
+			],
+			"choices": [
+				{
+					"label": "The Core-Binding Pill, from the Assembly's own cauldron",
+					"hint": "A better chance at the next breakthrough.",
+					"fx": [
+						{
+							"op": "item",
+							"id": "pill_core"
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_hand"
+						}
+					],
+					"after": "It is the size of a plum stone and as warm as a coin held in a fist."
+				},
+				{
+					"label": "The Five-Elements Scripture",
+					"hint": "A method for the roots.",
+					"fx": [
+						{
+							"op": "item",
+							"id": "manual_five_elements"
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_hand"
+						}
+					],
+					"after": "The binding is old enough to have opinions. It falls open at a page you were not looking for."
+				},
+				{
+					"label": "The purse, and no ceremony",
+					"hint": "Stones, now.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 90
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_hand"
+						}
+					],
+					"after": "The treasurer counts it out twice, in case the first count was wishful."
+				}
+			]
+		},
+		{
+			"id": "a2_contest_out",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Foot of the Ladder",
+			"art": "sect",
+			"portrait": "clerk",
+			"text": "You are sitting on the lowest rung of the Cloud Ladder with a cup of something someone pressed into your hand. Above you the Assembly is finishing without you: a horn, a roar, the crack of a banner. The clerks in the pavilion have begun to blot their lists, and you see how short the lists are: forty names at the start, and at the foot of each sheet a single line already ruled off. A sect elder squeezes your shoulder and says there is always the next Assembly, in thirty years. He believes it. He has been saying it to people for three hundred years.",
+			"req": {},
+			"prio": 86,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest"
+			],
+			"choices": [
+				{
+					"label": "Watch the last bout from the steps",
+					"hint": "Safe.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_hand"
+						}
+					],
+					"after": "Heng wins, and you watch him win the way you watch rain: with complete respect and no surprise."
+				},
+				{
+					"label": "Look at the winner's writ, from the steps",
+					"hint": "Needs a keen spirit. The Registry notices who looks.",
+					"req": {
+						"stats": {
+							"spirit": 11
+						}
+					},
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"meta": [
+									"t_heng"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "You have seen it before. It does not get easier."
+								}
+							],
+							"else": [
+								{
+									"op": "truth",
+									"id": "t_heng"
+								},
+								{
+									"op": "flag",
+									"k": "a2_heng_saw"
+								},
+								{
+									"op": "notice",
+									"v": 8
+								}
+							]
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_hand"
+						}
+					],
+					"after": "Gold, and whole. Under it, at the margin, a seam: a different name unpicked, and the thread running out of the page toward you."
+				},
+				{
+					"label": "Help the ones carried off the ladder",
+					"hint": "Quiet work.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -4
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "hp_pct",
+							"v": 0.1
+						},
+						{
+							"op": "event",
+							"id": "a2_contest_hand"
+						}
+					],
+					"after": "Nobody thanks you. A girl with a broken wrist asks if you're the one from the first bout, and then, kindly, doesn't say the rest."
+				}
+			]
+		},
+		{
+			"id": "a2_contest_hand",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Open Palm",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "Xiao Heng finds you at the foot of the steps, wearing the day the way you wear a coat that belongs to someone else. His palm is held out, open, the way you offer something to a bird. 'I can't tell,' he says, 'whether it was a good fight, or whether everyone only says so. Was it? Please say. I'd like to hear it from someone who doesn't owe me anything.' He catches himself. 'Sorry. I know that isn't true. Whatever I owe you, I've written down.' Behind him grey clerks are crossing out the names that did not win.",
+			"req": {},
+			"prio": 85,
+			"once": true,
+			"tags": [
+				"spine",
+				"contest"
+			],
+			"choices": [
+				{
+					"label": "Tell him the truth: it was good. Take his hand.",
+					"hint": "A friend, and the weight of a friend.",
+					"fx": [
+						{
+							"op": "unflag",
+							"k": "heng_rival"
+						},
+						{
+							"op": "flag",
+							"k": "heng_friend"
+						},
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a2_cheated"
+								]
+							},
+							"then": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": -1
+								},
+								{
+									"op": "text",
+									"t": "His eyes go once to the judge's attendant and away. He does not write that one down."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_contest_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_sky_crack",
+							"delay": 3
+						}
+					],
+					"after": "His hand is cold and very steady. He looks at yours like a man being handed something to hold."
+				},
+				{
+					"label": "Tell him it was not good enough for either of you",
+					"hint": "A rival says what a friend would not.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_contest_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_sky_crack",
+							"delay": 3
+						}
+					],
+					"after": "He thinks about it with his whole face. 'That's the first useful thing anyone has said,' he says, and writes it in the ledger."
+				},
+				{
+					"label": "Say nothing and keep your hands to yourself",
+					"hint": "A closed door.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_contest_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_sky_crack",
+							"delay": 3
+						}
+					],
+					"after": "He lowers the hand slowly and puts it in his sleeve like a letter he will try again tomorrow."
+				}
+			]
+		},
+		{
+			"id": "a2_sky_crack",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Sound at Midnight",
+			"art": "sect",
+			"text": "You wake because the mountain has stopped breathing. Then it comes: a long dry note, not thunder, not a landslide, a seam in the dark giving way along a line you can feel but not see. Birds go up in a sheet. Down the corridor a hundred doors open at once and a hundred people stand in them saying nothing, each waiting for the next to give permission to have heard it. Somebody laughs, a little too high. Then the elders' voices begin, calm: a storm, the stone settling, old age. Above the peak the sky is perfectly clear.",
+			"req": {},
+			"prio": 85,
+			"once": true,
+			"tags": [
+				"spine",
+				"crack"
+			],
+			"choices": [
+				{
+					"label": "Listen past the sound",
+					"hint": "Needs a keen spirit.",
+					"req": {
+						"stats": {
+							"spirit": 11
+						}
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_crack"
+						},
+						{
+							"op": "flag",
+							"k": "crack_heard"
+						},
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_1",
+							"delay": 1
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_master_tea",
+									"expires": 4
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"herb"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_granny_pot",
+									"expires": 4
+								}
+							]
+						}
+					],
+					"after": "It is not a sound. It is a great many people being quiet at once, a long way up, all of them in the place where a voice should be."
+				},
+				{
+					"label": "You know what this is. Count who does not look surprised.",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_crack"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "crack_heard"
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "a2_faces"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_1",
+							"delay": 1
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_master_tea",
+									"expires": 4
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"herb"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_granny_pot",
+									"expires": 4
+								}
+							]
+						}
+					],
+					"after": "Four doors stayed shut. Three elders did not look up. You know what a person looks like who has been told what the sound is."
+				},
+				{
+					"label": "Believe the elders and go back to bed",
+					"hint": "Sleep.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "crack_heard"
+						},
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "hp_pct",
+							"v": 0.15
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_1",
+							"delay": 1
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_master_tea",
+									"expires": 4
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"herb"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_granny_pot",
+									"expires": 4
+								}
+							]
+						}
+					],
+					"after": "You sleep badly, and wake with the odd conviction that it is quieter than it ought to be."
+				},
+				{
+					"label": "Follow the cold to where the air is thinnest",
+					"hint": "Roll: Agility.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "crack_heard"
+						},
+						{
+							"op": "flag",
+							"k": "ruin_found"
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "flag",
+									"k": "a2_ruin_first"
+								},
+								{
+									"op": "text",
+									"t": "You are standing at the rim of the fallen thing an hour before the first sect lantern."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "text",
+									"t": "You find the rim an hour after the first lantern, and a stone finds you on the way."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_1",
+							"delay": 1
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_master_tea",
+									"expires": 4
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"herb"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_granny_pot",
+									"expires": 4
+								}
+							]
+						}
+					],
+					"after": "The cold leads down through the pines. There is a taste of ink on the air."
+				}
+			]
+		},
+		{
+			"id": "a2_ruin_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "Where the Sky Fell",
+			"art": "ruin",
+			"text": "A piece of the sky has come down in the Wilds, and not the way a stone does: it came down like a lid, or a plate set gently on a table. Where it lies the forest has grown a violet kind of silence. The expeditions have already pitched round the rim - banners of three sects, a rogue's smoke, two Netherworld bone-lanterns - and in the middle stands a door with no wall, with cloud running under it like water. The air tastes of ink. You are not the first and you will not be the last, and you can feel everyone here pretending to be.",
+			"req": {},
+			"prio": 80,
+			"once": true,
+			"tags": [
+				"spine",
+				"ruin"
+			],
+			"choices": [
+				{
+					"label": "Go in at the front of a sect party",
+					"hint": "A fair fight, with help.",
+					"fx": [
+						{
+							"op": "place",
+							"k": "ruin"
+						},
+						{
+							"op": "flag",
+							"k": "ruin_found"
+						},
+						{
+							"op": "battle",
+							"enemy": "puppet",
+							"win": [
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "The doorkeepers are stone dolls. They stand up one at a time, like a class."
+								}
+							],
+							"lose": [
+								{
+									"op": "text",
+									"t": "The party drags you clear. Somebody apologises on their behalf."
+								}
+							],
+							"scale": 3.0
+						},
+						{
+							"op": "flag",
+							"k": "ruin_found_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_2",
+							"delay": 1
+						}
+					],
+					"after": "The door has no wall. You walk through it anyway, and the forest is gone."
+				},
+				{
+					"label": "Slip in alone by the cloud seam",
+					"hint": "Roll: Agility. A fail means a scrap.",
+					"fx": [
+						{
+							"op": "place",
+							"k": "ruin"
+						},
+						{
+							"op": "flag",
+							"k": "ruin_found"
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The seam opens under your hand like the lip of a shell."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.25
+								},
+								{
+									"op": "battle",
+									"enemy": "stone_imp",
+									"win": [
+										{
+											"op": "cult",
+											"v": 8
+										}
+									],
+									"lose": [
+										{
+											"op": "notice",
+											"v": 1
+										}
+									],
+									"scale": 2.5
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "ruin_found_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_2",
+							"delay": 1
+						}
+					],
+					"after": "You go in by a crack no one else saw, and the quiet closes behind you."
+				},
+				{
+					"label": "Hold the rim and sell water and rumours to the camps",
+					"hint": "Profit now, the ruin waits.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "ruin_found"
+						},
+						{
+							"op": "stone",
+							"v": 30
+						},
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "flag",
+							"k": "ruin_found_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_2",
+							"delay": 1
+						}
+					],
+					"after": "By dusk you have nine copper customers, three liars and a promise from a very large rogue."
+				}
+			]
+		},
+		{
+			"id": "a2_ruin_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "A Sword in the Cloud",
+			"art": "ruin",
+			"portrait": "yunzhi",
+			"text": "Whichever door you came through, the second hall is a floor of cloud over glass. Halfway across, a young woman in azure stands with a plain sword half drawn and does not move when you enter, because she is not looking at you: she is looking at her blade, which has begun to sing, a thin high note matching something under the floor. The cloud at her feet is a different colour, as if it had noticed her. 'A sword's length,' Yun Zhi says, not turning. 'Stay a sword's length back. It doesn't like -' She stops. 'I've said that wrong. It doesn't like me. It likes the floor. It's the same note.'",
+			"req": {},
+			"prio": 79,
+			"once": true,
+			"tags": [
+				"spine",
+				"ruin",
+				"yunzhi"
+			],
+			"choices": [
+				{
+					"label": "Stay a sword's length back and wait",
+					"hint": "Patience.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "yz_friend"
+						},
+						{
+							"op": "flag",
+							"k": "ally_yunzhi"
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [],
+							"else": [
+								{
+									"op": "queue",
+									"id": "a2_yunzhi_1",
+									"delay": 4
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_3",
+							"delay": 1
+						}
+					],
+					"after": "The note ends. She lets out a breath, sheathes, and looks at you for the first time as if you were a person rather than a distance. 'Mm,' she says. 'That was correct.'"
+				},
+				{
+					"label": "Hum the note back at the floor",
+					"hint": "Needs a quiet spirit. The floor bites.",
+					"req": {
+						"stats": {
+							"spirit": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "yz_friend"
+						},
+						{
+							"op": "flag",
+							"k": "ally_yunzhi"
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "hp_pct",
+							"v": -0.1
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [],
+							"else": [
+								{
+									"op": "queue",
+									"id": "a2_yunzhi_1",
+									"delay": 4
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_3",
+							"delay": 1
+						}
+					],
+					"after": "The floor listens, and decides you are the same weather as she is. 'I've never heard anyone do that,' she says. 'I've said that badly. I mean: don't stop.'"
+				},
+				{
+					"label": "Cross it yourself. It is only a floor.",
+					"hint": "Roll: Agility. A fall is a fall.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "yz_friend"
+						},
+						{
+							"op": "flag",
+							"k": "ally_yunzhi"
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "text",
+									"t": "It takes your weight like a drumskin, and you cross it with her watching, appalled and a little impressed."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.25
+								},
+								{
+									"op": "text",
+									"t": "The cloud lets go of you halfway. A hand takes you by the collar and does not let go until the far side. 'A sword's length,' she says, grimly."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [],
+							"else": [
+								{
+									"op": "queue",
+									"id": "a2_yunzhi_1",
+									"delay": 4
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_3",
+							"delay": 1
+						}
+					],
+					"after": "You step onto the cloud."
+				}
+			]
+		},
+		{
+			"id": "a2_ruin_3",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Inscription",
+			"art": "ruin",
+			"portrait": "yunzhi",
+			"text": "The third hall's wall is written on from floor to ceiling in one hand: small, upright, so exact it looks printed. Not a poem, not a spell. A tally. Columns of names, each followed by a date and a single character you take a moment to read: 'laid'. Below the last column, in a hastier stroke, fresh enough to smell, a line has been added. 'The paper is wearing through. We patch it with what rises. Count them.' In a niche cut to fit it at the foot of the wall lies a pale splinter of something that was never a tree, shaped like the ferrule of a brush.",
+			"req": {},
+			"prio": 78,
+			"once": true,
+			"tags": [
+				"spine",
+				"ruin",
+				"crack"
+			],
+			"choices": [
+				{
+					"label": "Read the wall aloud, with Yun Zhi",
+					"hint": "Knowledge, and no keepsake.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_crack"
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "if",
+							"req": {
+								"meta": [
+									"t_blank"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "You look for your own name, because you cannot help it. It is not there. You are almost proud."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_ruin_3_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_4",
+							"delay": 1
+						}
+					],
+					"after": "She reads the old script with her lips moving, and her voice gets smaller with every column. Near the end she stops. 'Those are all dates,' she says. 'Those are all dates.'"
+				},
+				{
+					"label": "Pry the splinter from its niche",
+					"hint": "Roll: Fortune. A fail is noticed.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "item",
+									"id": "brush_fragment"
+								}
+							],
+							"fail": [
+								{
+									"op": "item",
+									"id": "brush_fragment"
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The wall dims as it comes away. Somewhere very far off a quill scratches."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_ruin_3_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_4",
+							"delay": 1
+						}
+					],
+					"after": "It is warm and slightly too heavy, the way a thing is that has been held by someone."
+				},
+				{
+					"label": "Do both, and stay the night. It will cost you a term.",
+					"hint": "One term of lifespan.",
+					"fx": [
+						{
+							"op": "life",
+							"v": -1
+						},
+						{
+							"op": "truth",
+							"id": "t_crack"
+						},
+						{
+							"op": "item",
+							"id": "brush_fragment"
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_ruin_3_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_ruin_4",
+							"delay": 1
+						}
+					],
+					"after": "By dawn your eyes feel sanded. The splinter is in your sleeve and the page is in your head, and neither is going anywhere."
+				}
+			]
+		},
+		{
+			"id": "a2_ruin_4",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Keeper's Question",
+			"art": "ruin",
+			"text": "The last hall is round, and in the middle of it a sword stands upright in a stone that is not a stone but a closed book. The keeper wakes as you enter: a long figure made of the air around the blade, with no face, only a stylus where a face would be. It asks, without sound, for your name. Not what you are called: your name as written. It waits with the patience of a thing that has asked this four thousand times and been answered, always, by someone with a line to read. Behind the book, on a plinth, lie a small silver ring worn smooth on the inside, and a jar of black brine.",
+			"req": {},
+			"prio": 77,
+			"once": true,
+			"tags": [
+				"spine",
+				"ruin",
+				"battle"
+			],
+			"choices": [
+				{
+					"label": "Fight the keeper",
+					"hint": "A hard fight. A loss costs a term of life.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "sword_spirit",
+							"win": [
+								{
+									"op": "item",
+									"id": "ring_mother"
+								},
+								{
+									"op": "item",
+									"id": "inkarm_jar"
+								},
+								{
+									"op": "flag",
+									"k": "ruin_cleared"
+								},
+								{
+									"op": "flag",
+									"k": "a2_ruin_done"
+								},
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"azure"
+										]
+									},
+									"then": [
+										{
+											"op": "place",
+											"k": "sect"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"herb"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "valley"
+												}
+											],
+											"else": [
+												{
+													"op": "if",
+													"req": {
+														"sect": [
+															"netherworld"
+														]
+													},
+													"then": [
+														{
+															"op": "place",
+															"k": "netherworld"
+														}
+													],
+													"else": [
+														{
+															"op": "place",
+															"k": "town"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"op": "queue",
+									"id": "a2_heng_1",
+									"delay": 3
+								},
+								{
+									"op": "queue",
+									"id": "a2_sujiu_1",
+									"delay": 5
+								},
+								{
+									"op": "if",
+									"req": {
+										"flags": [
+											"ally_xiaohe"
+										]
+									},
+									"then": [
+										{
+											"op": "queue",
+											"id": "a2_xiaohe_1",
+											"delay": 7
+										}
+									]
+								},
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "stone",
+									"v": 30
+								}
+							],
+							"lose": [
+								{
+									"op": "item",
+									"id": "ring_mother"
+								},
+								{
+									"op": "item",
+									"id": "inkarm_jar"
+								},
+								{
+									"op": "flag",
+									"k": "ruin_cleared"
+								},
+								{
+									"op": "flag",
+									"k": "a2_ruin_done"
+								},
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"azure"
+										]
+									},
+									"then": [
+										{
+											"op": "place",
+											"k": "sect"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"herb"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "valley"
+												}
+											],
+											"else": [
+												{
+													"op": "if",
+													"req": {
+														"sect": [
+															"netherworld"
+														]
+													},
+													"then": [
+														{
+															"op": "place",
+															"k": "netherworld"
+														}
+													],
+													"else": [
+														{
+															"op": "place",
+															"k": "town"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"op": "queue",
+									"id": "a2_heng_1",
+									"delay": 3
+								},
+								{
+									"op": "queue",
+									"id": "a2_sujiu_1",
+									"delay": 5
+								},
+								{
+									"op": "if",
+									"req": {
+										"flags": [
+											"ally_xiaohe"
+										]
+									},
+									"then": [
+										{
+											"op": "queue",
+											"id": "a2_xiaohe_1",
+											"delay": 7
+										}
+									]
+								},
+								{
+									"op": "life",
+									"v": -1
+								},
+								{
+									"op": "text",
+									"t": "It lets you pass because you are very nearly dead. It is not a courtesy."
+								},
+								{
+									"op": "event",
+									"id": "a2_r_wheel"
+								}
+							],
+							"scale": 0.55
+						}
+					],
+					"after": "The stylus lifts. It was never going to be gentle about the answer."
+				},
+				{
+					"label": "Give it the name you were given",
+					"hint": "Roll: Dao-heart. A fail is a harder fight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "item",
+									"id": "ring_mother"
+								},
+								{
+									"op": "item",
+									"id": "inkarm_jar"
+								},
+								{
+									"op": "flag",
+									"k": "ruin_cleared"
+								},
+								{
+									"op": "flag",
+									"k": "a2_ruin_done"
+								},
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"azure"
+										]
+									},
+									"then": [
+										{
+											"op": "place",
+											"k": "sect"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"herb"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "valley"
+												}
+											],
+											"else": [
+												{
+													"op": "if",
+													"req": {
+														"sect": [
+															"netherworld"
+														]
+													},
+													"then": [
+														{
+															"op": "place",
+															"k": "netherworld"
+														}
+													],
+													"else": [
+														{
+															"op": "place",
+															"k": "town"
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"op": "queue",
+									"id": "a2_heng_1",
+									"delay": 3
+								},
+								{
+									"op": "queue",
+									"id": "a2_sujiu_1",
+									"delay": 5
+								},
+								{
+									"op": "if",
+									"req": {
+										"flags": [
+											"ally_xiaohe"
+										]
+									},
+									"then": [
+										{
+											"op": "queue",
+											"id": "a2_xiaohe_1",
+											"delay": 7
+										}
+									]
+								},
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "text",
+									"t": "The stylus writes what you said. It is the first honest entry in four thousand years: nameless."
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "sword_spirit",
+									"win": [
+										{
+											"op": "item",
+											"id": "ring_mother"
+										},
+										{
+											"op": "item",
+											"id": "inkarm_jar"
+										},
+										{
+											"op": "flag",
+											"k": "ruin_cleared"
+										},
+										{
+											"op": "flag",
+											"k": "a2_ruin_done"
+										},
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"azure"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "sect"
+												}
+											],
+											"else": [
+												{
+													"op": "if",
+													"req": {
+														"sect": [
+															"herb"
+														]
+													},
+													"then": [
+														{
+															"op": "place",
+															"k": "valley"
+														}
+													],
+													"else": [
+														{
+															"op": "if",
+															"req": {
+																"sect": [
+																	"netherworld"
+																]
+															},
+															"then": [
+																{
+																	"op": "place",
+																	"k": "netherworld"
+																}
+															],
+															"else": [
+																{
+																	"op": "place",
+																	"k": "town"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"op": "queue",
+											"id": "a2_heng_1",
+											"delay": 3
+										},
+										{
+											"op": "queue",
+											"id": "a2_sujiu_1",
+											"delay": 5
+										},
+										{
+											"op": "if",
+											"req": {
+												"flags": [
+													"ally_xiaohe"
+												]
+											},
+											"then": [
+												{
+													"op": "queue",
+													"id": "a2_xiaohe_1",
+													"delay": 7
+												}
+											]
+										},
+										{
+											"op": "cult",
+											"v": 15
+										}
+									],
+									"lose": [
+										{
+											"op": "item",
+											"id": "ring_mother"
+										},
+										{
+											"op": "item",
+											"id": "inkarm_jar"
+										},
+										{
+											"op": "flag",
+											"k": "ruin_cleared"
+										},
+										{
+											"op": "flag",
+											"k": "a2_ruin_done"
+										},
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"azure"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "sect"
+												}
+											],
+											"else": [
+												{
+													"op": "if",
+													"req": {
+														"sect": [
+															"herb"
+														]
+													},
+													"then": [
+														{
+															"op": "place",
+															"k": "valley"
+														}
+													],
+													"else": [
+														{
+															"op": "if",
+															"req": {
+																"sect": [
+																	"netherworld"
+																]
+															},
+															"then": [
+																{
+																	"op": "place",
+																	"k": "netherworld"
+																}
+															],
+															"else": [
+																{
+																	"op": "place",
+																	"k": "town"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"op": "queue",
+											"id": "a2_heng_1",
+											"delay": 3
+										},
+										{
+											"op": "queue",
+											"id": "a2_sujiu_1",
+											"delay": 5
+										},
+										{
+											"op": "if",
+											"req": {
+												"flags": [
+													"ally_xiaohe"
+												]
+											},
+											"then": [
+												{
+													"op": "queue",
+													"id": "a2_xiaohe_1",
+													"delay": 7
+												}
+											]
+										},
+										{
+											"op": "life",
+											"v": -1
+										},
+										{
+											"op": "event",
+											"id": "a2_r_wheel"
+										}
+									],
+									"scale": 0.65
+								}
+							]
+						}
+					],
+					"after": "You say it aloud, the name you were given. It is the only name you have ever had."
+				},
+				{
+					"label": "Stand still and let it look. You know what it will find.",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "item",
+							"id": "ring_mother"
+						},
+						{
+							"op": "item",
+							"id": "inkarm_jar"
+						},
+						{
+							"op": "flag",
+							"k": "ruin_cleared"
+						},
+						{
+							"op": "flag",
+							"k": "a2_ruin_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "place",
+									"k": "sect"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"herb"
+										]
+									},
+									"then": [
+										{
+											"op": "place",
+											"k": "valley"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"netherworld"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "netherworld"
+												}
+											],
+											"else": [
+												{
+													"op": "place",
+													"k": "town"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a2_heng_1",
+							"delay": 3
+						},
+						{
+							"op": "queue",
+							"id": "a2_sujiu_1",
+							"delay": 5
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_xiaohe"
+								]
+							},
+							"then": [
+								{
+									"op": "queue",
+									"id": "a2_xiaohe_1",
+									"delay": 7
+								}
+							]
+						},
+						{
+							"op": "cult",
+							"v": 25
+						},
+						{
+							"op": "notice",
+							"v": -5
+						},
+						{
+							"op": "text",
+							"t": "The stylus hovers, and finds nothing to hold. It hesitates, which it has never done, and bows its blank face."
+						}
+					],
+					"after": "You have been looked at by clerks before. It is no different, only quieter."
+				},
+				{
+					"label": "Let Yun Zhi answer for her blade",
+					"hint": "She will have to be asked.",
+					"req": {
+						"flags": [
+							"yz_friend"
+						]
+					},
+					"fx": [
+						{
+							"op": "item",
+							"id": "ring_mother"
+						},
+						{
+							"op": "item",
+							"id": "inkarm_jar"
+						},
+						{
+							"op": "flag",
+							"k": "ruin_cleared"
+						},
+						{
+							"op": "flag",
+							"k": "a2_ruin_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"sect": [
+									"azure"
+								]
+							},
+							"then": [
+								{
+									"op": "place",
+									"k": "sect"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"sect": [
+											"herb"
+										]
+									},
+									"then": [
+										{
+											"op": "place",
+											"k": "valley"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"sect": [
+													"netherworld"
+												]
+											},
+											"then": [
+												{
+													"op": "place",
+													"k": "netherworld"
+												}
+											],
+											"else": [
+												{
+													"op": "place",
+													"k": "town"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a2_heng_1",
+							"delay": 3
+						},
+						{
+							"op": "queue",
+							"id": "a2_sujiu_1",
+							"delay": 5
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_xiaohe"
+								]
+							},
+							"then": [
+								{
+									"op": "queue",
+									"id": "a2_xiaohe_1",
+									"delay": 7
+								}
+							]
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "a2_keeper_bowed"
+						},
+						{
+							"op": "text",
+							"t": "It bows to the sword, not to her: the stylus dips, as before a great seal. Yun Zhi looks very pale."
+						}
+					],
+					"after": "She does not answer for herself. She puts a hand on the hilt and, very quietly, says its name."
+				}
+			]
+		},
+		{
+			"id": "a2_mo_arm_1",
+			"kind": "story",
+			"act": 2,
+			"title": "Old Mo Smells the Jar",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "Old Mo finds you the way he always does, which is by having been there first. He is on the step with his gourd, not looking at your bag, with the immense casualness of a man not looking at your bag. The jar hums inside it. 'Four,' he says. 'Four of us on this step, and one of us is a dead man's arm.' Then he stops counting and says nothing for a good while. His empty sleeve has been pinned up so long it has taken the shape of a question. 'Kid,' he says. 'I haven't seen that in a long time. I threw it where I thought nobody could fish. Don't hand it to me. Open it yourself.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"a2_ruin_done"
+				],
+				"items": [
+					"inkarm_jar"
+				],
+				"not_flags": [
+					"a2_mo1_done"
+				],
+				"any": [
+					{
+						"flags": [
+							"mo_met"
+						]
+					},
+					{
+						"origin": [
+							"beggar"
+						]
+					}
+				]
+			},
+			"prio": 70,
+			"once": true,
+			"tags": [
+				"spine",
+				"moshan"
+			],
+			"choices": [
+				{
+					"label": "Open the jar",
+					"hint": "He will not touch it.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_mo1_done"
+						},
+						{
+							"op": "event",
+							"id": "a2_mo_arm_2"
+						}
+					],
+					"after": "The seal comes off with a sound like a sigh."
+				},
+				{
+					"label": "Keep it shut. You want the whole story first.",
+					"hint": "Slower, and more of him.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_mo1_done"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_mo_story"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_mo_open",
+							"expires": 4
+						}
+					],
+					"after": "He sits on the step as if the story were a chair he has been refused for years. He tells it badly, in the wrong order, and corrects his own grammar twice."
+				},
+				{
+					"label": "You already know what that arm was for. Say it back to him.",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_mo_arm"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_mo1_done"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "a2_mo_knew"
+						},
+						{
+							"op": "event",
+							"id": "a2_mo_arm_2"
+						}
+					],
+					"after": "'You read the table,' he says. 'Of course you did. It was your name I wrote.' He does not say anything else for a time."
+				}
+			]
+		},
+		{
+			"id": "a2_mo_arm_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "What the Arm Wrote",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "The brine smells of salt and old paper. The arm is black to the elbow, ink and not rot, and the hand is curled round a pen that is no longer there. It is the best handwriting hand you have ever seen on anyone, living or otherwise. For a long minute nothing moves. Then the forefinger lifts and drags across the glass, in the wet, one line: a square, a box, a shape you know. Mo makes a sound that is not a word. 'I wrote that,' he says. 'I sat in front of the Registrar's own scroll and wrote nothing. It took me an hour. It was the hardest line I ever put down.'",
+			"req": {},
+			"prio": 69,
+			"once": true,
+			"tags": [
+				"spine",
+				"moshan",
+				"crack"
+			],
+			"choices": [
+				{
+					"label": "Tell him he did right",
+					"hint": "He needs it said.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mo_arm"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "flag",
+							"k": "ally_moshan"
+						},
+						{
+							"op": "cult",
+							"v": 15
+						}
+					],
+					"after": "He looks away. 'Did well,' he says gruffly. 'Not did right. Right is for people who are sure.'"
+				},
+				{
+					"label": "Ask him to teach you the line",
+					"hint": "Needs a patient mind.",
+					"req": {
+						"stats": {
+							"insight": 8
+						}
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mo_arm"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "tech",
+							"id": "blank_stroke"
+						},
+						{
+							"op": "stat",
+							"k": "insight",
+							"v": 1
+						}
+					],
+					"after": "'It's not a technique,' he says. 'It's a refusal. Hold it still. Don't draw it; leave it out.' You do not get it right. You get it less wrong than before."
+				},
+				{
+					"label": "Give him the jar",
+					"hint": "He will keep it where the Registry will not look.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mo_arm"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 3
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "flag",
+							"k": "ally_moshan"
+						},
+						{
+							"op": "unitem",
+							"id": "inkarm_jar"
+						}
+					],
+					"after": "He holds it against his chest with his one arm. 'Nobody ever looks in a beggar's gourd,' he says, with enormous dignity, and then he has to sit down."
+				}
+			]
+		},
+		{
+			"id": "a2_sujiu_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "Secrets, Priced by the Tail",
+			"art": "town",
+			"portrait": "sujiu",
+			"text": "The stall at the bend of Fallen-Star's market sells a little of everything - ribbons, a tin of bees, three knives of unconvincing provenance - and under the awning, between a bowl of pickled plums and a card that says SECRETS, PRICED BY THE TAIL, sits a woman with her chin on her fist. She looks you up and down, and then she begins to laugh. It goes on. She has to lay her head on the counter. 'Oh,' she says, wiping an eye, 'oh, you poor wonderful thing. You haven't got one.' She taps her own brow: a line, a page, a writ. She is the first person to say it aloud. 'No refunds, darling.'",
+			"req": {},
+			"prio": 66,
+			"once": true,
+			"tags": [
+				"spine",
+				"sujiu"
+			],
+			"choices": [
+				{
+					"label": "Buy a rumour: twenty stones",
+					"hint": "Costs stones. The rumour is fair.",
+					"cost": {
+						"stone": 20
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "item",
+							"id": "ore_black"
+						},
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_sj1_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_fox_tail",
+							"expires": 4
+						}
+					],
+					"after": "'The cellar of the Red Lotus,' she says. 'Third stair, loose brick. Don't thank me.' You do not thank her. It is the right thing to have done."
+				},
+				{
+					"label": "Ask what the laugh is worth",
+					"hint": "She prices everything.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_sj1_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_fox_tail",
+							"expires": 4
+						}
+					],
+					"after": "'Three tails,' she says, at once. 'Come back when you can afford the noise.' She sounds a little disappointed that you did not flinch."
+				},
+				{
+					"label": "Laugh with her",
+					"hint": "It is not funny, and then it is.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 2
+						},
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "flag",
+							"k": "a2_sj1_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_fox_tail",
+							"expires": 4
+						}
+					],
+					"after": "It is the first time you have laughed about it. It is not funny, and then, for a minute, it is exactly as funny as she says."
+				}
+			]
+		},
+		{
+			"id": "a2_sujiu_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "A Favour in Tails",
+			"art": "town",
+			"portrait": "sujiu",
+			"text": "Su Jiu has moved the stall. It is in the quiet end of town now, with nothing on the awning, and she does not make a joke when you arrive. 'I need a letter delivered,' she says. 'To a desk. A particular desk, in a particular back room of an office with no sign. I can't do it myself. They would know my smell.' She lays out a folded paper sealed with red wax and a single orange hair. You have noticed her tails: there are always eight. 'I pay in the usual coin,' she says. 'Don't ask what the ninth is collateral for.'",
+			"req": {},
+			"prio": 65,
+			"once": true,
+			"tags": [
+				"spine",
+				"sujiu"
+			],
+			"choices": [
+				{
+					"label": "Take the letter and deliver it",
+					"hint": "Roll: Agility. A fail is noticed.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "sujiu_deal"
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "sujiu",
+									"v": 2
+								},
+								{
+									"op": "stone",
+									"v": 40
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The clerk takes it without looking up, and you are three streets away before you let yourself breathe."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "sujiu",
+									"v": 1
+								},
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The clerk looks up. It is a long look. He signs for it in a hand like a blade."
+								}
+							]
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_fox_price",
+							"expires": 4
+						}
+					],
+					"after": "It weighs nothing at all, which is the worst thing about it."
+				},
+				{
+					"label": "Read it before you carry it",
+					"hint": "Needs a quick mind. She will know.",
+					"req": {
+						"stats": {
+							"insight": 9
+						}
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "sujiu_deal"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": -1
+						},
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "flag",
+							"k": "a2_sj_read"
+						},
+						{
+							"op": "stone",
+							"v": 25
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_fox_price",
+							"expires": 4
+						}
+					],
+					"after": "It is a receipt, not a letter: a payment toward a debt, on account of a tail. She notices the wax has been lifted and refolded. 'Clever,' she says, in a voice with no tails in it."
+				},
+				{
+					"label": "Say no. You have trouble enough.",
+					"hint": "She will not mind. Probably.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 0
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_fox_price",
+							"expires": 4
+						}
+					],
+					"after": "'Fair,' she says. 'It was a bad letter.' She puts it back in her sleeve with great care, like a thing that hurts."
+				}
+			]
+		},
+		{
+			"id": "a2_sujiu_3",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Price of a Gold Name",
+			"art": "town",
+			"portrait": "sujiu",
+			"text": "She is waiting on the roof of the kitchen, which should not be possible, eating a persimmon. She watches you come up the ladder and for once does not open her mouth. 'I have something that is priced above you,' she says. 'It's about the boy who never loses. What is written on him, and what was stitched out of it.' She turns the persimmon in her hand. 'I have not sold it to anyone. I'd have to be sure the buyer could stand it.' A long look. 'You are the only one who can't be hurt by it, which is a funny reason to sell.'",
+			"req": {},
+			"prio": 64,
+			"once": true,
+			"tags": [
+				"spine",
+				"sujiu"
+			],
+			"choices": [
+				{
+					"label": "Pay in stones",
+					"hint": "Costs stones.",
+					"cost": {
+						"stone": 40
+					},
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"sujiu_deal"
+								]
+							},
+							"then": [
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "She hands half of it back. 'For the letter,' she says, not looking at you."
+								}
+							]
+						},
+						{
+							"op": "truth",
+							"id": "t_heng"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "sujiu_deal"
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"sujiu": 3
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_sujiu"
+								}
+							]
+						}
+					],
+					"after": "She says it in six words, then picks the persimmon up again as if nothing had happened. Gold, whole, and stitched at the margin where your name used to be."
+				},
+				{
+					"label": "Pay in years: one term of your life",
+					"hint": "One term of lifespan.",
+					"fx": [
+						{
+							"op": "life",
+							"v": -1
+						},
+						{
+							"op": "truth",
+							"id": "t_heng"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "sujiu_deal"
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"sujiu": 3
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_sujiu"
+								}
+							]
+						}
+					],
+					"after": "She takes it like a woman taking a coin she does not want. 'Years are lovely and cheap,' she says, and sounds as if she wished they were not."
+				},
+				{
+					"label": "You have already seen it. Tell her what you saw.",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_heng"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 2
+						},
+						{
+							"op": "stone",
+							"v": 30
+						},
+						{
+							"op": "flag",
+							"k": "sujiu_deal"
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"sujiu": 3
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_sujiu"
+								}
+							]
+						}
+					],
+					"after": "She is silent for a long time. 'Free,' she says. 'And I'll pay you, for the part I hadn't seen: that you looked and did not flinch.'"
+				},
+				{
+					"label": "Refuse. Some things should be found, not bought.",
+					"hint": "She cannot price that.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"sujiu": 3
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_sujiu"
+								}
+							]
+						}
+					],
+					"after": "'Hah.' It is a short, honest sound. 'That one I can't price. How irritating. Keep it.'"
+				}
+			]
+		},
+		{
+			"id": "a2_inspector_2",
+			"kind": "story",
+			"act": 2,
+			"title": "The Clerk Has an Order",
+			"art": "sect",
+			"portrait": "clerk",
+			"text": "He is on the path outside your quarters before you wake, standing in the dew without leaving a mark in it: a grey man with a scroll and a lamp that gives no light. You have met him. Or someone with his face; they all have the same face, the face of a man who would apologise to a door. 'No malice,' he says. 'Only filing.' He unrolls the scroll a hand's width. 'There is an order. You are required at the branch office for verification: a short interview. Your readiness has been noted.' He means fitness. He smiles with an exactness that is almost tender. 'Please come quietly. Loud things get written down.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"notice_min": 70,
+				"not_flags": [
+					"a2_insp2_done"
+				]
+			},
+			"prio": 92,
+			"once": true,
+			"tags": [
+				"spine",
+				"inspector"
+			],
+			"choices": [
+				{
+					"label": "Go with him and sign",
+					"hint": "Notice falls. A term of life is verified.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_insp2_done"
+						},
+						{
+							"op": "notice",
+							"v": -20
+						},
+						{
+							"op": "life",
+							"v": -1
+						},
+						{
+							"op": "stone",
+							"v": 20
+						}
+					],
+					"after": "The interview is a quarter of an hour. The signature is the shape of a person. You walk out lighter, and slightly shorter-lived."
+				},
+				{
+					"label": "Hold his eyes and hand him the empty scroll",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_insp2_done"
+						},
+						{
+							"op": "notice",
+							"v": -25
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "a2_insp_stared"
+						}
+					],
+					"after": "He reads the page twice, your face once, and a kind of relief goes across his own, quickly, like a man who has been told to stop. 'There's nothing to verify,' he says. 'I'll note that.'"
+				},
+				{
+					"label": "Run",
+					"hint": "Roll: Agility.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_insp2_done"
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "notice",
+									"v": -10
+								},
+								{
+									"op": "text",
+									"t": "By evening the road has forgotten you."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "The lamp that gives no light finds you anyway, and what it shows is not a pleasant thing to be shown."
+								}
+							]
+						}
+					],
+					"after": "He does not chase. He is, on principle, never in a hurry."
+				},
+				{
+					"label": "Fight the lamp",
+					"hint": "A very hard fight, and a loud one.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_insp2_done"
+						},
+						{
+							"op": "battle",
+							"enemy": "inspector",
+							"win": [
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "stone",
+									"v": 40
+								},
+								{
+									"op": "item",
+									"id": "pill_qi"
+								},
+								{
+									"op": "text",
+									"t": "He folds up like a screen. The scroll, when it falls, is blank on every side. Someone will notice that."
+								}
+							],
+							"lose": [
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "The lamp goes out. In the dark he writes something very small on your sleeve."
+								}
+							],
+							"scale": 0.25
+						}
+					],
+					"after": "You are the first person in a very long time to hit the clerk. It rings."
+				}
+			]
+		},
+		{
+			"id": "a2_foundation_end",
+			"kind": "story",
+			"act": 2,
+			"title": "The Wall Before the Core",
+			"art": "cave",
+			"text": "The last layer of the Foundation is full. You feel it as a held breath: three tiers of your body filled to the brim, and the next step an edge. By the calendar it has been a long road of terms - a contest, a fallen sky, a ring that fits your hand, a wall of names. The mountain is quiet in a different way now. People talk softly, as if the sky had been told what they were saying. Tomorrow you may begin to break your own body open and set a core in the hollow. You wonder who will be there to see it.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"layer_min": 3,
+				"flags": [
+					"a2_opened",
+					"a2_ruin_done",
+					"a2_contest_done"
+				],
+				"not_flags": [
+					"a2_done"
+				]
+			},
+			"prio": 60,
+			"once": true,
+			"tags": [
+				"spine",
+				"end"
+			],
+			"choices": [
+				{
+					"label": "Put things in order: write letters, settle debts",
+					"hint": "A quiet evening.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "stone",
+							"v": 20
+						},
+						{
+							"op": "flag",
+							"k": "a2_done"
+						}
+					],
+					"after": "You discover you have more debts than you thought, and fewer enemies. The letters are short."
+				},
+				{
+					"label": "Walk the grounds at dusk and see those you've met",
+					"hint": "Those who are with you will feel it.",
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_yunzhi"
+								]
+							},
+							"then": [
+								{
+									"op": "rel",
+									"k": "yunzhi",
+									"v": 1
+								},
+								{
+									"op": "if",
+									"req": {
+										"rel": {
+											"yunzhi": 6
+										}
+									},
+									"then": [
+										{
+											"op": "flag",
+											"k": "yz_bond"
+										}
+									]
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_xiaoheng"
+								]
+							},
+							"then": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_xiaohe"
+								]
+							},
+							"then": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_moshan"
+								]
+							},
+							"then": [
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"ally_sujiu"
+								]
+							},
+							"then": [
+								{
+									"op": "rel",
+									"k": "sujiu",
+									"v": 1
+								}
+							]
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_done"
+						}
+					],
+					"after": "Nobody says goodbye. They say: see you after. Each of them says it a little too lightly."
+				},
+				{
+					"label": "Leave at once, alone",
+					"hint": "Light, and unfollowed.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -5
+						},
+						{
+							"op": "stat",
+							"k": "speed",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_done"
+						}
+					],
+					"after": "The road is the one thing the sky has never cracked."
+				}
+			]
+		}
+	]
+}

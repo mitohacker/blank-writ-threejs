@@ -1,0 +1,89 @@
+{
+	"_schema": "truth: id zh en page where",
+	"truths": [
+		{
+			"id": "t_blank",
+			"zh": "册上无名",
+			"en": "Your name is not in the Registry.",
+			"page": "Every soul in Dahuang is ruled in ink: a name, a span, a fated end. Run a finger down the column of the living, and there, between two ordinary names, a gap exactly the width of you.",
+			"where": "A Registry clerk's scroll, in the first years; he searches it twice and finds nothing."
+		},
+		{
+			"id": "t_xiaohe",
+			"zh": "小禾之命",
+			"en": "Xiao He's writ: dies at twelve, winter.",
+			"page": "Xiao He, foundling of Blue-stone Village. Span: twelve winters. Cause: the cough. The clerk wrote 'none' under remarks, then in a smaller hand below it, 'regrettable'. Nobody had asked him to.",
+			"where": "The same scroll, if you are looking at the right line while he is not."
+		},
+		{
+			"id": "t_mo_arm",
+			"zh": "断臂书吏",
+			"en": "Mo Shan's missing arm was a writing arm.",
+			"page": "A drunk's stump scratches on a tavern table, and the strokes are yours: the hand you will have when you finally learn to write. Whoever cut that arm off kept the habit of the pen.",
+			"where": "The one-armed beggar's tavern, or the stump's own handwriting on a table."
+		},
+		{
+			"id": "t_filing",
+			"zh": "飞升即归档",
+			"en": "Ascension is filing.",
+			"page": "The sermons call Ascension a door. The ledgers call it filing: a soul entered, stamped and sent upward to bear the sky's weight. Nothing that rises is ever entered as having come down.",
+			"where": "An elder's last lesson, or a sect archive nobody was meant to read."
+		},
+		{
+			"id": "t_crack",
+			"zh": "天幕有裂",
+			"en": "The Canopy is cracking; the patch is a soul.",
+			"page": "The Canopy has a fracture the width of a river, and growing. Each ascended soul is pressed into it like wet clay. It holds. It always holds, for a while. Then it asks again.",
+			"where": "The sound the sky makes, heard by someone sharp enough, or the Sky-Severed Ruin."
+		},
+		{
+			"id": "t_heng",
+			"zh": "命转萧衡",
+			"en": "The patch was moved to Xiao Heng.",
+			"page": "A writ in gold, perfect to the last stroke: Xiao Heng, flawless path, every door already open. It was blank once. Someone moved the weight onto him and called the result fortune.",
+			"where": "The contest, to someone who sees what a writ looks like when it is gold."
+		},
+		{
+			"id": "t_yunzhi",
+			"zh": "云织即剑",
+			"en": "Yun Zhi is the sword that patches.",
+			"page": "The Azure Sect did not find a prodigy; it forged one. Yun Zhi, finest blade of her age, is also simply a blade: the sword that is driven into the sky's crack and left there.",
+			"where": "The Azure Sect's oldest records, and the girl who does not want to talk about them."
+		},
+		{
+			"id": "t_ye",
+			"zh": "夜无烬噬使",
+			"en": "Ye Wujin devoured an inspector.",
+			"page": "An inspector once dined with Ye Wujin and left his scroll at the table. The inspector was not seen again. The scroll's last line was rewritten in a hand that enjoys its own cleverness.",
+			"where": "The Nine-Netherworld Hall's back rooms, or whatever Ye Wujin is willing to tell."
+		},
+		{
+			"id": "t_wheel",
+			"zh": "轮回盘之源",
+			"en": "The Wheel was built to recycle failed patches.",
+			"page": "The Wheel does not carry souls to rest. It sorts them: those that held the sky are filed above, and those that failed it are sent back to be tried again, until the sky is satisfied.",
+			"where": "At the edge of death, watching the Wheel turn for other people."
+		},
+		{
+			"id": "t_mother",
+			"zh": "司命之母",
+			"en": "Your mother was the Registrar before the Magistrate.",
+			"page": "The Registrar before the Magistrate wrote one line she was not permitted to write, and was never seen again. The line was a name. She left a ring, because she could leave nothing else.",
+			"where": "The Hall of the Registry, in a drawer with your name on it, filed under Not Found."
+		},
+		{
+			"id": "t_brush",
+			"zh": "写命笔",
+			"en": "The Brush can write a writ.",
+			"page": "There is a brush the clerks do not file. It cuts rather than writes, and what it writes holds. Three splinters of its bone lie wherever bad ledgers go to rot. Gather them.",
+			"where": "Three fragments, in three bad ledgers: each one a quest."
+		},
+		{
+			"id": "t_origin",
+			"zh": "初夜",
+			"en": "The first Blank Night: the Canopy is the first ascender's body.",
+			"page": "Before the Registry there was a first soul that looked up and asked what lay beyond. It was answered by being stretched across the void. It has been the sky ever since, and it remembers being someone.",
+			"where": "At the Gate, if you stop before you go through."
+		}
+	]
+}

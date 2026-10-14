@@ -1,0 +1,16 @@
+{
+	"items": [
+		{
+			"id": "writ_brush",
+			"zh": "写命笔",
+			"en": "The Brush That Writes a Writ",
+			"kind": "artifact",
+			"q": 5,
+			"slot": "weapon",
+			"icon": "it_writ_brush",
+			"price": 0,
+			"stats": {"spirit": 4, "insight": 3, "heart": 2},
+			"text": "Three pieces of black wood, knit with a sound like a breath in. The grain runs like a hand's slow script. What it writes, the Registry has to read."
+		}
+	]
+}

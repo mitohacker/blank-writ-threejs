@@ -1,0 +1,640 @@
+{
+ "events": [
+  {
+   "id": "a4_r_long_stair",
+   "kind": "random",
+   "act": 4,
+   "title": "The Long Stair",
+   "art": "gate",
+   "text": "The road to the Hall is a stair, and it is longer than it has any right to be. At the hundredth step you notice every one is worn in the middle, a shallow dish the size of a foot, and that all the dishes are the same depth. Whoever climbed before climbed in a line, one after another, and none of them stepped to the side. Some have left things on the stair: a hairpin, a cup, a folded sleeve. Nobody has picked them up. It would be, you think, rude.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "stair"
+   ],
+   "choices": [
+    {
+     "label": "Climb in the worn places, steadily",
+     "hint": "Cult +25, Notice +3",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 25
+      },
+      {
+       "op": "notice",
+       "v": 3
+      }
+     ],
+     "after": "It is easy. It is almost restful. That is the thing about the worn places: they have been made as easy as can be, and they are very hard to leave."
+    },
+    {
+     "label": "Climb along the edge, off the line",
+     "hint": "Agility test; Notice -5",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "speed",
+       "dc": 10,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 30
+        },
+        {
+         "op": "notice",
+         "v": -5
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.2
+        },
+        {
+         "op": "cult",
+         "v": 10
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Pick up the hairpin",
+     "hint": "Fortune +1, Notice +5",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": 5
+      }
+     ],
+     "after": "It is plain bone, a little bent. You put it in your hair, which you have never had cause to put anything in."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_mirror",
+   "kind": "random",
+   "act": 4,
+   "title": "The Mirror of Other Lives",
+   "art": "registry",
+   "text": "A mirror hangs in a corridor of the Hall, its glass the colour of tea. It does not show you. It shows a boy at a well, a girl on a doorstep, a nameless beggar at a gate, the same face with a different year on it, each turning away from the glass toward a different road. One is old and white-bearded with a cup of rice. One has a sword and is laughing. One is very young and very dead. All of them are blank. All of them look at you, and not one is surprised.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5,
+    "life_min": 2
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "lives"
+   ],
+   "choices": [
+    {
+     "label": "Look at the old one with the rice",
+     "hint": "Heart +1, HP +30%",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "hp_pct",
+       "v": 0.3
+      },
+      {
+       "op": "notice",
+       "v": -5
+      }
+     ],
+     "after": "He raises the cup an inch, as to a friend he has not seen since youth. You find you are very glad of him."
+    },
+    {
+     "label": "Look at the one with the sword",
+     "hint": "Cult +30, Notice +8",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 30
+      },
+      {
+       "op": "notice",
+       "v": 8
+      }
+     ],
+     "after": "He laughs and shows you a single form, the way you would show a child how to hold a spoon. You will use it before the year is out."
+    },
+    {
+     "label": "Turn the mirror to the wall",
+     "hint": "Cult +10, Notice -3",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 10
+      },
+      {
+       "op": "notice",
+       "v": -3
+      },
+      {
+       "op": "flag",
+       "k": "a4_mirror_turned"
+      }
+     ],
+     "after": "On the back it is just wood, a little greasy where hands have held it. Someone has scratched a tally of lives, forty marks, and stopped."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_graveyard",
+   "kind": "random",
+   "act": 4,
+   "title": "The Ascended's Field",
+   "art": "ruin",
+   "text": "Behind the Hall there is a long field of stakes, and on each stake a pair of shoes. Thousands. They are sorted by year, then by size, and they are kept very well: someone brushes the dust off them, you can see the arcs of the broom. Sandals, boots with copper tips, a child's slippers with a bell. Nobody here has died. This is a kind of record. A fresh pair has been set at the end of the last row, grey slippers, toes to the sky, and a grey bird is sitting on them, preening, in no hurry to leave.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "ascended"
+   ],
+   "choices": [
+    {
+     "label": "Look for a pair you know",
+     "hint": "Fortune test",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "fortune",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 20
+        },
+        {
+         "op": "stat",
+         "k": "heart",
+         "v": 1
+        }
+       ],
+       "fail": [
+        {
+         "op": "cult",
+         "v": 6
+        },
+        {
+         "op": "notice",
+         "v": 5
+        }
+       ]
+      }
+     ],
+     "after": "You find, in the end, the shoes of someone you had forgotten to miss."
+    },
+    {
+     "label": "Take the broom and sweep a row",
+     "hint": "Heart +1, Notice -5",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": -5
+      }
+     ],
+     "after": "It is slow work. At the end of the row you find you have been humming the song your sister hummed over the bowls."
+    },
+    {
+     "label": "Count them, and the years between",
+     "hint": "Insight test; Heart -1",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "insight",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 30
+        },
+        {
+         "op": "stat",
+         "k": "heart",
+         "v": -1
+        }
+       ],
+       "fail": [
+        {
+         "op": "cult",
+         "v": 10
+        }
+       ]
+      }
+     ],
+     "after": "The rate has gone up, every century. It is not even close to being a secret."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_clerk_kind",
+   "kind": "random",
+   "act": 4,
+   "title": "The First-Day Clerk",
+   "art": "registry",
+   "portrait": "clerk",
+   "text": "He has been in the Hall four hours and is still lit up with it. His name is Ping, he says, the third son of a tanner, and this is the best day of his life. He insists on showing you the proper way to blot a page. His hands are clean and his ink is exact, and he explains the filing system with the joy of a boy handing out sweets. He has not yet been shown what the files are for. He would like to know, please, if a Nascent Soul is allowed to ask about the Core examination.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "registry"
+   ],
+   "choices": [
+    {
+     "label": "Let him show you how to blot",
+     "hint": "Cult +15, Notice -5",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 15
+      },
+      {
+       "op": "notice",
+       "v": -5
+      }
+     ],
+     "after": "It is, in fact, a good blot. He beams at the page as if it were a thing you had made together."
+    },
+    {
+     "label": "Tell him what the files are for",
+     "hint": "Heart +1, Notice +8",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": 8
+      }
+     ],
+     "after": "He listens with his head tilted. At the end he says: “Oh.” Then, after a while: “May I go on blotting, though? Somebody has to be kind to the pages.”"
+    },
+    {
+     "label": "Give him stones for tea and tell him to go home",
+     "hint": "Costs 10 stones, Fortune +1",
+     "cost": {
+      "stone": 10
+     },
+     "fx": [
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": -3
+      }
+     ],
+     "after": "He does not go home. He does, though, buy a very large pot of tea for the whole floor, and you hear it being drunk all afternoon."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_paper_bridge",
+   "kind": "random",
+   "act": 4,
+   "title": "A Bridge of Paper",
+   "art": "registry",
+   "text": "The road crosses a gorge on a bridge of folded paper, thousandfold, each ply stamped. It holds a cart of rice and an ox. It will not hold you, says a small neat sign; Nascent Souls are advised to fly. On the far bank clerks are unfolding more on rollers as the near edge wears, and you can see, if you look, that every ply is closely written on the back, in rows, in a hand that does not change from page to page. It is a very long document. It is not, you think, a bridge at all.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "registry"
+   ],
+   "choices": [
+    {
+     "label": "Fly across, as advised",
+     "hint": "Cult +10, Notice +3",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 10
+      },
+      {
+       "op": "notice",
+       "v": 3
+      }
+     ],
+     "after": "A clerk on the far bank ticks something off. He is very polite about it."
+    },
+    {
+     "label": "Walk the paper, lightly",
+     "hint": "Agility test; failure is a fall",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "speed",
+       "dc": 11,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 30
+        },
+        {
+         "op": "stone",
+         "v": 15
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.4
+        },
+        {
+         "op": "cult",
+         "v": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Cut a corner out and read the back",
+     "hint": "Cult +20, Heart -1, Notice +10",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": -1
+      },
+      {
+       "op": "notice",
+       "v": 10
+      }
+     ],
+     "after": "Lines and lines of names, struck through, and struck through again, in pencil, as if someone were still deciding."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_last_meal",
+   "kind": "random",
+   "act": 4,
+   "title": "The Last Meal",
+   "art": "village",
+   "portrait": "villager",
+   "text": "The last village below the stair has an inn that serves one dish a day, and today it is noodles in a broth that tastes of the thing you could not name. The woman sets down a bowl without asking what you are. Nobody here asks. You would like to stay a minute in the steam, and you may not get another. At the next table a man is explaining to his small son, with total confidence, how the world works. He is wrong about most of it. It is the most restful thing you have ever heard.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5
+   },
+   "weight": 3,
+   "tags": [
+    "act4",
+    "mortal"
+   ],
+   "choices": [
+    {
+     "label": "Eat slowly, all of it",
+     "hint": "HP +100%, Notice -10, Heart +1",
+     "fx": [
+      {
+       "op": "hp_pct",
+       "v": 1.0
+      },
+      {
+       "op": "notice",
+       "v": -10
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      }
+     ],
+     "after": "It is a very ordinary soup. You finish it, and run a finger round the bowl, which you have not done since you were small."
+    },
+    {
+     "label": "Buy a bowl for the man and his son",
+     "hint": "Costs 10 stones, Fortune +1",
+     "cost": {
+      "stone": 10
+     },
+     "fx": [
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "He thanks you with the air of one who has been proved right about the world, and goes on explaining it to the boy over the new noodles."
+    },
+    {
+     "label": "Listen to the whole explanation",
+     "hint": "Insight +1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "insight",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 15
+      }
+     ],
+     "after": "He is wrong about the stars, the rivers, and the Registry. He is, you realise, right about what to do with a long afternoon."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_qingnang_bowl",
+   "kind": "random",
+   "act": 4,
+   "title": "Her Own Patient",
+   "art": "valley",
+   "portrait": "qingnang",
+   "text": "She sits very straight on the clinic step with a bowl in both hands and a face the colour of rice paper. “Do not look at me like that, you pale turnip,” says Granny Qingnang. “I know what it is. I have seen it on four hundred patients and I know how it ends.” Her hands shake. The bowl does not spill. She has never lost one she could put a hand on. She is a very exact woman. “I find,” she says, with enormous dignity, “that I cannot reach this one.”",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "valley",
+    "qingnang"
+   ],
+   "choices": [
+    {
+     "label": "Sit down and drink the tea she gives you",
+     "hint": "Rel +2, HP +50%",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 2
+      },
+      {
+       "op": "hp_pct",
+       "v": 0.5
+      }
+     ],
+     "after": "It is as foul as ever. She watches you drink it with a face of grim, delighted satisfaction, like a woman watching a thief hang."
+    },
+    {
+     "label": "Offer her a year of your life",
+     "hint": "Life -1; she will not take it",
+     "fx": [
+      {
+       "op": "life",
+       "v": -1
+      },
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 3
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      }
+     ],
+     "after": "She swears at you for a full minute without repeating herself once. Then she holds your wrist for ten minutes, and says nothing, and swears a little more."
+    },
+    {
+     "label": "Ask her to teach you her best curse",
+     "hint": "Rel +1, Cult +15",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 15
+      }
+     ],
+     "after": "She considers this with great gravity. It is very long, and anatomically specific, and involves a fish. You will never have occasion to use it. You will treasure it."
+    }
+   ]
+  },
+  {
+   "id": "a4_r_ye_tea",
+   "kind": "random",
+   "act": 4,
+   "title": "Tea for Two, Again",
+   "art": "wilds",
+   "portrait": "ye",
+   "text": "He has set a table on a bridge over nothing: two cups, and a pot with a good deal of steam. Ye Wujin's collar-pin is gone. Without it he looks ordinary, thin, a man of middle years who has been awake too long. “I did not come to bargain,” he says. “I came to be seen drinking it.” He lifts his cup and drinks, for the first time in your memory. He winces. It is bitter. He drinks it all, down to the leaves, and sets it down with the care of a man putting down a very small bird.",
+   "req": {
+    "realm_min": 4,
+    "realm_max": 5,
+    "flags": [
+     "ye_offer"
+    ]
+   },
+   "weight": 2,
+   "tags": [
+    "act4",
+    "ye"
+   ],
+   "choices": [
+    {
+     "label": "Sit, and drink yours too",
+     "hint": "Rel +2, Cult +20, Corruption -5",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "ye",
+       "v": 2
+      },
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "corrupt",
+       "v": -5
+      }
+     ],
+     "after": "It is very bitter. You drink it all. Neither of you says a word, and it is, on the whole, the most honest conversation either of you has had."
+    },
+    {
+     "label": "Ask whether the offer still stands",
+     "hint": "Rel +1, Cult +40, Corruption +10",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "ye",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 40
+      },
+      {
+       "op": "corrupt",
+       "v": 10
+      }
+     ],
+     "after": "“It never expired,” he says, and is a little embarrassed by how much he means it. “I am not good at the other kind of offer.”"
+    },
+    {
+     "label": "Pour yours on the ground for the ones he ate",
+     "hint": "Heart +1, Rel -1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "rel",
+       "k": "ye",
+       "v": -1
+      }
+     ],
+     "after": "He watches the tea go into the dust. After a time he pours his own cup out beside it, which you had not expected, and which you will not mention."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1388 @@
+{
+	"_schema": "item: id zh en kind q slot? icon price use?{when,fx} stats? teaches? battle? text  (stats may carry notice [rate delta], corrupt [per term], bag; battle on talismans mirrors rules.json talismans)",
+	"items": [
+		{
+			"id": "pill_healing",
+			"zh": "回春丹",
+			"en": "Spring-Rain Return Pill",
+			"kind": "pill",
+			"q": 1,
+			"icon": "it_pill_healing",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "hp_pct",
+						"v": 0.35
+					}
+				]
+			},
+			"text": "Restores 35% HP. Drunk on its own in a fight when you are below half."
+		},
+		{
+			"id": "pill_qi",
+			"zh": "聚气丹",
+			"en": "Qi-Gathering Pill",
+			"kind": "pill",
+			"q": 1,
+			"icon": "it_pill_qi",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "cult",
+						"v": 40
+					}
+				]
+			},
+			"text": "Cultivation +40: about half of a first Qi Refining layer, at any realm."
+		},
+		{
+			"id": "pill_antidote",
+			"zh": "清毒丹",
+			"en": "Clear-Venom Pill",
+			"kind": "pill",
+			"q": 1,
+			"icon": "it_pill_antidote",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "hp_pct",
+						"v": 0.2
+					}
+				]
+			},
+			"text": "Restores 20% HP and cools a fevered blood. Bitter."
+		},
+		{
+			"id": "pill_mana",
+			"zh": "回灵丹",
+			"en": "Spirit-Return Pill",
+			"kind": "pill",
+			"q": 1,
+			"icon": "it_pill_mana",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "mp_pct",
+						"v": 0.6
+					}
+				]
+			},
+			"text": "Restores 60% MP. Tastes of rain on a tin roof."
+		},
+		{
+			"id": "pill_body",
+			"zh": "淬骨丹",
+			"en": "Bone-Tempering Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_body",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "stat",
+						"k": "body",
+						"v": 1
+					}
+				]
+			},
+			"text": "Body +1 for this life. The bones remember it as a fever."
+		},
+		{
+			"id": "pill_mind",
+			"zh": "清心丹",
+			"en": "Still-Heart Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_mind",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "stat",
+						"k": "heart",
+						"v": 1
+					}
+				]
+			},
+			"text": "Dao-heart +1 for this life. The noise inside gets quieter."
+		},
+		{
+			"id": "pill_swift",
+			"zh": "追风丹",
+			"en": "Wind-Chaser Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_swift",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "stat",
+						"k": "speed",
+						"v": 1
+					}
+				]
+			},
+			"text": "Speed +1 for this life. Your feet start arriving before you do."
+		},
+		{
+			"id": "pill_spirit",
+			"zh": "凝神丹",
+			"en": "Spirit-Anchoring Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_spirit",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "stat",
+						"k": "spirit",
+						"v": 1
+					}
+				]
+			},
+			"text": "Spirit +1 for this life. A stillness that stays."
+		},
+		{
+			"id": "pill_hush",
+			"zh": "静息丹",
+			"en": "Hush Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_hush",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "notice",
+						"v": -15
+					}
+				]
+			},
+			"text": "Notice -15. For an hour you are very hard to remember."
+		},
+		{
+			"id": "pill_foundation",
+			"zh": "筑基丹",
+			"en": "Foundation-Laying Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_foundation",
+			"price": 90,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "if",
+						"req": {
+							"realm_min": 1,
+							"realm_max": 1
+						},
+						"then": [
+							{
+								"op": "flag",
+								"k": "bt_pill"
+							},
+							{
+								"op": "text",
+								"t": "The pill settles in the dantian like a stone dropped in a well, and waits."
+							}
+						],
+						"else": [
+							{
+								"op": "cult",
+								"v": 30
+							},
+							{
+								"op": "text",
+								"t": "It is the wrong road for this realm; the pill dissolves into plain qi."
+							}
+						]
+					}
+				]
+			},
+			"text": "A Qi Refining breakthrough pill: +20% chance on your next breakthrough. In any other realm it only feeds your qi (+30)."
+		},
+		{
+			"id": "pill_core",
+			"zh": "结丹丸",
+			"en": "Core-Binding Pill",
+			"kind": "pill",
+			"q": 3,
+			"icon": "it_pill_core",
+			"price": 260,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "if",
+						"req": {
+							"realm_min": 2,
+							"realm_max": 2
+						},
+						"then": [
+							{
+								"op": "flag",
+								"k": "bt_pill"
+							},
+							{
+								"op": "text",
+								"t": "Heat pools under the navel and holds, like a hand around a coal."
+							}
+						],
+						"else": [
+							{
+								"op": "cult",
+								"v": 30
+							},
+							{
+								"op": "text",
+								"t": "It is the wrong road for this realm; the pill dissolves into plain qi."
+							}
+						]
+					}
+				]
+			},
+			"text": "A Foundation breakthrough pill: +20% chance on your next breakthrough. In any other realm it only feeds your qi (+30)."
+		},
+		{
+			"id": "pill_nascent",
+			"zh": "凝婴丹",
+			"en": "Infant-Nurturing Pill",
+			"kind": "pill",
+			"q": 4,
+			"icon": "it_pill_nascent",
+			"price": 700,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "if",
+						"req": {
+							"realm_min": 3,
+							"realm_max": 3
+						},
+						"then": [
+							{
+								"op": "flag",
+								"k": "bt_pill"
+							},
+							{
+								"op": "text",
+								"t": "Something small and bright turns over inside the core, as if listening."
+							}
+						],
+						"else": [
+							{
+								"op": "cult",
+								"v": 30
+							},
+							{
+								"op": "text",
+								"t": "It is the wrong road for this realm; the pill dissolves into plain qi."
+							}
+						]
+					}
+				]
+			},
+			"text": "A Golden Core breakthrough pill: +20% chance on your next breakthrough. In any other realm it only feeds your qi (+30)."
+		},
+		{
+			"id": "pill_transform",
+			"zh": "化神丹",
+			"en": "God-Turning Pill",
+			"kind": "pill",
+			"q": 5,
+			"icon": "it_pill_transform",
+			"price": 1500,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "if",
+						"req": {
+							"realm_min": 4,
+							"realm_max": 4
+						},
+						"then": [
+							{
+								"op": "flag",
+								"k": "bt_pill"
+							},
+							{
+								"op": "text",
+								"t": "Your name, wherever it is written, goes briefly out of focus."
+							}
+						],
+						"else": [
+							{
+								"op": "cult",
+								"v": 30
+							},
+							{
+								"op": "text",
+								"t": "It is the wrong road for this realm; the pill dissolves into plain qi."
+							}
+						]
+					}
+				]
+			},
+			"text": "A Nascent Soul breakthrough pill: +20% chance on your next breakthrough. In any other realm it only feeds your qi (+30)."
+		},
+		{
+			"id": "pill_qi_fine",
+			"zh": "青灵聚气丹",
+			"en": "Verdant Qi Pill",
+			"kind": "pill",
+			"q": 2,
+			"icon": "it_pill_qi_fine",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "cult",
+						"v": 90
+					}
+				]
+			},
+			"text": "Cultivation +90: a full first layer of Qi Refining, at any realm."
+		},
+		{
+			"id": "pill_qi_jade",
+			"zh": "玉露凝气丹",
+			"en": "Jade-Dew Qi Pill",
+			"kind": "pill",
+			"q": 3,
+			"icon": "it_pill_qi_jade",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "cult",
+						"v": 220
+					}
+				]
+			},
+			"text": "Cultivation +220."
+		},
+		{
+			"id": "pill_qi_sun",
+			"zh": "日精化气丹",
+			"en": "Sun-Essence Qi Pill",
+			"kind": "pill",
+			"q": 4,
+			"icon": "it_pill_qi_sun",
+			"price": 350,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "cult",
+						"v": 520
+					}
+				]
+			},
+			"text": "Cultivation +520."
+		},
+		{
+			"id": "pill_qi_origin",
+			"zh": "太初元气丹",
+			"en": "Primal Qi Pill",
+			"kind": "pill",
+			"q": 5,
+			"icon": "it_pill_qi_origin",
+			"price": 1000,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "cult",
+						"v": 1400
+					}
+				]
+			},
+			"text": "Cultivation +1400."
+		},
+		{
+			"id": "pill_marrow",
+			"zh": "玉髓丹",
+			"en": "Jade-Marrow Pill",
+			"kind": "pill",
+			"q": 3,
+			"icon": "it_pill_marrow",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "hp_pct",
+						"v": 0.7
+					},
+					{
+						"op": "mp_pct",
+						"v": 0.3
+					}
+				]
+			},
+			"text": "Restores 70% HP and 30% MP."
+		},
+		{
+			"id": "pill_rebirth",
+			"zh": "九转还魂丹",
+			"en": "Nine-Turn Soul Pill",
+			"kind": "pill",
+			"q": 5,
+			"icon": "it_pill_rebirth",
+			"price": 1000,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "hp_pct",
+						"v": 1.0
+					},
+					{
+						"op": "mp_pct",
+						"v": 1.0
+					},
+					{
+						"op": "life",
+						"v": 1
+					}
+				]
+			},
+			"text": "Restores all HP and MP, and a term of life besides. The Registry would call it a clerical error."
+		},
+		{
+			"id": "pill_longevity",
+			"zh": "千秋延寿丹",
+			"en": "Thousand-Autumn Pill",
+			"kind": "pill",
+			"q": 4,
+			"icon": "it_pill_longevity",
+			"price": 350,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "life",
+						"v": 4
+					}
+				]
+			},
+			"text": "Lifespan +4 terms. It does not make you younger; it makes the calendar shy."
+		},
+		{
+			"id": "pill_insight",
+			"zh": "莲心悟道丹",
+			"en": "Lotus-Heart Pill",
+			"kind": "pill",
+			"q": 4,
+			"icon": "it_pill_insight",
+			"price": 350,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "stat",
+						"k": "insight",
+						"v": 1
+					}
+				]
+			},
+			"text": "Insight +1 for this life."
+		},
+		{
+			"id": "pill_fortune",
+			"zh": "红线丹",
+			"en": "Red-Thread Pill",
+			"kind": "pill",
+			"q": 3,
+			"icon": "it_pill_fortune",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "stat",
+						"k": "fortune",
+						"v": 1
+					}
+				]
+			},
+			"text": "Fortune +1 for this life. Strings you cannot see grow a little more taut."
+		},
+		{
+			"id": "pill_blood_bloom",
+			"zh": "血莲丹",
+			"en": "Blood-Bloom Pill",
+			"kind": "pill",
+			"q": 3,
+			"icon": "it_pill_blood_bloom",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "cult",
+						"v": 260
+					},
+					{
+						"op": "corrupt",
+						"v": 8
+					},
+					{
+						"op": "notice",
+						"v": 4
+					}
+				]
+			},
+			"text": "Cursed. Cultivation +260, but Corruption +8 and Notice +4. It is a very good pill, and everyone who sells it says so."
+		},
+		{
+			"id": "sword_iron",
+			"zh": "铁剑",
+			"en": "Plain Iron Sword",
+			"kind": "artifact",
+			"q": 1,
+			"slot": "weapon",
+			"icon": "it_sword_iron",
+			"price": 15,
+			"stats": {
+				"atk": 4
+			},
+			"text": "Attack +4. Honest steel, badly balanced."
+		},
+		{
+			"id": "sword_frost",
+			"zh": "霜釉剑",
+			"en": "Frost-Glazed Sword",
+			"kind": "artifact",
+			"q": 2,
+			"slot": "weapon",
+			"icon": "it_sword_frost",
+			"price": 40,
+			"stats": {
+				"atk": 8,
+				"crit": 0.02
+			},
+			"text": "Attack +8, Crit +2%. The blade sweats in warm rooms."
+		},
+		{
+			"id": "sword_azure",
+			"zh": "青霄剑",
+			"en": "Azure Sky Sword",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "weapon",
+			"icon": "it_sword_azure",
+			"price": 120,
+			"stats": {
+				"atk": 14,
+				"crit": 0.03
+			},
+			"text": "Attack +14, Crit +3%. The Azure Sect's own work: it does not miss by itself."
+		},
+		{
+			"id": "knife_beggar",
+			"zh": "乞儿短刀",
+			"en": "Beggar's Knife",
+			"kind": "artifact",
+			"q": 1,
+			"slot": "weapon",
+			"icon": "it_knife_beggar",
+			"price": 15,
+			"stats": {
+				"atk": 3,
+				"speed": 1
+			},
+			"text": "Attack +3, Speed +1. A boy's knife for peeling things and, once, for something else."
+		},
+		{
+			"id": "staff_wood",
+			"zh": "桃木杖",
+			"en": "Peachwood Staff",
+			"kind": "artifact",
+			"q": 2,
+			"slot": "weapon",
+			"icon": "it_staff_wood",
+			"price": 40,
+			"stats": {
+				"atk": 7,
+				"spirit": 1,
+				"mp": 10
+			},
+			"text": "Attack +7, Spirit +1, MP +10. Peach keeps ghosts at arm's length."
+		},
+		{
+			"id": "blade_blood",
+			"zh": "饮血刀",
+			"en": "Blood-Drinking Blade",
+			"kind": "artifact",
+			"q": 4,
+			"slot": "weapon",
+			"icon": "it_blade_blood",
+			"price": 350,
+			"stats": {
+				"atk": 26,
+				"crit": 0.06,
+				"corrupt": 1
+			},
+			"text": "Cursed. Attack +26, Crit +6%, but Corruption +1 every term you carry it. It is never quite clean."
+		},
+		{
+			"id": "staff_jade_spirit",
+			"zh": "玉脉杖",
+			"en": "Jade-Vein Staff",
+			"kind": "artifact",
+			"q": 4,
+			"slot": "weapon",
+			"icon": "it_staff_jade_spirit",
+			"price": 350,
+			"stats": {
+				"atk": 14,
+				"spirit": 3,
+				"mp": 30
+			},
+			"text": "Attack +14, Spirit +3, MP +30. A cold green staff that hums to itself."
+		},
+		{
+			"id": "sword_sky_cut",
+			"zh": "断天剑",
+			"en": "Sky-Cutting Sword",
+			"kind": "artifact",
+			"q": 5,
+			"slot": "weapon",
+			"icon": "it_sword_sky_cut",
+			"price": 1000,
+			"stats": {
+				"atk": 40,
+				"crit": 0.05,
+				"cdmg": 0.2
+			},
+			"text": "Attack +40, Crit +5%, Crit damage +20%. Made to open exactly one thing."
+		},
+		{
+			"id": "robe_cloth",
+			"zh": "麻布袍",
+			"en": "Hemp Robe",
+			"kind": "artifact",
+			"q": 1,
+			"slot": "armor",
+			"icon": "it_robe_cloth",
+			"price": 15,
+			"stats": {
+				"def": 3
+			},
+			"text": "Defence +3. Patched at the elbows by someone who cared."
+		},
+		{
+			"id": "armor_scale",
+			"zh": "穿山甲鳞甲",
+			"en": "Pangolin-Scale Vest",
+			"kind": "artifact",
+			"q": 2,
+			"slot": "armor",
+			"icon": "it_armor_scale",
+			"price": 40,
+			"stats": {
+				"def": 6,
+				"hp": 15
+			},
+			"text": "Defence +6, HP +15. Heavy, ugly, and extremely hard to stab."
+		},
+		{
+			"id": "robe_azure",
+			"zh": "青霄云袍",
+			"en": "Azure Cloud Robe",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "armor",
+			"icon": "it_robe_azure",
+			"price": 120,
+			"stats": {
+				"def": 10,
+				"hp": 25
+			},
+			"text": "Defence +10, HP +25. Cloud-grey silk that sheds rain and some insults."
+		},
+		{
+			"id": "armor_demon_hide",
+			"zh": "妖皮甲",
+			"en": "Demon-Hide Cuirass",
+			"kind": "artifact",
+			"q": 4,
+			"slot": "armor",
+			"icon": "it_armor_demon_hide",
+			"price": 350,
+			"stats": {
+				"def": 18,
+				"hp": 50
+			},
+			"text": "Defence +18, HP +50. Still faintly warm; do not ask."
+		},
+		{
+			"id": "robe_heaven_silk",
+			"zh": "天蚕霓裳",
+			"en": "Heaven-Silk Raiment",
+			"kind": "artifact",
+			"q": 5,
+			"slot": "armor",
+			"icon": "it_robe_heaven_silk",
+			"price": 1000,
+			"stats": {
+				"def": 28,
+				"hp": 90,
+				"spirit": 2
+			},
+			"text": "Defence +28, HP +90, Spirit +2. Woven where the weather is made."
+		},
+		{
+			"id": "charm_jade",
+			"zh": "温玉佩",
+			"en": "Warm Jade Pendant",
+			"kind": "artifact",
+			"q": 2,
+			"slot": "charm",
+			"icon": "it_charm_jade",
+			"price": 40,
+			"stats": {
+				"hp": 25,
+				"heart": 1
+			},
+			"text": "HP +25, Dao-heart +1. It stays warm in the cold, as if someone held it first."
+		},
+		{
+			"id": "fox_mask",
+			"zh": "狐面",
+			"en": "Su Jiu's Fox Mask",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "charm",
+			"icon": "it_fox_mask",
+			"price": 120,
+			"stats": {
+				"notice": -0.3,
+				"fortune": 1
+			},
+			"text": "Notice grows 30% more slowly; Fortune +1. People forget what they saw you do."
+		},
+		{
+			"id": "lantern_soul",
+			"zh": "引魂灯",
+			"en": "Soul Lantern",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "charm",
+			"icon": "it_lantern_soul",
+			"price": 120,
+			"stats": {
+				"spirit": 2,
+				"mp": 20
+			},
+			"text": "Spirit +2, MP +20. A small lamp that burns only for the dead, and gives them directions."
+		},
+		{
+			"id": "charm_quiet",
+			"zh": "无声符",
+			"en": "Quiet-Step Tag",
+			"kind": "artifact",
+			"q": 2,
+			"slot": "charm",
+			"icon": "it_charm_quiet",
+			"price": 40,
+			"stats": {
+				"notice": -0.15,
+				"speed": 1
+			},
+			"text": "Notice grows 15% more slowly; Speed +1. Soft-soled, soft-voiced, soon forgotten."
+		},
+		{
+			"id": "charm_lucky",
+			"zh": "三钱串",
+			"en": "Three-Coin String",
+			"kind": "artifact",
+			"q": 1,
+			"slot": "charm",
+			"icon": "it_charm_lucky",
+			"price": 15,
+			"stats": {
+				"fortune": 1
+			},
+			"text": "Fortune +1. Three holed coins on a red thread; nobody can say whose."
+		},
+		{
+			"id": "charm_iron_heart",
+			"zh": "铁心印",
+			"en": "Iron-Heart Seal",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "charm",
+			"icon": "it_charm_iron_heart",
+			"price": 120,
+			"stats": {
+				"heart": 2,
+				"def": 3
+			},
+			"text": "Dao-heart +2, Defence +3. It sits heavy on the chest and does not tire."
+		},
+		{
+			"id": "charm_bone_whistle",
+			"zh": "骨哨",
+			"en": "Bone Whistle",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "charm",
+			"icon": "it_charm_bone_whistle",
+			"price": 120,
+			"stats": {
+				"spirit": 3,
+				"atk": 6,
+				"corrupt": 1
+			},
+			"text": "Cursed. Spirit +3, Attack +6, but Corruption +1 every term you carry it. Something answers from far away."
+		},
+		{
+			"id": "ring_void",
+			"zh": "虚纳戒",
+			"en": "Void-Pocket Ring",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "ring",
+			"icon": "it_ring_void",
+			"price": 120,
+			"stats": {
+				"bag": 8
+			},
+			"text": "Bag +8. A small dark that holds more than it should, politely."
+		},
+		{
+			"id": "ring_mother",
+			"zh": "母亲的戒指",
+			"en": "The Mother's Ring",
+			"kind": "artifact",
+			"q": 4,
+			"slot": "ring",
+			"icon": "it_ring_mother",
+			"price": 0,
+			"stats": {
+				"heart": 2,
+				"insight": 1,
+				"notice": -0.1
+			},
+			"text": "Dao-heart +2, Insight +1, Notice grows 10% more slowly. Plain silver, worn smooth on the inside. It fits you exactly."
+		},
+		{
+			"id": "ring_fortune",
+			"zh": "九福戒",
+			"en": "Nine-Fortune Ring",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "ring",
+			"icon": "it_ring_fortune",
+			"price": 120,
+			"stats": {
+				"fortune": 3
+			},
+			"text": "Fortune +3: finer cards come to your hand more often. Nine tiny characters, all of them 'yes'."
+		},
+		{
+			"id": "ring_hungry",
+			"zh": "饿鬼戒",
+			"en": "Hungering Ring",
+			"kind": "artifact",
+			"q": 4,
+			"slot": "ring",
+			"icon": "it_ring_hungry",
+			"price": 350,
+			"stats": {
+				"atk": 10,
+				"spirit": 2,
+				"corrupt": 2
+			},
+			"text": "Cursed. Attack +10, Spirit +2, but Corruption +2 every term you wear it. It is always a little too tight."
+		},
+		{
+			"id": "manual_azure_sword",
+			"zh": "青霄剑经",
+			"en": "Azure Sword Canon",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_azure_sword",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "method",
+						"id": "azure_sword_canon"
+					}
+				]
+			},
+			"teaches": {
+				"method": "azure_sword_canon"
+			},
+			"text": "Teaches the Azure Sword Canon method (cultivation x1.2, Speed +1)."
+		},
+		{
+			"id": "manual_herb_art",
+			"zh": "百草长生诀",
+			"en": "Hundred-Herb Longevity Art",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_herb_art",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "method",
+						"id": "herb_life_art"
+					}
+				]
+			},
+			"teaches": {
+				"method": "herb_life_art"
+			},
+			"text": "Teaches the Hundred-Herb Longevity Art method (cultivation x1.1, a trickle each term)."
+		},
+		{
+			"id": "manual_rogue_step",
+			"zh": "逍遥步法",
+			"en": "Wanderer's Wind-Step",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_rogue_step",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "method",
+						"id": "rogue_wind_step"
+					}
+				]
+			},
+			"teaches": {
+				"method": "rogue_wind_step"
+			},
+			"text": "Teaches the Wind-Step method (cultivation x1.1, Speed +2)."
+		},
+		{
+			"id": "manual_netherworld",
+			"zh": "九幽经",
+			"en": "Nine-Netherworld Scripture",
+			"kind": "manual",
+			"q": 3,
+			"icon": "it_manual_netherworld",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "method",
+						"id": "nine_netherworld_scripture"
+					},
+					{
+						"op": "corrupt",
+						"v": 3
+					}
+				]
+			},
+			"teaches": {
+				"method": "nine_netherworld_scripture"
+			},
+			"text": "Teaches the Nine-Netherworld Scripture method (cultivation x1.5, Spirit +2, max HP -12%). Reading it costs Corruption +3."
+		},
+		{
+			"id": "manual_five_elements",
+			"zh": "五行真经",
+			"en": "Five-Elements Scripture",
+			"kind": "manual",
+			"q": 4,
+			"icon": "it_manual_five_elements",
+			"price": 350,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "if",
+						"req": {
+							"roots": {
+								"metal": 1,
+								"wood": 1,
+								"water": 1,
+								"fire": 1,
+								"earth": 1
+							}
+						},
+						"then": [
+							{
+								"op": "method",
+								"id": "five_elements_scripture"
+							}
+						],
+						"else": [
+							{
+								"op": "stat",
+								"k": "insight",
+								"v": 1
+							},
+							{
+								"op": "text",
+								"t": "The scripture will not settle without all five roots, but reading it still sharpens you."
+							}
+						]
+					}
+				]
+			},
+			"teaches": {
+				"method": "five_elements_scripture"
+			},
+			"text": "Teaches the Five-Elements Scripture method (cultivation x1.3, Insight +1). Needs every root at 1 or more."
+		},
+		{
+			"id": "manual_fire",
+			"zh": "烈火诀",
+			"en": "Searing-Flame Verse",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_fire",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "fireball"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "fireball"
+			},
+			"text": "Teaches the Fireball technique."
+		},
+		{
+			"id": "manual_iron_fist",
+			"zh": "拳谱",
+			"en": "Fist Primer",
+			"kind": "manual",
+			"q": 1,
+			"icon": "it_manual_iron_fist",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "iron_fist"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "iron_fist"
+			},
+			"text": "Teaches the Iron Fist technique."
+		},
+		{
+			"id": "manual_stone_skin",
+			"zh": "石肤诀",
+			"en": "Stone-Skin Verse",
+			"kind": "manual",
+			"q": 1,
+			"icon": "it_manual_stone_skin",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "stone_skin"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "stone_skin"
+			},
+			"text": "Teaches the Stone Skin technique."
+		},
+		{
+			"id": "manual_ice_lance",
+			"zh": "寒冰诀",
+			"en": "Frost-Lance Verse",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_ice_lance",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "ice_lance"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "ice_lance"
+			},
+			"text": "Teaches the Ice Lance technique."
+		},
+		{
+			"id": "manual_spring_rain",
+			"zh": "春雨诀",
+			"en": "Spring-Rain Verse",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_spring_rain",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "spring_rain"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "spring_rain"
+			},
+			"text": "Teaches the Spring Rain technique."
+		},
+		{
+			"id": "manual_sword_rain",
+			"zh": "剑雨谱",
+			"en": "Sword-Rain Score",
+			"kind": "manual",
+			"q": 3,
+			"icon": "it_manual_sword_rain",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "sword_rain"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "sword_rain"
+			},
+			"text": "Teaches the Sword Rain technique."
+		},
+		{
+			"id": "manual_thunder_palm",
+			"zh": "雷掌残谱",
+			"en": "Thunder-Palm Fragment",
+			"kind": "manual",
+			"q": 3,
+			"icon": "it_manual_thunder_palm",
+			"price": 120,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "tech",
+						"id": "thunder_palm"
+					}
+				]
+			},
+			"teaches": {
+				"tech": "thunder_palm"
+			},
+			"text": "Teaches the Thunder Palm technique. The last page is missing, and it shows."
+		},
+		{
+			"id": "manual_azure_form",
+			"zh": "青霄剑式谱",
+			"en": "Azure Sword Form Scroll",
+			"kind": "manual",
+			"q": 2,
+			"icon": "it_manual_azure_form",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "card",
+						"id": "azure_form"
+					}
+				]
+			},
+			"teaches": {
+				"card": "azure_form"
+			},
+			"text": "Teaches the card Azure Sword Form: a 2-action sword drill worth a full day's cultivation."
+		},
+		{
+			"id": "book_primer",
+			"zh": "蒙学旧册",
+			"en": "Scholar's Primer",
+			"kind": "manual",
+			"q": 1,
+			"icon": "it_book_primer",
+			"price": 0,
+			"text": "A thumbed primer. While you carry it you can always find something new in a text (it lets the Comprehend card be played)."
+		},
+		{
+			"id": "talisman_fire",
+			"zh": "离火符",
+			"en": "Flame-Seal Talisman",
+			"kind": "talisman",
+			"q": 2,
+			"icon": "it_talisman_fire",
+			"price": 40,
+			"battle": {
+				"dmg": 2.2,
+				"elem": "fire",
+				"status": "burn"
+			},
+			"text": "Used on its own at the start of your next fight: a burst of fire (x2.2 damage) and a burn."
+		},
+		{
+			"id": "talisman_ward",
+			"zh": "镇邪符",
+			"en": "Ward Talisman",
+			"kind": "talisman",
+			"q": 2,
+			"icon": "it_talisman_ward",
+			"price": 40,
+			"battle": {
+				"shield": 0.35
+			},
+			"text": "Used on its own at the start of your next fight: a ward worth 35% of max HP."
+		},
+		{
+			"id": "talisman_escape",
+			"zh": "遁风符",
+			"en": "Wind-Away Talisman",
+			"kind": "talisman",
+			"q": 2,
+			"icon": "it_talisman_escape",
+			"price": 40,
+			"battle": {
+				"escape": true
+			},
+			"text": "Slips you out of a fight you chose to flee. Not used up by ordinary battles."
+		},
+		{
+			"id": "talisman_ice",
+			"zh": "寒霜符",
+			"en": "Frost-Bind Talisman",
+			"kind": "talisman",
+			"q": 3,
+			"icon": "it_talisman_ice",
+			"price": 120,
+			"battle": {
+				"dmg": 1.6,
+				"elem": "water",
+				"status": "slow"
+			},
+			"text": "Used on its own at the start of your next fight: a spear of frost (x1.6 damage) that slows the foe."
+		},
+		{
+			"id": "talisman_thunder",
+			"zh": "五雷符",
+			"en": "Five-Thunder Talisman",
+			"kind": "talisman",
+			"q": 4,
+			"icon": "it_talisman_thunder",
+			"price": 350,
+			"battle": {
+				"dmg": 3.6,
+				"status": "stun"
+			},
+			"text": "Used on its own at the start of your next fight: a thunderbolt (x3.6 damage) that stuns the foe."
+		},
+		{
+			"id": "herb_spirit",
+			"zh": "灵草",
+			"en": "Spirit Herb",
+			"kind": "material",
+			"q": 1,
+			"icon": "it_herb_spirit",
+			"price": 15,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "mat",
+						"k": "herb",
+						"v": 3
+					}
+				]
+			},
+			"text": "Break it up for the stock: Herbs +3."
+		},
+		{
+			"id": "ore_black",
+			"zh": "乌金矿",
+			"en": "Black-Iron Ore",
+			"kind": "material",
+			"q": 2,
+			"icon": "it_ore_black",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "mat",
+						"k": "ore",
+						"v": 3
+					}
+				]
+			},
+			"text": "A heavy lump of dark ore: Ore +3."
+		},
+		{
+			"id": "core_beast",
+			"zh": "兽核",
+			"en": "Beast Core",
+			"kind": "material",
+			"q": 2,
+			"icon": "it_core_beast",
+			"price": 40,
+			"use": {
+				"when": "anytime",
+				"fx": [
+					{
+						"op": "mat",
+						"k": "core",
+						"v": 1
+					}
+				]
+			},
+			"text": "Still faintly warm: Cores +1."
+		},
+		{
+			"id": "brush_fragment",
+			"zh": "写命笔残片",
+			"en": "Fragment of the Brush",
+			"kind": "material",
+			"q": 5,
+			"icon": "it_brush_fragment",
+			"price": 0,
+			"text": "A splinter of something that was never a tree. Three of them could be made into a brush that writes a writ."
+		}
+	]
+}

@@ -1,0 +1,636 @@
+# Regenerate tests/fixtures/godot_dump.json.gz: copy this file to blank-writ/tools/_dump_sim.gd, run
+#   Godot_v4.7.1-stable_win64_console.exe --headless --audio-driver Dummy --path <blank-writ> --script res://tools/_dump_sim.gd -- --out=<file.json>
+# (under the memory guard), gzip the JSON into tests/fixtures/godot_dump.json.gz, then delete the copy again. Throwaway: not part of the game.
+extends SceneTree
+## THROWAWAY: dumps deterministic quantities of the Godot sim as JSON so the JS port can be compared (blank-writ-threejs/tests).
+##   Godot --headless --audio-driver Dummy --path . --script res://tools/_dump_sim.gd -- --out=<file.json>
+
+const Data := preload("res://scripts/bw_data.gd")
+const Meta := preload("res://scripts/bw_meta.gd")
+const Run := preload("res://scripts/bw_run.gd")
+const Battle := preload("res://scripts/bw_battle.gd")
+const Txt := preload("res://scripts/bw_text.gd")
+const L := preload("res://scripts/bw_loc.gd")
+
+var D
+
+
+func _init() -> void:
+	var out_path := "user://dump_sim.json"
+	for a in OS.get_cmdline_user_args():
+		var s := String(a)
+		if s.begins_with("--out="):
+			out_path = s.substr(6)
+	D = Data.new()
+	D.load_all()
+	L.set_lang("en")
+	var R: Dictionary = {}
+	R["errors"] = D.errors
+	R["counts"] = {"cards": D.cards.size(), "techs": D.techs.size(), "methods": D.methods.size(), "enemies": D.enemies.size(), "items": D.items.size(),
+		"talents": D.talents.size(), "origins": D.origins.size(), "wheel": D.wheel.size(), "truths": D.truths.size(), "endings": D.endings.size(),
+		"events": D.events.size(), "story": D.story_ids.size(), "random": D.random_ids.size()}
+	R["orders"] = {"cards": D.cards.keys(), "items": D.items.keys(), "techs": D.techs.keys(), "enemies": D.enemies.keys(), "events": D.events.keys(),
+		"story_ids": D.story_ids, "random_ids": D.random_ids, "wheel_order": D.wheel_order, "talents": D.talents.keys(), "origins": D.origins.keys()}
+	L.set_lang("zh")
+	R["zh_count"] = L.zh_count()
+	L.set_lang("en")
+	# what str() prints for a number read from JSON
+	var parsed: Variant = JSON.parse_string("{\"herb\": 3, \"stone\": 5}")
+	R["cost_line_json"] = Txt.cost_line(parsed)
+	R["cost_line_json_type"] = typeof(parsed["herb"])
+	R["realm_dump"] = []
+	for r in range(-1, 9):
+		var rd: Dictionary = D.realm(r)
+		R["realm_dump"].append(rd.get("id", -99))
+
+	var scs := _scenarios()
+	R["scenarios"] = scs
+	R["scen_results"] = {}
+	for sc in scs:
+		R["scen_results"][sc["name"]] = _scenario_results(sc)
+	R["meta"] = _meta_dump()
+	R["texts"] = _text_dump()
+	R["battles"] = _battle_dump(scs)
+	R["to_dict_keys"] = _make(scs[0]).to_dict().keys()
+	R["misc"] = _misc_dump(scs)
+
+	var f := FileAccess.open(out_path, FileAccess.WRITE)
+	if f:
+		f.store_string(JSON.stringify(R))
+		print("dump written: ", out_path)
+	else:
+		print("cannot write ", out_path)
+	quit(0)
+
+
+# ---- scenarios ----------------------------------------------------------------------------------------------------------
+func _scenarios() -> Array:
+	var items: Array = []
+	for id in D.items:
+		var k := String(D.items[id].get("kind", ""))
+		if k == "pill" or k == "talisman":
+			items.append(id)
+			if items.size() >= 4:
+				break
+	var arts: Array = []
+	for id in D.items:
+		if String(D.items[id].get("kind", "")) == "artifact":
+			arts.append(id)
+			if arts.size() >= 3:
+				break
+	var techs: Array = D.techs.keys().slice(0, 5)
+	var truth_ids: Array = D.truths.keys()
+	var wheel_ranks := {}
+	var ranks_order: Array = []
+	var n := 0
+	for id in D.wheel_order:
+		wheel_ranks[id] = 1
+		ranks_order.append(id)
+		n += 1
+		if n >= 12:
+			break
+	var all_meta: Array = []
+	for t in truth_ids:
+		all_meta.append(t)
+	# every memory flag an event or card asks for
+	var wanted := {}
+	for src in [D.events, D.cards]:
+		for id in src:
+			_collect_meta(src[id], wanted)
+	for k in wanted:
+		all_meta.append(k)
+	return [
+		{"name": "fresh", "origin": "orphan", "talent": "", "ranks": {}, "ranks_order": [], "meta_flags": [], "realm": 0, "layer": 1, "cult_frac": 0.0, "term": 1,
+			"stats": {}, "roots": {}, "stone": -1, "mats": {}, "notice": 0, "corrupt": 0, "rel": {}, "life": -1, "flags": [], "place": "",
+			"sect": "", "items": [], "techs": [], "method": "", "hp_frac": 1.0},
+		{"name": "mid", "origin": "orphan", "talent": "", "ranks": {}, "ranks_order": [], "meta_flags": [], "realm": 2, "layer": 2, "cult_frac": 0.5, "term": 8,
+			"stats": {"body": 12, "spirit": 10, "insight": 9, "speed": 8, "fortune": 7, "heart": 8}, "roots": {"fire": 3, "wood": 1},
+			"stone": 120, "mats": {"herb": 6, "ore": 4, "core": 2}, "notice": 30, "corrupt": 20, "rel": {"xiaohe": 2, "moshan": 1}, "life": 9,
+			"flags": ["xh_saved", "mo_met", "root_tested"], "place": "sect", "sect": "azure", "items": items, "techs": techs, "method": "",
+			"hp_frac": 0.7},
+		{"name": "late", "origin": "orphan", "talent": "", "ranks": wheel_ranks, "ranks_order": ranks_order, "meta_flags": all_meta, "realm": 4, "layer": 3, "cult_frac": 0.99, "term": 30,
+			"stats": {"body": 40, "spirit": 35, "insight": 30, "speed": 28, "fortune": 20, "heart": 25}, "roots": {"fire": 5, "water": 4, "metal": 2},
+			"stone": 900, "mats": {"herb": 20, "ore": 20, "core": 10}, "notice": 75, "corrupt": 65, "rel": {"xiaohe": 6, "moshan": 5, "yunzhi": 4, "sujiu": 3, "xiaoheng": 2, "ye": 3},
+			"life": 7, "flags": ["xh_saved", "mo_met", "root_tested", "ally_xiaohe", "ally_yunzhi", "sect_rogue", "ruin_found", "brush_found", "corrupt_30", "hunted"],
+			"place": "ruin", "sect": "rogue", "items": items + arts, "techs": techs, "method": "", "hp_frac": 0.4},
+		{"name": "gate", "origin": "orphan", "talent": "", "ranks": wheel_ranks, "ranks_order": ranks_order, "meta_flags": all_meta, "realm": 5, "layer": 2, "cult_frac": 0.2, "term": 60,
+			"stats": {"body": 60, "spirit": 60, "insight": 50, "speed": 40, "fortune": 30, "heart": 40}, "roots": {"fire": 7, "water": 6, "metal": 6, "wood": 6, "earth": 6},
+			"stone": 5000, "mats": {"herb": 40, "ore": 40, "core": 20}, "notice": 10, "corrupt": 5, "rel": {"xiaohe": 10, "moshan": 8, "yunzhi": 9, "sujiu": 7, "xiaoheng": 6, "ye": 5},
+			"life": 20, "flags": ["xh_saved", "mo_met", "ally_xiaohe", "ally_yunzhi", "ally_sujiu", "ally_moshan", "tribulation_passed", "ruin_cleared", "ascension_known"],
+			"place": "registry", "sect": "azure", "items": items + arts, "techs": techs, "method": "", "hp_frac": 1.0},
+		{"name": "origins", "origin": _nth_key(D.origins, 1), "talent": _nth_key(D.talents, 1), "ranks": wheel_ranks, "ranks_order": ranks_order, "meta_flags": [], "realm": 1, "layer": 1,
+			"cult_frac": 0.3, "term": 4, "stats": {}, "roots": {}, "stone": -1, "mats": {}, "notice": 5, "corrupt": 0, "rel": {}, "life": -1,
+			"flags": [], "place": "", "sect": "", "items": [], "techs": [], "method": "", "hp_frac": 0.9},
+	]
+
+
+func _nth_key(d: Dictionary, i: int) -> String:
+	var ks := d.keys()
+	return String(ks[mini(i, ks.size() - 1)])
+
+
+func _collect_meta(x: Variant, out: Dictionary) -> void:
+	if x is Dictionary:
+		for k in x:
+			if (String(k) == "meta" or String(k) == "not_meta") and x[k] is Array:
+				for f in x[k]:
+					out[String(f)] = true
+			else:
+				_collect_meta(x[k], out)
+	elif x is Array:
+		for y in x:
+			_collect_meta(y, out)
+
+
+func _make(sc: Dictionary):
+	var meta = Meta.new(D)
+	meta.save_enabled = false
+	for k in sc["ranks_order"]:
+		meta.ranks[k] = int(sc["ranks"][k])
+	for f in sc["meta_flags"]:
+		meta.flags[String(f)] = true
+	var run = Run.new(D, meta, 99)
+	run.begin(String(sc["origin"]), String(sc["talent"]), "Test", "m")
+	run.current = {}
+	run.pending_events = []
+	run.queued = []
+	run.seen = {}
+	run.hand = []
+	run.offers = []
+	run.shop = []
+	run.pending_learn = []
+	run._term_end_flow = false
+	run.realm = int(sc["realm"])
+	run.layer = int(sc["layer"])
+	run.cult = run.need() * float(sc["cult_frac"])
+	run.term = int(sc["term"])
+	for k in sc["stats"]:
+		run.stats[k] = int(sc["stats"][k])
+	for k in sc["roots"]:
+		run.roots[k] = int(sc["roots"][k])
+	if int(sc["stone"]) >= 0:
+		run.stone = int(sc["stone"])
+	for k in sc["mats"]:
+		run.mats[k] = int(sc["mats"][k])
+	run.notice = int(sc["notice"])
+	run.corrupt = int(sc["corrupt"])
+	for k in sc["rel"]:
+		run.rel[k] = int(sc["rel"][k])
+	if int(sc["life"]) >= 0:
+		run.life = int(sc["life"])
+	for f in sc["flags"]:
+		run.flags[String(f)] = true
+	if String(sc["place"]) != "":
+		run.place = String(sc["place"])
+	if String(sc["sect"]) != "":
+		run.sect = String(sc["sect"])
+	for iid in sc["items"]:
+		run.give_item(String(iid), 1, [])
+	for tid in sc["techs"]:
+		run.learn_tech(String(tid))
+	if String(sc["method"]) != "":
+		run.method = String(sc["method"])
+	run.hp = run.max_hp() * float(sc["hp_frac"])
+	run.mp = run.max_mp()
+	run.ap = 3
+	return run
+
+
+func _r(v: float) -> float:
+	return snappedf(v, 0.000001)
+
+
+func _sorted_dict(d: Dictionary) -> Dictionary:
+	var ks := d.keys()
+	ks.sort()
+	var out := {}
+	for k in ks:
+		out[k] = d[k]
+	return out
+
+
+func _snap(run) -> Dictionary:
+	var fk: Array = run.flags.keys()
+	fk.sort()
+	var mk: Array = run.meta.flags.keys()
+	mk.sort()
+	var cur_id := ""
+	if not run.current.is_empty():
+		cur_id = String(run.current["id"])
+	return {"realm": run.realm, "layer": run.layer, "cult": _r(run.cult), "life": run.life, "hp": _r(run.hp), "mp": _r(run.mp), "stone": run.stone,
+		"notice": run.notice, "corrupt": run.corrupt, "kills": run.kills, "ap": run.ap, "place": run.place, "sect": run.sect, "method": run.method,
+		"dead": run.dead, "death_cause": run.death_cause, "ending_id": run.ending_id, "stats": _sorted_dict(run.stats), "roots": _sorted_dict(run.roots),
+		"mats": _sorted_dict(run.mats), "rel": _sorted_dict(run.rel), "flags": fk, "meta_flags": mk, "truths_found": run.truths_found,
+		"new_truths": run.new_truths, "deck": run.deck, "techs": run.techs, "loadout": run.loadout, "bag": _sorted_dict(run.bag),
+		"equip": _sorted_dict(run.equip), "offers": run.offers, "queued": run.queued, "pending": run.pending_events, "current": cur_id,
+		"bt_fails": run.bt_fails, "rewinds": run.rewinds, "year": run.year, "age": run.age, "term": run.term}
+
+
+func _has_random(fx: Variant) -> bool:
+	if fx is Array:
+		for o in fx:
+			if _has_random(o):
+				return true
+	elif fx is Dictionary:
+		var op := String(fx.get("op", ""))
+		if op in ["rand", "roll", "battle"]:
+			return true
+		for k in fx:
+			if _has_random(fx[k]):
+				return true
+	return false
+
+
+func _derived_dump(run) -> Dictionary:
+	var d: Dictionary = run.derived()
+	var o := {}
+	for k in d:
+		o[k] = _r(float(d[k]))
+	var st := {}
+	for k in D.rules.get("stats", []):
+		st[k] = _r(run.stat_total(String(k)))
+	return {"derived": o, "stat_total": st, "need": _r(run.need()), "bt_chance": _r(run.breakthrough_chance()), "cult_factor": _r(run.cult_factor()),
+		"ap_max": run.ap_max(), "hand_size": run.hand_size(), "slots": run.slots(), "years": run.years_per_term(), "notice_rate": _r(run.notice_rate()),
+		"gain_scale": run.gain_scale(), "stone_scale": run.stone_scale(), "trib": run.tribulation_ahead(), "bt_ready": run.breakthrough_ready(),
+		"layers_of": [run.layers_of(0), run.layers_of(1), run.layers_of(5), run.layers_of(6)], "gear": _sorted_dict(run.gear_total()),
+		"tier_mult": [run.tier_mult(0), run.tier_mult(1), run.tier_mult(2), run.tier_mult(3), run.tier_mult(9)],
+		"realm_label": run.realm_label(), "deck_n": run.deck.size(), "start_hp": _r(run.hp), "start_mp": _r(run.mp), "life": run.life,
+		"stone": run.stone, "main_elem": run._main_elem()}
+
+
+func _scenario_results(sc: Dictionary) -> Dictionary:
+	var res := {}
+	var run0 = _make(sc)
+	res["state"] = _derived_dump(run0)
+	res["snap"] = _snap(run0)
+	# events: the choices as shown (locked / reason / cost) and the result of every deterministic open choice
+	var ev := {}
+	for id in D.events:
+		var run = _make(sc)
+		run._open_event(String(id), {"lines": [], "battles": [], "tier_mult": 1.0, "scaled": false})
+		var ch: Array = run.current.get("choices", [])
+		var e: Dictionary = D.events[id]
+		var rec := {"choices": ch, "results": {}, "n_choices": e.get("choices", []).size()}
+		var list: Array = e.get("choices", [])
+		for i in list.size():
+			if bool(ch[i]["locked"]):
+				continue
+			if _has_random(list[i].get("fx", [])):
+				continue
+			var r2 = _make(sc)
+			r2._open_event(String(id), {"lines": [], "battles": [], "tier_mult": 1.0, "scaled": false})
+			var o: Dictionary = r2.choose(i)
+			rec["results"][str(i)] = {"snap": _snap(r2), "lines": o["lines"], "died": o["died"], "ending": o["ending"], "event": o["event"], "sfx": o["sfx"]}
+		ev[id] = rec
+	res["events"] = ev
+	# cards: can_play and the result of every deterministic card at each tier
+	var cards := {}
+	for cid in D.cards:
+		if cid in ["breakthrough", "market", "library"]:
+			continue
+		var crec := {}
+		var cfx: Variant = D.cards[cid].get("fx", [])
+		for tier in range(0, 4):
+			var r3 = _make(sc)
+			r3.hand = [{"id": cid, "tier": tier, "expires": -1}]
+			var cp: Dictionary = r3.can_play(0)
+			var item := {"can": cp["ok"], "reason": cp["reason"]}
+			if cp["ok"] and not _has_random(cfx):
+				var o3: Dictionary = r3.play(0)
+				item["snap"] = _snap(r3)
+				item["lines"] = o3["lines"]
+				item["sfx"] = o3["sfx"]
+			crec[str(tier)] = item
+		cards[cid] = crec
+	res["cards"] = cards
+	return res
+
+
+# ---- the Wheel and the profile --------------------------------------------------------------------------------------------
+func _meta_dump() -> Dictionary:
+	var out := {}
+	var m = Meta.new(D)
+	m.save_enabled = false
+	var costs := {}
+	for id in D.wheel_order:
+		var arr: Array = []
+		for r in range(0, 4):
+			m.ranks[id] = r
+			arr.append(m.node_cost(id))
+		costs[id] = arr
+	out["costs"] = costs
+	var m2 = Meta.new(D)
+	m2.save_enabled = false
+	m2.imprints = 2500
+	var bought: Array = []
+	var guard := 0
+	while guard < 4:
+		guard += 1
+		for id in D.wheel_order:
+			var cb: Dictionary = m2.can_buy(id)
+			if cb["ok"]:
+				m2.buy(id)
+				bought.append(id)
+	out["bought"] = bought
+	out["imprints_left"] = m2.imprints
+	out["ranks"] = _sorted_dict(m2.ranks)
+	out["flags"] = m2.flags.keys()
+	var keys := {}
+	for id in D.wheel:
+		var ef: Dictionary = D.wheel[id].get("effect", {})
+		for k in ef:
+			keys[k] = typeof(ef[k])
+	var sums := {}
+	for k in keys:
+		var v: Variant = ef_val(m2, String(k), int(keys[k]))
+		sums[k] = v
+	out["effects"] = sums
+	var can := {}
+	for id in D.wheel_order:
+		can[id] = m2.can_buy(id)
+	out["can_buy_after"] = can
+	var m3 = Meta.new(D)
+	m3.save_enabled = false
+	var unl := {}
+	for id in D.wheel_order:
+		unl[id] = [m3.node_unlocked(id), m3.can_buy(id)]
+	out["fresh_unlocked"] = unl
+	out["talents_fresh"] = m3.unlocked_talents()
+	out["origins_fresh"] = m3.unlocked_origins()
+	for t in D.truths:
+		m3.flags[String(t)] = true
+	for id in D.talents:
+		var u := String(D.talents[id].get("unlock", ""))
+		if u != "":
+			m3.flags[u] = true
+	for id in D.origins:
+		var u2 := String(D.origins[id].get("unlock", ""))
+		if u2 != "":
+			m3.flags[u2] = true
+	out["talents_all"] = m3.unlocked_talents()
+	out["origins_all"] = m3.unlocked_origins()
+	# compute_imprints for a few runs
+	var imp := []
+	var scs := _scenarios()
+	for sc in scs:
+		var run = _make(sc)
+		run.new_truths = ["a", "b"]
+		run.kills = 7
+		var mm: Dictionary = {}
+		imp.append([run.meta.compute_imprints(run), _r(float(run.meta.effect_sum("imprint")))])
+		run.ending_id = "end_x"
+		imp.append([run.meta.compute_imprints(run)])
+		run.meta.lives = 3
+		imp.append([run.meta.compute_imprints(run)])
+	out["imprints"] = imp
+	return out
+
+
+func ef_val(m, key: String, t: int) -> Dictionary:
+	if t == TYPE_DICTIONARY:
+		return {"dict": _sorted_dict(m.effect_dict(key))}
+	if t == TYPE_ARRAY:
+		return {"list": m.effect_list(key)}
+	return {"sum": _r(m.effect_sum(key))}
+
+
+# ---- texts ---------------------------------------------------------------------------------------------------------------
+func _text_dump() -> Dictionary:
+	var out := {}
+	var scs := _scenarios()
+	var run = _make(scs[1])
+	for lang in ["en", "zh"]:
+		L.set_lang(lang)
+		var t := {}
+		var fl := {}
+		for cid in D.cards:
+			var c: Dictionary = D.cards[cid]
+			fl[cid] = [Txt.fx_lines(run, c.get("fx", []), 1.0), Txt.fx_lines(run, c.get("fx", []), 1.4), Txt.cost_line(c.get("cost", {}))]
+		t["fx_lines"] = fl
+		var il := {}
+		for iid in D.items:
+			var u: Dictionary = D.items[iid].get("use", {})
+			il[iid] = Txt.fx_lines(run, u.get("fx", []))
+		t["item_lines"] = il
+		t["tiers"] = [Txt.tier_name(0), Txt.tier_name(1), Txt.tier_name(2), Txt.tier_name(3), Txt.tier_name(7), Txt.tier_zh(2)]
+		var cats := []
+		for c in ["cultivate", "craft", "venture", "social", "rest", "chance", "combat", "zzz"]:
+			cats.append(Txt.cat_name(c))
+		t["cats"] = cats
+		var labels := []
+		for r in range(0, 7):
+			for l in range(0, 4):
+				labels.append(L.realm_label(D, r, l))
+		t["realm_labels"] = labels
+		var places := []
+		for p in ["village", "town", "sect", "valley", "wilds", "ruin", "netherworld", "registry", "gate", "wheel", "cave", "road", "some_place"]:
+			places.append(L.place_name(p))
+		t["places"] = places
+		var cast := []
+		for c in ["xiaohe", "moshan", "yunzhi", "sujiu", "xiaoheng", "ye", "qingnang", "xuanxiao", "siming", "villager", "elder", "merchant", "disciple", "clerk", "hero", "some_new_id", "CamelId"]:
+			cast.append(L.cast_name(c))
+		t["cast"] = cast
+		var elems := []
+		for e in ["metal", "wood", "water", "fire", "earth", "none", "", "plasma_x"]:
+			elems.append(L.elem_name(e))
+		t["elems"] = elems
+		var names := []
+		for k in D.rules.get("stats", []):
+			names.append(L.stat_name(D, String(k)))
+		for k in D.rules.get("roots", []):
+			names.append(L.root_name(D, String(k)))
+		names.append(L.stat_name(D, "nonexistent"))
+		for r in range(0, 7):
+			names.append(L.realm_name(D, r))
+		t["names"] = names
+		var ent := []
+		for src in [D.cards, D.items, D.enemies, D.techs, D.talents, D.origins, D.methods, D.endings]:
+			var n := 0
+			for id in src:
+				ent.append(L.name_of(src[id]))
+				n += 1
+				if n >= 6:
+					break
+		t["entities"] = ent
+		# the strings the event dialogs show
+		var evt := {}
+		for id in D.events:
+			var e: Dictionary = D.events[id]
+			var labs := []
+			for c in e.get("choices", []):
+				labs.append([L.t(String(c.get("label", "..."))), L.t(String(c.get("hint", ""))), L.t(String(c.get("after", "")))])
+			evt[id] = [L.t(String(e.get("title", ""))), L.t(String(e.get("text", ""))), labs]
+		t["events"] = evt
+		out[lang] = t
+	L.set_lang("en")
+	return out
+
+
+# ---- battles with no randomness in them -----------------------------------------------------------------------------------
+func _battle_dump(scs: Array) -> Array:
+	var out: Array = []
+	var rules: Dictionary = D.rules.duplicate(true)
+	rules["battle"]["variance"] = 0.0
+	var eids: Array = D.enemies.keys()
+	for sc in scs:
+		var run = _make(sc)
+		var picks: Array = []
+		var step := maxi(1, eids.size() / 9)
+		var i := 0
+		while i < eids.size():
+			picks.append(eids[i])
+			i += step
+		for eid in picks:
+			for scale in [1.0, 1.6]:
+				var pu: Dictionary = run._player_unit()
+				var eu: Dictionary = run.enemy_unit(String(eid), scale)
+				pu["crit"] = 0.0
+				pu["dodge"] = 0.0
+				eu["crit"] = 0.0
+				eu["dodge"] = 0.0
+				for u in [pu, eu]:
+					for sk in u["skills"]:
+						for st in sk.get("status", []):
+							st["p"] = 1.0
+				var pre: Array = []
+				var rng := RandomNumberGenerator.new()
+				rng.seed = 5
+				var eu_dump := {"hp": _r(eu["hp"]), "atk": _r(eu["atk"]), "def": _r(eu["def"]), "spd": _r(eu["spd"]), "mp": _r(eu["mp"]), "elem": eu["elem"], "art": eu["art"],
+					"skills": eu["skills"].map(func(s): return s.get("id", ""))}
+				var pu_dump := {"hp": _r(pu["hp"]), "hp_max": _r(pu["hp_max"]), "atk": _r(pu["atk"]), "def": _r(pu["def"]), "spd": _r(pu["spd"]), "mp": _r(pu["mp"]),
+					"elem": pu["elem"], "art": pu["art"], "skills": pu["skills"].map(func(s): return s.get("id", ""))}
+				var res: Dictionary = Battle.simulate(pu, eu, rng, rules, pre)
+				var fr: Array = []
+				for f in res["frames"]:
+					fr.append([f["a"], f["skill"], f["dmg"], f["crit"], f["miss"], f["heal"], f["text"], f.get("php", 0), f.get("ehp", 0), f.get("pmp", 0),
+						f.get("emp", 0), f.get("psh", 0), f.get("esh", 0)])
+				out.append({"scenario": sc["name"], "enemy": eid, "scale": scale, "win": res["win"], "ticks": res["ticks"], "turns": res["turns"],
+					"p_hp": _r(res["p_hp"]), "p_mp": _r(res["p_mp"]), "e_hp": _r(res["e_hp"]), "p_max": _r(res["p_max"]), "e_max": _r(res["e_max"]),
+					"frames": fr, "pu": pu_dump, "eu": eu_dump})
+	return out
+
+
+# ---- the smaller API: items, the shop, the term's end, a life's end ------------------------------------------------------------
+func _misc_dump(scs: Array) -> Dictionary:
+	var out := {}
+	var mid: Dictionary = scs[1]
+	var uses := {}
+	for iid in D.items:
+		var it: Dictionary = D.items[iid]
+		if it.get("use", {}).is_empty():
+			continue
+		var run = _make(mid)
+		run.give_item(String(iid), 1, [])
+		var o: Dictionary = run.use_item(String(iid))
+		var rec := {"random": _has_random(it["use"].get("fx", [])), "died": o["died"], "event": o["event"]}
+		if not rec["random"]:
+			rec["lines"] = o["lines"]
+			rec["sfx"] = o["sfx"]
+			rec["snap"] = _snap(run)
+		uses[iid] = rec
+	out["use_item"] = uses
+	# a missing item
+	var run_m = _make(mid)
+	out["use_missing"] = run_m.use_item("no_such_item_x")["lines"]
+	var gear := {}
+	for iid in D.items:
+		var run = _make(scs[0])
+		var lines: Array = []
+		run.give_item(String(iid), 2, lines)
+		var g := {"lines": lines, "equip": _sorted_dict(run.equip), "bag": _sorted_dict(run.bag), "count": run.item_count(String(iid)), "bag_size": run.bag_size()}
+		var takes: Array = []
+		for _i in range(0, 3):
+			var okk: bool = run.take_item(String(iid), 1)
+			takes.append([okk, run.item_count(String(iid)), _sorted_dict(run.equip)])
+		g["takes"] = takes
+		gear[iid] = g
+	out["gear"] = gear
+	var sell := {}
+	for iid in D.items:
+		var run = _make(scs[0])
+		run.give_item(String(iid), 1, [])
+		var st0: int = run.stone
+		var v: int = run.sell(String(iid))
+		sell[iid] = [v, run.stone - st0, run.item_count(String(iid)), run.sell(String(iid))]
+	out["sell"] = sell
+	var pill := ""
+	for iid in D.items:
+		if String(D.items[iid].get("kind", "")) == "pill":
+			pill = String(iid)
+			break
+	var rs = _make(scs[0])
+	rs.shop = [{"id": pill, "price": 15}, {"id": "no_such_item_y", "price": 5}]
+	rs.stone = 20
+	var b: Array = []
+	b.append(rs.buy(pill))
+	b.append(rs.stone)
+	b.append(rs.shop.size())
+	b.append(rs.buy(pill))
+	b.append(rs.buy("no_such_item_y"))
+	b.append(rs.stone)
+	b.append(rs.shop.size())
+	b.append(_sorted_dict(rs.bag))
+	out["buy"] = b
+	# the end of a term: upkeep numbers
+	var et := {}
+	for sc in scs:
+		var run = _make(sc)
+		var o: Dictionary = run.end_term()
+		et[sc["name"]] = {"life": run.life, "year": run.year, "age": run.age, "hp": _r(run.hp), "mp": _r(run.mp), "notice": run.notice, "cult": _r(run.cult),
+			"layer": run.layer, "realm": run.realm, "dead": run.dead, "cause": run.death_cause, "died": o["died"], "corrupt": run.corrupt,
+			"has_event": (not run.current.is_empty()) or run.term > int(sc["term"]) or run.pending_events.size() > 0}
+		var r2 = _make(sc)
+		r2.life = 1
+		var o2: Dictionary = r2.end_term()
+		et[sc["name"] + "_old"] = {"dead": r2.dead, "cause": r2.death_cause, "died": o2["died"], "lines": o2["lines"], "imprints": r2.meta.imprints,
+			"lives": r2.meta.lives, "record": r2.finished_record, "best": [r2.meta.best_realm, r2.meta.best_layer], "history": r2.meta.history.size()}
+		var r3 = _make(sc)
+		r3.realm = 3
+		r3.layer = 1
+		r3.notice = 101
+		var o3: Dictionary = r3.end_term()
+		et[sc["name"] + "_hunted"] = {"notice": r3.notice, "dead": r3.dead, "flag": r3.flags.has("hunted"), "lines": o3["lines"]}
+	out["end_term"] = et
+	var ab := {}
+	for sc in scs:
+		var run = _make(sc)
+		run.new_truths = ["t_x"]
+		run.abandon()
+		ab[sc["name"]] = {"dead": run.dead, "cause": run.death_cause, "record": run.finished_record, "imprints": run.meta.imprints, "lives": run.meta.lives,
+			"best": [run.meta.best_realm, run.meta.best_layer], "total_terms": run.meta.total_terms}
+	out["abandon"] = ab
+	var bc: Array = []
+	var rb = _make(mid)
+	rb.realm = 2
+	rb.layer = 3
+	rb.cult = rb.need()
+	for f in [0, 1, 2, 3, 5]:
+		rb.bt_fails = f
+		rb.flags.erase("bt_pill")
+		bc.append(_r(rb.breakthrough_chance()))
+		rb.flags["bt_pill"] = true
+		bc.append(_r(rb.breakthrough_chance()))
+	bc.append(rb.breakthrough_ready())
+	rb.cult = rb.need() - 1.0
+	bc.append(rb.breakthrough_ready())
+	out["bt_chances"] = bc
+	# start of a term with offers on the table and a breakthrough ready
+	var rt = _make(mid)
+	var ids: Array = D.cards.keys()
+	rt.offers = [{"card": ids[0], "expires": 2}, {"card": ids[1], "expires": 1}, {"card": ids[2], "expires": 3}]
+	rt.realm = 2
+	rt.layer = 3
+	rt.cult = rt.need()
+	var tl: Array = []
+	rt._start_term(tl)
+	var tail: Array = rt.hand.slice(rt.hand.size() - 4)
+	out["start_term"] = {"hand_n": rt.hand.size(), "tail": tail, "offers": rt.offers, "term": rt.term, "ap": rt.ap, "swaps": rt.swaps_left, "lines": tl,
+		"ap_max": rt.ap_max()}
+	# a long free play of the engine: chains of events through choose() are covered above; the dictionary round trip:
+	var rd = _make(scs[2])
+	var d1: Dictionary = rd.to_dict()
+	var rd2 = Run.new(D, rd.meta, 1)
+	rd2.from_dict(JSON.parse_string(JSON.stringify(d1)))
+	var d2: Dictionary = rd2.to_dict()
+	out["roundtrip_equal"] = JSON.stringify(d1) == JSON.stringify(d2)
+	return out

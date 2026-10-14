@@ -1,0 +1,1051 @@
+{
+	"_schema": "tech: id zh en elem kind mult mp cd hits? target status? req? icon text enemy_only?  (heal/shield: mult scales 12% max HP + half Attack / 15% max HP; enemy_only techs carry req realm_min 9 so the library never offers them)",
+	"techniques": [
+		{
+			"id": "iron_fist",
+			"zh": "铁拳",
+			"en": "Iron Fist",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 1.3,
+			"mp": 4,
+			"cd": 1,
+			"target": "enemy",
+			"icon": "sk_iron_fist",
+			"text": "A plain punch with the whole shoulder behind it. Damage x1.3, every other turn."
+		},
+		{
+			"id": "swift_step",
+			"zh": "疾步",
+			"en": "Swift Step",
+			"elem": "none",
+			"kind": "buff",
+			"mult": 0,
+			"mp": 5,
+			"cd": 5,
+			"target": "self",
+			"status": [
+				{
+					"s": "spd_up",
+					"p": 1.0,
+					"dur": 4
+				}
+			],
+			"icon": "sk_swift_step",
+			"text": "Quick feet: Speed +30% for 4 turns."
+		},
+		{
+			"id": "qi_shield",
+			"zh": "气罩",
+			"en": "Qi Shield",
+			"elem": "none",
+			"kind": "shield",
+			"mult": 2.0,
+			"mp": 8,
+			"cd": 4,
+			"target": "self",
+			"icon": "sk_qi_shield",
+			"text": "A shell of drawn breath worth about 30% of your max HP. Used only while you have no shield."
+		},
+		{
+			"id": "heart_sword",
+			"zh": "心剑",
+			"en": "Heart-Sword",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 2.0,
+			"mp": 16,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "broken",
+					"p": 0.5,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 2
+			},
+			"icon": "sk_heart_sword",
+			"text": "A blade drawn from the part of you that has stopped lying. Damage x2.0; 50% to break the foe's guard (Defence -25%, 3 turns)."
+		},
+		{
+			"id": "thunder_palm",
+			"zh": "雷掌",
+			"en": "Thunder Palm",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 2.6,
+			"mp": 24,
+			"cd": 3,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.25,
+					"dur": 1
+				}
+			],
+			"req": {
+				"realm_min": 3
+			},
+			"icon": "sk_thunder_palm",
+			"text": "A palm that remembers lightning. Damage x2.6; 25% to stun for a turn."
+		},
+		{
+			"id": "meridian_burst",
+			"zh": "爆脉",
+			"en": "Meridian Burst",
+			"elem": "none",
+			"kind": "buff",
+			"mult": 0,
+			"mp": 14,
+			"cd": 6,
+			"target": "self",
+			"status": [
+				{
+					"s": "atk_up",
+					"p": 1.0,
+					"dur": 4
+				}
+			],
+			"req": {
+				"realm_min": 2
+			},
+			"icon": "sk_meridian_burst",
+			"text": "Open every meridian at once: Attack +30% for 4 turns. It hurts exactly as much as it sounds."
+		},
+		{
+			"id": "soul_drain",
+			"zh": "噬魂",
+			"en": "Soul Drain",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 1.6,
+			"mp": 14,
+			"cd": 3,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "weak",
+					"p": 0.6,
+					"dur": 3
+				},
+				{
+					"s": "regen",
+					"p": 1.0,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 2
+			},
+			"icon": "sk_soul_drain",
+			"text": "Take a sip of the foe's spirit: Damage x1.6, weakens (Attack -25%, 3 turns) and you regenerate for 3 turns."
+		},
+		{
+			"id": "blood_rite",
+			"zh": "血祭",
+			"en": "Blood Rite",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 2.6,
+			"mp": 12,
+			"cd": 5,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "atk_up",
+					"p": 1.0,
+					"dur": 3
+				},
+				{
+					"s": "broken",
+					"p": 0.5,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 2
+			},
+			"icon": "sk_blood_rite",
+			"text": "Spend a mouthful of your own blood: Damage x2.6, your Attack +30% for 3 turns, 50% to break the foe's guard."
+		},
+		{
+			"id": "azure_slash",
+			"zh": "青霄斩",
+			"en": "Azure Slash",
+			"elem": "metal",
+			"kind": "attack",
+			"mult": 1.5,
+			"mp": 6,
+			"cd": 1,
+			"target": "enemy",
+			"icon": "sk_azure_slash",
+			"text": "The Azure Sect's first cut: a clean line of cold light. Damage x1.5, every other turn."
+		},
+		{
+			"id": "sword_rain",
+			"zh": "剑雨",
+			"en": "Sword Rain",
+			"elem": "metal",
+			"kind": "attack",
+			"mult": 0.85,
+			"mp": 18,
+			"cd": 3,
+			"hits": 3,
+			"target": "enemy",
+			"req": {
+				"realm_min": 2
+			},
+			"icon": "sk_sword_rain",
+			"text": "A sky of small blades. Three hits at x0.85 each (x2.55 in all)."
+		},
+		{
+			"id": "metal_shield",
+			"zh": "金钟罩",
+			"en": "Golden Bell Guard",
+			"elem": "metal",
+			"kind": "shield",
+			"mult": 2.6,
+			"mp": 12,
+			"cd": 4,
+			"target": "self",
+			"status": [
+				{
+					"s": "def_up",
+					"p": 1.0,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 1
+			},
+			"icon": "sk_metal_shield",
+			"text": "A bell of metal qi: a shield worth about 39% of max HP and Defence +30% for 3 turns."
+		},
+		{
+			"id": "vine_bind",
+			"zh": "缚藤",
+			"en": "Binding Vines",
+			"elem": "wood",
+			"kind": "debuff",
+			"mult": 1.0,
+			"mp": 7,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "slow",
+					"p": 0.9,
+					"dur": 3
+				}
+			],
+			"icon": "sk_vine_bind",
+			"text": "Roots tear up the ground and climb the foe's legs: a light strike (x0.5) and Speed -40% for 3 turns."
+		},
+		{
+			"id": "spring_rain",
+			"zh": "春雨",
+			"en": "Spring Rain",
+			"elem": "wood",
+			"kind": "heal",
+			"mult": 1.8,
+			"mp": 10,
+			"cd": 3,
+			"target": "self",
+			"status": [
+				{
+					"s": "regen",
+					"p": 1.0,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 1
+			},
+			"icon": "sk_spring_rain",
+			"text": "A warm rain that mends: heals about 35-40% of your HP (12% of max plus half your Attack, x1.8) and regenerates for 3 turns."
+		},
+		{
+			"id": "thorn_burst",
+			"zh": "荆棘爆",
+			"en": "Thorn Burst",
+			"elem": "wood",
+			"kind": "attack",
+			"mult": 1.8,
+			"mp": 12,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "poison",
+					"p": 0.7,
+					"dur": 4,
+					"v": 0.08
+				}
+			],
+			"req": {
+				"realm_min": 1
+			},
+			"icon": "sk_thorn_burst",
+			"text": "The ground erupts in thorns: Damage x1.8; 70% to poison for 4 turns (ignores Defence)."
+		},
+		{
+			"id": "ice_lance",
+			"zh": "冰枪",
+			"en": "Ice Lance",
+			"elem": "water",
+			"kind": "attack",
+			"mult": 1.6,
+			"mp": 8,
+			"cd": 1,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "slow",
+					"p": 0.4,
+					"dur": 2
+				}
+			],
+			"icon": "sk_ice_lance",
+			"text": "A spear of hard frost. Damage x1.6; 40% to slow for 2 turns."
+		},
+		{
+			"id": "frost_veil",
+			"zh": "寒霜幕",
+			"en": "Frost Veil",
+			"elem": "water",
+			"kind": "attack",
+			"mult": 0.9,
+			"mp": 10,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "shield",
+					"p": 1.0,
+					"dur": 3,
+					"v": 1.5
+				},
+				{
+					"s": "slow",
+					"p": 0.6,
+					"dur": 2
+				}
+			],
+			"req": {
+				"realm_min": 1
+			},
+			"icon": "sk_frost_veil",
+			"text": "A curtain of cold mist: a lash of frost (x0.9), a shield of about 22% of max HP, and a 60% chance to slow the foe for 2 turns."
+		},
+		{
+			"id": "mist_step",
+			"zh": "雾步",
+			"en": "Mist Step",
+			"elem": "water",
+			"kind": "buff",
+			"mult": 0,
+			"mp": 6,
+			"cd": 5,
+			"target": "self",
+			"status": [
+				{
+					"s": "spd_up",
+					"p": 1.0,
+					"dur": 4
+				},
+				{
+					"s": "def_up",
+					"p": 1.0,
+					"dur": 4
+				}
+			],
+			"req": {
+				"realm_min": 1
+			},
+			"icon": "sk_mist_step",
+			"text": "Walk where the mist is: Speed and Defence +30% for 4 turns."
+		},
+		{
+			"id": "fireball",
+			"zh": "火球",
+			"en": "Fireball",
+			"elem": "fire",
+			"kind": "attack",
+			"mult": 1.7,
+			"mp": 9,
+			"cd": 1,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "burn",
+					"p": 0.5,
+					"dur": 3,
+					"v": 0.1
+				}
+			],
+			"icon": "sk_fireball",
+			"text": "A ball of burning breath. Damage x1.7; 50% to burn for 3 turns."
+		},
+		{
+			"id": "flame_wave",
+			"zh": "烈焰浪",
+			"en": "Flame Wave",
+			"elem": "fire",
+			"kind": "attack",
+			"mult": 2.2,
+			"mp": 20,
+			"cd": 3,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "burn",
+					"p": 0.8,
+					"dur": 3,
+					"v": 0.12
+				}
+			],
+			"req": {
+				"realm_min": 2
+			},
+			"icon": "sk_flame_wave",
+			"text": "A wall of flame rolls out from your feet. Damage x2.2; 80% to burn for 3 turns."
+		},
+		{
+			"id": "phoenix_burn",
+			"zh": "凤凰焚",
+			"en": "Phoenix Burn",
+			"elem": "fire",
+			"kind": "attack",
+			"mult": 3.2,
+			"mp": 30,
+			"cd": 5,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "burn",
+					"p": 1.0,
+					"dur": 4,
+					"v": 0.12
+				},
+				{
+					"s": "regen",
+					"p": 1.0,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 3
+			},
+			"icon": "sk_phoenix_burn",
+			"text": "A bird of fire that eats the sky and gives some back. Damage x3.2, a sure burn for 4 turns, and you regenerate for 3."
+		},
+		{
+			"id": "stone_skin",
+			"zh": "石肤",
+			"en": "Stone Skin",
+			"elem": "earth",
+			"kind": "buff",
+			"mult": 0,
+			"mp": 6,
+			"cd": 5,
+			"target": "self",
+			"status": [
+				{
+					"s": "def_up",
+					"p": 1.0,
+					"dur": 5
+				}
+			],
+			"icon": "sk_stone_skin",
+			"text": "Skin as hard as a river-bed: Defence +30% for 5 turns."
+		},
+		{
+			"id": "quake_palm",
+			"zh": "震地掌",
+			"en": "Quake Palm",
+			"elem": "earth",
+			"kind": "attack",
+			"mult": 1.9,
+			"mp": 14,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.2,
+					"dur": 1
+				}
+			],
+			"req": {
+				"realm_min": 1
+			},
+			"icon": "sk_quake_palm",
+			"text": "A palm that cracks the earth: Damage x1.9; 20% to stun for a turn."
+		},
+		{
+			"id": "mountain_press",
+			"zh": "镇岳",
+			"en": "Mountain Press",
+			"elem": "earth",
+			"kind": "attack",
+			"mult": 3.0,
+			"mp": 28,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "slow",
+					"p": 1.0,
+					"dur": 2
+				},
+				{
+					"s": "broken",
+					"p": 0.6,
+					"dur": 3
+				}
+			],
+			"req": {
+				"realm_min": 3
+			},
+			"icon": "sk_mountain_press",
+			"text": "The weight of a mountain, pressed through your hand: Damage x3.0, a sure slow for 2 turns and 60% to break the foe's guard."
+		},
+		{
+			"id": "savage_bite",
+			"zh": "撕咬",
+			"en": "Savage Bite",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 1.3,
+			"mp": 3,
+			"cd": 2,
+			"target": "enemy",
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_savage_bite",
+			"text": "Teeth, mostly. Damage x1.3."
+		},
+		{
+			"id": "gore_charge",
+			"zh": "顶撞",
+			"en": "Gore Charge",
+			"elem": "earth",
+			"kind": "attack",
+			"mult": 1.5,
+			"mp": 4,
+			"cd": 3,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.2,
+					"dur": 1
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_gore_charge",
+			"text": "Head down, no brakes. Damage x1.5; 20% to stun."
+		},
+		{
+			"id": "venom_fang",
+			"zh": "毒牙",
+			"en": "Venom Fang",
+			"elem": "wood",
+			"kind": "attack",
+			"mult": 0.9,
+			"mp": 4,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "poison",
+					"p": 0.9,
+					"dur": 4,
+					"v": 0.08
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_venom_fang",
+			"text": "A quick bite and a long fever. Damage x0.9; 90% to poison for 4 turns."
+		},
+		{
+			"id": "dirty_trick",
+			"zh": "阴招",
+			"en": "Dirty Trick",
+			"elem": "none",
+			"kind": "debuff",
+			"mult": 1.0,
+			"mp": 3,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "weak",
+					"p": 0.8,
+					"dur": 3
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_dirty_trick",
+			"text": "A fistful of dust to the eyes: a light strike and Attack -25% for 3 turns."
+		},
+		{
+			"id": "corpse_claw",
+			"zh": "尸爪",
+			"en": "Corpse Claw",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 1.4,
+			"mp": 6,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "poison",
+					"p": 0.5,
+					"dur": 3,
+					"v": 0.08
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_corpse_claw",
+			"text": "Grave-soil under the nails. Damage x1.4; 50% to poison for 3 turns."
+		},
+		{
+			"id": "fox_fire",
+			"zh": "狐火",
+			"en": "Fox Fire",
+			"elem": "fire",
+			"kind": "attack",
+			"mult": 1.3,
+			"mp": 6,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "burn",
+					"p": 0.5,
+					"dur": 3,
+					"v": 0.1
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_fox_fire",
+			"text": "A cold blue flame that does not care what it burns. Damage x1.3; 50% to burn."
+		},
+		{
+			"id": "ghost_wail",
+			"zh": "鬼哭",
+			"en": "Ghost Wail",
+			"elem": "none",
+			"kind": "debuff",
+			"mult": 0.8,
+			"mp": 8,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "weak",
+					"p": 0.9,
+					"dur": 3
+				},
+				{
+					"s": "slow",
+					"p": 0.5,
+					"dur": 2
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_ghost_wail",
+			"text": "A cry that goes through the ribs: Attack -25% for 3 turns and 50% to slow."
+		},
+		{
+			"id": "tiger_roar",
+			"zh": "虎啸",
+			"en": "Tiger's Roar",
+			"elem": "metal",
+			"kind": "debuff",
+			"mult": 0.8,
+			"mp": 8,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "weak",
+					"p": 0.9,
+					"dur": 3
+				},
+				{
+					"s": "stun",
+					"p": 0.15,
+					"dur": 1
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_tiger_roar",
+			"text": "The roar shakes the leaves off: Attack -25% for 3 turns, 15% to stun."
+		},
+		{
+			"id": "tidal_crash",
+			"zh": "浪涌",
+			"en": "Tidal Crash",
+			"elem": "water",
+			"kind": "attack",
+			"mult": 2.2,
+			"mp": 16,
+			"cd": 3,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "slow",
+					"p": 0.6,
+					"dur": 2
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_tidal_crash",
+			"text": "A wall of water that was not there a breath ago. Damage x2.2; 60% to slow."
+		},
+		{
+			"id": "halberd_sweep",
+			"zh": "戟扫",
+			"en": "Halberd Sweep",
+			"elem": "metal",
+			"kind": "attack",
+			"mult": 2.0,
+			"mp": 14,
+			"cd": 2,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.2,
+					"dur": 1
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_halberd_sweep",
+			"text": "A long arc of celestial iron. Damage x2.0; 20% to stun."
+		},
+		{
+			"id": "registry_brand",
+			"zh": "命簿烙印",
+			"en": "Registry Brand",
+			"elem": "none",
+			"kind": "debuff",
+			"mult": 1.0,
+			"mp": 14,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "broken",
+					"p": 1.0,
+					"dur": 4
+				},
+				{
+					"s": "weak",
+					"p": 0.6,
+					"dur": 3
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_registry_brand",
+			"text": "Ink that behaves like a burn: a light strike, Defence -25% for 4 turns and Attack -25% for 3."
+		},
+		{
+			"id": "writ_erase",
+			"zh": "勾名",
+			"en": "Strike the Name",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 2.4,
+			"mp": 20,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "weak",
+					"p": 0.8,
+					"dur": 3
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_writ_erase",
+			"text": "A line drawn through a name that is not yours. It still hurts. Damage x2.4; 80% to weaken."
+		},
+		{
+			"id": "heaven_edict",
+			"zh": "天条",
+			"en": "Heaven's Edict",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 3.0,
+			"mp": 36,
+			"cd": 5,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.3,
+					"dur": 1
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_heaven_edict",
+			"text": "A rule of the sky, read out loud. Damage x3.0; 30% to stun."
+		},
+		{
+			"id": "seal_of_registry",
+			"zh": "封印",
+			"en": "Seal of the Registry",
+			"elem": "none",
+			"kind": "debuff",
+			"mult": 1.2,
+			"mp": 18,
+			"cd": 5,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.5,
+					"dur": 1
+				},
+				{
+					"s": "slow",
+					"p": 1.0,
+					"dur": 3
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_seal_of_registry",
+			"text": "A stamp that lands like a door shutting: a light strike, 50% to stun and a sure slow for 3 turns."
+		},
+		{
+			"id": "fated_path",
+			"zh": "命途",
+			"en": "Fated Path",
+			"elem": "none",
+			"kind": "buff",
+			"mult": 0,
+			"mp": 24,
+			"cd": 6,
+			"target": "self",
+			"status": [
+				{
+					"s": "atk_up",
+					"p": 1.0,
+					"dur": 4
+				},
+				{
+					"s": "def_up",
+					"p": 1.0,
+					"dur": 4
+				},
+				{
+					"s": "regen",
+					"p": 1.0,
+					"dur": 4
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_fated_path",
+			"text": "Every door already open: Attack and Defence +30% for 4 turns, and a slow regeneration."
+		},
+		{
+			"id": "ink_stroke",
+			"zh": "墨笔",
+			"en": "Ink Stroke",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 2.4,
+			"mp": 16,
+			"cd": 3,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "broken",
+					"p": 0.7,
+					"dur": 3
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_ink_stroke",
+			"text": "A one-armed stroke, wet and certain. Damage x2.4; 70% to break the guard."
+		},
+		{
+			"id": "patching_sword",
+			"zh": "补天剑",
+			"en": "Sky-Patching Sword",
+			"elem": "metal",
+			"kind": "attack",
+			"mult": 3.0,
+			"mp": 30,
+			"cd": 4,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "broken",
+					"p": 0.8,
+					"dur": 3
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_patching_sword",
+			"text": "A blade made to close a wound in the sky. Damage x3.0; 80% to break the guard."
+		},
+		{
+			"id": "sky_bolt",
+			"zh": "天雷",
+			"en": "Sky Bolt",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 4.5,
+			"mp": 0,
+			"cd": 1,
+			"target": "enemy",
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_sky_bolt",
+			"text": "The first heaven's lightning, a single decree of white. Damage x6.0."
+		},
+		{
+			"id": "nine_heavens_thunder",
+			"zh": "九霄神雷",
+			"en": "Nine-Heavens Thunder",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 5.0,
+			"mp": 0,
+			"cd": 1,
+			"target": "enemy",
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_nine_heavens_thunder",
+			"text": "Nine layers of sky spoken at once. Damage x7.0."
+		},
+		{
+			"id": "dao_thunder",
+			"zh": "劫雷",
+			"en": "Dao-Ending Thunder",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 6.0,
+			"mp": 0,
+			"cd": 1,
+			"target": "enemy",
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_dao_thunder",
+			"text": "The thunder that ends a way. Damage x8.0."
+		},
+		{
+			"id": "final_ledger",
+			"zh": "终卷",
+			"en": "The Final Ledger",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 4.0,
+			"mp": 40,
+			"cd": 5,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "weak",
+					"p": 1.0,
+					"dur": 4
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_final_ledger",
+			"text": "The page that totals every other page. Damage x4.0; a sure weaken for 4 turns."
+		},
+		{
+			"id": "world_collapse",
+			"zh": "天幕崩塌",
+			"en": "Canopy Collapse",
+			"elem": "none",
+			"kind": "attack",
+			"mult": 5.0,
+			"mp": 60,
+			"cd": 6,
+			"target": "enemy",
+			"status": [
+				{
+					"s": "stun",
+					"p": 0.4,
+					"dur": 1
+				}
+			],
+			"enemy_only": true,
+			"req": {
+				"realm_min": 9
+			},
+			"icon": "sk_world_collapse",
+			"text": "The sky itself, let go of. Damage x5.0; 40% to stun."
+		}
+	]
+}

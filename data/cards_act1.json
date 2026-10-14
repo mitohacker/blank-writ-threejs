@@ -1,0 +1,94 @@
+{
+	"cards": [
+		{
+			"id": "c_backstage",
+			"zh": "后台一见",
+			"en": "Backstage",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_backstage",
+			"text": "The wings of the opera sell secrets by the copper. Someone there has been looking for you.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a1_opera_backstage"
+				}
+			]
+		},
+		{
+			"id": "c_pup",
+			"zh": "狼崽来访",
+			"en": "The Pup Follows",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_pup",
+			"text": "A grey shape has been keeping pace with you for three days. It leaves things on the step.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a1_pup_returns"
+				}
+			]
+		},
+		{
+			"id": "c_merchant_deal",
+			"zh": "商人回头",
+			"en": "The Merchant Returns",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_merchant_deal",
+			"text": "He always holds what he sells. Today he has something for a richer you.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a1_merchant_second"
+				}
+			]
+		},
+		{
+			"id": "c_gamblers_dare",
+			"zh": "赌客之约",
+			"en": "The Gambler's Dare",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_gamblers_dare",
+			"text": "A man with beautiful hands wants one honest throw, mine against yours.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a1_gambler_stakes"
+				}
+			]
+		},
+		{
+			"id": "c_letter_reader",
+			"zh": "寻人读信",
+			"en": "Find a Reader",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_letter_reader",
+			"text": "The letter in your sleeve is only paper until somebody reads it to you.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a1_letter_read"
+				}
+			]
+		},
+		{
+			"id": "c_well_midnight",
+			"zh": "子夜井边",
+			"en": "Midnight at the Well",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_well_midnight",
+			"text": "The hum in the well has become words. It speaks only after the village is asleep.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a1_well_midnight"
+				}
+			]
+		}
+	]
+}

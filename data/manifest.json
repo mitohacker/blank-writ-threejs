@@ -1,0 +1,44 @@
+{
+ "files": [
+  "cards.json",
+  "cards_act1.json",
+  "cards_act2.json",
+  "cards_act3.json",
+  "endings.json",
+  "enemies.json",
+  "enemies_act2.json",
+  "items.json",
+  "items_act2.json",
+  "items_act3.json",
+  "methods.json",
+  "origins.json",
+  "rules.json",
+  "talents.json",
+  "techniques.json",
+  "techniques_act2.json",
+  "truths.json",
+  "wheel.json"
+ ],
+ "events": [
+  "act1_random.json",
+  "act1_sects.json",
+  "act1_spine.json",
+  "act2_companions.json",
+  "act2_random.json",
+  "act2_spine.json",
+  "act3_random.json",
+  "act3_spine.json",
+  "act4_random.json",
+  "act4_spine.json"
+ ],
+ "i18n": [
+  "zh_content_0.json",
+  "zh_content_1.json",
+  "zh_content_2.json",
+  "zh_content_3.json",
+  "zh_content_4.json",
+  "zh_content_5.json",
+  "zh_ui.json",
+  "zh_ui_screens.json"
+ ]
+}

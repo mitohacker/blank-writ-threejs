@@ -1,0 +1,15 @@
+{
+  "name": "blank-writ-threejs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Blank Writ (无字命) - a xianxia action-card roguelite in the browser (three.js + DOM, no build step)",
+  "scripts": {
+    "serve": "python serve.py",
+    "test": "node tests/test_sim.mjs",
+    "assets": "python tools/build_assets.py"
+  },
+  "devDependencies": {
+    "playwright-core": "1.49.0"
+  }
+}

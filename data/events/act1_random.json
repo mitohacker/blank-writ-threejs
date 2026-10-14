@@ -1,0 +1,3153 @@
+{
+	"events": [
+		{
+			"id": "a1_haunted_well",
+			"kind": "random",
+			"act": 1,
+			"title": "The Well Hums at Night",
+			"art": "village",
+			"text": "The well behind the shrine has started to hum at night, a low note, patient, like someone trying to remember the end of a song. The old women say it is the Widow Fan, who went down after her husband three winters back and did not come up with the bucket. By dusk the children are sent to fetch water in daylight and everyone gives the well a wide berth, which is how you know it is serious. Tonight a bucket has gone down with nobody holding the rope.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"ghost"
+			],
+			"choices": [
+				{
+					"label": "Lower a lantern and listen",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 16
+								},
+								{
+									"op": "offer",
+									"card": "c_well_midnight"
+								},
+								{
+									"op": "text",
+									"t": "The hum has a word in it. It is a very small word, and it is the same word every time."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp",
+									"v": -6
+								},
+								{
+									"op": "text",
+									"t": "The hum finds your teeth and stays there until morning."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Pour out a cup of wine and rice",
+					"cost": {
+						"stone": 3
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "stat",
+											"k": "fortune",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "The hum drops by a third. In the morning there is a copper in the bucket that you did not put there."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "text",
+											"t": "The hum drops a note, as if in thanks, and goes on."
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Drop a stone down and see if she minds",
+					"hint": "She minds.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "ghost",
+							"scale": 0.7,
+							"win": [
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "In the sodden dark at the bottom your hand closes on a silver hairpin, and on the long-held breath of three winters."
+								}
+							],
+							"lose": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_bandits_road",
+			"kind": "random",
+			"act": 1,
+			"title": "Bandits at the Ford",
+			"art": "wilds",
+			"text": "Four men stand across the road under a dead pine, and the youngest is trying to look as though he had always been standing there. The leader has a knife and a toothache and he is not good at the one thing bandits rely on, which is being frightening. “Purse,” he says. “And the shoes.” Behind them a cart sits on its axle with a wheel off, and a woman is sitting on it with a baby, pretending very hard to be a rock.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 2,
+			"tags": [
+				"wilds",
+				"road"
+			],
+			"choices": [
+				{
+					"label": "Fight them",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "bandit",
+							"win": [
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "cult",
+									"v": 12
+								}
+							],
+							"lose": []
+						}
+					]
+				},
+				{
+					"label": "Pay the toll",
+					"cost": {
+						"stone": 10
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "text",
+							"t": "The leader counts it with a moving mouth. The woman on the cart gives you a rice cake and does not look at you, which you understand to be a kindness."
+						}
+					]
+				},
+				{
+					"label": "Ask about the toothache",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "stone",
+									"v": 8
+								},
+								{
+									"op": "text",
+									"t": "You tell him which root to bite and which to leave, and he is so astonished at being helped that he forgets the rest of the robbery. His men let you pass; the youngest hands you a coin."
+								}
+							],
+							"fail": [
+								{
+									"op": "stone",
+									"v": -8
+								},
+								{
+									"op": "text",
+									"t": "He thanks you for your concern and takes your purse anyway."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Let the pup step out of the reeds",
+					"hint": "You raised it.",
+					"req": {
+						"flags": [
+							"a1_pup_kept"
+						]
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "stone",
+							"v": 5
+						},
+						{
+							"op": "text",
+							"t": "Grown to the size of a calf and not at all troubled by it, your wolf comes out of the reeds with its head low. The youngest bandit sits down in the road. The rest make a decision."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_flood",
+			"kind": "random",
+			"act": 1,
+			"title": "The River Wants the Granary",
+			"art": "village",
+			"text": "Three days of rain, and the river has decided it wants the lower field, the granary and, if it is allowed, the rest. The village is out in a line passing sacks. The headman is up to his waist in it, shouting numbers nobody can hear. The rice in the lower granary is the winter, all of it. The ox on the bank is the plough, all of it. Both are going. There is time for one.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village"
+				],
+				"term_min": 3
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"village",
+				"water"
+			],
+			"choices": [
+				{
+					"label": "Carry sacks from the lower granary",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "Eleven sacks, by your count, and the headman's wife counted better. She sends a measure of rice to your door."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "The river takes the third sack and a little of you."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Cut the ox loose and drive it uphill",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "text",
+							"t": "The farmer will remember it at the next harvest, and so will the ox."
+						}
+					]
+				},
+				{
+					"label": "Dig a trench to turn the water",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "stat",
+									"k": "insight",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "You read the slope the way an old man reads a face, and the river, offended, goes the other way."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "The trench fills before it is finished. It is still a very good trench."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_wedding",
+			"kind": "random",
+			"act": 1,
+			"title": "Somebody Else's Wedding",
+			"art": "village",
+			"text": "Someone's second cousin is marrying someone's ugly brother, and the whole village is invited, which is to say it has invited itself. There is rice wine in buckets and a dog under the long table who has done well for himself. The bride laughs at the groom's jokes with the face of a woman who has just decided something. At the last toast the best man, drunk, reaches for the jar of good wine and the jar goes off the table, and everyone looks at you, because you are nearest.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village",
+					"town"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"town"
+			],
+			"choices": [
+				{
+					"label": "Catch the jar",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 12
+								},
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "The jar lands in your hands like a sleeping cat. The groom's family never forgets a friend, and a red packet finds you before the night is out."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "The jar goes. It takes the groom's sleeve and the bride's good mood with it. Nobody blames you aloud."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Let it fall and take the blame with a bow",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "stone",
+							"v": -3
+						}
+					],
+					"after": "The best man weeps with relief. The bride, quite distinctly, winks at you over his shoulder."
+				},
+				{
+					"label": "Dance with Xiao He, badly",
+					"hint": "She has been waiting for somebody to ask.",
+					"req": {
+						"rel": {
+							"xiaohe": 2
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "text",
+							"t": "She leads. You are not consulted. Somewhere in the second figure she begins to laugh, properly, and does not cough once."
+						}
+					]
+				},
+				{
+					"label": "Slip out and eat with the dog",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						}
+					],
+					"after": "The dog has the better of the bargain, but you are not unhappy. Somebody behind you is singing the Peach Blossom Road very badly and with a great deal of feeling."
+				}
+			]
+		},
+		{
+			"id": "a1_lost_child",
+			"kind": "random",
+			"act": 1,
+			"title": "The Child in the Reeds",
+			"art": "village",
+			"text": "A boy of five is sitting in the reeds by the river and crying with the thoroughness of someone who has been at it for hours. He will not say his name. He will say that there was a lady and a tail, and that she said to wait, and then she wasn't there. His shoes are very good shoes. Whoever he belongs to is not from here. Whoever he belongs to is not, if the tail is to be credited, entirely a person.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village",
+					"town"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"fox"
+			],
+			"choices": [
+				{
+					"label": "Carry him to the headman",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "cult",
+							"v": 4
+						}
+					],
+					"after": "The headman's wife gives you a rice-ball and a look of such complete understanding that you suspect she has met the lady with the tail before."
+				},
+				{
+					"label": "Wait with him until the lady comes back",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "item",
+									"id": "charm_jade"
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "She comes at dusk, a woman with a quiet face and one tail too many, and takes the boy by the hand. She leaves something in the reeds without looking at it: a small green stone on a cord."
+								}
+							],
+							"fail": [
+								{
+									"op": "stone",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "Nobody comes. At dusk you carry him in. The headman's wife feeds you both, and does not ask whose he is."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Take him to the shrine and leave an offering",
+					"cost": {
+						"stone": 2
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -5
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "In the morning the boy is gone from the shrine steps. So is the offering. The shrine's fox looks just as it always looks."
+				}
+			]
+		},
+		{
+			"id": "a1_merchant_offer",
+			"kind": "random",
+			"act": 1,
+			"title": "A Merchant With Too Many Smiles",
+			"art": "town",
+			"portrait": "merchant",
+			"text": "A merchant sets up at the crossroads with a cart of ordinary things and a manner that is not. He has a pill, he says, a very special pill, for people with a good eye and a poor purse. It looks like a pill. It smells like a pill. He looks at your hands as you might look at a stranger's shoes, deciding whether they merit a conversation. “Ten stones,” he says. “Or I hold it for you till you are richer. That's the other thing I sell.”",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"town",
+					"village",
+					"wilds"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"town",
+				"merchant"
+			],
+			"choices": [
+				{
+					"label": "Buy the pill",
+					"cost": {
+						"stone": 10
+					},
+					"fx": [
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "item",
+											"id": "pill_qi"
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "cult",
+											"v": 2
+										},
+										{
+											"op": "text",
+											"t": "Chalk. Good chalk, but chalk."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "cult",
+											"v": 12
+										},
+										{
+											"op": "text",
+											"t": "It is not a pill so much as the rumour of one. You feel it all week."
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Haggle",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "item",
+									"id": "pill_qi"
+								},
+								{
+									"op": "stone",
+									"v": -4
+								},
+								{
+									"op": "text",
+									"t": "He settles for four stones and a look of professional injury."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "He packs his cart without any hurry, and you are left with the sensation of having been very slightly robbed of nothing."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Sell him two herbs",
+					"cost": {
+						"herb": 2
+					},
+					"fx": [
+						{
+							"op": "stone",
+							"v": 20
+						},
+						{
+							"op": "text",
+							"t": "He weighs them with a delicate disgust, and pays more than you expected. That is the part you will think about later."
+						}
+					]
+				},
+				{
+					"label": "Tell him to hold it for you",
+					"fx": [
+						{
+							"op": "offer",
+							"card": "c_merchant_deal",
+							"expires": 3
+						}
+					],
+					"after": "“I always hold what I sell,” he says. “It's the other half of the trade.”"
+				}
+			]
+		},
+		{
+			"id": "a1_talking_crow",
+			"kind": "random",
+			"act": 1,
+			"title": "A Crow With Opinions",
+			"art": "village",
+			"text": "The crow on the roof ridge has been watching you eat. “Not a good egg,” it says, quite clearly. “The second one's worse.” It tilts its head and looks at your ear, your sleeve, your face. “Funny,” it says. “You've got a hole where the number goes.” There is a ring of white feathers round one of its legs, like a cuff. It cannot be saying what it appears to be saying. It says it again, to be certain.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"any",
+				"omen"
+			],
+			"choices": [
+				{
+					"label": "Share the egg",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a1_crow"
+						},
+						{
+							"op": "text",
+							"t": "“Don't listen to the sparrows,” it says, with its mouth full. “The sparrows are clerks.”"
+						}
+					]
+				},
+				{
+					"label": "Throw a stone",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "It goes up in a clatter of oaths and leaves behind a copper charm that was tied to its leg. It is back on the ridge before you have put your arm down, and it holds a grudge, you can tell, for years."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "You miss. It says your whole name aloud, once, clearly, to the street. Nobody seems to find that odd."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask who it works for",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": 6
+						}
+					],
+					"after": "It stops chewing. It looks at the sky, and then at you, and says in a voice quite unlike its own: “Nobody. Not any more.” Then it flies."
+				}
+			]
+		},
+		{
+			"id": "a1_wolf_pup",
+			"kind": "random",
+			"act": 1,
+			"title": "A Pup in the Snare",
+			"art": "wilds",
+			"text": "A snare line the hunters forgot to check has caught something small and furious: a wolf pup, grey, a front paw bloodied to the bone, making the sound of a kettle that has decided to bite. Its mother is somewhere in the pines; you can feel her the way you feel weather. The trapper in town gives eight stones for a good pelt. A pup that the winter does not eat, grown, is a different kind of animal altogether.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village",
+					"wilds"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"wilds",
+				"beast"
+			],
+			"choices": [
+				{
+					"label": "Free it",
+					"fx": [
+						{
+							"op": "offer",
+							"card": "c_pup",
+							"expires": 4
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "It does not thank you. It looks at you for a long moment, memorising something, and then it is gone into the pines at a limp."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp",
+									"v": -8
+								},
+								{
+									"op": "text",
+									"t": "It bites you to the bone and then, quite deliberately, stops. You take your hand away; it lets you."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Take the pelt, and deal with the mother",
+					"hint": "She is closer than you think.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "wolf",
+							"scale": 0.9,
+							"win": [
+								{
+									"op": "stone",
+									"v": 14
+								},
+								{
+									"op": "cult",
+									"v": 12
+								}
+							],
+							"lose": []
+						}
+					]
+				},
+				{
+					"label": "Leave it. It is the wood's business",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "You walk home with the sound of it following you for a mile, and for a mile after that, the lack of it."
+				}
+			]
+		},
+		{
+			"id": "a1_bad_harvest",
+			"kind": "random",
+			"act": 1,
+			"title": "The Granary Is Short",
+			"art": "village",
+			"text": "The count at the autumn weighing is short by a third, and everyone has been very careful not to say whose fault that is: the blight, the rain, the headman's brother-in-law, the tithe man, who counts in a larger measure than the village does. The headman has set the empty bin where everyone must walk past it. He has not asked for anything. He has only put it where it is.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village"
+				],
+				"term_min": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"famine"
+			],
+			"choices": [
+				{
+					"label": "Put in what you can",
+					"cost": {
+						"stone": 8
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "The headman writes it down slowly, in the village's book. It is not the Registry's book. It is a better kind of ledger, you find, to be in."
+				},
+				{
+					"label": "Say nothing and walk past the bin",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": -1
+						}
+					],
+					"after": "Nobody says anything. It is a very loud nothing, and it has the shape of you."
+				},
+				{
+					"label": "Go to the hills and hunt",
+					"hint": "Winter boars are not shy.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "boar",
+							"win": [
+								{
+									"op": "stone",
+									"v": 18
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 8
+								}
+							],
+							"lose": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_travelling_opera",
+			"kind": "random",
+			"act": 1,
+			"title": "The Cinnabar Lantern Comes",
+			"art": "town",
+			"portrait": "sujiu",
+			"text": "The Cinnabar Lantern troupe sets up in the market with a wagon, two drums and a dragon's head held together by faith. Children appear from nowhere. The lead plays a general with a face of three colours and a voice that makes pigeons reconsider. In the dark of the wagon at the back a lamp goes on and off, and a fox, if it is a fox, watches the crowd with an expression of wealthy contempt. A hand-lettered sign at the ticket table says that the wings sell secrets by the copper. No refunds.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"town",
+					"village"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"town",
+				"fox",
+				"opera"
+			],
+			"choices": [
+				{
+					"label": "Watch from the front row",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "offer",
+							"card": "c_backstage",
+							"expires": 3
+						}
+					],
+					"after": "By the third act you have forgotten to be anything but a pair of eyes. When the general dies, on his back, in three colours, you could swear he looks at you."
+				},
+				{
+					"label": "Pay a copper for a secret",
+					"cost": {
+						"stone": 2
+					},
+					"fx": [
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "cult",
+											"v": 10
+										},
+										{
+											"op": "text",
+											"t": "Your secret is that the dragon's head is stuffed with straw from the magistrate's own barn. It is of no use whatsoever. It is a secret you will tell at parties."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "stat",
+											"k": "fortune",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "A voice behind the curtain: “You will be lucky once this year, and you will not know which time it was.” Then the curtain closes."
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Go round the back. The stage-hands know your drum",
+					"req": {
+						"origin": [
+							"foundling"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 2
+						},
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "They give you a drum, a bowl of soup, and the third drum-seat as if you had never been gone. Between the second and third acts a tail goes past you in the half-dark and flicks you across the knee, quite deliberately."
+				}
+			]
+		},
+		{
+			"id": "a1_weighing_monk",
+			"kind": "random",
+			"act": 1,
+			"title": "The Monk with the Scale",
+			"art": "village",
+			"portrait": "elder",
+			"text": "A monk in a patched robe has set a bronze scale on a milk-crate beside the road, with a stone in one pan and nothing in the other. He weighs passers-by in the old sense: he holds your sleeve for a moment, looks at the pans, and says what he sees. A fisherman tips left and is told to mend a quarrel. A mother tips right and is told to rest. When he takes your sleeve the scale does something it has not done all day. The pans stay level, and then both rise a hair, as though neither had anything to say.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"any",
+				"monk"
+			],
+			"choices": [
+				{
+					"label": "Ask him to teach you to fast",
+					"hint": "He will want you hungry.",
+					"fx": [
+						{
+							"op": "card",
+							"id": "fast"
+						},
+						{
+							"op": "hp",
+							"v": -4
+						}
+					],
+					"after": "“It is the same lesson,” he says. “Learn to carry less.” He teaches you to sit with a hollow stomach until the hollow becomes company."
+				},
+				{
+					"label": "Give him a copper and take his blessing",
+					"cost": {
+						"stone": 3
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -8
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					]
+				},
+				{
+					"label": "Walk on without a word",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 4
+						}
+					]
+				},
+				{
+					"label": "You know why the pans balance. Say so",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "notice",
+							"v": -10
+						}
+					],
+					"after": "The monk lowers the scale. “Nobody has ever told me,” he says. “Only asked.” He folds his hands and bows, and he bows a long time."
+				}
+			]
+		},
+		{
+			"id": "a1_strength_contest",
+			"kind": "random",
+			"act": 1,
+			"title": "The Stone-Lifting",
+			"art": "town",
+			"text": "The autumn fair has a stone, the way every autumn fair has a stone: grey, waist-high, the size of a sleeping pig, with a rope cradle and a record scratched in the lintel by a man now dead. Stakes are small and the wine is not. The ironmonger's son has lifted it twice this afternoon and is on the third with the face of someone doing arithmetic. The blacksmith's wife is taking bets with a ledger she appears to have written herself. “Your turn,” she says. “Or are you only here for the pastries?”",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"town",
+					"village"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"town",
+				"contest"
+			],
+			"choices": [
+				{
+					"label": "Lift it",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "It comes up with a sound like a held breath let out, and the crowd, which was divided, is not any more."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.25
+								},
+								{
+									"op": "text",
+									"t": "It does not come up. Something in your back does, briefly, in the wrong direction."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Bet on the ironmonger's son",
+					"cost": {
+						"stone": 5
+					},
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 16
+								},
+								{
+									"op": "text",
+									"t": "He gets it over his head and holds it there to a count of five. The blacksmith's wife pays out without looking up."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "He puts it down on his own foot, lifting, and the stake goes with him to the bonesetter's."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Study the rope cradle",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "You see how the rope sits and where a body would have to sit to it, and you take it in one clean pull, like a man picking a rose."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "It is a very interesting rope."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_herb_gone_wrong",
+			"kind": "random",
+			"act": 1,
+			"title": "The Wrong Mushroom",
+			"art": "wilds",
+			"text": "Hillside after rain, and every leaf is shining like something that wants to be eaten. You have a basket and a fistful of what you are fairly sure is grey-cap, good for the cough and the purse. The ones by the root of the oak look the same, and are the same, to everything but the eye of someone who has done this for forty years. They have a faint smell of sweet almonds. Your fingers are already purple at the tips.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village",
+					"wilds",
+					"valley"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"wilds",
+				"herb"
+			],
+			"choices": [
+				{
+					"label": "Taste a crumb, to be sure",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 3
+								},
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "text",
+									"t": "Bitter, with no almond in it at all, and the good kind of bitter. You find a whole slope of it."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "text",
+									"t": "You see your own hand from the ceiling of the world for three hours. When you come back the basket is empty and a squirrel has opinions."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Throw it all out and start again",
+					"fx": [
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 1
+						},
+						{
+							"op": "text",
+							"t": "It is a thin harvest and an honest one."
+						}
+					]
+				},
+				{
+					"label": "Take them to the old tanner, who buys poisons",
+					"cost": {
+						"stone": 2
+					},
+					"fx": [
+						{
+							"op": "stone",
+							"v": 14
+						},
+						{
+							"op": "text",
+							"t": "He weighs them with tender contempt. “For hides,” he says. “Never for a person. Never.”"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_dream_wheel",
+			"kind": "random",
+			"act": 1,
+			"title": "The Wheel Turns for Others",
+			"art": "wheel",
+			"text": "In the dream the sky is a wheel, wide as a field and slow as a thought, with pages set round its rim like spokes: rice paper, hand-ruled, written in a thousand colours of ink. They go past in a ring. You know without being told that every page is somebody. You look for your own. There is a gap where it ought to be, between a fishmonger and a girl you have never met: not a hole but a place the wheel carries like a held breath. Something about the gap is looking back at you.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"any",
+				"dream"
+			],
+			"choices": [
+				{
+					"label": "Reach for the gap",
+					"fx": [
+						{
+							"op": "meta",
+							"k": "seen_wheel"
+						},
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "text",
+									"t": "Your hand closes on something that is not there, and it is warm."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "You wake with a nosebleed and the taste of cold iron."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Read the page beside it",
+					"fx": [
+						{
+							"op": "meta",
+							"k": "seen_wheel"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "insight",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "A fishmonger's: he will be ill at forty. Whatever it is, he is already cheerful about it."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "It reads you back, and the wheel, politely, slows."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Make yourself wake up",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "The ceiling is the ceiling. For a while you lie there, quite sure that something has just been put back."
+				}
+			]
+		},
+		{
+			"id": "a1_gambler",
+			"kind": "random",
+			"act": 1,
+			"title": "Dice at the Lantern Inn",
+			"art": "town",
+			"text": "In the back room of the Lantern Inn a man with beautiful hands is rolling bone dice and losing, very gracefully, to a farmer. This is how it is done. The room is quiet the way a held breath is quiet. When you come in he looks up, and the smile he gives you is a good smile, the kind that makes the whole table lean your way. “A stranger's luck,” he says. “Come and be lucky.” The farmer does not look at you. His hands are shaking, and the pile in front of him is not his.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"town"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"town",
+				"gamble"
+			],
+			"choices": [
+				{
+					"label": "Sit and play",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "text",
+									"t": "The dice are kind for the first four throws and honest for the fifth. You rise before the man with the beautiful hands can ask you to be generous."
+								}
+							],
+							"fail": [
+								{
+									"op": "stone",
+									"v": -12
+								},
+								{
+									"op": "text",
+									"t": "They are not kind. They are not unkind. They are dice, and he is gracious about the whole thing."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Watch his hands, not the dice",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "On the third throw one die goes in at an angle that is not a throw. You say nothing until the farmer has left, and then say it to the gambler, quietly, and he pays for your silence with a fair share."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "text",
+									"t": "You say it too early and in the wrong room. The alley is shorter than it looks."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Walk the farmer out",
+					"fx": [
+						{
+							"op": "offer",
+							"card": "c_gamblers_dare",
+							"expires": 3
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "He weeps a little on your sleeve in the lane and will not give his name. Behind you, from the open door, the man with the beautiful hands raises his cup to you, very slightly."
+				}
+			]
+		},
+		{
+			"id": "a1_beggar_riddle",
+			"kind": "random",
+			"act": 1,
+			"title": "The Beggar's Riddle",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "A one-armed beggar has set himself across the bridge and is not asking for money; he is asking for an answer. “What is given to every child,” he says, “and taken from every corpse, and never once owned by either?” People go round him with the faces of those who have left their good sense at home. He has a gourd, a smile, and a knot in his right sleeve that looks, from where you stand, as if it was tied by a professional. “Take your time. I'll be here. I'm always here. It's most of my talent.”",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"town",
+					"village"
+				]
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"town",
+				"moshan"
+			],
+			"choices": [
+				{
+					"label": "A name",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						}
+					],
+					"after": "“Everyone says name,” he says. “Names are lent. They are not the thing.” He is pleased all the same."
+				},
+				{
+					"label": "A life",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "“Close,” he says. “And the wrong way round.”"
+				},
+				{
+					"label": "Nothing",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 12
+						}
+					],
+					"after": "He stops. He looks at you for rather a long time. “Now where,” he says, “does a child get a thing like that.” Then he laughs, and gives you the gourd."
+				},
+				{
+					"label": "You know whose sleeve that is. Ask how his arm is",
+					"req": {
+						"meta": [
+							"t_mo_arm"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 3
+						},
+						{
+							"op": "cult",
+							"v": 16
+						}
+					],
+					"after": "He does not laugh. He holds out the empty cuff, and you take it, and he looks at your hand on it. “Better,” he says, in a voice you have not heard him use. “Better, now.”"
+				}
+			]
+		},
+		{
+			"id": "a1_quiet_day",
+			"kind": "random",
+			"act": 1,
+			"title": "A Day Like a Held Cup",
+			"art": "village",
+			"text": "Nothing goes wrong. It is so unlike the other days that you check twice. The chores are finished by noon, the sky is the colour of a good pear, and somewhere a neighbour is frying onions while somebody sings badly and without apology. There is an afternoon in front of you with nothing in it, and three claims on it: your practice, which could use the time; a debt of attention you owe a person; and your own two feet, which want only to go and sit by the river. You can have one of them well. You can have all three badly.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 1,
+			"tags": [
+				"any",
+				"boon"
+			],
+			"choices": [
+				{
+					"label": "Practise",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 16
+						}
+					],
+					"after": "It goes well. It goes so well that you notice afterwards that you did not once look at the light."
+				},
+				{
+					"label": "Spend it on someone else",
+					"req": {
+						"rel": {
+							"xiaohe": 1
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 4
+						}
+					],
+					"after": "You do nothing of any importance together, for a very long time. It is the only afternoon you will remember in detail."
+				},
+				{
+					"label": "Sit by the river and do nothing",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": -4
+						}
+					],
+					"after": "The river goes by with no particular opinion of you. You watch it, and for once it does not feel like a waste."
+				}
+			]
+		},
+		{
+			"id": "a1_letter_cannot_read",
+			"kind": "random",
+			"act": 1,
+			"title": "A Letter You Cannot Read",
+			"art": "village",
+			"text": "It is under your door in the morning, folded in thirds and sealed with a daub of red that is not wax. The paper is better than anything in the village. The script is a close, upright hand like a row of fence-posts, and no one you know would know the first of it. You are not sure you could read it even if you had your letters. In the corner, small, is a drawn mark like a closed eye with a tear. When you pick it up it feels like having been counted.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"any",
+				"letter"
+			],
+			"choices": [
+				{
+					"label": "Take it to the headman",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 3
+						},
+						{
+							"op": "offer",
+							"card": "c_letter_reader",
+							"expires": 3
+						}
+					],
+					"after": "He holds it a long while, upside down and then the right way up. “Tax,” he says. “Or a funeral.” He gives it back with the face of a man who has found something out and decided not to have."
+				},
+				{
+					"label": "Burn it",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -6
+						},
+						{
+							"op": "cult",
+							"v": 2
+						}
+					],
+					"after": "It burns clean, with no smoke at all and no ash."
+				},
+				{
+					"label": "Keep it in your sleeve, unopened",
+					"hint": "It will sit there and be a letter.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "fortune",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": 4
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_tax_collector",
+			"kind": "random",
+			"act": 1,
+			"title": "The Tithe Man",
+			"art": "village",
+			"portrait": "clerk",
+			"text": "The tithe man comes on the first of the month with a stamp, an abacus and a nervous mule. He is not a bad man; he is a man who counts for a living, which comes to the same thing on a bad day. He sets up at the headman's table and calls the village out by household, and each rises, gives up a measure, and is stamped on the back of the hand with a seal that fades in a week. When he reaches your door he frowns at his page, and then at you, and then at his page again.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village"
+				],
+				"term_min": 3
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"tax"
+			],
+			"choices": [
+				{
+					"label": "Pay the measure",
+					"cost": {
+						"stone": 4
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "text",
+							"t": "He stamps the back of your hand. For a week there is a small blue mark on it like a bruise that was never struck."
+						}
+					]
+				},
+				{
+					"label": "Say you are not on his page",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "He runs a finger down the column, and back up it, and then, with the expression of a man deciding not to find something, says you must have been missed. You are missed."
+								}
+							],
+							"fail": [
+								{
+									"op": "stone",
+									"v": -8
+								},
+								{
+									"op": "notice",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "He is not a bad man. He is a man with a column, and it comes to the same thing on a bad day."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Carry his abacus all day, in lieu",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": -0.1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "text",
+							"t": "It is heavier than it looks, and so is he. By evening you know the village's debts better than the headman does."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_old_soldier",
+			"kind": "random",
+			"act": 1,
+			"title": "The Man at the Well",
+			"art": "village",
+			"portrait": "elder",
+			"text": "The veteran who sits at the well has one leg, a pipe, and an opinion on every young person who passes, all of them bad. He has been watching you cross the yard for a week. This morning he puts the pipe down and, without a word, hooks your ankle with the end of his crutch and takes you off your feet. “That's your first lesson,” he says. “The second is: nobody ever looks at the foot.” He is entirely serious, and rather sad about how little time he thinks you have.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village",
+					"town"
+				]
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"village",
+				"teacher"
+			],
+			"choices": [
+				{
+					"label": "Get up and try it on him",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "text",
+									"t": "He is a great deal quicker than a man with one leg ought to be. It takes you four mornings. On the fifth he says: “Hm,” and it is a good one."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "He puts you down again, kindly, in the same place."
+								}
+							],
+							"crit": [
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "stat",
+									"k": "speed",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "On the fourth morning you have him. He sits in the dust with a pipe he has not lit and a look of enormous private joy."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Bring him wine for the lessons",
+					"cost": {
+						"stone": 4
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 18
+						}
+					],
+					"after": "He accepts the jug the way a general accepts a surrender. The lessons are longer after that, and nastier, and exactly as good as the wine was."
+				},
+				{
+					"label": "Listen to his stories instead",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 8
+						},
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "text",
+							"t": "He is a great liar, and in the lies there is a cache by the old toll-house that may very well be true."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_lantern_night",
+			"kind": "random",
+			"act": 1,
+			"title": "Lantern Night",
+			"art": "village",
+			"text": "On the fifteenth of the first month the village floats lanterns on the river, each with a wish written on it, a wish for every house and a child to carry it. The headman has a brush and a bowl of ink the colour of a bruise. You have a lantern in the shape of a fish. The ink takes on every other lantern as it should, and settles, and dries. On yours it beads, and slides, and gathers at the bottom of the paper like water on a duck. You write your name. It will not stay.",
+			"req": {
+				"realm_max": 1,
+				"place": [
+					"village",
+					"town"
+				],
+				"term_min": 4
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"festival"
+			],
+			"choices": [
+				{
+					"label": "Write it again, harder",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "text",
+									"t": "The ink takes, in the end, a ghost of it, thin as a hair. The lantern goes out onto the river with a name on it that nobody could read but you."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "The headman looks over, says nothing, and goes on looking."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Light it blank and let it go",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "notice",
+							"v": -3
+						}
+					],
+					"after": "A blank lantern floats as well as any. It is, as far as you can tell, a good deal lighter."
+				},
+				{
+					"label": "Write somebody else's name instead",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "It takes at once, and well, in a hand that is not quite your hand. You watch it go until it is a point, and then until it is nothing."
+				}
+			]
+		},
+		{
+			"id": "a1_stream_glint",
+			"kind": "random",
+			"act": 1,
+			"title": "Something in the Stream",
+			"art": "wilds",
+			"text": "The stream below the path has a glint in it that is not the sun. It lies on the far side of a rock the size of a cart, in water so clear it seems not to be there and so cold it aches. Whatever it is has been there long enough to grow a fur of green. A woman on the bank is washing her mother's shift, and pretending, in the way of the local people, not to have seen it. She does not look up. She has been not looking up for some time.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"any",
+				"wilds"
+			],
+			"choices": [
+				{
+					"label": "Wade in for it",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 18
+								},
+								{
+									"op": "text",
+									"t": "A silver ingot, stamped with a mark that has been out of use for a hundred years. The cold goes up your arms to the shoulder and stays there for an hour."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "text",
+									"t": "The water takes your feet and returns them with some reluctance. The glint was a bit of mica. The woman says nothing, with great sympathy."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask the woman what it is",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "text",
+							"t": "“It was there when my grandmother was a girl,” she says, still wringing. “Everyone who takes it comes back for the river's attention.” She does not say whether that is a warning."
+						}
+					]
+				},
+				{
+					"label": "Leave it where it lies",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "cult",
+							"v": 4
+						}
+					],
+					"after": "It glints once more, as you go, in the manner of a thing that has decided to wait."
+				}
+			]
+		},
+		{
+			"id": "a1_night_visitor",
+			"kind": "random",
+			"act": 1,
+			"title": "The Man Who Asks the Way",
+			"art": "village",
+			"portrait": "clerk",
+			"text": "A stranger knocks late, with the courtesy of a man who has done it a great many times, and asks only the way. He is dressed in grey, with ink on one cuff, and tired in the manner of someone who has walked a long way in a straight line. “The circuit office of the Registry,” he says. “I was told it was in this district. I was told a number of things.” He looks past you at the empty room, and then at your face, with a faint puzzlement, as at a word in a hand he does not know.",
+			"req": {
+				"realm_max": 1
+			},
+			"weight": 1,
+			"once": true,
+			"tags": [
+				"any",
+				"registry"
+			],
+			"choices": [
+				{
+					"label": "Point him the wrong way",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -4
+						},
+						{
+							"op": "text",
+							"t": "He thanks you gravely and goes off down the lane towards the river. You listen to his steps for a long time, and are not sure what, exactly, you have done."
+						}
+					]
+				},
+				{
+					"label": "Send him to the headman",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 3
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "text",
+							"t": "The headman will tell him what is true and a little more. By morning the village will have been counted twice."
+						}
+					]
+				},
+				{
+					"label": "The crow on the ridge says, quite clearly: tell him nothing",
+					"hint": "You shared your egg.",
+					"req": {
+						"flags": [
+							"a1_crow"
+						]
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -6
+						},
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "text",
+							"t": "You say that you have never heard of the place. It is nearly true. He thanks you, and is some time putting his hat on."
+						}
+					]
+				},
+				{
+					"label": "Give him water and ask what the Registry is",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "text",
+							"t": "“The world's accounts,” he says, taking the cup in both hands, “and I am the one who carries the pen. It is quite dull. Please do not say that I said so.” He drinks. He looks at the cup for some time, and does not ask your name."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_cold_rice_hall",
+			"kind": "random",
+			"act": 1,
+			"title": "The Cold Rice Hall",
+			"art": "sect",
+			"portrait": "disciple",
+			"text": "The outer court eats in the long hall at the second bell, and the rice is cold when it reaches the end of the table where you sit. It has been cold for a month. The seniors at the top are pleasant to one another and nobody is ever quite in the wrong. Someone has put a very small, very exact sword in the stew. It is a joke; it is a message; it is the quietest kind of violence there is. The boy beside you has gone white and is looking at his bowl.",
+			"req": {
+				"realm_max": 1,
+				"sect": [
+					"azure"
+				],
+				"place": [
+					"sect"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"azure"
+			],
+			"choices": [
+				{
+					"label": "Fish it out and set it on the senior's plate, with a bow",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 16
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "He looks at the small exact sword, and then at you, and then at the three seniors on either side of him, and laughs, once, with real surprise. It is a start."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "text",
+									"t": "There is a friendly spar the next morning. It is friendly the way a fall is."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Say nothing and eat the rice",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "It is cold. It is also food, and you eat all of it, and the boy beside you eats the sword."
+				},
+				{
+					"label": "Take it to Elder Cheng",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": 3
+						}
+					],
+					"after": "He turns it over. He sighs. He says it is the sort of thing that should not be necessary, and then puts it in his sleeve and says nothing to anyone, which is its own kind of answer."
+				}
+			]
+		},
+		{
+			"id": "a1_drying_racks",
+			"kind": "random",
+			"act": 1,
+			"title": "The Night the Racks Caught",
+			"art": "valley",
+			"portrait": "qingnang",
+			"text": "A lamp has been left under the drying racks, and the racks, being a hundred feet of dry herb on pine, have taken it as a personal invitation. The night is full of the smell of a thousand different cures burning at once. Granny Qingnang is already in the middle of it in her nightshirt, swearing in a long, unbroken and inventive line. Three racks are gone. The fourth is the winter's whole supply of white fern, and the well is forty paces off.",
+			"req": {
+				"realm_max": 1,
+				"sect": [
+					"herb"
+				],
+				"place": [
+					"valley"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"herb"
+			],
+			"choices": [
+				{
+					"label": "Beat it out with a wet sack",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 2
+								},
+								{
+									"op": "text",
+									"t": "It takes eleven minutes and the sleeves off your robe. At the end of it she looks at you through the smoke and says, with great precision, a word you have not heard before."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "The fire has opinions about sacks. You come out with eyebrows missing and a handful of scorched fern."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Carry the white fern out first",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 3
+								},
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "Armful after armful, and not one frond left to the fire. She counts them at dawn like a miser at a funeral."
+								}
+							],
+							"fail": [
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 1
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "text",
+									"t": "You save an armful and a half, and learn what fern does when it is burning."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Wake the valley",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "text",
+							"t": "Sixty people in their nightshirts form a line, and the line has a rhythm, and the fire lasts four minutes. Somebody is eating a boiled egg."
+						}
+					]
+				},
+				{
+					"label": "The woodcutter you saved is already there with his axe",
+					"hint": "You remembered his name.",
+					"req": {
+						"flags": [
+							"a1_woodcutter_saved"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 2
+						},
+						{
+							"op": "text",
+							"t": "He cuts a firebreak through the third rack with four strokes and no comment, and goes home at dawn without being thanked. Granny writes his name in the other book, the short one."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_midnight_chant",
+			"kind": "random",
+			"act": 1,
+			"title": "The Chant Under the Floor",
+			"art": "netherworld",
+			"portrait": "disciple",
+			"text": "The chant starts at the hour of the rat: one voice, then three, then forty, a low flat sound with no tune, like the idea of a tune being leaned on until it stops resisting. It comes up through the floor of the dormitory. You have not been told not to go down. You have not been told anything. A boy across the room is awake too, eyes shining in the dark, and he mouths one syllable at you, and does not seem to know he is doing it.",
+			"req": {
+				"realm_max": 1,
+				"sect": [
+					"netherworld"
+				],
+				"place": [
+					"netherworld"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"netherworld"
+			],
+			"choices": [
+				{
+					"label": "Go down and listen",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "corrupt",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "The words are not words. They are the place where a word would go, if a word could be afforded. You come up with your ears ringing and your head very clear."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "corrupt",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "It finds the back of your throat, and stays there. You are sick on the stairs."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Put your head under the blanket",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 4
+						}
+					],
+					"after": "It comes through the mattress. After a while you find that you are keeping time with it, with one heel, and stop, and start again."
+				},
+				{
+					"label": "Chant along under your breath",
+					"hint": "It will learn your voice.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "corrupt",
+							"v": 6
+						},
+						{
+							"op": "notice",
+							"v": 4
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_kid_with_purse",
+			"kind": "random",
+			"act": 1,
+			"title": "A Kid With Your Purse",
+			"art": "town",
+			"portrait": "villager",
+			"text": "A kid of about nine slides out of the crowd with your purse in her fist and the face of someone who has done it every day since she could walk. You grab her wrist. She looks at your hand with academic interest. “That's wrong,” she says. “You're meant to be asleep.” People are looking; in a small town people look at what they are looking at for a very long time. A baker in the next doorway is doing an excellent impression of a man not watching.",
+			"req": {
+				"realm_max": 1,
+				"sect": [
+					"rogue"
+				],
+				"place": [
+					"town",
+					"wilds"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"rogue"
+			],
+			"choices": [
+				{
+					"label": "Let her keep a coin and teach her to hold the wrist",
+					"cost": {
+						"stone": 3
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "text",
+							"t": "She palms the coin before you have finished giving it, and then, with a sort of grim professional courtesy, puts it back. “Right,” she says. “Wrist. Show me again.”"
+						}
+					]
+				},
+				{
+					"label": "Take the purse back and hand her to the watch",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 4
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "text",
+							"t": "The watch takes her by the elbow, as one handles a parcel. She looks back at you once, with the clear and unforgiving expression of a person who is never going to do it quite that way again."
+						}
+					]
+				},
+				{
+					"label": "Hire her",
+					"cost": {
+						"stone": 5
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "text",
+							"t": "It is the least efficient arrangement of your whole life, and it teaches you more in a week than the road did in a year."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_opera_backstage",
+			"kind": "chain",
+			"act": 1,
+			"title": "Behind the Painted Flats",
+			"art": "town",
+			"portrait": "sujiu",
+			"text": "Behind the painted flats it smells of tallow and orange peel. The fox sits on a prop throne with her feet up, filing a claw on a bone that was never a nail file. She is a woman now, or a decent approximation: a ring of dark hair, a bored face, and one tail more than she can quite hide behind the throne. “You,” she says, not looking up. “From the crowd. You've got nothing over your head.” She sounds delighted. “I buy secrets and I sell them. I'd buy yours, but you haven't got one. Isn't that sad? How much would it be worth to you to be told?”",
+			"tags": [
+				"card",
+				"fox"
+			],
+			"choices": [
+				{
+					"label": "Pay her to tell you",
+					"cost": {
+						"stone": 6
+					},
+					"fx": [
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 14
+						}
+					],
+					"after": "“No name. No number. No page,” she says, counting your coins with a fingertip. “Don't tell anyone. They'd be so jealous.” She winks, and for a second the painted flats behind her are very far away."
+				},
+				{
+					"label": "Offer her a secret of your own",
+					"fx": [
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "sujiu",
+									"v": 2
+								},
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "You tell her what the crow said. She stops filing. She pays, and badly wants to know which crow."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "sujiu",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "She yawns like a cat, very wide. “I knew that when I was four,” she says. “Come back with something I don't.”"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask her to look again",
+					"fx": [
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": 6
+						}
+					],
+					"after": "She looks, with her whole face this time, and her laugh when it comes is the nicest sound you have ever heard, and it travels. Somewhere at the back of the house someone puts down a lamp."
+				}
+			]
+		},
+		{
+			"id": "a1_pup_returns",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Pup Follows",
+			"art": "village",
+			"text": "The wolf pup you freed has been following you for three days at a distance, with the dignity of a thing that is not following you. This morning it is sitting on your doorstep with a dead rabbit, which it has arranged like an offering and is trying not to look at. It is bigger. It has your smell on it. There is something in its eyes that is not a dog's. It looks at you as though it had been making a long calculation, and had arrived, grudgingly, at a number.",
+			"tags": [
+				"card",
+				"beast"
+			],
+			"choices": [
+				{
+					"label": "Take the rabbit and keep the pup",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_pup_kept"
+						},
+						{
+							"op": "cult",
+							"v": 8
+						}
+					],
+					"after": "It sleeps against the lean-to wall that night, one ear on the door. The neighbours watch your hands for a week, and then, grudgingly, your dog."
+				},
+				{
+					"label": "Take the rabbit and send it back to the wood",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 4
+						},
+						{
+							"op": "cult",
+							"v": 4
+						}
+					],
+					"after": "It goes at once, without looking round, in the manner of a creature that has just been told something it half knew."
+				},
+				{
+					"label": "Leave it the rabbit and walk away",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "fortune",
+							"v": 1
+						}
+					],
+					"after": "Whatever it was making, you did not break it. When you come back at dusk the rabbit is gone and there is a single grey hair on the step, which is not a thing you have ever seen a dog leave."
+				}
+			]
+		},
+		{
+			"id": "a1_merchant_second",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Merchant Returns",
+			"art": "town",
+			"portrait": "merchant",
+			"text": "He is back at the same crossroads with the same cart, a different coat, and the same smile trimmed to suit the occasion. “You're richer,” he says, which is an accusation and a compliment. “So here's the pill again, and here's the price again, and the only difference is that this time I'll tell you what it is.” He turns his palm over. It is not a pill. It is a little carved fish, the size of a thumb, in a green stone you don't know the name of, and it is warm. “A charm,” he says. “Good for exactly one bad day. That's all I'll say.”",
+			"tags": [
+				"card",
+				"merchant"
+			],
+			"choices": [
+				{
+					"label": "Buy it",
+					"cost": {
+						"stone": 20
+					},
+					"fx": [
+						{
+							"op": "item",
+							"id": "charm_jade"
+						}
+					]
+				},
+				{
+					"label": "Haggle",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "item",
+									"id": "charm_jade"
+								},
+								{
+									"op": "stone",
+									"v": -8
+								},
+								{
+									"op": "text",
+									"t": "He settles for eight and sighs like a man whose best friend has just died."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "He closes his hand. It is a very good hand to close."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask what it really is",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "A fox's tooth, mounted. It is not magic; it is worse, it is a reminder. “Good for one bad day,” he says, “because that is how long a fox remembers a face.”"
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "He only smiles. He is a great deal better at this than you are."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_gambler_stakes",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Gambler's Dare",
+			"art": "town",
+			"text": "The man with the beautiful hands is waiting under the lantern at the end of the lane. He is not smiling now; it is the first time you have seen his real face, which is the face of a man who has lost something and is quite calm about it. “One throw,” he says. “Mine against yours. Twenty-five stones, and the loser walks off without a word. I'm not cheating. I only cheat when I'm winning.” He holds out the dice, two small white knuckles of bone.",
+			"tags": [
+				"card",
+				"gamble"
+			],
+			"choices": [
+				{
+					"label": "Throw",
+					"cost": {
+						"stone": 25
+					},
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 55
+								},
+								{
+									"op": "text",
+									"t": "They come up as they were always going to. He nods once, counts the money into your hand, and walks off without a word, as agreed."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "He bows; you walk off without a word. It is not the walk you had imagined."
+								}
+							],
+							"crit": [
+								{
+									"op": "stone",
+									"v": 80
+								},
+								{
+									"op": "item",
+									"id": "pill_qi"
+								},
+								{
+									"op": "text",
+									"t": "A pair of ones: the lowest thing the bones can say. He looks at them for a long time, and then takes something out of his coat and puts it in your hand with the money."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Take the dice and look at them first",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "text",
+									"t": "They are good dice. They are honest dice. That is the terrible thing; he has never needed them to be anything else."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "text",
+									"t": "He takes them back with a look that suggests you have asked to see his teeth."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Say no, and walk away",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "You walk away with your twenty-five stones and your back to the lantern. A man with beautiful hands says to nobody, very softly, “Pity.” And means it."
+				}
+			]
+		},
+		{
+			"id": "a1_letter_read",
+			"kind": "chain",
+			"act": 1,
+			"title": "A Reader for Hire",
+			"art": "town",
+			"portrait": "clerk",
+			"text": "The reader is a failed scholar with ink on his chin and a stall of borrowed books by the south bridge, charging a copper a line and sorry about it. He takes the letter in two fingers and looks at it the way you would at a snake you have been told is dead. “Left-handed,” he says. “A trained hand, a good one, and not the hand it was trained for. Somebody who learned to write all over again, late, in pain.” He reads it through twice, then lays it face down, and says very gently that it is short, and that he is not sure it is for him to say.",
+			"tags": [
+				"card",
+				"letter"
+			],
+			"choices": [
+				{
+					"label": "Have him read all of it",
+					"cost": {
+						"stone": 3
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_letter_read"
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": 6
+						}
+					],
+					"after": "“Do not let them count you,” he reads, and stops, and looks at you, and goes on very quietly. “Stay small. Stay in the villages. I will come when I can. Do not ask who. M.” He puts it down. “It was four lines,” he says. “I'll take three coppers.”"
+				},
+				{
+					"label": "Ask him to teach you the characters",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_letter_read"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "insight",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "It takes the whole afternoon, a character at a time, with a stick in the dust. By dusk you can read four lines, and you wish, a little, that you could not."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "You get as far as the third character, and the reader gets as far as the fourth, and gives up. Between you, you have the sense of it."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Have him read the first line and keep the rest",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_letter_read"
+						},
+						{
+							"op": "notice",
+							"v": -2
+						}
+					],
+					"after": "He tells you the first line. He tells you he will keep the rest, in the interest of his own health, and puts the page in his stove. “Do not let them count you,” he says again, as if the stove were listening."
+				}
+			]
+		},
+		{
+			"id": "a1_well_midnight",
+			"kind": "chain",
+			"act": 1,
+			"title": "Midnight at the Well",
+			"art": "village",
+			"text": "The hum has become words. At midnight, with the village asleep and the shrine bell wrapped in sacking, you sit on the rim of the well with your feet over the dark and a lantern held out at arm's length, and it speaks. “The bucket,” it says, in a voice like wet paper. “My bucket. Husband took it. Husband went down for it.” A pause. A drip. “There is a thing on the bottom. Not him. He's gone on. A thing I owe. I can't go up with it on me.” The water below your lantern has no reflection in it.",
+			"tags": [
+				"card",
+				"ghost"
+			],
+			"choices": [
+				{
+					"label": "Climb down the rope",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "Cold, and then colder. At the bottom, in a hand's width of black water, your fingers find a small hard knot of silver: a hairpin, and a ring. The hum goes out of the well like a held breath."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "text",
+									"t": "The rope is older than the Widow Fan, and it says so."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask what she owes",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 18
+								},
+								{
+									"op": "text",
+									"t": "She tells you, in three sentences, and the third is very small. You carry it up for her in the morning, and set it on the shrine, and the well is only a well."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp",
+									"v": -5
+								},
+								{
+									"op": "text",
+									"t": "She tells you at length and you cannot follow it. She does not stop until you are cold to the bone."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Tell her her husband has gone on, and she may too",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "heart",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "You say it plainly, the way you would say it to a child, and it is the plainness that does it. The well is quiet for the first time in a month."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "hp",
+									"v": -5
+								},
+								{
+									"op": "text",
+									"t": "She does not believe you. Of all the things that could be said in a well, that is the one she has heard most."
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

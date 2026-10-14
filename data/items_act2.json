@@ -1,0 +1,29 @@
+{
+	"items": [
+		{
+			"id": "inkarm_jar",
+			"zh": "墨臂瓮",
+			"en": "Jar of the Ink Arm",
+			"kind": "material",
+			"q": 4,
+			"icon": "it_inkarm_jar",
+			"price": 60,
+			"text": "A jar of black brine. In it, a right arm, ink to the elbow, the hand curled round a pen that is no longer there."
+		},
+		{
+			"id": "ledger_favour",
+			"zh": "人情簿页",
+			"en": "A Page of Favours",
+			"kind": "artifact",
+			"q": 3,
+			"slot": "charm",
+			"icon": "it_ledger_favour",
+			"price": 120,
+			"stats": {
+				"fortune": 2,
+				"heart": 1
+			},
+			"text": "A page torn from Xiao Heng's ledger. Three small ticks, and an empty square where your name should be. He has written: owed, everything."
+		}
+	]
+}

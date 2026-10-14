@@ -1,0 +1,2096 @@
+{
+	"events": [
+		{
+			"id": "a2_r_chores",
+			"kind": "random",
+			"act": 2,
+			"title": "Wood, Water, and Worse",
+			"art": "sect",
+			"text": "Chore lots are drawn at dawn from a jar that has been in the same hand for forty years. Today the slips say: water, wood, or the Elder's cat. Water is the long way down the mountain and back with two buckets and the morning's gossip. Wood is easy and splinters. The Elder's cat has bitten three disciples this season and is rumoured to understand Foundation cultivators on a spiritual level. The senior drawing the lots watches your face the way a man watches a kettle.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"azure",
+					"herb",
+					"netherworld"
+				]
+			},
+			"weight": 3,
+			"tags": [
+				"sect",
+				"chore"
+			],
+			"choices": [
+				{
+					"label": "Draw water",
+					"hint": "Honest labour.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						}
+					],
+					"after": "Four trips. By the third your legs have taken the shape of the mountain."
+				},
+				{
+					"label": "Draw wood",
+					"hint": "Easy coin.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 15
+						}
+					],
+					"after": "A splinter, a coin from the steward, an honest day."
+				},
+				{
+					"label": "Take the cat",
+					"hint": "Roll: Fortune.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 30
+								},
+								{
+									"op": "text",
+									"t": "It sits on your foot for an hour, then presents you with a mouse and a look of finality."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "It bites you with the quiet efficiency of an auditor."
+								}
+							]
+						}
+					],
+					"after": "The cat opens one eye."
+				}
+			]
+		},
+		{
+			"id": "a2_r_library",
+			"kind": "random",
+			"act": 2,
+			"title": "The Library After Hours",
+			"art": "sect",
+			"text": "The library keeps no lamps after the third bell, in case of fire and in case of reading. You go anyway, with a pinch of glow-moss in a gourd. The stacks are a long breathing dark, and somewhere in them a scroll is unrolling on its own, slowly, the way a sleeper turns. On the table at the far end an old manual lies open, face down, as if someone had been interrupted. The margin is full of a second reader's notes, getting angrier. The last one says: 'It is not wrong. It is incomplete.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"azure",
+					"herb",
+					"netherworld"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"library"
+			],
+			"choices": [
+				{
+					"label": "Read the manual, margins and all",
+					"hint": "Roll: Insight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "text",
+									"t": "It is incomplete, and now you know exactly where."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "mp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "text",
+									"t": "By the second margin you cannot hold the thread."
+								}
+							]
+						}
+					],
+					"after": "You turn it over."
+				},
+				{
+					"label": "Copy the margin notes only",
+					"hint": "Safe, and slow.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_margins"
+						}
+					],
+					"after": "The second reader's hand is better than the manual's. You copy the anger as faithfully as the proofs."
+				},
+				{
+					"label": "Put it back and leave the dark alone",
+					"hint": "A good night's sleep.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "hp_pct",
+							"v": 0.1
+						}
+					],
+					"after": "In the morning the scroll is rolled up neatly, as if somebody had been tidying."
+				}
+			]
+		},
+		{
+			"id": "a2_r_poison_meal",
+			"kind": "random",
+			"act": 2,
+			"title": "The Third Bowl",
+			"art": "sect",
+			"text": "Dinner is rice, pickles and a broth that has been, at various points, a chicken. You are on the third mouthful when you notice that your tongue has gone an agreeable warm, and that the disciple opposite is not eating. He is watching your bowl the way a man watches a kettle he suspects is not his. The broth is far too good. You think: the second bowl was the poisoned one and the third is the antidote; or I am merely tired and the gods are being witty.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"poison"
+			],
+			"choices": [
+				{
+					"label": "Ride it out. You are tough.",
+					"hint": "Roll: Body.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "body",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "You sweat out the worst of it by midnight, and the disciple has gone to bed in a hurry."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.5
+								},
+								{
+									"op": "text",
+									"t": "The night is long, and has a very particular shape."
+								}
+							]
+						}
+					],
+					"after": "You finish the bowl in front of him, one grain at a time."
+				},
+				{
+					"label": "Take the antidote you carry",
+					"hint": "Spends an antidote.",
+					"cost": {
+						"item": "pill_antidote"
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": -2
+						}
+					],
+					"after": "He watches you stay on your feet with the expression of a man who has been issued the wrong instructions."
+				},
+				{
+					"label": "Pass him the bowl: 'You first'",
+					"hint": "Roll: Dao-heart. A fail is a fight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "text",
+									"t": "He pales, then confesses, in a rush, to a name you do not know. It does not matter. He pays for the silence, as he pays for everything."
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "rogue_cultivator",
+									"win": [
+										{
+											"op": "cult",
+											"v": 12
+										}
+									],
+									"lose": [
+										{
+											"op": "notice",
+											"v": 2
+										}
+									],
+									"scale": 1.6
+								}
+							]
+						}
+					],
+					"after": "You hold the bowl out at arm's length. Nobody else at the table is eating either."
+				}
+			]
+		},
+		{
+			"id": "a2_r_elder_test",
+			"kind": "random",
+			"act": 2,
+			"title": "The Elder's Three Bowls",
+			"art": "sect",
+			"text": "An elder stops you on the covered walk and asks, without preamble, how many steps there are between this post and the next. You say you have not counted. He nods, gravely, and walks on, and you have the sense you have failed something. Then a second elder asks the same question of the same post, and a third. You realise the answer matters less than what you do next. At the end of the walk a table has been set with three bowls: one full, one empty, and one with a single grain of rice in it. A note in a grey hand says: Choose.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"azure",
+					"herb",
+					"netherworld"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"test"
+			],
+			"choices": [
+				{
+					"label": "The full bowl",
+					"hint": "Greed is also an answer. It is written down.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "hp_pct",
+							"v": 0.1
+						},
+						{
+							"op": "notice",
+							"v": 3
+						}
+					],
+					"after": "It is very good rice. The elders note it in the way elders note things."
+				},
+				{
+					"label": "The empty bowl",
+					"hint": "You go hungry.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "hp_pct",
+							"v": -0.1
+						}
+					],
+					"after": "'Hm,' says the nearest elder. 'The empty bowl is a good answer. It is not a correct answer. It is a good one.'"
+				},
+				{
+					"label": "The one grain, eaten slowly",
+					"hint": "A very long meal.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "notice",
+							"v": -2
+						}
+					],
+					"after": "You chew for a count of three hundred. At two hundred and forty someone leaves the room without a word, in the manner of a man who has lost a bet."
+				}
+			]
+		},
+		{
+			"id": "a2_r_prank",
+			"kind": "random",
+			"act": 2,
+			"title": "A Rival's Prank",
+			"art": "sect",
+			"text": "Your sleeve is stiff. You discover this at the Morning Lesson, in the middle of a bow, as an entire jar of the refectory's black vinegar gives up the ghost down your arm. Along the row of disciples a single, entirely pious face has just become very serious. It is the face of the fellow who has been telling everyone for a month that you cheated. The master's eyes pass over the smell, the stain, the row of faces, and come to rest on you, expecting something.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"azure",
+					"herb",
+					"netherworld"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"rival"
+			],
+			"choices": [
+				{
+					"label": "Laugh, and bow to the room",
+					"hint": "Dignity by other means.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						}
+					],
+					"after": "The room does not know what to do with that. Nor, after a moment, does the fellow."
+				},
+				{
+					"label": "Return it: a jar in his hood tomorrow",
+					"hint": "Roll: Agility.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "He finds it at evening prayer. The master pretends to be deaf."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "The master is not deaf. He has simply been waiting for a witness."
+								}
+							]
+						}
+					],
+					"after": "You find a jar of the second-best vinegar and a long patience."
+				},
+				{
+					"label": "Take the vinegar to the laundry yourself, and say nothing",
+					"hint": "Quiet.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "stone",
+							"v": 5
+						}
+					],
+					"after": "The laundress looks at you and at the sleeve and gives you a cup of tea in the way of a person making a treaty."
+				}
+			]
+		},
+		{
+			"id": "a2_r_last_gift",
+			"kind": "random",
+			"act": 2,
+			"title": "A Stranger's Last Gift",
+			"art": "wilds",
+			"text": "He is sitting against the milestone with a hole in his robe and a very straight back, a cultivator of some old middling sect, and he has been waiting, you understand, for anyone at all. 'You'll do,' he says. 'You are not a thief, or you'd have gone through me already. I have a thing, and it is no use where I am going.' He holds out a plain knotted cord with a single bead. 'It was my master's. It does nothing. That is what is valuable about it.' His hand does not stay up. 'Listen to the end of the thing, will you? It won't take long.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"wilds",
+				"gift"
+			],
+			"choices": [
+				{
+					"label": "Hold his hand and listen to the end",
+					"hint": "It costs an afternoon.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "corrupt",
+							"v": -5
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						}
+					],
+					"after": "It does not take long. It is not much of a story. It is the whole of him, told in the right order, which is rarer than you would think."
+				},
+				{
+					"label": "Take the cord and promise to bury him",
+					"hint": "A spade and a promise.",
+					"fx": [
+						{
+							"op": "item",
+							"id": "charm_jade"
+						},
+						{
+							"op": "hp_pct",
+							"v": -0.05
+						},
+						{
+							"op": "flag",
+							"k": "a2_buried"
+						}
+					],
+					"after": "The bead is warm. You bury him badly and with great care."
+				},
+				{
+					"label": "Take the cord and go. You have somewhere to be.",
+					"hint": "Fast. It sits a little cold.",
+					"fx": [
+						{
+							"op": "item",
+							"id": "charm_jade"
+						},
+						{
+							"op": "corrupt",
+							"v": 3
+						}
+					],
+					"after": "The bead is a little colder than it was."
+				}
+			]
+		},
+		{
+			"id": "a2_r_riot",
+			"kind": "random",
+			"act": 2,
+			"title": "Rice Riot at Fallen-Star",
+			"art": "town",
+			"text": "The price of rice goes up by a third overnight, and by noon the market is a held breath. Somebody throws a basket. Somebody else, who is not poor, shouts the words poor people shout. A magistrate's runner is on the cart in front of the granary with a gong, saying the stores are full, which is what makes it a riot. A boy of ten has been pushed against the wall and is trying to look as if he was always there. Three men with the calm, blank faces of paid persons are moving through the crowd toward the granary door.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"place": [
+					"town"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"town",
+				"riot"
+			],
+			"choices": [
+				{
+					"label": "Pull the boy out and get him clear",
+					"hint": "A bruise and a boy.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "hp_pct",
+							"v": -0.1
+						}
+					],
+					"after": "He does not say thank you. He says: 'My mother's stall is that way.' You walk him to it."
+				},
+				{
+					"label": "Break the paid men's line",
+					"hint": "A scrap.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "rogue_cultivator",
+							"win": [
+								{
+									"op": "stone",
+									"v": 25
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "When the third goes down the crowd remembers it has a sense of shame."
+								}
+							],
+							"lose": [
+								{
+									"op": "notice",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "They do not even bother to hit you very hard."
+								}
+							],
+							"scale": 2.0
+						}
+					],
+					"after": "They see you coming and look almost relieved."
+				},
+				{
+					"label": "Buy rice while the price is wrong",
+					"hint": "Profit is profit.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 20
+						},
+						{
+							"op": "corrupt",
+							"v": 2
+						}
+					],
+					"after": "You buy forty catties from a man who cannot meet your eye, and sell it back to his neighbours at nearly the old price. It is almost kind."
+				}
+			]
+		},
+		{
+			"id": "a2_r_ghost_wedding",
+			"kind": "random",
+			"act": 2,
+			"title": "A Ghost Wedding",
+			"art": "village",
+			"text": "The procession is a very small one: two paper lanterns, a paper sedan, a paper horse that has been given far too much attention, and an old woman with the face of someone whose feet hurt. It is a ghost wedding. The groom has been dead for thirty years and has kept, she explains, his sense of occasion. The bride died last winter of a fever, at seventeen, and her mother has found her someone suitable. They need a witness who is not family and not afraid. 'You will be given a red envelope,' she says, gravely, 'and a drink, and you will not look at the sedan when it moves.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"ghost"
+			],
+			"choices": [
+				{
+					"label": "Witness it, and drink",
+					"hint": "Roll: Spirit.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "fortune",
+									"v": 1
+								},
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "The drink is warm all the way down, and a small cold weight settles over your shoulder like a blessing."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The drink is a very long way down. The red envelope is thinner than promised."
+								}
+							]
+						}
+					],
+					"after": "Somewhere a paper horse stamps."
+				},
+				{
+					"label": "Witness it, and look at the sedan",
+					"hint": "A fight with the dead.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "ghost",
+							"win": [
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "text",
+									"t": "The sedan folds up like a letter. She was sixteen; she was looking for the groom, not you."
+								}
+							],
+							"lose": [
+								{
+									"op": "text",
+									"t": "It is the groom's, after all. He resents being seen."
+								}
+							],
+							"scale": 3.5
+						}
+					],
+					"after": "You turn your head, in the manner of someone who has been asked not to."
+				},
+				{
+					"label": "Decline politely and leave a coin",
+					"hint": "Safe.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": -5
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "notice",
+							"v": -1
+						}
+					],
+					"after": "She accepts the coin as if it were a debt properly cleared, and the procession goes on its way, very slightly less small."
+				}
+			]
+		},
+		{
+			"id": "a2_r_stolen_manual",
+			"kind": "random",
+			"act": 2,
+			"title": "The Stolen Manual",
+			"art": "sect",
+			"text": "There is a manual in your bedding. You discover it by sleeping on it, which is how an honest man finds most of his problems. It is bound in grey cloth with the seal of the sect's third library, and it has the smell of a thing that has recently been hurried. Outside, the corridor has begun to fill with the sound of people walking in the manner of people who are not looking for anything. A face goes past the door twice. It is the librarian's assistant, who is very pale and does not meet your eyes.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"azure",
+					"herb",
+					"netherworld"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"sect",
+				"theft"
+			],
+			"choices": [
+				{
+					"label": "Return it quietly, tonight",
+					"hint": "Safe, and a grateful assistant.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "stone",
+							"v": 10
+						}
+					],
+					"after": "He takes it with both hands, like a child being handed a lit lamp. 'I'll remember,' he says. He will."
+				},
+				{
+					"label": "Read it. Then return it",
+					"hint": "Roll: Insight. A fail is seen.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "text",
+									"t": "It is a bad manual, and brilliant in places, and you understand why someone would risk a hand for it."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "You are three pages in when the lamp gutters, and somebody has been standing at the door for a while."
+								}
+							]
+						}
+					],
+					"after": "You make the lamp very small."
+				},
+				{
+					"label": "Sell it in town to a buyer who does not ask",
+					"hint": "Rich, and not clean.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 50
+						},
+						{
+							"op": "notice",
+							"v": 8
+						},
+						{
+							"op": "corrupt",
+							"v": 2
+						}
+					],
+					"after": "The buyer does not ask. That is how you know what he will do with it."
+				}
+			]
+		},
+		{
+			"id": "a2_r_fleet",
+			"kind": "random",
+			"act": 2,
+			"title": "A Fleet of Carts",
+			"art": "town",
+			"text": "Sixty carts come in off the north road in a long smoking line, each with a different banner, and a man on the lead cart who looks like a very good liar. It is the Seven Rivers Guild's autumn fleet: salt, silk, lamp oil, three kinds of tea, and one kind of cargo no one will name. The fleet-master wants guards he can trust to be the right sort of unreliable. 'Never stupid,' he says. 'But with a very short list of things you'd fight for. I pay by the li.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"place": [
+					"town"
+				]
+			},
+			"weight": 2,
+			"tags": [
+				"town",
+				"merchant"
+			],
+			"choices": [
+				{
+					"label": "Hire on as a guard for the northern leg",
+					"hint": "Roll: Body.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 40
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "Nothing happens for nine days, then something does, and you are very good at it."
+								}
+							],
+							"fail": [
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "There is a thing in the grain. It is dealt with. The fleet-master pays you in full and is a little quiet about it."
+								}
+							]
+						}
+					],
+					"after": "'Good,' he says. 'You don't look like you want to be a hero.'"
+				},
+				{
+					"label": "Sell them medicines and talismans",
+					"hint": "Costs herbs.",
+					"cost": {
+						"herb": 2
+					},
+					"fx": [
+						{
+							"op": "stone",
+							"v": 35
+						}
+					],
+					"after": "They buy the lot, and ask for more, at a higher price. You are suspicious of how easy it was."
+				},
+				{
+					"label": "Ask about the cargo no one will name",
+					"hint": "Needs a sharp spirit.",
+					"req": {
+						"stats": {
+							"spirit": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": 3
+						}
+					],
+					"after": "'Paper,' he says, softly. 'A great deal of paper. Not for the Guild.' He looks at the sky. 'Somebody is buying a great deal of paper.'"
+				}
+			]
+		},
+		{
+			"id": "a2_r_drought",
+			"kind": "random",
+			"act": 2,
+			"title": "The Dry Season",
+			"art": "village",
+			"text": "The river below the mountain has gone to stones and a thread. The village at its foot has dug the well deeper twice and found, the second time, bones, which are not the sort of water anyone asked for. They have come up the long stair in a body, forty of them, and are kneeling on the lowest step of the sect, not asking for anything, which is how you know it is serious. There is a child who has not been told what is happening. She is playing with a stone on the stair and keeps looking up at you to see if you have noticed her trick.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"village",
+				"drought"
+			],
+			"choices": [
+				{
+					"label": "Pay for a well-digger and a water priest",
+					"hint": "Costs stones.",
+					"cost": {
+						"stone": 25
+					},
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "notice",
+							"v": -3
+						}
+					],
+					"after": "The digger is a woman named Pei with forearms like roots. She finds water on the fourth day, and cries, and is embarrassed, and cries again."
+				},
+				{
+					"label": "Call rain from the old riverbed",
+					"hint": "Roll: Spirit. Loud.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 8,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "notice",
+									"v": 8
+								},
+								{
+									"op": "stat",
+									"k": "fortune",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "It comes the way a cat comes: late, and as if it had been the plan."
+								}
+							],
+							"fail": [
+								{
+									"op": "mp_pct",
+									"v": -0.4
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "Nothing answers. The riverbed is very, very dry."
+								}
+							]
+						}
+					],
+					"after": "You stand in the dry bed with your hands out, and the whole village watches."
+				},
+				{
+					"label": "Give the child your water-gourd and go on",
+					"hint": "It is what you have.",
+					"fx": [
+						{
+							"op": "corrupt",
+							"v": -3
+						}
+					],
+					"after": "It is not an answer. It is what you have. She holds it in both hands, and does not drink."
+				}
+			]
+		},
+		{
+			"id": "a2_r_tax",
+			"kind": "random",
+			"act": 2,
+			"title": "The Inspector's Tax",
+			"art": "town",
+			"portrait": "clerk",
+			"text": "A trestle table has been set up at the market gate with a red cloth and a very small ledger. The clerk behind it is polite in the way of a person who has never once been refused. He is taking a levy, he says, from every cultivator past the first stage: not in stones, you understand, nor goods. A tithe of attention. 'It is only a little,' he says. 'A glance at the page. One word to confirm your realm.' He holds out a stylus and a chop. 'The Registry would not wish to think you were avoiding it.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"notice_min": 20
+			},
+			"weight": 2,
+			"tags": [
+				"town",
+				"registry"
+			],
+			"choices": [
+				{
+					"label": "Pay the tithe",
+					"hint": "Costs stones. Quiets the page.",
+					"cost": {
+						"stone": 25
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -6
+						}
+					],
+					"after": "He weighs the coin, and your face, and thanks you for your cooperation with something close to love."
+				},
+				{
+					"label": "Haggle",
+					"hint": "Roll: Insight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "notice",
+									"v": -3
+								},
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "He gives you a receipt in a hand like a blade. It is, you note, made out for slightly less than he first said."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "stone",
+									"v": -15
+								},
+								{
+									"op": "text",
+									"t": "He notes the haggle in the margin. He notes everything."
+								}
+							]
+						}
+					],
+					"after": "You ask what the tithe is for. He is delighted to say."
+				},
+				{
+					"label": "Tell him you have no line to confirm",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -10
+						},
+						{
+							"op": "cult",
+							"v": 10
+						}
+					],
+					"after": "He turns the stylus over twice. 'The page is blank,' he says, as if it were a thing he had hoped never to say, and waves you on."
+				}
+			]
+		},
+		{
+			"id": "a2_r_ruin_rain",
+			"kind": "random",
+			"act": 2,
+			"title": "Rain in the Ruin",
+			"art": "ruin",
+			"text": "It rains in the ruin, which should not be possible: the sky is a lid, and the lid has a crack, and what falls through the crack is warm. The rain is violet and smells of lamp oil and orange peel. Where it lands the cloud floor does something unwise and begins to grow tiny pale reeds that sing. Three rogues are huddled under a sheet of bark, trading nervous jokes. A girl in the corner of the hall has taken her boots off and is standing in it, with the face of a person who has not been rained on in years.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"ruin_found"
+				],
+				"not_flags": [
+					"ruin_cleared"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"ruin",
+				"rain"
+			],
+			"choices": [
+				{
+					"label": "Gather the rain in a gourd",
+					"hint": "Practical.",
+					"fx": [
+						{
+							"op": "item",
+							"id": "herb_spirit"
+						},
+						{
+							"op": "cult",
+							"v": 8
+						}
+					],
+					"after": "It does not sit still in the gourd. It sits still very slightly in the herb you drop in, like a promise being kept in the wrong direction."
+				},
+				{
+					"label": "Shelter with the rogues and trade stories",
+					"hint": "Company.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 15
+						},
+						{
+							"op": "notice",
+							"v": -2
+						}
+					],
+					"after": "They tell the one about the clerk and the three brothers. It is not as funny when you have met the clerk."
+				},
+				{
+					"label": "Stand in it, like the girl",
+					"hint": "A little of the sky gets into you.",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.3
+						},
+						{
+							"op": "mp_pct",
+							"v": 0.3
+						},
+						{
+							"op": "notice",
+							"v": 2
+						}
+					],
+					"after": "It is the only warm rain you have ever stood in. It tastes of a place that is a very long way up."
+				}
+			]
+		},
+		{
+			"id": "a2_r_cave_beast",
+			"kind": "random",
+			"act": 2,
+			"title": "The Sleeping Beast",
+			"art": "wilds",
+			"text": "A cave mouth in a limestone face, and a sound from it like a bellows being worked by something very large and very asleep. In the grey light just inside, a tiger demon lies across a bed of its own shed hair, one paw over its nose. Around its bed lie the dull gleams of things it has been given or taken: a sword hilt, a pot of red wax, three beast cores like old teeth. It breathes in, and the whole cave seems to shift a finger's width toward it. It breathes out, and a little dust falls from the roof onto your shoulder like a hand.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"wilds",
+				"beast"
+			],
+			"choices": [
+				{
+					"label": "Sneak past and take the cores",
+					"hint": "Roll: Agility. A fail is a fight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "mat",
+									"k": "core",
+									"v": 2
+								},
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "text",
+									"t": "You are out again before it has finished its next breath."
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "tiger_demon",
+									"win": [
+										{
+											"op": "mat",
+											"k": "core",
+											"v": 1
+										},
+										{
+											"op": "cult",
+											"v": 15
+										}
+									],
+									"lose": [
+										{
+											"op": "text",
+											"t": "It lets you go. It is, after all, still very sleepy."
+										}
+									],
+									"scale": 0.85
+								}
+							]
+						}
+					],
+					"after": "You put your weight on the outside of each foot, like a cat on a wet floor."
+				},
+				{
+					"label": "Strike while it sleeps",
+					"hint": "A fight you start.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "tiger_demon",
+							"win": [
+								{
+									"op": "mat",
+									"k": "core",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "notice",
+									"v": 3
+								}
+							],
+							"lose": [
+								{
+									"op": "text",
+									"t": "It lets you go. It is, after all, still very sleepy."
+								}
+							],
+							"scale": 0.8
+						}
+					],
+					"after": "The first blow is the only one that is yours."
+				},
+				{
+					"label": "Leave an offering of herbs and back out",
+					"hint": "Costs herbs.",
+					"cost": {
+						"herb": 2
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": -2
+						}
+					],
+					"after": "It shifts, and a paw comes down off its nose. Something has been agreed. You do not stay to find out what."
+				}
+			]
+		},
+		{
+			"id": "a2_r_letter",
+			"kind": "random",
+			"act": 2,
+			"title": "A Letter in Your Own Hand",
+			"art": "cave",
+			"text": "There is a letter under your door, in a hand you know very well, because it is yours. The paper is old and the ink has gone the brown of a long-kept promise. It is the handwriting you only have when you have decided not to be hurried: 'To whoever I am next. Do not drink from the cup on the bridge. Do not take the pill from the kind man. When Xiao He says she is fine, look at her hands. The mountain will make a sound. Do not be afraid. It is not afraid of you.' The paper has been folded and unfolded so often that the creases have worn through.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"life_min": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"echo",
+				"past-life"
+			],
+			"choices": [
+				{
+					"label": "Believe every word",
+					"hint": "You do not know why you believe it.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_letter_trusted"
+						}
+					],
+					"after": "You don't know why you believe it. The handwriting is the reason."
+				},
+				{
+					"label": "Burn it after the first line",
+					"hint": "Some things you should not be told by yourself.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						}
+					],
+					"after": "It burns the way old paper burns: all at once, and then with regret. You are surprised how much it feels like a rudeness to the dead."
+				},
+				{
+					"label": "Write a reply, and leave it where you found it",
+					"hint": "Hope costs a sheet of paper.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_letter_replied"
+						}
+					],
+					"after": "You write: 'I am here. I am trying. Tell me what was in the cup.' In the morning there is nothing under the door. You tell yourself that is how it works."
+				}
+			]
+		},
+		{
+			"id": "a2_r_wheel",
+			"kind": "random",
+			"act": 2,
+			"title": "The Wheel, Turning",
+			"art": "wheel",
+			"text": "The pain is a long way off, and the floor is not a floor. You are lying on your back somewhere that is also a wheel: a great pale rim, turning, and beyond it more rims, wheels within wheels, and on them, patient as seeds in a pod, people. Not ghosts, not quite; they are grey and unhurried, and each has a page in one hand with one corner gold-edged and burnt. They go round once, set it down, go round again. They are very well mannered. None looks at you. The wheel has no place for you. It turns, and turns, and carries everyone else.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"breakthrough_failed"
+				]
+			},
+			"weight": 3,
+			"once": true,
+			"tags": [
+				"truth",
+				"wheel",
+				"low_hp"
+			],
+			"choices": [
+				{
+					"label": "Watch them go round",
+					"hint": "Look.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_wheel"
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "hp_pct",
+							"v": 0.1
+						}
+					],
+					"after": "Their pages say the same thing, in the same hand: returned. Failed patch, returned. You count until you lose your place."
+				},
+				{
+					"label": "Reach for the nearest one",
+					"hint": "Roll: Spirit.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_wheel"
+						},
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "notice",
+									"v": -3
+								},
+								{
+									"op": "text",
+									"t": "Her fingers are cold and dry as seed husks. For a moment she looks at you, and it is the look of someone remembering where they left their keys."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "She does not see you. Your hand goes through her like a thought through a wall."
+								}
+							]
+						}
+					],
+					"after": "You cannot feel your arm, and yet it moves."
+				},
+				{
+					"label": "Shut your eyes and wait for it to pass",
+					"hint": "Rest.",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.25
+						}
+					],
+					"after": "You wake with an ache and the odd feeling of having been somewhere you were not invited."
+				}
+			],
+			"chance": 0.6
+		},
+		{
+			"id": "a2_r_noticeboard",
+			"kind": "random",
+			"act": 2,
+			"title": "The Names Board",
+			"art": "sect",
+			"text": "The notice board outside the steward's hall has always held the usual: duty rosters, a lost sandal, a request from the kitchen about the proper treatment of knives. This morning there is a new sheet in a dry grey hand. Just names. A column of them, ruled, each followed by a small tick. You recognise a few: a disciple from the third dormitory, a stooped elder who left for the capital last spring, a girl from the market who sold plums. By evening the sheet is a hand longer. Nobody has seen who adds to it. Everyone walks round it by the same side.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"crack_heard"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"registry",
+				"dread"
+			],
+			"choices": [
+				{
+					"label": "Copy the names down",
+					"hint": "Quiet work, and a stone in the shoe.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_names_copied"
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "notice",
+							"v": 3
+						}
+					],
+					"after": "You count them on the way back: thirty-one. You tell no one. You carry them like a pebble you cannot put down."
+				},
+				{
+					"label": "Tear the sheet down",
+					"hint": "Loud. It will be put back.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 8
+						},
+						{
+							"op": "cult",
+							"v": 10
+						}
+					],
+					"after": "It comes away with a sound like a whole room being shushed. By evening a new one is up, a hand longer."
+				},
+				{
+					"label": "Walk round it by the same side as everyone",
+					"hint": "Safe.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						}
+					],
+					"after": "You catch yourself doing it, and for the rest of the day it is the thing you are most ashamed of."
+				}
+			]
+		},
+		{
+			"id": "a2_r_echo_step",
+			"kind": "random",
+			"act": 2,
+			"title": "A Step You Know",
+			"art": "sect",
+			"text": "The third stone of the temple stair has been loose since before you were born. You know this because you have put your foot on it, and gone down, and cracked your wrist; and you also know it because you did not fall this time, and you could not say why. Your foot simply did not go there. It is the oddest sensation: a hand at the small of your back, a dead reckoning, a knowing without a source. A junior disciple three steps below is going to go onto it, with a tray. You can see the whole of the next two seconds like a thing already written.",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"life_min": 2
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"echo",
+				"past-life"
+			],
+			"choices": [
+				{
+					"label": "Catch the tray",
+					"hint": "Roll: Agility.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "The tray holds. He looks at you as at a miracle, which is wrong, and will go on being wrong."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "text",
+									"t": "You reach it late, and the soup arrives where it was always going to."
+								}
+							]
+						}
+					],
+					"after": "Your body moves a half-beat before you have decided to."
+				},
+				{
+					"label": "Say nothing and watch",
+					"hint": "You know the sound it will make.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 8
+						}
+					],
+					"after": "He goes down, and the tray, and the soup. You know the exact sound it makes, and you hate that you did."
+				},
+				{
+					"label": "Wedge the stone",
+					"hint": "You have been meaning to, in a sense.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "cult",
+							"v": 8
+						}
+					],
+					"after": "You put your weight on it and drive a wedge in with the heel of your hand. It has been meaning to be fixed for a very long time."
+				}
+			]
+		},
+		{
+			"id": "a2_r_banners",
+			"kind": "random",
+			"act": 2,
+			"title": "Banners on the Border",
+			"art": "wilds",
+			"text": "The road to the lowland towns has banners on it that were not there a season ago: a hawk, a wave, a lotus, a fist. Each is planted in a different field, and each has a few armed disciples under it, looking at one another the way dogs look at a bone none has yet been fed. The sound at midnight has made everyone want to be somewhere defensible. A gaunt man in the colours of a minor sect offers you a place at his fire, and a look at his map. 'It's nothing,' he says. 'A boundary. Everyone has a boundary.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"crack_heard"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"wilds",
+				"war"
+			],
+			"choices": [
+				{
+					"label": "Take the fire, and the map",
+					"hint": "Information is a coin.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 15
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "notice",
+							"v": 3
+						}
+					],
+					"after": "The map has more boundaries on it than road. He asks who you are with. You say you are not with anyone, which he writes down."
+				},
+				{
+					"label": "Pay a toll to a man who asks politely",
+					"hint": "Costs stones.",
+					"cost": {
+						"stone": 10
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "The banners part like an audience. Behind you somebody says: 'Another one.' You do not turn."
+				},
+				{
+					"label": "Take the wrong road, carefully",
+					"hint": "Roll: Agility. A fail is a scrap.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "There is a road no banner has bothered to claim. It is a very good road. Nobody uses it for a reason you eventually find."
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "rogue_cultivator",
+									"win": [
+										{
+											"op": "stone",
+											"v": 10
+										}
+									],
+									"lose": [
+										{
+											"op": "notice",
+											"v": 1
+										}
+									],
+									"scale": 1.5
+								}
+							]
+						}
+					],
+					"after": "You pick the road that looks least like a road."
+				}
+			]
+		},
+		{
+			"id": "a2_r_furnace",
+			"kind": "random",
+			"act": 2,
+			"title": "A Furnace Agrees",
+			"art": "town",
+			"text": "An alchemist's furnace has split down its length with a sound like a sneeze, and the old master who owns it is sitting before it with the stunned expression of a man whose horse has died. It is a good furnace: three hundred years, nine fires, a bronze belly gone green and kind. It cracked at midnight, at the sound, and not the way metal cracks: along a line that matches, he swears, to a hair, the line of the crack in the sky. His apprentices are hammering at the lid with the wrong ends of things. 'It is not damaged,' he says, to no one. 'It is agreeing.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"crack_heard"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"town",
+				"crack"
+			],
+			"choices": [
+				{
+					"label": "Offer to help re-set it",
+					"hint": "Roll: Insight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "item",
+									"id": "pill_qi"
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "You hold the seam and he brazes it, and for a moment the whole furnace sings, just once, in tune with nothing."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "cult",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "It comes apart in your hands, and goes on agreeing with something that is not you."
+								}
+							]
+						}
+					],
+					"after": "He lets you hold the seam. His hands are shaking."
+				},
+				{
+					"label": "Buy the shards",
+					"hint": "Costs stones.",
+					"cost": {
+						"stone": 20
+					},
+					"fx": [
+						{
+							"op": "item",
+							"id": "ore_black"
+						},
+						{
+							"op": "mat",
+							"k": "ore",
+							"v": 2
+						}
+					],
+					"after": "He sells them like a man selling the family dog: with the vendor's face, and a moment of real relief."
+				},
+				{
+					"label": "Ask him what he means: agreeing with what?",
+					"hint": "He wants to be asked.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_furnace_asked"
+						}
+					],
+					"after": "'With the world,' he says. 'Everything old wants to break along the same line. I am old. I am feeling very agreeable.'"
+				}
+			]
+		},
+		{
+			"id": "a2_r_hall_favour",
+			"kind": "random",
+			"act": 2,
+			"title": "A Small Thing the Hall Asks",
+			"art": "netherworld",
+			"text": "A pale attendant is waiting in your room, sitting very straight on the only stool, with the expression of someone who has been told to be patient and is making a study of it. 'The Hall asks a small thing,' she says. 'A man in the lower town has been counting our people. He is not a spy. He is a bookkeeper. He cannot stop.' She sets a bone token on the table, the twin of yours. 'We would like him to stop. We would like it very much if it were you.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"netherworld"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"netherworld",
+				"favour"
+			],
+			"choices": [
+				{
+					"label": "Take the token and do it quietly",
+					"hint": "Roll: Agility. It leaves a mark.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "corrupt",
+									"v": 5
+								},
+								{
+									"op": "stone",
+									"v": 40
+								},
+								{
+									"op": "rel",
+									"k": "ye",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "He does not stop counting until the very end, and then he counts to nine, aloud, with great care."
+								}
+							],
+							"fail": [
+								{
+									"op": "corrupt",
+									"v": 5
+								},
+								{
+									"op": "notice",
+									"v": 8
+								},
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "Someone else was counting too. By morning there are two lists, and yours is longer."
+								}
+							]
+						}
+					],
+					"after": "The token is cold, and fits your palm exactly."
+				},
+				{
+					"label": "Warn him instead",
+					"hint": "The Hall will hear of it.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "rel",
+							"k": "ye",
+							"v": -1
+						},
+						{
+							"op": "notice",
+							"v": 4
+						}
+					],
+					"after": "He thanks you very much and, you think, goes on counting on the road."
+				},
+				{
+					"label": "Refuse. The Hall can find another",
+					"hint": "Polite, and noted.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 3
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "'Of course,' she says. She leaves the token. It is there in the morning, like a cat that has made its choice."
+				}
+			]
+		},
+		{
+			"id": "a2_r_back_door",
+			"kind": "random",
+			"act": 2,
+			"title": "Five Through Two Doors",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "The tavern goes quiet in layers: the dice first, then the singer, then the man selling boiled peanuts, who has been selling the same boiled peanuts for eleven years. Old Mo does not look up from his egg. 'Five,' he says to the egg. 'Three at the front, two at the back. It is the two at the back I'd worry about, kid. The front is only for noise. There is a loose board under the table, and under the board a drop of about a man and a half. Yes. I have checked.' His one hand has not stopped peeling. 'Whenever you like.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"sect": [
+					"rogue"
+				]
+			},
+			"weight": 2,
+			"once": true,
+			"tags": [
+				"rogue",
+				"tavern"
+			],
+			"choices": [
+				{
+					"label": "Take the board",
+					"hint": "Roll: Agility.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "You land like a cat and he lands like a sack of grain, and neither of you says anything for about two streets."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The drop is a man and a half. It is the half that hurts."
+								}
+							]
+						}
+					],
+					"after": "You go under the table, and a moment later so does the egg."
+				},
+				{
+					"label": "Walk out the front, like a customer",
+					"hint": "Roll: Dao-heart. A fail is a fight.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "notice",
+									"v": -3
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "You buy a bag of peanuts on the way. Three men look at you and decide, for the first time that year, to be bored."
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "rogue_cultivator",
+									"win": [
+										{
+											"op": "stone",
+											"v": 15
+										},
+										{
+											"op": "cult",
+											"v": 8
+										}
+									],
+									"lose": [
+										{
+											"op": "notice",
+											"v": 2
+										}
+									],
+									"scale": 1.6
+								}
+							]
+						}
+					],
+					"after": "You stand, and put coins on the table in a very ordinary way."
+				},
+				{
+					"label": "Fight at the front: draw them off the old man",
+					"hint": "He will remember it.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "battle",
+							"enemy": "rogue_cultivator",
+							"win": [
+								{
+									"op": "stone",
+									"v": 20
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								}
+							],
+							"lose": [
+								{
+									"op": "notice",
+									"v": 2
+								}
+							],
+							"scale": 2.0
+						}
+					],
+					"after": "Mo says, to the egg, 'Four.' He does not sound displeased."
+				}
+			]
+		}
+	]
+}

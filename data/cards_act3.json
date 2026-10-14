@@ -1,0 +1,52 @@
+{
+	"cards": [
+		{
+			"id": "c_xiaohe_letter",
+			"zh": "小禾的信",
+			"en": "Xiao He's Letter",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_xiaohe_letter",
+			"text": "A folded paper, pressed hard enough to dent. Open it.",
+			"fx": [{"op": "event", "id": "a3_c_letter"}],
+			"weight": 0,
+			"scale": false
+		},
+		{
+			"id": "c_ferry_coin",
+			"zh": "渡口灰玉",
+			"en": "The Ferryman's Coin",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_ferry_coin",
+			"text": "A grey jade coin with a hole in it, handed over for the next one who asks.",
+			"fx": [{"op": "event", "id": "a3_c_ferry"}],
+			"weight": 0,
+			"scale": false
+		},
+		{
+			"id": "c_ledger_page",
+			"zh": "残册一页",
+			"en": "A Torn Ledger Page",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_ledger_page",
+			"text": "A page torn from the Registry's book, still warm. Decide what to do with it.",
+			"fx": [{"op": "event", "id": "a3_c_ledger"}],
+			"weight": 0,
+			"scale": false
+		},
+		{
+			"id": "c_fox_mask",
+			"zh": "旧狐面",
+			"en": "An Old Fox Mask",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_fox_mask",
+			"text": "Su Jiu left something on your pillow. There is a price scratched inside.",
+			"fx": [{"op": "event", "id": "a3_c_mask"}],
+			"weight": 0,
+			"scale": false
+		}
+	]
+}

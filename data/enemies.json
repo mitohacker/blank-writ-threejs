@@ -1,0 +1,1195 @@
+{
+	"_schema": "enemy: id zh en tier kind art elem hp atk def spd skills loot{stone:[a,b],mats:{k:[a,b]},items:[{id,p}]} notice text  (hp atk def spd multiply rules.json enemy_base[tier]; loot stone is base units and is multiplied by the realm's stone_scale)",
+	"enemies": [
+		{
+			"id": "wolf",
+			"zh": "野狼",
+			"en": "Gaunt Wolf",
+			"tier": 1,
+			"kind": "beast",
+			"art": "en_wolf",
+			"elem": "none",
+			"hp": 0.9,
+			"atk": 1.0,
+			"def": 0.8,
+			"spd": 1.2,
+			"skills": [
+				"savage_bite"
+			],
+			"loot": {
+				"stone": [
+					0,
+					3
+				],
+				"mats": {
+					"core": [
+						0,
+						1
+					]
+				},
+				"items": [
+					{
+						"id": "herb_spirit",
+						"p": 0.06
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Winter-hungry and patient; it has followed your smell for a mile."
+		},
+		{
+			"id": "bandit",
+			"zh": "山贼",
+			"en": "Mountain Bandit",
+			"tier": 1,
+			"kind": "human",
+			"art": "en_bandit",
+			"elem": "none",
+			"hp": 1.0,
+			"atk": 1.1,
+			"def": 1.0,
+			"spd": 1.0,
+			"skills": [
+				"iron_fist",
+				"dirty_trick"
+			],
+			"loot": {
+				"stone": [
+					3,
+					9
+				],
+				"items": [
+					{
+						"id": "sword_iron",
+						"p": 0.08
+					},
+					{
+						"id": "pill_healing",
+						"p": 0.1
+					}
+				]
+			},
+			"notice": 0,
+			"text": "A man with a cudgel, a bad knee and a long list of reasons."
+		},
+		{
+			"id": "boar",
+			"zh": "野猪",
+			"en": "Tusked Boar",
+			"tier": 1,
+			"kind": "beast",
+			"art": "en_boar",
+			"elem": "earth",
+			"hp": 1.1,
+			"atk": 1.0,
+			"def": 1.2,
+			"spd": 0.8,
+			"skills": [
+				"gore_charge"
+			],
+			"loot": {
+				"stone": [
+					0,
+					2
+				],
+				"mats": {
+					"core": [
+						0,
+						1
+					]
+				},
+				"items": [
+					{
+						"id": "pill_body",
+						"p": 0.03
+					}
+				]
+			},
+			"notice": 0,
+			"text": "All shoulder and temper; it does not know it could simply have left you alone."
+		},
+		{
+			"id": "viper",
+			"zh": "青竹蛇",
+			"en": "Green Bamboo Viper",
+			"tier": 1,
+			"kind": "beast",
+			"art": "en_viper",
+			"elem": "wood",
+			"hp": 0.8,
+			"atk": 0.9,
+			"def": 0.6,
+			"spd": 1.3,
+			"skills": [
+				"venom_fang"
+			],
+			"loot": {
+				"stone": [
+					0,
+					2
+				],
+				"items": [
+					{
+						"id": "pill_antidote",
+						"p": 0.15
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Exactly the colour of the stalk it hangs from, which is the whole of its plan."
+		},
+		{
+			"id": "thug",
+			"zh": "地痞",
+			"en": "Town Thug",
+			"tier": 1,
+			"kind": "human",
+			"art": "en_thug",
+			"elem": "none",
+			"hp": 1.0,
+			"atk": 1.0,
+			"def": 0.9,
+			"spd": 1.0,
+			"skills": [
+				"iron_fist"
+			],
+			"loot": {
+				"stone": [
+					2,
+					8
+				],
+				"items": [
+					{
+						"id": "charm_lucky",
+						"p": 0.05
+					},
+					{
+						"id": "pill_healing",
+						"p": 0.1
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Fallen-Star's alleys breed them like mould: all knuckle, no future."
+		},
+		{
+			"id": "rogue_cultivator",
+			"zh": "散修",
+			"en": "Rogue Cultivator",
+			"tier": 2,
+			"kind": "human",
+			"art": "en_rogue_cultivator",
+			"elem": "fire",
+			"hp": 1.0,
+			"atk": 1.1,
+			"def": 1.0,
+			"spd": 1.1,
+			"skills": [
+				"fireball",
+				"swift_step"
+			],
+			"loot": {
+				"stone": [
+					4,
+					12
+				],
+				"items": [
+					{
+						"id": "pill_qi",
+						"p": 0.25
+					},
+					{
+						"id": "manual_rogue_step",
+						"p": 0.05
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Self-taught, underfed and faster than he has any right to be."
+		},
+		{
+			"id": "corpse",
+			"zh": "行尸",
+			"en": "Walking Corpse",
+			"tier": 2,
+			"kind": "spirit",
+			"art": "en_corpse",
+			"elem": "none",
+			"hp": 1.2,
+			"atk": 1.0,
+			"def": 1.0,
+			"spd": 0.6,
+			"skills": [
+				"corpse_claw"
+			],
+			"loot": {
+				"stone": [
+					1,
+					5
+				],
+				"items": [
+					{
+						"id": "pill_antidote",
+						"p": 0.1
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Somebody's grandfather, a good deal later than he planned."
+		},
+		{
+			"id": "fox_kit",
+			"zh": "狐崽",
+			"en": "Fox Kit",
+			"tier": 2,
+			"kind": "beast",
+			"art": "en_fox_kit",
+			"elem": "fire",
+			"hp": 0.8,
+			"atk": 0.9,
+			"def": 0.7,
+			"spd": 1.4,
+			"skills": [
+				"fox_fire",
+				"mist_step"
+			],
+			"loot": {
+				"stone": [
+					2,
+					8
+				],
+				"mats": {
+					"core": [
+						0,
+						1
+					]
+				},
+				"items": [
+					{
+						"id": "charm_lucky",
+						"p": 0.08
+					}
+				]
+			},
+			"notice": 0,
+			"text": "A cub with its tails barely in, spitting blue sparks and entirely certain it is terrifying."
+		},
+		{
+			"id": "stone_imp",
+			"zh": "石魈",
+			"en": "Stone Imp",
+			"tier": 2,
+			"kind": "spirit",
+			"art": "en_stone_imp",
+			"elem": "earth",
+			"hp": 1.1,
+			"atk": 1.0,
+			"def": 1.5,
+			"spd": 0.7,
+			"skills": [
+				"stone_skin",
+				"quake_palm"
+			],
+			"loot": {
+				"stone": [
+					2,
+					8
+				],
+				"mats": {
+					"ore": [
+						0,
+						2
+					]
+				},
+				"items": [
+					{
+						"id": "ore_black",
+						"p": 0.2
+					}
+				]
+			},
+			"notice": 0,
+			"text": "A knot of hill-spirit in a coat of gravel, slow, stubborn and very hard to argue with."
+		},
+		{
+			"id": "puppet",
+			"zh": "傀儡",
+			"en": "Wooden Puppet",
+			"tier": 2,
+			"kind": "spirit",
+			"art": "en_puppet",
+			"elem": "metal",
+			"hp": 1.0,
+			"atk": 1.2,
+			"def": 1.2,
+			"spd": 0.9,
+			"skills": [
+				"iron_fist",
+				"metal_shield"
+			],
+			"loot": {
+				"stone": [
+					3,
+					10
+				],
+				"mats": {
+					"ore": [
+						0,
+						1
+					]
+				},
+				"items": [
+					{
+						"id": "ore_black",
+						"p": 0.1
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Strings cut long ago; it keeps performing for an audience of nobody."
+		},
+		{
+			"id": "ghost",
+			"zh": "游魂",
+			"en": "Wandering Ghost",
+			"tier": 2,
+			"kind": "spirit",
+			"art": "en_ghost",
+			"elem": "water",
+			"hp": 0.8,
+			"atk": 1.0,
+			"def": 0.6,
+			"spd": 1.2,
+			"skills": [
+				"ghost_wail",
+				"soul_drain"
+			],
+			"loot": {
+				"stone": [
+					2,
+					8
+				],
+				"items": [
+					{
+						"id": "pill_mind",
+						"p": 0.08
+					}
+				]
+			},
+			"notice": 0,
+			"text": "A drowned woman's grief, still looking for the road home."
+		},
+		{
+			"id": "sect_guard",
+			"zh": "宗门守卫",
+			"en": "Sect Guard",
+			"tier": 2,
+			"kind": "human",
+			"art": "en_sect_guard",
+			"elem": "metal",
+			"hp": 1.1,
+			"atk": 1.1,
+			"def": 1.2,
+			"spd": 1.0,
+			"skills": [
+				"azure_slash",
+				"qi_shield"
+			],
+			"loot": {
+				"stone": [
+					4,
+					12
+				],
+				"items": [
+					{
+						"id": "pill_qi",
+						"p": 0.15
+					},
+					{
+						"id": "robe_cloth",
+						"p": 0.05
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Polite and immovable; he has been told you are probably nobody and he is trained for the other case."
+		},
+		{
+			"id": "bandit_chief",
+			"zh": "山寨头领",
+			"en": "Bandit Chief",
+			"tier": 2,
+			"kind": "human",
+			"art": "en_bandit_chief",
+			"elem": "none",
+			"hp": 1.6,
+			"atk": 1.3,
+			"def": 1.2,
+			"spd": 1.0,
+			"skills": [
+				"iron_fist",
+				"dirty_trick",
+				"qi_shield"
+			],
+			"loot": {
+				"stone": [
+					8,
+					20
+				],
+				"items": [
+					{
+						"id": "sword_iron",
+						"p": 0.3
+					},
+					{
+						"id": "pill_healing",
+						"p": 0.3
+					},
+					{
+						"id": "charm_lucky",
+						"p": 0.15
+					}
+				]
+			},
+			"notice": 1,
+			"text": "He has kept the road for nine winters and has opinions about anyone using it for free."
+		},
+		{
+			"id": "heart_demon",
+			"zh": "心魔",
+			"en": "Heart-Demon",
+			"tier": 2,
+			"kind": "spirit",
+			"art": "en_heart_demon",
+			"elem": "none",
+			"hp": 1.0,
+			"atk": 1.0,
+			"def": 0.8,
+			"spd": 1.0,
+			"skills": [
+				"soul_drain",
+				"ghost_wail"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "It wears your face on a worse day, and it has the better arguments."
+		},
+		{
+			"id": "tiger_demon",
+			"zh": "虎妖",
+			"en": "Tiger Demon",
+			"tier": 3,
+			"kind": "beast",
+			"art": "en_tiger_demon",
+			"elem": "metal",
+			"hp": 1.1,
+			"atk": 1.15,
+			"def": 1.0,
+			"spd": 1.1,
+			"skills": [
+				"savage_bite",
+				"tiger_roar"
+			],
+			"loot": {
+				"stone": [
+					5,
+					14
+				],
+				"mats": {
+					"core": [
+						1,
+						2
+					]
+				},
+				"items": [
+					{
+						"id": "armor_scale",
+						"p": 0.08
+					}
+				]
+			},
+			"notice": 2,
+			"text": "Old enough to have learned patience, and young enough to still enjoy being feared."
+		},
+		{
+			"id": "demon_cultivator",
+			"zh": "魔修",
+			"en": "Demon Cultivator",
+			"tier": 3,
+			"kind": "human",
+			"art": "en_demon_cultivator",
+			"elem": "fire",
+			"hp": 1.0,
+			"atk": 1.2,
+			"def": 0.9,
+			"spd": 1.1,
+			"skills": [
+				"fireball",
+				"soul_drain",
+				"blood_rite"
+			],
+			"loot": {
+				"stone": [
+					8,
+					20
+				],
+				"items": [
+					{
+						"id": "pill_blood_bloom",
+						"p": 0.12
+					},
+					{
+						"id": "manual_netherworld",
+						"p": 0.05
+					},
+					{
+						"id": "blade_blood",
+						"p": 0.03
+					}
+				]
+			},
+			"notice": 3,
+			"text": "His robe is clean and his hands are not; he smiles like a man pricing you."
+		},
+		{
+			"id": "flood_dragon",
+			"zh": "蛟龙",
+			"en": "Flood Dragon",
+			"tier": 3,
+			"kind": "boss",
+			"art": "en_flood_dragon",
+			"elem": "water",
+			"hp": 1.8,
+			"atk": 1.2,
+			"def": 1.2,
+			"spd": 1.0,
+			"skills": [
+				"tidal_crash",
+				"ice_lance",
+				"frost_veil"
+			],
+			"loot": {
+				"stone": [
+					10,
+					24
+				],
+				"mats": {
+					"core": [
+						2,
+						3
+					]
+				},
+				"items": [
+					{
+						"id": "pill_marrow",
+						"p": 0.2
+					}
+				]
+			},
+			"notice": 5,
+			"text": "Half a river, half a grudge; the valley's fields remember what it does when the season turns."
+		},
+		{
+			"id": "rival_disciple",
+			"zh": "同门劲敌",
+			"en": "Rival Disciple",
+			"tier": 3,
+			"kind": "human",
+			"art": "en_rival_disciple",
+			"elem": "metal",
+			"hp": 1.1,
+			"atk": 1.15,
+			"def": 1.1,
+			"spd": 1.2,
+			"skills": [
+				"azure_slash",
+				"sword_rain",
+				"metal_shield"
+			],
+			"loot": {
+				"stone": [
+					6,
+					16
+				],
+				"items": [
+					{
+						"id": "pill_qi_fine",
+						"p": 0.2
+					},
+					{
+						"id": "charm_quiet",
+						"p": 0.06
+					}
+				]
+			},
+			"notice": 0,
+			"text": "Same robe, same forms, a better teacher, and a smile that says he knows it."
+		},
+		{
+			"id": "blood_wraith",
+			"zh": "血魅",
+			"en": "Blood Wraith",
+			"tier": 3,
+			"kind": "spirit",
+			"art": "en_blood_wraith",
+			"elem": "water",
+			"hp": 0.9,
+			"atk": 1.3,
+			"def": 0.7,
+			"spd": 1.3,
+			"skills": [
+				"soul_drain",
+				"blood_rite",
+				"ghost_wail"
+			],
+			"loot": {
+				"stone": [
+					5,
+					14
+				],
+				"items": [
+					{
+						"id": "pill_blood_bloom",
+						"p": 0.1
+					},
+					{
+						"id": "blade_blood",
+						"p": 0.04
+					}
+				]
+			},
+			"notice": 2,
+			"text": "What is left of a duelist who would not stop; it still wants one more bout."
+		},
+		{
+			"id": "sword_spirit",
+			"zh": "剑灵",
+			"en": "Sword Spirit",
+			"tier": 3,
+			"kind": "spirit",
+			"art": "en_sword_spirit",
+			"elem": "metal",
+			"hp": 1.0,
+			"atk": 1.3,
+			"def": 1.0,
+			"spd": 1.4,
+			"skills": [
+				"sword_rain",
+				"azure_slash",
+				"metal_shield"
+			],
+			"loot": {
+				"stone": [
+					6,
+					16
+				],
+				"items": [
+					{
+						"id": "sword_azure",
+						"p": 0.06
+					}
+				]
+			},
+			"notice": 0,
+			"text": "A blade's memory of the hand that held it, tired of waiting for someone good enough."
+		},
+		{
+			"id": "ruin_guardian",
+			"zh": "遗府守卫",
+			"en": "Ruin Guardian",
+			"tier": 3,
+			"kind": "boss",
+			"art": "en_ruin_guardian",
+			"elem": "earth",
+			"hp": 1.8,
+			"atk": 1.2,
+			"def": 1.5,
+			"spd": 0.9,
+			"skills": [
+				"quake_palm",
+				"stone_skin",
+				"mountain_press"
+			],
+			"loot": {
+				"stone": [
+					10,
+					26
+				],
+				"mats": {
+					"ore": [
+						1,
+						3
+					]
+				},
+				"items": [
+					{
+						"id": "ore_black",
+						"p": 0.4
+					},
+					{
+						"id": "manual_stone_skin",
+						"p": 0.1
+					}
+				]
+			},
+			"notice": 1,
+			"text": "A stone sentinel with a patched helm; it has not been told the sect is gone."
+		},
+		{
+			"id": "tribulation_core",
+			"zh": "金丹天劫",
+			"en": "Golden-Core Tribulation",
+			"tier": 3,
+			"kind": "spirit",
+			"art": "en_tribulation_core",
+			"elem": "none",
+			"hp": 2.8,
+			"atk": 1.2,
+			"def": 0.4,
+			"spd": 1.0,
+			"skills": [
+				"sky_bolt"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "The first thunder: white, orderly, and not at all personal."
+		},
+		{
+			"id": "corpse_king",
+			"zh": "尸王",
+			"en": "Corpse King",
+			"tier": 4,
+			"kind": "boss",
+			"art": "en_corpse_king",
+			"elem": "earth",
+			"hp": 1.8,
+			"atk": 1.2,
+			"def": 1.4,
+			"spd": 0.8,
+			"skills": [
+				"corpse_claw",
+				"quake_palm",
+				"stone_skin"
+			],
+			"loot": {
+				"stone": [
+					12,
+					30
+				],
+				"mats": {
+					"core": [
+						2,
+						4
+					]
+				},
+				"items": [
+					{
+						"id": "pill_marrow",
+						"p": 0.3
+					},
+					{
+						"id": "pill_longevity",
+						"p": 0.05
+					}
+				]
+			},
+			"notice": 5,
+			"text": "A general of a vanished army; its soldiers are the dirt around you."
+		},
+		{
+			"id": "inspector",
+			"zh": "司命使",
+			"en": "Registry Inspector",
+			"tier": 4,
+			"kind": "human",
+			"art": "en_inspector",
+			"elem": "none",
+			"hp": 0.9,
+			"atk": 0.9,
+			"def": 0.7,
+			"spd": 1.0,
+			"skills": [
+				"registry_brand",
+				"seal_of_registry",
+				"qi_shield"
+			],
+			"loot": {
+				"stone": [
+					8,
+					20
+				],
+				"items": [
+					{
+						"id": "charm_quiet",
+						"p": 0.15
+					},
+					{
+						"id": "brush_fragment",
+						"p": 0.04
+					}
+				]
+			},
+			"notice": 20,
+			"text": "A clerk in grey with a scroll and a sensible pair of boots; he is almost apologetic until the scroll opens."
+		},
+		{
+			"id": "nine_tail_fox",
+			"zh": "九尾狐",
+			"en": "Nine-Tailed Fox",
+			"tier": 4,
+			"kind": "beast",
+			"art": "en_nine_tail_fox",
+			"elem": "fire",
+			"hp": 1.4,
+			"atk": 1.2,
+			"def": 0.9,
+			"spd": 1.5,
+			"skills": [
+				"fox_fire",
+				"mist_step",
+				"flame_wave"
+			],
+			"loot": {
+				"stone": [
+					10,
+					26
+				],
+				"mats": {
+					"core": [
+						1,
+						3
+					]
+				},
+				"items": [
+					{
+						"id": "fox_mask",
+						"p": 0.1
+					},
+					{
+						"id": "charm_lucky",
+						"p": 0.2
+					}
+				]
+			},
+			"notice": 3,
+			"text": "Every tail a different lie, and the oldest of them is the one she believes."
+		},
+		{
+			"id": "ye_disciple",
+			"zh": "九幽弟子",
+			"en": "Netherworld Disciple",
+			"tier": 4,
+			"kind": "human",
+			"art": "en_ye_disciple",
+			"elem": "water",
+			"hp": 1.2,
+			"atk": 1.2,
+			"def": 1.0,
+			"spd": 1.2,
+			"skills": [
+				"soul_drain",
+				"blood_rite",
+				"thunder_palm"
+			],
+			"loot": {
+				"stone": [
+					10,
+					26
+				],
+				"items": [
+					{
+						"id": "pill_blood_bloom",
+						"p": 0.2
+					},
+					{
+						"id": "manual_netherworld",
+						"p": 0.1
+					},
+					{
+						"id": "charm_bone_whistle",
+						"p": 0.06
+					}
+				]
+			},
+			"notice": 4,
+			"text": "Young, devout, and sure that what the Hall asks of him is a kind of love."
+		},
+		{
+			"id": "tribulation_nascent",
+			"zh": "元婴天劫",
+			"en": "Nascent-Soul Tribulation",
+			"tier": 4,
+			"kind": "spirit",
+			"art": "en_tribulation_nascent",
+			"elem": "none",
+			"hp": 2.8,
+			"atk": 1.2,
+			"def": 0.4,
+			"spd": 1.0,
+			"skills": [
+				"nine_heavens_thunder"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "Nine skies of thunder, each asking the same quiet question."
+		},
+		{
+			"id": "heavenly_soldier",
+			"zh": "天兵",
+			"en": "Heavenly Soldier",
+			"tier": 5,
+			"kind": "spirit",
+			"art": "en_heavenly_soldier",
+			"elem": "metal",
+			"hp": 1.2,
+			"atk": 1.3,
+			"def": 1.4,
+			"spd": 1.0,
+			"skills": [
+				"halberd_sweep",
+				"metal_shield",
+				"sword_rain"
+			],
+			"loot": {
+				"stone": [
+					14,
+					34
+				],
+				"items": [
+					{
+						"id": "pill_qi_sun",
+						"p": 0.1
+					},
+					{
+						"id": "armor_demon_hide",
+						"p": 0.05
+					}
+				]
+			},
+			"notice": 8,
+			"text": "Gold-armoured, faceless, and drilled by a clerk; he is not angry. He is correcting an entry."
+		},
+		{
+			"id": "demon_lord",
+			"zh": "魔君",
+			"en": "Demon Lord",
+			"tier": 5,
+			"kind": "boss",
+			"art": "en_demon_lord",
+			"elem": "fire",
+			"hp": 2.2,
+			"atk": 1.5,
+			"def": 1.2,
+			"spd": 1.1,
+			"skills": [
+				"flame_wave",
+				"phoenix_burn",
+				"blood_rite"
+			],
+			"loot": {
+				"stone": [
+					20,
+					50
+				],
+				"mats": {
+					"core": [
+						3,
+						5
+					]
+				},
+				"items": [
+					{
+						"id": "pill_qi_sun",
+						"p": 0.25
+					},
+					{
+						"id": "pill_insight",
+						"p": 0.1
+					},
+					{
+						"id": "blade_blood",
+						"p": 0.1
+					}
+				]
+			},
+			"notice": 8,
+			"text": "A throne carried on the backs of the things he has eaten; he talks to you as if you were already furniture."
+		},
+		{
+			"id": "xiaoheng_duel",
+			"zh": "萧衡",
+			"en": "Xiao Heng",
+			"tier": 5,
+			"kind": "human",
+			"art": "en_xiaoheng_duel",
+			"elem": "none",
+			"hp": 1.5,
+			"atk": 1.3,
+			"def": 1.2,
+			"spd": 1.2,
+			"skills": [
+				"fated_path",
+				"heart_sword",
+				"sword_rain"
+			],
+			"loot": {
+				"stone": [
+					10,
+					30
+				]
+			},
+			"notice": 0,
+			"text": "Every door has always opened for him, and he has never once been thanked for it."
+		},
+		{
+			"id": "yunzhi_duel",
+			"zh": "云织",
+			"en": "Yun Zhi",
+			"tier": 5,
+			"kind": "human",
+			"art": "en_yunzhi_duel",
+			"elem": "metal",
+			"hp": 1.4,
+			"atk": 1.35,
+			"def": 1.1,
+			"spd": 1.4,
+			"skills": [
+				"patching_sword",
+				"sword_rain",
+				"mist_step"
+			],
+			"loot": {
+				"stone": [
+					10,
+					30
+				]
+			},
+			"notice": 0,
+			"text": "She does not want this fight; the sword in her hand has wanted it since before she was born."
+		},
+		{
+			"id": "moshan_test",
+			"zh": "墨山",
+			"en": "Mo Shan",
+			"tier": 5,
+			"kind": "human",
+			"art": "en_moshan_test",
+			"elem": "none",
+			"hp": 1.6,
+			"atk": 1.2,
+			"def": 1.3,
+			"spd": 1.1,
+			"skills": [
+				"ink_stroke",
+				"heart_sword",
+				"swift_step"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "A one-armed drunk with a clerk's handwriting, testing a student he already believes in."
+		},
+		{
+			"id": "tribulation_spirit",
+			"zh": "化神天劫",
+			"en": "Spirit-Transformation Tribulation",
+			"tier": 5,
+			"kind": "spirit",
+			"art": "en_tribulation_spirit",
+			"elem": "none",
+			"hp": 2.8,
+			"atk": 1.25,
+			"def": 0.4,
+			"spd": 1.0,
+			"skills": [
+				"dao_thunder"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "The last thunder is not a punishment; it is a signature."
+		},
+		{
+			"id": "magistrate_1",
+			"zh": "司命·录",
+			"en": "The Magistrate: First Form",
+			"tier": 6,
+			"kind": "boss",
+			"art": "en_magistrate_1",
+			"elem": "none",
+			"hp": 1.6,
+			"atk": 1.6,
+			"def": 1.2,
+			"spd": 1.0,
+			"skills": [
+				"registry_brand",
+				"writ_erase",
+				"seal_of_registry"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "A calm clerk with a scroll, who is only filing; it is the most frightening thing you have ever seen."
+		},
+		{
+			"id": "magistrate_2",
+			"zh": "司命·令",
+			"en": "The Magistrate: Second Form",
+			"tier": 6,
+			"kind": "boss",
+			"art": "en_magistrate_2",
+			"elem": "none",
+			"hp": 2.0,
+			"atk": 1.8,
+			"def": 1.3,
+			"spd": 1.1,
+			"skills": [
+				"heaven_edict",
+				"seal_of_registry",
+				"writ_erase"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "The clerk's face has gone; what writes now is the rule itself, in a hand like weather."
+		},
+		{
+			"id": "magistrate_3",
+			"zh": "司命·典",
+			"en": "The Magistrate: Third Form",
+			"tier": 6,
+			"kind": "boss",
+			"art": "en_magistrate_3",
+			"elem": "none",
+			"hp": 2.6,
+			"atk": 2.0,
+			"def": 1.4,
+			"spd": 1.2,
+			"skills": [
+				"final_ledger",
+				"heaven_edict",
+				"writ_erase"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "The whole Registry stands up in one body: a ledger the size of a province, and every line of it is you."
+		},
+		{
+			"id": "dao_avatar",
+			"zh": "道之化身",
+			"en": "Avatar of the Dao",
+			"tier": 6,
+			"kind": "boss",
+			"art": "en_dao_avatar",
+			"elem": "none",
+			"hp": 2.5,
+			"atk": 2.2,
+			"def": 1.3,
+			"spd": 1.3,
+			"skills": [
+				"world_collapse",
+				"heaven_edict",
+				"seal_of_registry"
+			],
+			"loot": {},
+			"notice": 0,
+			"text": "What the sky looks like when it finally has a face, and the face is yours."
+		}
+	]
+}

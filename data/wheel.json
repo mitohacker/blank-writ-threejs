@@ -1,0 +1,831 @@
+{
+	"_schema": "node: id zh en branch tier cost max req[] effect{stat root stone life ap hand swap tier cult cards techs items revive realm notice imprint breakthrough talent_slots reroll} text unlock?  (rank n costs cost*2^(n-1))",
+	"nodes": [
+		{
+			"id": "w_b_frame",
+			"zh": "强筋",
+			"en": "Hardened Frame",
+			"branch": "body",
+			"tier": 1,
+			"cost": 6,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"stat": {
+					"body": 1
+				}
+			},
+			"text": "Body +1 from the first term: more HP, more Defence, a harder hit."
+		},
+		{
+			"id": "w_b_fist",
+			"zh": "铁拳初成",
+			"en": "A First Fist",
+			"branch": "body",
+			"tier": 1,
+			"cost": 8,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"techs": [
+					"iron_fist"
+				]
+			},
+			"text": "Every life begins knowing Iron Fist: a technique in the very first fight."
+		},
+		{
+			"id": "w_b_toil",
+			"zh": "苦力",
+			"en": "Hard Labour",
+			"branch": "body",
+			"tier": 1,
+			"cost": 10,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"cards": [
+					"temper_body"
+				]
+			},
+			"text": "Tempering the Frame joins every starting deck."
+		},
+		{
+			"id": "w_life",
+			"zh": "延年",
+			"en": "Long Years",
+			"branch": "body",
+			"tier": 2,
+			"cost": 10,
+			"max": 4,
+			"req": [
+				"w_b_frame"
+			],
+			"effect": {
+				"life": 1
+			},
+			"text": "Each rank: +1 term of lifespan at the start (cost doubles each rank)."
+		},
+		{
+			"id": "w_b_skin",
+			"zh": "铜皮",
+			"en": "Bronze Skin",
+			"branch": "body",
+			"tier": 2,
+			"cost": 25,
+			"max": 1,
+			"req": [
+				"w_b_fist"
+			],
+			"effect": {
+				"techs": [
+					"stone_skin"
+				],
+				"items": [
+					"robe_cloth"
+				]
+			},
+			"text": "Start knowing Stone Skin, in a hemp robe."
+		},
+		{
+			"id": "w_b_bath",
+			"zh": "药浴",
+			"en": "Medicinal Bath",
+			"branch": "body",
+			"tier": 2,
+			"cost": 30,
+			"max": 1,
+			"req": [
+				"w_b_toil"
+			],
+			"effect": {
+				"items": [
+					"pill_body",
+					"pill_healing"
+				]
+			},
+			"text": "Start every life with a Bone-Tempering pill and a Spring-Rain pill."
+		},
+		{
+			"id": "w_b_bone",
+			"zh": "铁骨",
+			"en": "Iron Bones",
+			"branch": "body",
+			"tier": 3,
+			"cost": 40,
+			"max": 2,
+			"req": [
+				"w_life"
+			],
+			"effect": {
+				"stat": {
+					"body": 1
+				}
+			},
+			"text": "Each rank: Body +1 from the start."
+		},
+		{
+			"id": "w_b_quake",
+			"zh": "山崩掌",
+			"en": "Mountain-Splitting Palm",
+			"branch": "body",
+			"tier": 3,
+			"cost": 55,
+			"max": 1,
+			"req": [
+				"w_b_skin"
+			],
+			"effect": {
+				"techs": [
+					"quake_palm"
+				]
+			},
+			"text": "Start knowing Quake Palm, which can stun."
+		},
+		{
+			"id": "w_b_marrow",
+			"zh": "洗髓",
+			"en": "Marrow Washing",
+			"branch": "body",
+			"tier": 4,
+			"cost": 100,
+			"max": 1,
+			"req": [
+				"w_b_bone"
+			],
+			"effect": {
+				"stat": {
+					"body": 2
+				}
+			},
+			"text": "Body +2 from the start."
+		},
+		{
+			"id": "w_b_vajra",
+			"zh": "金刚体",
+			"en": "Vajra Frame",
+			"branch": "body",
+			"tier": 5,
+			"cost": 150,
+			"max": 1,
+			"req": [
+				"w_b_marrow",
+				"w_b_quake"
+			],
+			"effect": {
+				"stat": {
+					"body": 2
+				},
+				"items": [
+					"armor_demon_hide"
+				]
+			},
+			"text": "Body +2 and every life starts in a demon-hide cuirass."
+		},
+		{
+			"id": "w_b_dragon",
+			"zh": "真龙之躯",
+			"en": "True-Dragon Body",
+			"branch": "body",
+			"tier": 6,
+			"cost": 240,
+			"max": 1,
+			"req": [
+				"w_b_vajra"
+			],
+			"effect": {
+				"stat": {
+					"body": 3
+				},
+				"techs": [
+					"mountain_press"
+				]
+			},
+			"text": "Body +3 and Mountain Press from the first fight."
+		},
+		{
+			"id": "w_s_eye",
+			"zh": "灵台",
+			"en": "Clear Terrace",
+			"branch": "spirit",
+			"tier": 1,
+			"cost": 6,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"stat": {
+					"spirit": 1
+				}
+			},
+			"text": "Spirit +1 from the first term: more MP, a sharper blow."
+		},
+		{
+			"id": "w_s_spark",
+			"zh": "一缕灵光",
+			"en": "A Spark of Qi",
+			"branch": "spirit",
+			"tier": 1,
+			"cost": 8,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"techs": [
+					"qi_shield"
+				]
+			},
+			"text": "Every life begins knowing Qi Shield."
+		},
+		{
+			"id": "w_s_visual",
+			"zh": "存想法",
+			"en": "Inner Vision",
+			"branch": "spirit",
+			"tier": 1,
+			"cost": 10,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"cards": [
+					"visualize"
+				]
+			},
+			"text": "Inner Vision joins every starting deck."
+		},
+		{
+			"id": "w_swap",
+			"zh": "换牌",
+			"en": "Second Thoughts",
+			"branch": "spirit",
+			"tier": 2,
+			"cost": 20,
+			"max": 1,
+			"req": [
+				"w_s_eye"
+			],
+			"effect": {
+				"swap": 1
+			},
+			"text": "One more swap each term: put a bad card back and draw another."
+		},
+		{
+			"id": "w_s_sea",
+			"zh": "气海",
+			"en": "Sea of Qi",
+			"branch": "spirit",
+			"tier": 2,
+			"cost": 25,
+			"max": 2,
+			"req": [
+				"w_s_eye"
+			],
+			"effect": {
+				"stat": {
+					"spirit": 1
+				}
+			},
+			"text": "Each rank: Spirit +1 from the start."
+		},
+		{
+			"id": "w_hand",
+			"zh": "多一手",
+			"en": "A Fuller Hand",
+			"branch": "spirit",
+			"tier": 3,
+			"cost": 45,
+			"max": 1,
+			"req": [
+				"w_swap"
+			],
+			"effect": {
+				"hand": 1
+			},
+			"text": "+1 hand size: six cards each term."
+		},
+		{
+			"id": "w_s_ice",
+			"zh": "寒霜诀",
+			"en": "Frost Verse",
+			"branch": "spirit",
+			"tier": 3,
+			"cost": 40,
+			"max": 1,
+			"req": [
+				"w_s_spark"
+			],
+			"effect": {
+				"techs": [
+					"ice_lance"
+				]
+			},
+			"text": "Start knowing Ice Lance, which slows."
+		},
+		{
+			"id": "w_revive",
+			"zh": "神念推演",
+			"en": "Rewind",
+			"branch": "spirit",
+			"tier": 4,
+			"cost": 150,
+			"max": 1,
+			"req": [
+				"w_s_sea",
+				"w_hand"
+			],
+			"effect": {
+				"revive": 1
+			},
+			"text": "Once a life, undo a lost fated battle."
+		},
+		{
+			"id": "w_s_sword",
+			"zh": "心剑",
+			"en": "Heart-Sword",
+			"branch": "spirit",
+			"tier": 4,
+			"cost": 100,
+			"max": 1,
+			"req": [
+				"w_s_ice"
+			],
+			"effect": {
+				"techs": [
+					"heart_sword"
+				]
+			},
+			"text": "Start knowing Heart-Sword."
+		},
+		{
+			"id": "w_s_thunder",
+			"zh": "引雷",
+			"en": "Calling Thunder",
+			"branch": "spirit",
+			"tier": 5,
+			"cost": 130,
+			"max": 1,
+			"req": [
+				"w_s_sword"
+			],
+			"effect": {
+				"techs": [
+					"thunder_palm"
+				],
+				"stat": {
+					"spirit": 1
+				}
+			},
+			"text": "Spirit +1 and Thunder Palm from the start."
+		},
+		{
+			"id": "w_s_god",
+			"zh": "神识通天",
+			"en": "Godsense",
+			"branch": "spirit",
+			"tier": 6,
+			"cost": 220,
+			"max": 1,
+			"req": [
+				"w_s_thunder",
+				"w_revive"
+			],
+			"effect": {
+				"stat": {
+					"spirit": 3
+				},
+				"techs": [
+					"soul_drain"
+				]
+			},
+			"text": "Spirit +3 and Soul Drain from the start."
+		},
+		{
+			"id": "w_stone",
+			"zh": "横财",
+			"en": "Windfall",
+			"branch": "fortune",
+			"tier": 1,
+			"cost": 8,
+			"max": 3,
+			"req": [],
+			"effect": {
+				"stone": 15
+			},
+			"text": "Each rank: +15 starting stones (cost doubles each rank)."
+		},
+		{
+			"id": "w_f_market",
+			"zh": "集市一席",
+			"en": "A Place at the Market",
+			"branch": "fortune",
+			"tier": 1,
+			"cost": 10,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"cards": [
+					"market"
+				]
+			},
+			"text": "Market Day joins every starting deck."
+		},
+		{
+			"id": "w_f_pills",
+			"zh": "药铺一格",
+			"en": "The Apothecary's Shelf",
+			"branch": "fortune",
+			"tier": 1,
+			"cost": 12,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"items": [
+					"pill_qi",
+					"pill_qi"
+				]
+			},
+			"text": "Start every life with two Qi-Gathering pills: about a layer of cultivation in your pocket."
+		},
+		{
+			"id": "w_f_luck",
+			"zh": "吉星",
+			"en": "A Lucky Star",
+			"branch": "fortune",
+			"tier": 2,
+			"cost": 20,
+			"max": 1,
+			"req": [
+				"w_f_pills"
+			],
+			"effect": {
+				"stat": {
+					"fortune": 1
+				},
+				"items": [
+					"charm_lucky"
+				]
+			},
+			"text": "Fortune +1 and a three-coin string (Fortune +1 more): finer cards, better loot, more crits."
+		},
+		{
+			"id": "w_greed",
+			"zh": "积印",
+			"en": "Hoarded Imprints",
+			"branch": "fortune",
+			"tier": 2,
+			"cost": 30,
+			"max": 3,
+			"req": [
+				"w_stone"
+			],
+			"effect": {
+				"imprint": 0.1
+			},
+			"text": "Each rank: +10% imprints from every life (cost doubles each rank)."
+		},
+		{
+			"id": "w_tier",
+			"zh": "上上签",
+			"en": "Better Draws",
+			"branch": "fortune",
+			"tier": 3,
+			"cost": 90,
+			"max": 1,
+			"req": [
+				"w_f_luck"
+			],
+			"effect": {
+				"tier": 1
+			},
+			"text": "Tier floor +1: fewer plain draws, more fine and rare ones."
+		},
+		{
+			"id": "w_f_fox",
+			"zh": "狐缘",
+			"en": "A Fox's Friend",
+			"branch": "fortune",
+			"tier": 4,
+			"cost": 90,
+			"max": 1,
+			"req": [
+				"w_f_luck"
+			],
+			"effect": {
+				"items": [
+					"fox_mask"
+				]
+			},
+			"text": "Start with Su Jiu's mask: Notice grows 30% slower."
+		},
+		{
+			"id": "w_f_ring",
+			"zh": "福戒",
+			"en": "Nine-Fortune Ring",
+			"branch": "fortune",
+			"tier": 4,
+			"cost": 110,
+			"max": 1,
+			"req": [
+				"w_tier"
+			],
+			"effect": {
+				"items": [
+					"ring_fortune"
+				]
+			},
+			"text": "Start wearing the Nine-Fortune Ring: Fortune +3."
+		},
+		{
+			"id": "w_f_deep",
+			"zh": "机缘深种",
+			"en": "Deep-Sown Fortune",
+			"branch": "fortune",
+			"tier": 5,
+			"cost": 130,
+			"max": 1,
+			"req": [
+				"w_f_ring"
+			],
+			"effect": {
+				"stat": {
+					"fortune": 2
+				},
+				"stone": 50
+			},
+			"text": "Fortune +2 and 50 more stones from the start."
+		},
+		{
+			"id": "w_f_dragon",
+			"zh": "福泽深厚",
+			"en": "A Blessed Life",
+			"branch": "fortune",
+			"tier": 6,
+			"cost": 200,
+			"max": 1,
+			"req": [
+				"w_f_deep",
+				"w_greed"
+			],
+			"effect": {
+				"stat": {
+					"fortune": 3
+				},
+				"stone": 100
+			},
+			"text": "Fortune +3 and 100 more stones from the start."
+		},
+		{
+			"id": "w_cult",
+			"zh": "勤修",
+			"en": "Diligence",
+			"branch": "dao",
+			"tier": 1,
+			"cost": 10,
+			"max": 5,
+			"req": [],
+			"effect": {
+				"cult": 0.08
+			},
+			"text": "Each rank: cultivation +8% (cost doubles each rank)."
+		},
+		{
+			"id": "w_d_heart",
+			"zh": "守心",
+			"en": "Steady Heart",
+			"branch": "dao",
+			"tier": 1,
+			"cost": 8,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"stat": {
+					"heart": 1
+				}
+			},
+			"text": "Dao-heart +1 from the start: breakthroughs and heart-demons both notice."
+		},
+		{
+			"id": "w_d_sit",
+			"zh": "静坐功",
+			"en": "Sitting Practice",
+			"branch": "dao",
+			"tier": 1,
+			"cost": 12,
+			"max": 1,
+			"req": [],
+			"effect": {
+				"cards": [
+					"meditate"
+				]
+			},
+			"text": "An extra Quiet Sitting in every starting deck."
+		},
+		{
+			"id": "w_d_insight",
+			"zh": "悟道",
+			"en": "Awakening",
+			"branch": "dao",
+			"tier": 2,
+			"cost": 25,
+			"max": 2,
+			"req": [
+				"w_cult"
+			],
+			"effect": {
+				"stat": {
+					"insight": 1
+				}
+			},
+			"text": "Each rank: Insight +1 from the start."
+		},
+		{
+			"id": "w_notice",
+			"zh": "敛息",
+			"en": "Hushed Breath",
+			"branch": "dao",
+			"tier": 2,
+			"cost": 20,
+			"max": 3,
+			"req": [
+				"w_d_heart"
+			],
+			"effect": {
+				"notice": -0.1
+			},
+			"text": "Each rank: Notice grows 10% slower (cost doubles each rank)."
+		},
+		{
+			"id": "w_realm",
+			"zh": "入道",
+			"en": "Begin on the Way",
+			"branch": "dao",
+			"tier": 3,
+			"cost": 90,
+			"max": 1,
+			"req": [
+				"w_cult"
+			],
+			"effect": {
+				"realm": 1
+			},
+			"text": "Start every life already in Qi Refining."
+		},
+		{
+			"id": "w_ap",
+			"zh": "三才",
+			"en": "Three Talents",
+			"branch": "dao",
+			"tier": 3,
+			"cost": 60,
+			"max": 1,
+			"req": [
+				"w_d_insight"
+			],
+			"effect": {
+				"ap": 1
+			},
+			"text": "+1 action point every term from the very start."
+		},
+		{
+			"id": "w_d_breath",
+			"zh": "破境心得",
+			"en": "Lessons of the Wall",
+			"branch": "dao",
+			"tier": 3,
+			"cost": 30,
+			"max": 2,
+			"req": [
+				"w_d_heart"
+			],
+			"effect": {
+				"breakthrough": 0.05
+			},
+			"text": "Each rank: +5% breakthrough chance."
+		},
+		{
+			"id": "w_talent",
+			"zh": "众相",
+			"en": "Many Fates",
+			"branch": "dao",
+			"tier": 4,
+			"cost": 90,
+			"max": 1,
+			"req": [
+				"w_d_sit"
+			],
+			"effect": {
+				"talent_slots": 1
+			},
+			"text": "Choose from four talents before each life, not three."
+		},
+		{
+			"id": "w_d_canon",
+			"zh": "真经",
+			"en": "The Five-Elements Canon",
+			"branch": "dao",
+			"tier": 4,
+			"cost": 110,
+			"max": 1,
+			"req": [
+				"w_realm"
+			],
+			"effect": {
+				"items": [
+					"manual_five_elements"
+				]
+			},
+			"text": "Start every life with the Five-Elements Scripture in your bag."
+		},
+		{
+			"id": "w_d_roots",
+			"zh": "洗灵根",
+			"en": "Root Washing",
+			"branch": "dao",
+			"tier": 5,
+			"cost": 150,
+			"max": 1,
+			"req": [
+				"w_d_canon"
+			],
+			"effect": {
+				"root": {
+					"metal": 1,
+					"wood": 1,
+					"water": 1,
+					"fire": 1,
+					"earth": 1
+				}
+			},
+			"text": "Every root +1 from the start."
+		},
+		{
+			"id": "w_h_spoke",
+			"zh": "辐",
+			"en": "A Spoke of the Wheel",
+			"branch": "hidden",
+			"tier": 4,
+			"cost": 150,
+			"max": 1,
+			"req": [
+				"w_greed"
+			],
+			"effect": {
+				"imprint": 0.2
+			},
+			"text": "+20% imprints from every life.",
+			"unlock": "t_wheel"
+		},
+		{
+			"id": "w_h_unwritten",
+			"zh": "无字页",
+			"en": "The Unwritten Page",
+			"branch": "hidden",
+			"tier": 5,
+			"cost": 150,
+			"max": 1,
+			"req": [
+				"w_h_spoke"
+			],
+			"effect": {
+				"items": [
+					"brush_fragment"
+				]
+			},
+			"text": "Every life begins with a fragment of the Brush.",
+			"unlock": "t_wheel"
+		},
+		{
+			"id": "w_h_blank_art",
+			"zh": "无字真诀",
+			"en": "Art of the Blank Writ",
+			"branch": "hidden",
+			"tier": 5,
+			"cost": 150,
+			"max": 1,
+			"req": [
+				"w_h_spoke",
+				"w_d_insight"
+			],
+			"effect": {
+				"cult": 0.1
+			},
+			"text": "Cultivation +10%, and the Art of the Blank Writ opens as a method.",
+			"unlock": "t_wheel"
+		},
+		{
+			"id": "w_h_second",
+			"zh": "再转",
+			"en": "A Second Turning",
+			"branch": "hidden",
+			"tier": 6,
+			"cost": 240,
+			"max": 1,
+			"req": [
+				"w_revive",
+				"w_h_unwritten"
+			],
+			"effect": {
+				"revive": 1
+			},
+			"text": "A second Rewind: once more a life, undo a lost fated battle.",
+			"unlock": "t_wheel"
+		}
+	]
+}

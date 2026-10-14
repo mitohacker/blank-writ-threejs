@@ -1,0 +1,5 @@
+node_modules/
+shots/
+*.log
+NOTES_*.md
+.DS_Store

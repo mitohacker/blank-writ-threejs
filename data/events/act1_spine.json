@@ -1,0 +1,3166 @@
+{
+	"events": [
+		{
+			"id": "a1_intro_orphan",
+			"kind": "story",
+			"act": 1,
+			"title": "A Bowl for One",
+			"art": "village",
+			"portrait": "xiaohe",
+			"text": "The shrine lean-to has no door, only a mat the wind has opinions about. Every dawn the headman's wife leaves a bowl of cold millet on the step, as she has since you were four. This morning a girl is sitting beside it, eight years old, with a cough like a cat bringing up a hairball and a stolen persimmon in each fist. “They said you don't talk,” she says. “I'm Xiao He. They said I'm yours now. Is that all right?” The bowl is for one. She looks at it, then very carefully does not look at it.",
+			"req": {
+				"term_max": 1,
+				"origin": [
+					"orphan"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"intro",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Split the millet",
+					"hint": "You go hungry. She does not argue.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "hp",
+							"v": -4
+						}
+					],
+					"after": "She takes the bigger half without ceremony, the way people do who have never been offered the smaller. The persimmon, she says, is for next time. She says it as though next time were a thing that had been promised."
+				},
+				{
+					"label": "Eat it. She has persimmons",
+					"hint": "It sits warm in you all morning.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": -1
+						},
+						{
+							"op": "cult",
+							"v": 6
+						}
+					],
+					"after": "She watches you scrape the bowl. She nods once, like someone writing a thing down, and eats a persimmon in a single bite. She does not say anything. That is the worst of it."
+				},
+				{
+					"label": "Go round to the kitchen and ask for a second",
+					"hint": "The headman's wife has a temper.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "The headman's wife has opinions about children who ask for things. She also has a second bowl."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								},
+								{
+									"op": "hp",
+									"v": -5
+								},
+								{
+									"op": "text",
+									"t": "She has opinions about children who ask. You collect one clout and a heel of bread, and split the bread."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_intro_apprentice",
+			"kind": "story",
+			"act": 1,
+			"title": "One Copper, Two Prices",
+			"art": "town",
+			"portrait": "xiaohe",
+			"text": "Old Ding's shop smells of liquorice root and mouse. He went at dawn to a fever three villages over and told you not to touch the good scales. The bell goes. A girl of eight stands on the step, dusty to the knee from the Blue-stone road, coughing into her elbow in a way she has plainly been told is polite, one copper cash held out in a fist gone white at the knuckles. “The headman's wife says cough-root is a copper,” she says. “The sign says two. I only have the one.” You know the dose. You also know what Ding would say about doing it for a copper.",
+			"req": {
+				"term_max": 1,
+				"origin": [
+					"apprentice"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"intro",
+				"town"
+			],
+			"choices": [
+				{
+					"label": "Use a spirit herb for the full dose",
+					"cost": {
+						"item": "herb_spirit"
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "queue",
+							"id": "a1_apprentice_round"
+						}
+					],
+					"after": "You grind it fine, the way he taught you, and tie it in a twist of paper. She counts her copper onto the counter as if it were a loan from heaven. Ding will find the good jar lighter. You will tell him it was the dose."
+				},
+				{
+					"label": "Half a dose, and a promise to make up the rest",
+					"hint": "It might not be enough.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "Half is enough, if it is the right half. She coughs once at the door and stops."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "She coughs half the night, somewhere in town, and comes back in the morning without being asked, to see if you are cross."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_apprentice_round"
+						}
+					]
+				},
+				{
+					"label": "Take the copper and give her sugar-root",
+					"hint": "The copper is yours. The cough is hers.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "stone",
+							"v": 1
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": -1
+						},
+						{
+							"op": "queue",
+							"id": "a1_apprentice_round"
+						}
+					],
+					"after": "It tastes like medicine if you do not think about it. She says thank you and walks out straight-backed. You do not like how easily that went."
+				}
+			]
+		},
+		{
+			"id": "a1_apprentice_round",
+			"kind": "chain",
+			"act": 1,
+			"title": "Ding's Autumn Round",
+			"art": "village",
+			"portrait": "xiaohe",
+			"text": "Every autumn Old Ding packs the mule with scales, mortars and a hundred paper twists and does the round of the villages that cannot afford a healer, which is all of them. This year you carry the scales. Blue-stone Village lines up outside the shrine before the mule has stopped. Ding takes the bench and leaves you the coughs. The girl from the shop is third in the queue, and has brought a persimmon in case you are the sort of person who can be bribed. Ding has found the headman pays in rice. You will be wintering here.",
+			"tags": [
+				"spine",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Take the coughs; Ding takes the fevers",
+					"fx": [
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						}
+					],
+					"after": "By dusk you have heard a hundred coughs and can tell the damp from the dry, the sulking from the real. It is the best lesson of the year, and a little frightening."
+				},
+				{
+					"label": "Take the persimmon and sit under the tree",
+					"fx": [
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 4
+						}
+					],
+					"after": "It is the sweetest thing you have eaten all year. “Now you owe me,” she says, “a story.” You have none. You make one up, and she corrects it."
+				},
+				{
+					"label": "Listen closely to her cough while Ding is busy",
+					"fx": [
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 4,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a1_noticed"
+								},
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "It is not a child's cough. It has a floor in it, a depth, a wet place where a note ought to be. You do not mention it. You file it, the way Ding says to, in the part of you that does not forget."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "A cough is a cough. You tell yourself so, and she tells you so, and the line moves up the bench."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_intro_heir",
+			"kind": "story",
+			"act": 1,
+			"title": "Sixty Stones and a Roof",
+			"art": "village",
+			"portrait": "elder",
+			"text": "The roof of the Gu manor lets the moon in at two places, and you have named them both. Steward Bao stands in your doorway with the ledger held to his chest like a shield and the face of a man being brave on an empty stomach. “Young master,” he says, “the strongbox holds sixty stones. The roof would take forty. My wages would take ten, which I would not mention if I were not mentioning them.” He pauses. “The village would lend against the Gu name. The name is not what it was.” Down the hill, Blue-stone Village is cooking supper.",
+			"req": {
+				"term_max": 1,
+				"origin": [
+					"heir"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"intro",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Pay Bao what he is owed",
+					"cost": {
+						"stone": 10
+					},
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "He counts it twice, then bows too low and leaves very quickly. You hear him blow his nose in the corridor, loudly, like a man who wants to be heard doing it."
+				},
+				{
+					"label": "Mend the roof",
+					"cost": {
+						"stone": 40
+					},
+					"fx": [
+						{
+							"op": "stat",
+							"k": "body",
+							"v": 1
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "For the first time in years you sleep dry. It is such a small thing and it gets into everything: the way you stand, the way you wake. Bao pretends not to cry, and fails."
+				},
+				{
+					"label": "Keep the strongbox shut and go down to ask for work",
+					"hint": "Bao will not say a word about it.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "You walk into the village with the family name in your pocket, like a stone you have forgotten how to throw. Behind you a hinge screams, and a lid closes on the money."
+				}
+			]
+		},
+		{
+			"id": "a1_intro_beggar",
+			"kind": "story",
+			"act": 1,
+			"title": "The Fourth Stone",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "Fallen-Star Town keeps its beggars outside the east gate, where the road is wide enough for a cart and a conscience. You have the third stone from the left. The man on the fourth is old, drunk since before you could crawl, and has one sleeve tied off at the elbow like a sausage for the winter. He holds out a gourd without looking. “Warm,” says Old Mo. “Not much in it. What's in it is real.” In all this time he has never once asked your name. You have never once offered it.",
+			"req": {
+				"term_max": 1,
+				"origin": [
+					"beggar"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"intro",
+				"town"
+			],
+			"choices": [
+				{
+					"label": "Take a swallow",
+					"hint": "It may be wine. It may not.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "cult",
+											"v": 6
+										},
+										{
+											"op": "text",
+											"t": "Rice wine, and something under the rice wine that moves in your chest like a drum being tuned."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "hp",
+											"v": -5
+										},
+										{
+											"op": "text",
+											"t": "It is mostly vinegar. He laughs for a very long time, and not unkindly."
+										}
+									]
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					]
+				},
+				{
+					"label": "Pass it back untouched",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "“Good,” he says. “Never drink with the man who is offering. Only with the man who isn't.” He drinks it himself, which you note, and does not explain."
+				},
+				{
+					"label": "Ask him to show you the coin trick",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "He does it slowly, then slower. Somewhere in the slowness you see where the coin goes, and it is not a trick; it is only attention."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "The coin goes. He holds up his empty hand and the other, empty sleeve, and winks at both."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_intro_foundling",
+			"kind": "story",
+			"act": 1,
+			"title": "Two Yellow Eyes",
+			"art": "town",
+			"portrait": "sujiu",
+			"text": "The Cinnabar Lantern troupe found you in a props box, between a dragon's head and a bundle of paper moons, which is why you drum. This morning the wagon smells of greasepaint and wet dog. The box under the dragon's head has been left unlatched, and in the straw are two yellow eyes and a fox, thin as a scarf and breathing in short bites. The troupe-master wants a stole for the magistrate's wife by morning. “Nice brush on it,” he says, which is how he speaks of everything with a tail. You are the only one awake.",
+			"req": {
+				"term_max": 1,
+				"origin": [
+					"foundling"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"intro",
+				"town"
+			],
+			"choices": [
+				{
+					"label": "Lift the lid and look the other way",
+					"hint": "If he wakes, he will not forgive it.",
+					"fx": [
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "text",
+									"t": "The lid is a lid again before the troupe-master has finished turning over."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp",
+									"v": -10
+								},
+								{
+									"op": "text",
+									"t": "He wakes at the wrong moment. The beating is thorough, and the box is empty when he is done with you."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "It looks at you for a long moment, then at the air just above your head, where most people keep a faint gold line, and laughs. A fox's laugh is not a pleasant sound."
+				},
+				{
+					"label": "Cover the box and say you saw nothing",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 5
+						},
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": -1
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "By dawn there is a very good stole, and a honey cake for the child who slept so soundly. You eat the cake in the dark of the wagon, thoroughly, and it is sweet."
+				},
+				{
+					"label": "Ask the fox what it would pay",
+					"hint": "It is not a creature to bargain with.",
+					"fx": [
+						{
+							"op": "meta",
+							"k": "met_sujiu"
+						},
+						{
+							"op": "stone",
+							"v": 12
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "“Child-of-the-drum,” it says, amused, and puts a coin in your palm that is gold-coloured and slightly warm. “Nine of those and you may speak to me again.” Then the lid is just a lid."
+				}
+			]
+		},
+		{
+			"id": "a1_intro_gravekeeper",
+			"kind": "story",
+			"act": 1,
+			"title": "One Stone Short",
+			"art": "village",
+			"portrait": "clerk",
+			"text": "Above Blue-stone Village there is a hill of stones, and you keep it: whitewash in spring, moss in autumn, chalk for the new names. You are good at not being noticed. This morning a man in grey climbs the path counting aloud, a scroll under one arm and a brush behind his ear, and stops at the last stone you set. He frowns at it. He looks straight through you, then at you, then through you again, the way you look at a knot in a plank. “One short,” he says to nobody. You remember, from some life that is not quite yours, exactly why.",
+			"req": {
+				"term_max": 1,
+				"origin": [
+					"gravekeeper"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"intro",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Stand in his way",
+					"hint": "He will step around you. Will he notice that he did?",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "He walks around you as he would a post, still counting, and does not once apologise. Afterwards you feel strangely well, like a tooth that has finally been pulled."
+				},
+				{
+					"label": "Chalk your own name on the empty stone",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					],
+					"after": "The chalk will not hold. It goes to dust as you lift your hand, the way a lie goes in a clean room. You write it again anyway, and again, until the light changes."
+				},
+				{
+					"label": "Count with him",
+					"fx": [
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "text",
+									"t": "You come out at the same number he does, and it is the number he did not expect. He stops. He starts again."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 8
+								},
+								{
+									"op": "text",
+									"t": "You come out one short, and so does he, and the way he turns his head is the way a hound does at a sound."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_meet_xiaohe"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_meet_xiaohe",
+			"kind": "story",
+			"act": 1,
+			"title": "What Are You Good For",
+			"art": "village",
+			"portrait": "xiaohe",
+			"text": "You come to Blue-stone Village the way most things do: late, and by mistake. The headman's dogs inspect you and decide you will do. By the well a girl of eight sits in the fork of a persimmon tree, cracking walnuts on a branch and arguing with a sparrow about whose they are. She sees you looking and slides down the trunk like water. “You're new,” she says. “Or you're old and I never noticed, which would be worse for you.” A cough takes her; she waits it out with great dignity, then holds out half a walnut. “Xiao He. Headman's foundling. What are you good for?”",
+			"req": {
+				"term_min": 2,
+				"term_max": 5,
+				"not_flags": [
+					"xh_met"
+				]
+			},
+			"prio": 96,
+			"once": true,
+			"tags": [
+				"spine",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Take the walnut and give your name",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						}
+					],
+					"after": "She tries your name in her mouth twice, as if it were a sweet she was not sure of, and decides to keep it."
+				},
+				{
+					"label": "Boast about what you can do",
+					"hint": "She has heard boasting before.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 2
+								},
+								{
+									"op": "stone",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "She bets you three coppers that you cannot do the thing you described. You can. She pays like a person who has been waiting a long time for someone to win."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "She listens to all of it. Then she laughs, quite kindly, and gives you the other half of the walnut anyway."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask about the cough",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_met"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								},
+								{
+									"op": "flag",
+									"k": "a1_noticed"
+								},
+								{
+									"op": "text",
+									"t": "She says it is nothing. The handkerchief she tucks away is not the first she has hidden, and you see that, and she sees you see."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "She tells you it is nothing with such conviction that you believe her. It is a good conviction. She must have practised."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_root_test",
+			"kind": "story",
+			"act": 1,
+			"title": "The Jade Slab",
+			"art": "village",
+			"portrait": "disciple",
+			"text": "Every third autumn a disciple of the Azure Sword Sect comes down the mountain with a jade slab the size of a door-lintel and the face of a closed fan. The village lines up by height. Children go forward, the slab hums, and he says a colour and writes it on a strip of paper. Metal. Wood. Mostly nothing, which he writes as a small polite circle. When your turn comes he looks at you for exactly as long as it takes to decide you are like the others. “Palm flat,” he says. “It won't bite. It only counts.”",
+			"req": {
+				"term_min": 3,
+				"term_max": 7,
+				"not_flags": [
+					"root_tested"
+				]
+			},
+			"prio": 92,
+			"once": true,
+			"tags": [
+				"spine",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Press your palm flat",
+					"hint": "The slab hums. Somewhere, someone hears.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "root_tested"
+						},
+						{
+							"op": "notice",
+							"v": 4
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "metal",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Metal. The slab rings like a struck bell, and the disciple writes it down without looking up."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "wood",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Wood. A smell of cut cedar fills the yard; somebody's dog sneezes."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "water",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Water. A cold, wet shimmer runs down the slab and drips off the end of it onto nothing."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "fire",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Fire. The jade goes warm enough to hurt, and you do not take your hand away."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "earth",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Earth. The slab settles a hair's breadth into the ground, as if it had been waiting to."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "root",
+											"k": "metal",
+											"v": 1
+										},
+										{
+											"op": "root",
+											"k": "water",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Two colours at once. The disciple looks at the strip, then at you, then at the strip, and says nothing for some time."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "root",
+											"k": "fire",
+											"v": 1
+										},
+										{
+											"op": "root",
+											"k": "wood",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Two colours at once, one chasing the other round the stone like children. He writes a long word he does not often get to write."
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "Above the colours, where the slab always raises a line of gold for a name, it stays dark. The disciple tilts his head. “Faulty,” he decides, and polishes it with his sleeve."
+				},
+				{
+					"label": "Answer his questions first, then the slab",
+					"hint": "A good answer might earn a letter.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "root_tested"
+						},
+						{
+							"op": "notice",
+							"v": 4
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a1_letter_azure"
+								},
+								{
+									"op": "text",
+									"t": "He asks you five things and you answer four well. He writes something on a second strip and folds it into your hand: a letter for the mountain gate."
+								}
+							],
+							"fail": [
+								{
+									"op": "text",
+									"t": "You answer like a person guessing. He is patient about it, which is worse."
+								}
+							]
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "metal",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Metal. The slab rings like a struck bell, and the disciple writes it down without looking up."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "wood",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Wood. A smell of cut cedar fills the yard; somebody's dog sneezes."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "water",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Water. A cold, wet shimmer runs down the slab and drips off the end of it onto nothing."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "fire",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Fire. The jade goes warm enough to hurt, and you do not take your hand away."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "earth",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Earth. The slab settles a hair's breadth into the ground, as if it had been waiting to."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "root",
+											"k": "metal",
+											"v": 1
+										},
+										{
+											"op": "root",
+											"k": "water",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Two colours at once. The disciple looks at the strip, then at you, then at the strip, and says nothing for some time."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "root",
+											"k": "fire",
+											"v": 1
+										},
+										{
+											"op": "root",
+											"k": "wood",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Two colours at once, one chasing the other round the stone like children. He writes a long word he does not often get to write."
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Keep the line dark on purpose",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "root_tested"
+						},
+						{
+							"op": "flag",
+							"k": "a1_letter_azure"
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "metal",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Metal. The slab rings like a struck bell, and the disciple writes it down without looking up."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "wood",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Wood. A smell of cut cedar fills the yard; somebody's dog sneezes."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "water",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Water. A cold, wet shimmer runs down the slab and drips off the end of it onto nothing."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "fire",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Fire. The jade goes warm enough to hurt, and you do not take your hand away."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "root",
+											"k": "earth",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Earth. The slab settles a hair's breadth into the ground, as if it had been waiting to."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "root",
+											"k": "metal",
+											"v": 1
+										},
+										{
+											"op": "root",
+											"k": "water",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Two colours at once. The disciple looks at the strip, then at you, then at the strip, and says nothing for some time."
+										}
+									]
+								},
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "root",
+											"k": "fire",
+											"v": 1
+										},
+										{
+											"op": "root",
+											"k": "wood",
+											"v": 1
+										},
+										{
+											"op": "text",
+											"t": "Two colours at once, one chasing the other round the stone like children. He writes a long word he does not often get to write."
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "You know what the slab will leave empty above the colours. You lay your palm on it as if you were asking the stone's pardon. He notices only that you are composed, and writes it down."
+				},
+				{
+					"label": "Slip out of the line",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "flag",
+							"k": "a1_ducked"
+						}
+					],
+					"after": "Nobody notices a child leave a queue. The slab hums for the next one. You do not know your colour, and you can feel the not-knowing like a stone in your shoe."
+				}
+			]
+		},
+		{
+			"id": "a1_winter_prepared",
+			"kind": "story",
+			"act": 1,
+			"title": "Before the First Frost",
+			"art": "village",
+			"portrait": "xiaohe",
+			"text": "You know this autumn. You do not remember it, quite; you remember how it ends. The persimmons are down and Xiao He is raking leaves with her sleeves rolled to the elbow, singing something rude, and the first frost is a fortnight off. She has no cough yet. In the lives behind you she has one by the new moon and a clerk by midwinter. The herbwife at the ford sells winter-bloom to anyone who asks before the snow. Nobody ever asks before the snow. A girl in a yard, a rake, a song with a bad word in it. You have time, which is a thing you have never had before.",
+			"req": {
+				"meta": [
+					"t_xiaohe"
+				],
+				"flags": [
+					"xh_met"
+				],
+				"not_flags": [
+					"xh_sick"
+				],
+				"term_min": 4,
+				"term_max": 6
+			},
+			"prio": 90,
+			"once": true,
+			"tags": [
+				"spine",
+				"village",
+				"memory"
+			],
+			"choices": [
+				{
+					"label": "Buy winter-bloom now, at the autumn price",
+					"cost": {
+						"stone": 12
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_prepared"
+						},
+						{
+							"op": "flag",
+							"k": "a1_herbs"
+						},
+						{
+							"op": "notice",
+							"v": 6
+						}
+					],
+					"after": "The herbwife wraps it in dock-leaf without asking why. She looks at you a little too long. Women who sell to the one person who asked early are women who talk."
+				},
+				{
+					"label": "Go up the north face yourself before the snow",
+					"hint": "A fall is a fall.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a1_prepared"
+								},
+								{
+									"op": "flag",
+									"k": "a1_herbs"
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "The face is dry and the holds are good. You come down with a handful of pale thumbnails and no one has seen you go."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "text",
+									"t": "The rock is wetter than it looks. You come down faster than you went up, and the bloom stays where it is."
+								}
+							],
+							"crit": [
+								{
+									"op": "flag",
+									"k": "a1_prepared"
+								},
+								{
+									"op": "flag",
+									"k": "a1_herbs"
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "The ledge is a gift. There is more than anybody could carry, and you carry it."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Feed her ginger and honey all autumn, and hope",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "rand",
+							"opts": [
+								{
+									"w": 1,
+									"fx": [
+										{
+											"op": "flag",
+											"k": "a1_hardy"
+										},
+										{
+											"op": "text",
+											"t": "She is sturdier this year than she has ever been; you cannot say why. You say nothing, in case it hears."
+										}
+									]
+								},
+								{
+									"w": 2,
+									"fx": [
+										{
+											"op": "text",
+											"t": "It helps in the way tea helps with a flood. But she eats it, because you made it."
+										}
+									]
+								}
+							]
+						}
+					],
+					"after": "She tells you it tastes like a hot wall. She drinks it all the same, and keeps the cup."
+				}
+			]
+		},
+		{
+			"id": "a1_winter_1",
+			"kind": "story",
+			"act": 1,
+			"title": "The Coughing Winter",
+			"art": "village",
+			"portrait": "xiaohe",
+			"text": "The first snow is early and so is the cough, wet and low, like a bucket being dragged across a floor. Xiao He hides her sleeve behind her back. You see the colour of it anyway. The headman's wife calls it the winter-lung and says the village loses one every few years the way a well loses buckets, and that it is nobody's fault. Xiao He says she is fine. She is twelve and has never once been fine and never once let anyone say so. By the second night she has stopped arguing, which is how you know.",
+			"req": {
+				"flags": [
+					"xh_met"
+				],
+				"not_flags": [
+					"xh_sick"
+				],
+				"term_min": 5,
+				"term_max": 9
+			},
+			"prio": 86,
+			"once": true,
+			"tags": [
+				"spine",
+				"village"
+			],
+			"choices": [
+				{
+					"label": "Climb to the north face for winter-bloom",
+					"hint": "A cold climb, and the wolves use the same path.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_sick"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_2"
+						}
+					]
+				},
+				{
+					"label": "Run to Fallen-Star Town for the healer",
+					"hint": "Faster. The price will be the healer's own.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_sick"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_3"
+						}
+					]
+				},
+				{
+					"label": "Stay with her. Keep the fire. Give her your blanket",
+					"hint": "No risk to you. Little hope for her.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_sick"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "hp",
+							"v": -6
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_4"
+						}
+					]
+				},
+				{
+					"label": "Brew the winter-bloom you dried",
+					"hint": "You prepared before the frost.",
+					"req": {
+						"flags": [
+							"a1_prepared"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "xh_sick"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "flag",
+							"k": "a1_paid"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_winter_2",
+			"kind": "chain",
+			"act": 1,
+			"title": "The North Face",
+			"art": "wilds",
+			"text": "Winter-bloom grows on exactly one boulder above the ford, on the north face, where the sun has never been invited. The snow comes to your knees and the path is a wolf's path as much as yours; you pass three sets of prints, all fresh, all going the same way you are. The boulder is a grey tooth in the dark. The bloom is a pale thing no bigger than a thumbnail, rimed white, growing just where a mistake would put you in the ravine. Somewhere below you, quite patiently, something is breathing.",
+			"prio": 0,
+			"tags": [
+				"spine",
+				"winter"
+			],
+			"choices": [
+				{
+					"label": "Climb the ice-glazed face",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a1_herbs"
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 2
+								},
+								{
+									"op": "text",
+									"t": "Your fingers find the bloom before your mind does. You come down with it inside your shirt, against your skin, to keep it from the cold."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.35
+								},
+								{
+									"op": "text",
+									"t": "The ice takes your grip and gives it to the ravine. You are very lucky about the snow."
+								}
+							],
+							"crit": [
+								{
+									"op": "flag",
+									"k": "a1_herbs"
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "The bloom is thick on the north side. You take only what you can carry, and then, shamefully, what you cannot."
+								}
+							]
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_3"
+						}
+					]
+				},
+				{
+					"label": "Fight what has been following you",
+					"hint": "Wolves, in the plural, in the end.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "wolf",
+							"win": [
+								{
+									"op": "flag",
+									"k": "a1_herbs"
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 2
+								},
+								{
+									"op": "stone",
+									"v": 5
+								},
+								{
+									"op": "event",
+									"id": "a1_winter_3"
+								}
+							],
+							"lose": [
+								{
+									"op": "event",
+									"id": "a1_winter_3"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Pay the charcoal-burner to show you the safe crack",
+					"hint": "He knows the boulder. He wants paying.",
+					"cost": {
+						"stone": 6
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_herbs"
+						},
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 2
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_3"
+						}
+					]
+				},
+				{
+					"label": "Go straight up the south crack you scouted in autumn",
+					"hint": "You saw her first handkerchief and went looking.",
+					"req": {
+						"flags": [
+							"a1_noticed"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_herbs"
+						},
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 3
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_winter_3",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Price",
+			"art": "town",
+			"portrait": "elder",
+			"text": "The healer in Fallen-Star Town is a thin, careful man named Lu who does not look up from his mortar. Whatever you carry, he says, the brew is twenty-five stones; the herb only makes it work. A second voice from the doorway, cheerful, still wet with last night: “Or you could do it the other way.” An old drunk with one sleeve tied off leans on the frame as though the frame owed him money. “Cheaper,” says Old Mo, “in the short run. Very dear in the long.” The healer does not look up. The mortar goes on, round and round.",
+			"prio": 0,
+			"tags": [
+				"spine",
+				"winter"
+			],
+			"choices": [
+				{
+					"label": "Pay Lu his twenty-five",
+					"cost": {
+						"stone": 25
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_paid"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_4"
+						}
+					]
+				},
+				{
+					"label": "Trade him five herbs",
+					"hint": "He is always short of herbs.",
+					"cost": {
+						"herb": 5
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_paid"
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_4"
+						}
+					]
+				},
+				{
+					"label": "Take Old Mo's bargain: two years of your own",
+					"hint": "Two terms of life, and a Registry that notices.",
+					"fx": [
+						{
+							"op": "life",
+							"v": -2
+						},
+						{
+							"op": "notice",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a1_mo_bargain"
+						},
+						{
+							"op": "flag",
+							"k": "a1_paid"
+						},
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"moshan": 3
+								}
+							},
+							"then": [
+								{
+									"op": "life",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "He takes one year instead of two. He does not say why, and neither do you."
+								}
+							]
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_4"
+						}
+					],
+					"after": "He walks you out into the cold of the lane and sets his back against a wall, and for a moment he is not drunk at all. “There's room in you,” he says. “Don't ask how I know. A thing put on most folk has to be reconciled with what's already written. On you it only has to fit.” His hand is cold and dry, and it does not so much shake yours as read it. “It will be seen, mind. Things that fit that cleanly always are.”"
+				},
+				{
+					"label": "Take it from his shelf while he is at the stove",
+					"hint": "Fast hands, or a beating.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a1_paid"
+								},
+								{
+									"op": "notice",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "The root is warm from the shelf above the stove, and weighs almost nothing. You are out the door before the mortar changes its rhythm."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.35
+								},
+								{
+									"op": "notice",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "Lu has a stick, and is more spry than he looks, and is not nearly so careful when he is angry."
+								}
+							]
+						},
+						{
+							"op": "place",
+							"k": "village"
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_4"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_winter_4",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Third Watch",
+			"art": "village",
+			"portrait": "clerk",
+			"text": "On the third night of the twelfth month the stove burns low and the lamp does not. There is a man in the doorway though the bar is down: a lean clerk in grey, with a lantern that lights nothing but his own sleeve, a scroll, a brush the length of a finger. He is not unkind. He looks at the girl and then at the bowl in your hands. “Xiao He, twelve,” he says, as one reads a roll. “Winter-lung. Third watch. I can wait.” He sets the lantern down and waits the way a man waits for a kettle.",
+			"prio": 0,
+			"tags": [
+				"spine",
+				"winter"
+			],
+			"choices": [
+				{
+					"label": "Hold the bowl and count her breaths",
+					"hint": "What you did before tonight decides this.",
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a1_mo_bargain"
+								]
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "xh_saved"
+								},
+								{
+									"op": "flag",
+									"k": "ally_xiaohe"
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 3
+								},
+								{
+									"op": "event",
+									"id": "a1_winter_saved"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"flags": [
+											"a1_herbs",
+											"a1_paid"
+										]
+									},
+									"then": [
+										{
+											"op": "flag",
+											"k": "xh_saved"
+										},
+										{
+											"op": "flag",
+											"k": "ally_xiaohe"
+										},
+										{
+											"op": "rel",
+											"k": "xiaohe",
+											"v": 3
+										},
+										{
+											"op": "event",
+											"id": "a1_winter_saved"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"any": [
+													{
+														"flags": [
+															"a1_herbs"
+														]
+													},
+													{
+														"flags": [
+															"a1_paid"
+														]
+													},
+													{
+														"flags": [
+															"a1_hardy"
+														]
+													}
+												]
+											},
+											"then": [
+												{
+													"op": "rand",
+													"opts": [
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_saved"
+																},
+																{
+																	"op": "flag",
+																	"k": "ally_xiaohe"
+																},
+																{
+																	"op": "rel",
+																	"k": "xiaohe",
+																	"v": 3
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_saved"
+																}
+															]
+														},
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_dead"
+																},
+																{
+																	"op": "stat",
+																	"k": "heart",
+																	"v": -1
+																},
+																{
+																	"op": "notice",
+																	"v": -8
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_dead"
+																}
+															]
+														}
+													]
+												}
+											],
+											"else": [
+												{
+													"op": "rand",
+													"opts": [
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_saved"
+																},
+																{
+																	"op": "flag",
+																	"k": "ally_xiaohe"
+																},
+																{
+																	"op": "rel",
+																	"k": "xiaohe",
+																	"v": 3
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_saved"
+																}
+															]
+														},
+														{
+															"w": 3,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_dead"
+																},
+																{
+																	"op": "stat",
+																	"k": "heart",
+																	"v": -1
+																},
+																{
+																	"op": "notice",
+																	"v": -8
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_dead"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Read his scroll over his shoulder",
+					"hint": "He will notice you noticing.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "truth",
+									"id": "t_xiaohe"
+								},
+								{
+									"op": "flag",
+									"k": "inspector_scroll_seen"
+								},
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "Foundling of Blue-stone Village. Span: twelve winters. Cause: the cough. Under remarks he has written none, and below it, smaller, a word nobody asked him for: regrettable."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "He lifts the scroll away from you without looking, the way you would move a candle from a child."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a1_mo_bargain"
+								]
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "xh_saved"
+								},
+								{
+									"op": "flag",
+									"k": "ally_xiaohe"
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 3
+								},
+								{
+									"op": "event",
+									"id": "a1_winter_saved"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"flags": [
+											"a1_herbs",
+											"a1_paid"
+										]
+									},
+									"then": [
+										{
+											"op": "flag",
+											"k": "xh_saved"
+										},
+										{
+											"op": "flag",
+											"k": "ally_xiaohe"
+										},
+										{
+											"op": "rel",
+											"k": "xiaohe",
+											"v": 3
+										},
+										{
+											"op": "event",
+											"id": "a1_winter_saved"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"any": [
+													{
+														"flags": [
+															"a1_herbs"
+														]
+													},
+													{
+														"flags": [
+															"a1_paid"
+														]
+													},
+													{
+														"flags": [
+															"a1_hardy"
+														]
+													}
+												]
+											},
+											"then": [
+												{
+													"op": "rand",
+													"opts": [
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_saved"
+																},
+																{
+																	"op": "flag",
+																	"k": "ally_xiaohe"
+																},
+																{
+																	"op": "rel",
+																	"k": "xiaohe",
+																	"v": 3
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_saved"
+																}
+															]
+														},
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_dead"
+																},
+																{
+																	"op": "stat",
+																	"k": "heart",
+																	"v": -1
+																},
+																{
+																	"op": "notice",
+																	"v": -8
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_dead"
+																}
+															]
+														}
+													]
+												}
+											],
+											"else": [
+												{
+													"op": "rand",
+													"opts": [
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_saved"
+																},
+																{
+																	"op": "flag",
+																	"k": "ally_xiaohe"
+																},
+																{
+																	"op": "rel",
+																	"k": "xiaohe",
+																	"v": 3
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_saved"
+																}
+															]
+														},
+														{
+															"w": 3,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_dead"
+																},
+																{
+																	"op": "stat",
+																	"k": "heart",
+																	"v": -1
+																},
+																{
+																	"op": "notice",
+																	"v": -8
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_dead"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Stand between the clerk and the bed",
+					"hint": "A stand costs blood, one way or another.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "flag",
+									"k": "a1_paid"
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "He does not touch you. He looks at you, not at the sheet, and for a moment he is unsure which of you he came for."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "notice",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "You are moved aside the way a draught moves a curtain. It does not hurt. That is the part you will remember."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a1_mo_bargain"
+								]
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "xh_saved"
+								},
+								{
+									"op": "flag",
+									"k": "ally_xiaohe"
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 3
+								},
+								{
+									"op": "event",
+									"id": "a1_winter_saved"
+								}
+							],
+							"else": [
+								{
+									"op": "if",
+									"req": {
+										"flags": [
+											"a1_herbs",
+											"a1_paid"
+										]
+									},
+									"then": [
+										{
+											"op": "flag",
+											"k": "xh_saved"
+										},
+										{
+											"op": "flag",
+											"k": "ally_xiaohe"
+										},
+										{
+											"op": "rel",
+											"k": "xiaohe",
+											"v": 3
+										},
+										{
+											"op": "event",
+											"id": "a1_winter_saved"
+										}
+									],
+									"else": [
+										{
+											"op": "if",
+											"req": {
+												"any": [
+													{
+														"flags": [
+															"a1_herbs"
+														]
+													},
+													{
+														"flags": [
+															"a1_paid"
+														]
+													},
+													{
+														"flags": [
+															"a1_hardy"
+														]
+													}
+												]
+											},
+											"then": [
+												{
+													"op": "rand",
+													"opts": [
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_saved"
+																},
+																{
+																	"op": "flag",
+																	"k": "ally_xiaohe"
+																},
+																{
+																	"op": "rel",
+																	"k": "xiaohe",
+																	"v": 3
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_saved"
+																}
+															]
+														},
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_dead"
+																},
+																{
+																	"op": "stat",
+																	"k": "heart",
+																	"v": -1
+																},
+																{
+																	"op": "notice",
+																	"v": -8
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_dead"
+																}
+															]
+														}
+													]
+												}
+											],
+											"else": [
+												{
+													"op": "rand",
+													"opts": [
+														{
+															"w": 1,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_saved"
+																},
+																{
+																	"op": "flag",
+																	"k": "ally_xiaohe"
+																},
+																{
+																	"op": "rel",
+																	"k": "xiaohe",
+																	"v": 3
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_saved"
+																}
+															]
+														},
+														{
+															"w": 3,
+															"fx": [
+																{
+																	"op": "flag",
+																	"k": "xh_dead"
+																},
+																{
+																	"op": "stat",
+																	"k": "heart",
+																	"v": -1
+																},
+																{
+																	"op": "notice",
+																	"v": -8
+																},
+																{
+																	"op": "event",
+																	"id": "a1_winter_dead"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Say her line back to him, and ask it be struck",
+					"req": {
+						"meta": [
+							"t_xiaohe"
+						]
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "xh_saved"
+						},
+						{
+							"op": "flag",
+							"k": "ally_xiaohe"
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 3
+						},
+						{
+							"op": "event",
+							"id": "a1_winter_saved"
+						}
+					],
+					"after": "He stops. “Who told you the line?” he asks, and for the first time he looks at you instead of through you. He reads it over once more. Then, as a man does who has never been asked, he takes out his pen."
+				}
+			]
+		},
+		{
+			"id": "a1_winter_saved",
+			"kind": "chain",
+			"act": 1,
+			"title": "Survived. Refile.",
+			"art": "village",
+			"portrait": "xiaohe",
+			"text": "Dawn comes the way it does after a bad night: grudgingly. The fever breaks near the fourth watch; she sweats the bed through and sleeps. The clerk is gone, but the door is open and the cold is in the room, and on the table is a sheet of rice paper that was not there before. One line has been struck through, and under it a second written in a hand so neat it is almost kind: Survived. Refile. She wakes at noon and asks for soup, and then asks why you look like that. Outside, very small, the village is waking up and saying nothing.",
+			"prio": 0,
+			"tags": [
+				"spine",
+				"winter"
+			],
+			"choices": [
+				{
+					"label": "Read the struck line",
+					"hint": "You will not be able to unknow it.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_xiaohe"
+						},
+						{
+							"op": "flag",
+							"k": "inspector_scroll_seen"
+						},
+						{
+							"op": "notice",
+							"v": 3
+						}
+					],
+					"after": "Her name, her span, the cause. Under remarks, none; and below it, smaller, in the same careful hand, a word nobody had asked him for: regrettable. It has been struck out with the rest, but not so hard that you cannot read it."
+				},
+				{
+					"label": "Burn it unread",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -5
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						}
+					],
+					"after": "It burns blue for a moment. You are not entirely sure that was ink."
+				},
+				{
+					"label": "Go and find the headman",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a1_letter_azure"
+						},
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						}
+					],
+					"after": "He has heard already. The village has a way of knowing. He gives you ten stones in a cloth and a letter to a cousin who sweeps a corridor at the Azure Sword Sect. “For the day you want to go,” he says. “Not that we want you to.”"
+				}
+			]
+		},
+		{
+			"id": "a1_winter_dead",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Bowl Goes Cold",
+			"art": "village",
+			"portrait": "clerk",
+			"text": "The bowl goes cold in your hands somewhere in the fourth watch and you do not notice until the clerk, who has been patient, clears his throat. She is smaller than she was. He rises, writes one word in a column, and blows on it as clerks do. The lantern goes with him. At the door he turns, as though about to apologise, and instead says: “Thank you for your patience.” The village will say she was a sweet child. The snow will come down on the roof all night without any particular opinion. On the floor where his sleeve brushed it lies the torn corner of her page.",
+			"prio": 0,
+			"tags": [
+				"spine",
+				"winter"
+			],
+			"choices": [
+				{
+					"label": "Read the corner of the page",
+					"hint": "You will not be able to unknow it.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_xiaohe"
+						},
+						{
+							"op": "flag",
+							"k": "inspector_scroll_seen"
+						}
+					],
+					"after": "Her name, her span, the cause. Under remarks, none; and below it, smaller, a word nobody had asked him for: regrettable. You are almost sure he did not know he was writing it."
+				},
+				{
+					"label": "Bury her yourself before the village wakes",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": -0.2
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						}
+					],
+					"after": "The ground is iron. It takes you until the light does, and you do not stop to ask whose business it is."
+				},
+				{
+					"label": "Go out into the snow after the clerk",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "notice",
+									"v": 8
+								},
+								{
+									"op": "text",
+									"t": "You catch him at the ford, writing with a dry brush in the cold. “Take it up with Review,” he says, not unkindly, and goes on across the water without a ripple."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "You lose his lantern in the snow somewhere past the ford, and then your own way back."
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_inspector_first",
+			"kind": "story",
+			"act": 1,
+			"title": "The Clerk With No Line",
+			"art": "village",
+			"portrait": "clerk",
+			"text": "An inspector comes to Blue-stone on a grey mule, which he does not appear to ride so much as sit upon with disapproval. He sets up under the shrine eaves, unrolls the roll of the village and calls it out by name. Everyone answers. He ticks as he goes. When he reaches the end he looks up, counts the village with the end of his brush, and frowns. He searches the roll twice. One more standing than he has down. His eyes pass over you the way eyes pass over a gap in a fence. Then they come back.",
+			"req": {
+				"any": [
+					{
+						"flags": [
+							"inspector_40"
+						]
+					},
+					{
+						"notice_min": 40
+					},
+					{
+						"term_min": 8
+					}
+				],
+				"not_flags": [
+					"inspector_met"
+				],
+				"term_min": 4
+			},
+			"prio": 70,
+			"once": true,
+			"tags": [
+				"spine",
+				"registry"
+			],
+			"choices": [
+				{
+					"label": "Hold his gaze",
+					"hint": "He will tell you something. You will not like it.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "inspector_met"
+						},
+						{
+							"op": "truth",
+							"id": "t_blank"
+						},
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "He finds the end of the roll, then your face, then the end of the roll. “There is no entry,” he says, very softly, as one reads a bill. “There is no entry for you.”"
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 12
+								},
+								{
+									"op": "hp",
+									"v": -5
+								},
+								{
+									"op": "text",
+									"t": "He finds the end of the roll, then your face. “There is no entry,” he says, and the word goes through you like cold water through a sleeve."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Look at your feet",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "inspector_met"
+						},
+						{
+							"op": "notice",
+							"v": -3
+						}
+					],
+					"after": "He ticks his roll. “Unremarkable,” he says, and that word follows you around all year like a leaf stuck to a shoe."
+				},
+				{
+					"label": "Run",
+					"hint": "A runner is a person with something to run from.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "inspector_met"
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "notice",
+									"v": 8
+								},
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "You are over the wall and through the reeds before the mule has finished looking."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "notice",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "The mule is faster than it has any right to be. He says nothing at all, which is worse."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Meet his eyes and give him nothing",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "inspector_met"
+						},
+						{
+							"op": "notice",
+							"v": -6
+						},
+						{
+							"op": "cult",
+							"v": 16
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						}
+					],
+					"after": "You already know the scroll has no line for you. You hold his eyes the way you would hold a door shut, politely. He looks at you for the length of a breath and then, with a small frown, decides that his paper must be at fault."
+				}
+			]
+		},
+		{
+			"id": "a1_fork",
+			"kind": "story",
+			"act": 1,
+			"title": "Four Roads",
+			"art": "village",
+			"text": "Spring finds you with nothing left to learn in the village, which is not the same as knowing anything. Four things have been arriving in your life one at a time, like rumours at a wedding. A pale-blue banner on the mountain road. A woman at the ford who sells green smoke and holds grudges. A drunk who keeps turning up wherever you are. A smiling stranger in a very good coat who asks nothing and pays for dinner. The village will not keep you; it has said so, kindly, in a hundred small ways. The roads are open. The choosing is a thing you may not do twice.",
+			"req": {
+				"any": [
+					{
+						"realm_min": 1,
+						"any": [
+							{
+								"flags": [
+									"xh_saved"
+								]
+							},
+							{
+								"flags": [
+									"xh_dead"
+								]
+							}
+						]
+					},
+					{
+						"term_min": 8
+					}
+				],
+				"not_flags": [
+					"sect_azure",
+					"sect_herb",
+					"sect_rogue",
+					"sect_netherworld"
+				]
+			},
+			"prio": 66,
+			"once": true,
+			"tags": [
+				"spine",
+				"fork"
+			],
+			"choices": [
+				{
+					"label": "The mountain: the Azure Sword Sect",
+					"hint": "A metal root, a strong root of any kind, or a letter.",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"root_tested"
+								],
+								"roots": {
+									"metal": 1
+								}
+							},
+							{
+								"flags": [
+									"root_tested"
+								],
+								"roots": {
+									"wood": 3
+								}
+							},
+							{
+								"flags": [
+									"root_tested"
+								],
+								"roots": {
+									"water": 3
+								}
+							},
+							{
+								"flags": [
+									"root_tested"
+								],
+								"roots": {
+									"fire": 3
+								}
+							},
+							{
+								"flags": [
+									"root_tested"
+								],
+								"roots": {
+									"earth": 3
+								}
+							},
+							{
+								"flags": [
+									"a1_letter_azure"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "sect",
+							"id": "azure"
+						},
+						{
+							"op": "place",
+							"k": "sect"
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_1"
+						}
+					],
+					"after": "The mountain takes the ones it can use, and uses them well. You go up in the morning, and look back once."
+				},
+				{
+					"label": "The valley: Hundred-Herb Valley",
+					"hint": "Herbs in hand, a life you saved, or a trade learned.",
+					"req": {
+						"any": [
+							{
+								"mats": {
+									"herb": 2
+								}
+							},
+							{
+								"flags": [
+									"xh_saved"
+								]
+							},
+							{
+								"origin": [
+									"apprentice"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "sect",
+							"id": "herb"
+						},
+						{
+							"op": "place",
+							"k": "valley"
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_1"
+						}
+					],
+					"after": "The valley smells like a wet green fist. You go down into it in the morning rain, and it closes behind you."
+				},
+				{
+					"label": "The road: the drunk, and no sect at all",
+					"hint": "Anyone may take it.",
+					"fx": [
+						{
+							"op": "sect",
+							"id": "rogue"
+						},
+						{
+							"op": "place",
+							"k": "town"
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_1"
+						}
+					],
+					"after": "The road does not ask for a letter. It asks for your boots, and some day your name."
+				},
+				{
+					"label": "The Hall: the Nine-Netherworld Hall",
+					"hint": "The Hall keeps its own count of who might suit.",
+					"req": {
+						"any": [
+							{
+								"notice_min": 25
+							},
+							{
+								"corrupt_min": 10
+							},
+							{
+								"origin": [
+									"beggar"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "sect",
+							"id": "netherworld"
+						},
+						{
+							"op": "place",
+							"k": "netherworld"
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_1"
+						}
+					],
+					"after": "The coat is very good. So is the smile. You go with him in the evening, because it is the only road that has already said it wants you."
+				}
+			]
+		}
+	]
+}

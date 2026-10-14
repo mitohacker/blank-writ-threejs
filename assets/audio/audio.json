@@ -1,0 +1,562 @@
+{
+ "sfx": {
+  "ui_click": {
+   "files": [
+    "sfx/ui_click_1.mp3",
+    "sfx/ui_click_2.mp3",
+    "sfx/ui_click_3.mp3"
+   ],
+   "gain": -4.0
+  },
+  "ui_hover": {
+   "files": [
+    "sfx/ui_hover_1.mp3",
+    "sfx/ui_hover_2.mp3"
+   ],
+   "gain": -14.0
+  },
+  "ui_back": {
+   "files": [
+    "sfx/ui_back_1.mp3",
+    "sfx/ui_back_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "ui_confirm": {
+   "files": [
+    "sfx/ui_confirm_1.mp3",
+    "sfx/ui_confirm_2.mp3"
+   ],
+   "gain": -2.0
+  },
+  "ui_deny": {
+   "files": [
+    "sfx/ui_deny_1.mp3",
+    "sfx/ui_deny_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "ui_toast": {
+   "files": [
+    "sfx/ui_toast_1.mp3",
+    "sfx/ui_toast_2.mp3"
+   ],
+   "gain": -8.0
+  },
+  "ui_page": {
+   "files": [
+    "sfx/ui_page_1.mp3",
+    "sfx/ui_page_2.mp3"
+   ],
+   "gain": -4.0
+  },
+  "ui_open": {
+   "files": [
+    "sfx/ui_open_1.mp3",
+    "sfx/ui_open_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "ui_tick": {
+   "files": [
+    "sfx/ui_tick_1.mp3"
+   ],
+   "gain": -10.0
+  },
+  "card_deal": {
+   "files": [
+    "sfx/card_deal_1.mp3",
+    "sfx/card_deal_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "card_hover": {
+   "files": [
+    "sfx/card_hover_1.mp3",
+    "sfx/card_hover_2.mp3",
+    "sfx/card_hover_3.mp3"
+   ],
+   "gain": -14.0
+  },
+  "card_swap": {
+   "files": [
+    "sfx/card_swap_1.mp3",
+    "sfx/card_swap_2.mp3"
+   ],
+   "gain": -4.0
+  },
+  "card_cultivate": {
+   "files": [
+    "sfx/card_cultivate_1.mp3",
+    "sfx/card_cultivate_2.mp3",
+    "sfx/card_cultivate_3.mp3"
+   ],
+   "gain": -6.0
+  },
+  "card_craft": {
+   "files": [
+    "sfx/card_craft_1.mp3",
+    "sfx/card_craft_2.mp3",
+    "sfx/card_craft_3.mp3"
+   ],
+   "gain": -6.0
+  },
+  "card_venture": {
+   "files": [
+    "sfx/card_venture_1.mp3",
+    "sfx/card_venture_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "card_social": {
+   "files": [
+    "sfx/card_social_1.mp3",
+    "sfx/card_social_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "card_rest": {
+   "files": [
+    "sfx/card_rest_1.mp3",
+    "sfx/card_rest_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "card_chance": {
+   "files": [
+    "sfx/card_chance_1.mp3",
+    "sfx/card_chance_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "card_combat": {
+   "files": [
+    "sfx/card_combat_1.mp3",
+    "sfx/card_combat_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "card_breakthrough": {
+   "files": [
+    "sfx/card_breakthrough_1.mp3"
+   ],
+   "gain": -4.0
+  },
+  "turn_end": {
+   "files": [
+    "sfx/turn_end_1.mp3"
+   ],
+   "gain": -5.0
+  },
+  "turn_new": {
+   "files": [
+    "sfx/turn_new_1.mp3"
+   ],
+   "gain": -8.0
+  },
+  "tier_rare": {
+   "files": [
+    "sfx/tier_rare_1.mp3"
+   ],
+   "gain": -8.0
+  },
+  "tier_supreme": {
+   "files": [
+    "sfx/tier_supreme_1.mp3"
+   ],
+   "gain": -6.0
+  },
+  "event_open": {
+   "files": [
+    "sfx/event_open_1.mp3",
+    "sfx/event_open_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "choice": {
+   "files": [
+    "sfx/choice_1.mp3",
+    "sfx/choice_2.mp3"
+   ],
+   "gain": -4.0
+  },
+  "gain": {
+   "files": [
+    "sfx/gain_1.mp3",
+    "sfx/gain_2.mp3"
+   ],
+   "gain": -8.0
+  },
+  "stat_up": {
+   "files": [
+    "sfx/stat_up_1.mp3"
+   ],
+   "gain": -5.0
+  },
+  "layer_up": {
+   "files": [
+    "sfx/layer_up_1.mp3"
+   ],
+   "gain": -4.0
+  },
+  "realm_up": {
+   "files": [
+    "sfx/realm_up_1.mp3"
+   ],
+   "gain": -3.0
+  },
+  "bt_fail": {
+   "files": [
+    "sfx/bt_fail_1.mp3"
+   ],
+   "gain": -4.0
+  },
+  "truth": {
+   "files": [
+    "sfx/truth_1.mp3"
+   ],
+   "gain": -4.0
+  },
+  "item_get": {
+   "files": [
+    "sfx/item_get_1.mp3",
+    "sfx/item_get_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "coin": {
+   "files": [
+    "sfx/coin_1.mp3"
+   ],
+   "gain": -6.0
+  },
+  "hurt": {
+   "files": [
+    "sfx/hurt_1.mp3",
+    "sfx/hurt_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "bond": {
+   "files": [
+    "sfx/bond_1.mp3"
+   ],
+   "gain": -8.0
+  },
+  "death": {
+   "files": [
+    "sfx/death_1.mp3",
+    "sfx/death_2.mp3"
+   ],
+   "gain": -2.0
+  },
+  "ending": {
+   "files": [
+    "sfx/ending_1.mp3"
+   ],
+   "gain": -3.0
+  },
+  "wheel_buy": {
+   "files": [
+    "sfx/wheel_buy_1.mp3",
+    "sfx/wheel_buy_2.mp3"
+   ],
+   "gain": -4.0
+  },
+  "wheel_lock": {
+   "files": [
+    "sfx/wheel_lock_1.mp3"
+   ],
+   "gain": -6.0
+  },
+  "shop_open": {
+   "files": [
+    "sfx/shop_open_1.mp3"
+   ],
+   "gain": -6.0
+  },
+  "equip": {
+   "files": [
+    "sfx/equip_1.mp3",
+    "sfx/equip_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "notice": {
+   "files": [
+    "sfx/notice_1.mp3"
+   ],
+   "gain": -7.0
+  },
+  "battle_start": {
+   "files": [
+    "sfx/battle_start_1.mp3"
+   ],
+   "gain": -3.0
+  },
+  "b_hit": {
+   "files": [
+    "sfx/b_hit_1.mp3",
+    "sfx/b_hit_2.mp3",
+    "sfx/b_hit_3.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_slash": {
+   "files": [
+    "sfx/b_slash_1.mp3",
+    "sfx/b_slash_2.mp3",
+    "sfx/b_slash_3.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_crit": {
+   "files": [
+    "sfx/b_crit_1.mp3",
+    "sfx/b_crit_2.mp3"
+   ],
+   "gain": -3.0
+  },
+  "b_miss": {
+   "files": [
+    "sfx/b_miss_1.mp3",
+    "sfx/b_miss_2.mp3"
+   ],
+   "gain": -8.0
+  },
+  "b_metal": {
+   "files": [
+    "sfx/b_metal_1.mp3",
+    "sfx/b_metal_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "b_wood": {
+   "files": [
+    "sfx/b_wood_1.mp3",
+    "sfx/b_wood_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_water": {
+   "files": [
+    "sfx/b_water_1.mp3",
+    "sfx/b_water_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_fire": {
+   "files": [
+    "sfx/b_fire_1.mp3",
+    "sfx/b_fire_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_earth": {
+   "files": [
+    "sfx/b_earth_1.mp3",
+    "sfx/b_earth_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "b_none": {
+   "files": [
+    "sfx/b_none_1.mp3",
+    "sfx/b_none_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_heal": {
+   "files": [
+    "sfx/b_heal_1.mp3",
+    "sfx/b_heal_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "b_shield": {
+   "files": [
+    "sfx/b_shield_1.mp3",
+    "sfx/b_shield_2.mp3"
+   ],
+   "gain": -5.0
+  },
+  "b_buff": {
+   "files": [
+    "sfx/b_buff_1.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_debuff": {
+   "files": [
+    "sfx/b_debuff_1.mp3",
+    "sfx/b_debuff_2.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_burn": {
+   "files": [
+    "sfx/b_burn_1.mp3"
+   ],
+   "gain": -7.0
+  },
+  "b_stun": {
+   "files": [
+    "sfx/b_stun_1.mp3"
+   ],
+   "gain": -6.0
+  },
+  "b_talisman": {
+   "files": [
+    "sfx/b_talisman_1.mp3"
+   ],
+   "gain": -4.0
+  },
+  "b_lose": {
+   "files": [
+    "sfx/b_lose_1.mp3"
+   ],
+   "gain": -3.0
+  },
+  "bolt": {
+   "files": [
+    "sfx/bolt_1.mp3",
+    "sfx/bolt_2.mp3",
+    "sfx/bolt_3.mp3"
+   ],
+   "gain": -3.0
+  },
+  "heart_demon": {
+   "files": [
+    "sfx/heart_demon_1.mp3"
+   ],
+   "gain": -4.0
+  }
+ },
+ "music": {
+  "title": {
+   "file": "music/title.mp3",
+   "loop": true,
+   "seconds": 74.3
+  },
+  "village": {
+   "file": "music/village.mp3",
+   "loop": true,
+   "seconds": 60.5
+  },
+  "town": {
+   "file": "music/town.mp3",
+   "loop": true,
+   "seconds": 63.3
+  },
+  "sect": {
+   "file": "music/sect.mp3",
+   "loop": true,
+   "seconds": 60.0
+  },
+  "valley": {
+   "file": "music/valley.mp3",
+   "loop": true,
+   "seconds": 65.0
+  },
+  "wilds": {
+   "file": "music/wilds.mp3",
+   "loop": true,
+   "seconds": 61.1
+  },
+  "ruin": {
+   "file": "music/ruin.mp3",
+   "loop": true,
+   "seconds": 63.2
+  },
+  "netherworld": {
+   "file": "music/netherworld.mp3",
+   "loop": true,
+   "seconds": 60.4
+  },
+  "registry": {
+   "file": "music/registry.mp3",
+   "loop": true,
+   "seconds": 59.9
+  },
+  "gate": {
+   "file": "music/gate.mp3",
+   "loop": true,
+   "seconds": 76.1
+  },
+  "wheel": {
+   "file": "music/wheel.mp3",
+   "loop": true,
+   "seconds": 72.8
+  },
+  "cave": {
+   "file": "music/cave.mp3",
+   "loop": true,
+   "seconds": 60.7
+  },
+  "winter": {
+   "file": "music/winter.mp3",
+   "loop": true,
+   "seconds": 61.1
+  },
+  "road": {
+   "file": "music/road.mp3",
+   "loop": true,
+   "seconds": 71.3
+  },
+  "battle": {
+   "file": "music/battle.mp3",
+   "loop": true,
+   "seconds": 100.0
+  },
+  "battle_boss": {
+   "file": "music/battle_boss.mp3",
+   "loop": true,
+   "seconds": 40.7
+  },
+  "tribulation": {
+   "file": "music/tribulation.mp3",
+   "loop": true,
+   "seconds": 84.9
+  },
+  "win": {
+   "file": "music/win.mp3",
+   "loop": false,
+   "seconds": 20.0
+  },
+  "lose": {
+   "file": "music/lose.mp3",
+   "loop": false,
+   "seconds": 14.0
+  },
+  "death": {
+   "file": "music/death.mp3",
+   "loop": true,
+   "seconds": 85.3
+  },
+  "end_filed": {
+   "file": "music/end_filed.mp3",
+   "loop": true,
+   "seconds": 100.0
+  },
+  "end_slayer": {
+   "file": "music/end_slayer.mp3",
+   "loop": true,
+   "seconds": 95.2
+  },
+  "end_blank_writ": {
+   "file": "music/end_blank_writ.mp3",
+   "loop": true,
+   "seconds": 100.0
+  },
+  "end_mortal_dust": {
+   "file": "music/end_mortal_dust.mp3",
+   "loop": true,
+   "seconds": 99.8
+  },
+  "end_netherworld": {
+   "file": "music/end_netherworld.mp3",
+   "loop": true,
+   "seconds": 100.0
+  }
+ }
+}

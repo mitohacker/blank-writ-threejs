@@ -1,0 +1,2620 @@
+{
+	"events": [
+		{
+			"id": "a4_open",
+			"kind": "story",
+			"act": 4,
+			"title": "A Door the Height of Eleven",
+			"art": "registry",
+			"portrait": "clerk",
+			"text": "The letter's last line is a map, and the map is a staircase. You climb it a day and a night and a day and find it has no top, only a landing, and on the landing a door eleven men high, standing ajar. It smells of paper and lamp-oil and the faint sweetness of old wax. A boy of about nine sits on the threshold with an inkstone in his lap. He stands when he sees you, bows exactly as low as courtesy asks, and says in a high clear voice that the Hall is happy to receive you. He has been told to say so. He does not seem to mind.",
+			"req": {
+				"realm_min": 4
+			},
+			"prio": 99,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine"
+			],
+			"choices": [
+				{
+					"label": "Walk in by the front door",
+					"hint": "Cult +30",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 30
+						},
+						{
+							"op": "flag",
+							"k": "a4_open_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_hall",
+							"delay": 1
+						}
+					],
+					"after": "The door closes behind you without any sound at all, as if it had never been wholly open."
+				},
+				{
+					"label": "Ask the boy what he is called",
+					"hint": "Notice -5",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -5
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "a4_boy_named"
+						},
+						{
+							"op": "flag",
+							"k": "a4_open_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_hall",
+							"delay": 1
+						}
+					],
+					"after": "He looks at you in total confusion. Nobody has asked. He thinks about it for a long time and says, at last, “Little Ink,” and looks as if he were afraid of being corrected."
+				},
+				{
+					"label": "Go round to the back, by the paper door",
+					"hint": "Agility test",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 10,
+							"pass": [
+								{
+									"op": "notice",
+									"v": -10
+								},
+								{
+									"op": "cult",
+									"v": 20
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 10
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a4_open_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_hall",
+							"delay": 1
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_hall",
+			"kind": "story",
+			"act": 4,
+			"title": "Shelves of Names",
+			"art": "registry",
+			"portrait": "clerk",
+			"text": "The Hall is one room that goes on. Shelves of pale wood rise out of sight, each shelf a year, each box a name, and clerks move between them on rolling ladders so quietly that you take them for the light. You find your sect master's box, still warm. You find the elder's, with her shoes beside it. You find Xiao Heng's, already labelled, the gold wet. You ask for your own. The clerk lifts a thousand drawers in a minute and slides a blank card across the desk, with the expression of someone who has said the same sorry thing to the whole world.",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"a4_open_done"
+				]
+			},
+			"prio": 95,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine"
+			],
+			"choices": [
+				{
+					"label": "Search the shelves yourself",
+					"hint": "Spirit test; a hard look",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "spirit",
+							"dc": 10,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 40
+								},
+								{
+									"op": "flag",
+									"k": "a4_found_unfiled"
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 15
+								},
+								{
+									"op": "cult",
+									"v": 15
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a4_hall_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_mother",
+							"delay": 1
+						}
+					],
+					"after": "Somewhere in the stacks, low down and dusty, there is a shelf of cards that are all blank. You count them. There are very few."
+				},
+				{
+					"label": "Read the shelf of the ascended",
+					"hint": "Cult +20, Heart -1",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": -1
+						},
+						{
+							"op": "flag",
+							"k": "a4_read_cards"
+						},
+						{
+							"op": "flag",
+							"k": "a4_hall_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_mother",
+							"delay": 1
+						}
+					],
+					"after": "Each card is one line. Each line ends the same way. You read forty and stop, and find you have been holding your own sleeve very tight."
+				},
+				{
+					"label": "You are on no shelf. Nothing here can hold you.",
+					"hint": "Needs the memory of a blank page",
+					"req": {
+						"meta": [
+							"t_blank"
+						]
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -10
+						},
+						{
+							"op": "cult",
+							"v": 40
+						},
+						{
+							"op": "flag",
+							"k": "a4_unseen"
+						},
+						{
+							"op": "flag",
+							"k": "a4_hall_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_mother",
+							"delay": 1
+						}
+					],
+					"after": "You walk the aisles like weather. A clerk looks up, seeing a draught where you stand, and goes back to his line."
+				}
+			]
+		},
+		{
+			"id": "a4_mother",
+			"kind": "story",
+			"act": 4,
+			"title": "The Drawer With No Label",
+			"art": "registry",
+			"portrait": "clerk",
+			"text": "At the end of the aisle of the living there is a drawer with no label and a ring-shaped hole where the handle should be. The lamp-boy stops, and cannot be made to go further. The hole is exactly the size of the plain band of white jade that has hung at your neck since the night you were found, a ring with a clerk's mark inside, which no village foundling should own. It slides in with a click, like a key finding its sleeve. The drawer opens. It is full of letters in a woman's hand, each dated, each addressed to one word. Child.",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"a4_hall_done"
+				]
+			},
+			"prio": 90,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"truth",
+				"mother"
+			],
+			"choices": [
+				{
+					"label": "Fit the ring and read",
+					"hint": "Needs your mother's ring",
+					"req": {
+						"items": [
+							"ring_mother"
+						]
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mother"
+						},
+						{
+							"op": "cult",
+							"v": 50
+						},
+						{
+							"op": "flag",
+							"k": "a4_mother_read"
+						},
+						{
+							"op": "flag",
+							"k": "a4_mother_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_wheel",
+							"delay": 2
+						}
+					],
+					"after": "She was the Registrar. She signed the order that made you the patch, and, the same night, the one that blanked you. The second signature shakes. The ink has gone through the page."
+				},
+				{
+					"label": "Break the drawer open by force",
+					"hint": "A guard wakes; Notice +15",
+					"fx": [
+						{
+							"op": "notice",
+							"v": 15
+						},
+						{
+							"op": "battle",
+							"enemy": "inspector",
+							"scale": 1.1,
+							"win": [
+								{
+									"op": "truth",
+									"id": "t_mother"
+								},
+								{
+									"op": "cult",
+									"v": 40
+								},
+								{
+									"op": "flag",
+									"k": "a4_mother_read"
+								},
+								{
+									"op": "flag",
+									"k": "a4_mother_done"
+								},
+								{
+									"op": "queue",
+									"id": "a4_wheel",
+									"delay": 2
+								}
+							],
+							"lose": [
+								{
+									"op": "hp_pct",
+									"v": -0.4
+								},
+								{
+									"op": "truth",
+									"id": "t_mother"
+								},
+								{
+									"op": "flag",
+									"k": "a4_mother_done"
+								},
+								{
+									"op": "queue",
+									"id": "a4_wheel",
+									"delay": 2
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Ask Su Jiu to pick the lock",
+					"hint": "Needs her at your side; a bond",
+					"req": {
+						"flags": [
+							"ally_sujiu"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "truth",
+							"id": "t_mother"
+						},
+						{
+							"op": "cult",
+							"v": 40
+						},
+						{
+							"op": "flag",
+							"k": "a4_mother_read"
+						},
+						{
+							"op": "flag",
+							"k": "a4_mother_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_wheel",
+							"delay": 2
+						}
+					],
+					"after": "She has it open in four breaths, and then stands back at once, and takes her hands off it, and does not look at what is inside. “Family,” she says, apologetically. “I charge extra.”"
+				}
+			]
+		},
+		{
+			"id": "a4_wheel",
+			"kind": "story",
+			"act": 4,
+			"title": "The Mill That Turns Slowly",
+			"art": "wheel",
+			"text": "Beyond the drawer there is a round room whose floor is a wheel: bronze, the width of a market square, turning so slowly you notice only that the shelves have changed. It is not a throne. It is a mill. Pages come down a chute in a long ribbon, each with a stain, and the Wheel catches them, rolls them flat, and sends them out the other side as clean paper. These are the patches that failed, you understand. These are the people who ascended and did not hold. They are being made ready to be written on again. A clerk with ink to the elbows greets you without looking up.",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"a4_mother_done"
+				]
+			},
+			"prio": 88,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"truth",
+				"wheel"
+			],
+			"choices": [
+				{
+					"label": "Read the pages as they pass",
+					"hint": "Insight test; the cost is in what you see",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_wheel"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 9,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 50
+								}
+							],
+							"fail": [
+								{
+									"op": "stat",
+									"k": "heart",
+									"v": -1
+								},
+								{
+									"op": "cult",
+									"v": 15
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a4_wheel_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_moshan_last",
+							"delay": 1
+						}
+					]
+				},
+				{
+					"label": "Put a hand on the rim and ask it to stop",
+					"hint": "Needs Heart 10; Notice +20",
+					"req": {
+						"stats": {
+							"heart": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_wheel"
+						},
+						{
+							"op": "notice",
+							"v": 20
+						},
+						{
+							"op": "cult",
+							"v": 60
+						},
+						{
+							"op": "flag",
+							"k": "a4_wheel_stilled"
+						},
+						{
+							"op": "flag",
+							"k": "a4_wheel_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_moshan_last",
+							"delay": 1
+						}
+					],
+					"after": "It slows. For one long breath the clerk's pen does not move. Then it goes on, and the Wheel with it, but you have felt how little holds it."
+				},
+				{
+					"label": "Look among the ribbon for your own earlier pages",
+					"hint": "Needs a second life; Heart +1",
+					"req": {
+						"life_min": 2
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_wheel"
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 60
+						},
+						{
+							"op": "flag",
+							"k": "a4_wheel_done"
+						},
+						{
+							"op": "queue",
+							"id": "a4_moshan_last",
+							"delay": 1
+						}
+					],
+					"after": "They are the blank ones. Each of your lives is a sheet the Wheel could not catch, warm, with nothing on it, going round and round on the rim like a coin that will not fall."
+				}
+			]
+		},
+		{
+			"id": "a4_moshan_last",
+			"kind": "story",
+			"act": 4,
+			"title": "The Gourd Was Ink",
+			"art": "wheel",
+			"portrait": "moshan",
+			"text": "He sits on the Wheel room's threshold with his back to a pillar and his gourd between his knees, and you realise you have never once seen him sober, or known that you were looking for it. He does not stand. He tips the gourd, slowly, over the bronze rim. What comes out is not wine. It is ink, black and good, and it runs along the grooves of the Wheel as if it had always known where they were. “Forty years,” Old Mo says, “and I could not afford a proper bottle.” He is not a drunk. He never was. He is the one clerk who ever put his pen down.",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"a4_wheel_done"
+				]
+			},
+			"prio": 86,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"moshan"
+			],
+			"choices": [
+				{
+					"label": "Take his empty sleeve and say his name: Mo Shan",
+					"hint": "Needs to have known him; a bond",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"ally_moshan"
+								]
+							},
+							{
+								"flags": [
+									"mo_master"
+								]
+							},
+							{
+								"meta": [
+									"t_mo_arm"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 3
+						},
+						{
+							"op": "cult",
+							"v": 40
+						},
+						{
+							"op": "flag",
+							"k": "a4_moshan_named"
+						},
+						{
+							"op": "flag",
+							"k": "a4_moshan_done"
+						}
+					],
+					"after": "He closes his eye. “Nobody has said that in a long time,” he says. “It sounds like somebody else, somebody with two arms.”"
+				},
+				{
+					"label": "Ask what he wrote the night you were born",
+					"hint": "Heart +1, Cult +40",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 40
+						},
+						{
+							"op": "flag",
+							"k": "a4_moshan_told"
+						},
+						{
+							"op": "flag",
+							"k": "a4_moshan_done"
+						}
+					],
+					"after": "“Child,” he says. “Blank. No line.” He rubs the stump. “Then they gave me a blade for my hand. I thought it was the least I could hand over.”"
+				},
+				{
+					"label": "Sit beside him and say nothing",
+					"hint": "HP +50%, Notice -5",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.5
+						},
+						{
+							"op": "notice",
+							"v": -5
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a4_moshan_done"
+						}
+					],
+					"after": "The ink goes round and round. After a while he leans his head against yours and is asleep, snoring, a terrible snore, the sound of a man for whom it is finally allowed."
+				}
+			]
+		},
+		{
+			"id": "a4_gate_approach",
+			"kind": "story",
+			"act": 4,
+			"title": "The Stair Takes Two",
+			"art": "gate",
+			"text": "The Gate is at the top of a stair too narrow for crowds: two abreast, no rail, cloud on both sides. The air is thin and tastes faintly of plaster. Below, at the last landing, those who came this far wait in a loose ring, politely not asking. You can count them. The stair will take one beside you, no more, and the Gate has no use for a crowd. The lamp-boy stays at the bottom and sets down his inkstone and looks, for the first time, a little like a child. Whoever you choose will see the end of it.",
+			"req": {
+				"realm_min": 5,
+				"flags": [
+					"a4_moshan_done"
+				]
+			},
+			"prio": 85,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"companions"
+			],
+			"choices": [
+				{
+					"label": "Ask Yun Zhi to walk beside you",
+					"hint": "She carries the sword",
+					"req": {
+						"flags": [
+							"ally_yunzhi"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a4_climbing"
+						},
+						{
+							"op": "event",
+							"id": "a4_with_yunzhi"
+						}
+					]
+				},
+				{
+					"label": "Ask Xiao He to walk beside you",
+					"hint": "The Registry is waiting for her",
+					"req": {
+						"flags": [
+							"ally_xiaohe"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a4_climbing"
+						},
+						{
+							"op": "event",
+							"id": "a4_with_xiaohe"
+						}
+					]
+				},
+				{
+					"label": "Ask Su Jiu to walk beside you",
+					"hint": "She has one last secret",
+					"req": {
+						"flags": [
+							"ally_sujiu"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a4_climbing"
+						},
+						{
+							"op": "event",
+							"id": "a4_with_sujiu"
+						}
+					]
+				},
+				{
+					"label": "Climb alone",
+					"hint": "Cult +20; no one is spared the climb",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a4_climbing"
+						},
+						{
+							"op": "flag",
+							"k": "a4_alone"
+						},
+						{
+							"op": "cult",
+							"v": 20
+						}
+					],
+					"after": "You go up the first flight with the sound of your own feet. They sound smaller than you expected, and entirely yours."
+				}
+			]
+		},
+		{
+			"id": "a4_with_yunzhi",
+			"kind": "chain",
+			"act": 4,
+			"title": "She Tells a Joke",
+			"art": "gate",
+			"portrait": "yunzhi",
+			"text": "She walks half a step ahead on the stair, in the way of a woman used to leading, and says nothing for two hundred steps. Then she tells a joke. It is an old one, a bad one, about a monk and a hen, and she tells it with all her usual timing, perfectly, and no one laughs. The sword is on her back in grey cloth. It is warm enough that the cloth steams where the cloud touches it. “I would like it,” she says, “if you would not stop me.” Her voice is the one she uses for weather.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"companions",
+				"yunzhi"
+			],
+			"choices": [
+				{
+					"label": "Take the sword from her back and carry it yourself",
+					"hint": "Needs what you know of the sword; HP -40%",
+					"req": {
+						"meta": [
+							"t_yunzhi"
+						]
+					},
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": -0.4
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "a4_yz_spared"
+						}
+					],
+					"after": "It lies against your spine like a second spine. “You are a fool,” she says, and it is the most she has ever sounded like herself."
+				},
+				{
+					"label": "Walk beside her and say nothing",
+					"hint": "Cult +30, a bond",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 30
+						},
+						{
+							"op": "flag",
+							"k": "a4_yz_goes"
+						}
+					],
+					"after": "She tells the joke again, a little worse. You laugh at the right place, and she looks at you sideways, as if to say that nobody ever did that."
+				},
+				{
+					"label": "Ask her to leave the sword on the stair and come down",
+					"hint": "Needs a bond (rel 6)",
+					"req": {
+						"rel": {
+							"yunzhi": 6
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 3
+						},
+						{
+							"op": "flag",
+							"k": "a4_yz_stays"
+						}
+					],
+					"after": "She stands very still. Then she lays it on the step with both hands, as one sets down a child asleep, and the stone under it takes a little of the warmth."
+				}
+			]
+		},
+		{
+			"id": "a4_with_xiaohe",
+			"kind": "chain",
+			"act": 4,
+			"title": "A Clerk at the Landing",
+			"art": "gate",
+			"portrait": "xiaohe",
+			"text": "Xiao He has climbed the whole way with a satchel on her back and a flask she keeps refilling from a stream that cannot be there. At the third landing a clerk sits with a lap desk, very polite, holding a paper with her name and a word you do not like. It says overdue. The Registry has been patient with her for years. She sets down her satchel and says she does not mind going to the Gate, only that no healer ever saw the other end of her work. The clerk waits with the courtesy of a man who has never been late.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"companions",
+				"xiaohe"
+			],
+			"choices": [
+				{
+					"label": "Step between them and fight",
+					"hint": "A fair fight; Notice -10 if you win",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "inspector",
+							"scale": 0.9,
+							"win": [
+								{
+									"op": "notice",
+									"v": -10
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 3
+								},
+								{
+									"op": "cult",
+									"v": 40
+								},
+								{
+									"op": "flag",
+									"k": "a4_xh_goes"
+								}
+							],
+							"lose": [
+								{
+									"op": "hp_pct",
+									"v": -0.4
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 2
+								},
+								{
+									"op": "flag",
+									"k": "a4_xh_goes"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Say she walks beside you, under your name",
+					"hint": "Heart test; failure is a fight",
+					"req": {
+						"rel": {
+							"xiaohe": 4
+						}
+					},
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 9,
+							"pass": [
+								{
+									"op": "notice",
+									"v": 10
+								},
+								{
+									"op": "rel",
+									"k": "xiaohe",
+									"v": 2
+								},
+								{
+									"op": "flag",
+									"k": "a4_xh_goes"
+								},
+								{
+									"op": "text",
+									"t": "He looks at your hand, which is on her shoulder, and at his own paper. He writes a small note, and lets you pass."
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "inspector",
+									"scale": 0.9,
+									"win": [
+										{
+											"op": "rel",
+											"k": "xiaohe",
+											"v": 3
+										},
+										{
+											"op": "flag",
+											"k": "a4_xh_goes"
+										}
+									],
+									"lose": [
+										{
+											"op": "hp_pct",
+											"v": -0.4
+										},
+										{
+											"op": "flag",
+											"k": "a4_xh_goes"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Let her sit with her tea and go up alone",
+					"hint": "HP +50%; she waits below",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.5
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a4_xh_waits"
+						}
+					],
+					"after": "“He will wait,” she says, of the clerk, pouring him a cup. “They always do. Come back and eat.” The clerk, to his visible embarrassment, takes it."
+				}
+			]
+		},
+		{
+			"id": "a4_with_sujiu",
+			"kind": "chain",
+			"act": 4,
+			"title": "The Last Secret",
+			"art": "gate",
+			"portrait": "sujiu",
+			"text": "Su Jiu has taken her tails out for the climb, all eight, and they stream behind her like a banner no one asked for. On the hundredth step she says she has a last secret for sale. “Not a good one,” she says. “It is true, which is worse.” She names her price. It is your ninth-best joke, or the next time you are ill. You do not understand the price. The shadow of the Gate is cold on her face, and under the paint her mouth is steady, like a person holding a very full cup.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"companions",
+				"sujiu"
+			],
+			"choices": [
+				{
+					"label": "Pay her price",
+					"hint": "She tells you what the Magistrate cannot file",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a4_sujiu_secret"
+						},
+						{
+							"op": "cult",
+							"v": 20
+						}
+					],
+					"after": "“He files what answers to its name,” she says. “So do not answer.” She counts your coins twice and gives them back."
+				},
+				{
+					"label": "Refuse. Let her keep it.",
+					"hint": "A great bond; Cult +20",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 3
+						},
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "flag",
+							"k": "a4_sujiu_kept"
+						}
+					],
+					"after": "For a moment she cannot find her voice. “Nobody ever,” she says. Then, very fast: “Fine. I will be here for the descent. I charge for descents.”"
+				},
+				{
+					"label": "Tell her one of yours first",
+					"hint": "Needs a bond (rel 5); an even trade",
+					"req": {
+						"rel": {
+							"sujiu": 5
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "sujiu",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "a4_sujiu_secret"
+						},
+						{
+							"op": "flag",
+							"k": "a4_sujiu_kept"
+						},
+						{
+							"op": "cult",
+							"v": 30
+						}
+					],
+					"after": "You tell her the one you have never sold. She sells you hers in turn, at the same price, with a face like a woman setting down a shopping bag."
+				}
+			]
+		},
+		{
+			"id": "a4_heng_stair",
+			"kind": "story",
+			"act": 4,
+			"title": "Early, as Always",
+			"art": "gate",
+			"portrait": "xiaoheng",
+			"text": "A man in a white robe waits on the middle landing with his hands folded, early, as always. He has been counting the steps and has found a discrepancy of one. The robe has been pressed by someone who loved ironing. He looks, for the first time since you knew him, as if he had put down something heavy and has not yet remembered what to do with his arms. “They did not choose me,” Xiao Heng says, in the voice of a man reading his own epitaph. “Or they did, and then you were in the way. I would like to know which.”",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"a4_climbing"
+				],
+				"not_flags": [
+					"heng_lost"
+				]
+			},
+			"prio": 80,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"heng"
+			],
+			"choices": [
+				{
+					"label": "Let him hold the stair behind you",
+					"hint": "HP +30%, a bond",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"heng_friend"
+								]
+							},
+							{
+								"flags": [
+									"heng_warned"
+								]
+							},
+							{
+								"flags": [
+									"heng_place"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "hp_pct",
+							"v": 0.3
+						},
+						{
+							"op": "flag",
+							"k": "a4_heng_holds"
+						},
+						{
+							"op": "flag",
+							"k": "gate_open"
+						},
+						{
+							"op": "queue",
+							"id": "a4_gate",
+							"delay": 1
+						}
+					],
+					"after": "He straightens, and for a breath is the boy in the sect courtyard who was never wrong. “No one comes up behind you,” he says. “It is, at least, a tidy task.”"
+				},
+				{
+					"label": "Bow, and take the duel he owes you",
+					"hint": "A hard fight, not a lethal one",
+					"req": {
+						"flags": [
+							"heng_rival"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "gate_open"
+						},
+						{
+							"op": "queue",
+							"id": "a4_gate",
+							"delay": 1
+						},
+						{
+							"op": "battle",
+							"enemy": "xiaoheng_duel",
+							"scale": 0.7,
+							"win": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 60
+								},
+								{
+									"op": "flag",
+									"k": "a4_heng_beaten"
+								}
+							],
+							"lose": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "text",
+									"t": "He offers you a hand up. His is perfectly steady. It is the first time you have seen him smile at a result."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Tell him which. You know how the patch moved.",
+					"hint": "Needs the memory: the patch was moved to him",
+					"req": {
+						"meta": [
+							"t_heng"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 30
+						},
+						{
+							"op": "flag",
+							"k": "a4_heng_knows"
+						},
+						{
+							"op": "flag",
+							"k": "gate_open"
+						},
+						{
+							"op": "queue",
+							"id": "a4_gate",
+							"delay": 1
+						}
+					],
+					"after": "He takes it the way he takes everything, with his back straight. Then he sits down on the stair, abruptly, like a boy, and laughs until he has to wipe his eyes."
+				},
+				{
+					"label": "Nod and pass him",
+					"hint": "Cult +10",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "gate_open"
+						},
+						{
+							"op": "queue",
+							"id": "a4_gate",
+							"delay": 1
+						}
+					],
+					"after": "You pass. He lets you. Behind you he begins counting the steps again, aloud, in his clear dry voice, from one."
+				}
+			]
+		},
+		{
+			"id": "a4_heng_shoes",
+			"kind": "story",
+			"act": 4,
+			"title": "White Shoes on the Landing",
+			"art": "gate",
+			"portrait": "xiaoheng",
+			"text": "On the middle landing someone has left a pair of white shoes, set neatly toes to the sky. The stair beside them has been swept. A card is tucked into the left one, in a hand with a ruler under every line: Early. Do not wait. Courtesy to the next. You hold them and are surprised by how little they weigh. Everything he ever did was a little ahead of schedule, and this was no different. Far below, the lamp-boy is climbing, slowly, with his inkstone in both arms, to ask if you would like them kept.",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"a4_climbing",
+					"heng_lost"
+				]
+			},
+			"prio": 80,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"heng"
+			],
+			"choices": [
+				{
+					"label": "Carry the shoes up to the Gate",
+					"hint": "Heart +1, Cult +30",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 30
+						},
+						{
+							"op": "flag",
+							"k": "a4_heng_shoes"
+						},
+						{
+							"op": "flag",
+							"k": "gate_open"
+						},
+						{
+							"op": "queue",
+							"id": "a4_gate",
+							"delay": 1
+						}
+					],
+					"after": "They fit in the crook of your arm like a loaf of bread. You will not put them down until it is over."
+				},
+				{
+					"label": "Leave them as he set them",
+					"hint": "Cult +15",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "flag",
+							"k": "gate_open"
+						},
+						{
+							"op": "queue",
+							"id": "a4_gate",
+							"delay": 1
+						}
+					],
+					"after": "You leave a cup of water beside them. It is not much of a courtesy. It is, you think, an early one."
+				}
+			]
+		},
+		{
+			"id": "a4_gate",
+			"kind": "story",
+			"act": 4,
+			"title": "I Had Your Page Ready",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "The Gate is not a gate. It is a plain door in a plain wall of grey stone, one leaf standing open on a view of nothing in particular, and in the opening, on a folding stool, sits a man in clerk's grey with a lap desk. He rises when he sees you and bows exactly as deep as one owes a person of your standing. “Wuming,” the Magistrate says. “How good. I had your page ready.” Behind him the sky is a seamed grey ceiling, and from this close you can see that the seams are stitched, with fine black thread, and that something behind them is holding its breath. “I am only filing,” he says. “You may defend yourself, if it eases you.”",
+			"req": {
+				"realm_min": 4,
+				"flags": [
+					"gate_open"
+				]
+			},
+			"prio": 100,
+			"once": true,
+			"tags": [
+				"act4",
+				"spine",
+				"gate"
+			],
+			"choices": [
+				{
+					"label": "Draw, and let him see what you are",
+					"hint": "A great fight, not a lethal one; winning is worth cultivation",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "magistrate_met"
+						},
+						{
+							"op": "battle",
+							"enemy": "magistrate_1",
+							"scale": 1.0,
+							"win": [
+								{
+									"op": "flag",
+									"k": "a4_m1_won"
+								},
+								{
+									"op": "cult",
+									"v": 80
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_talk"
+								}
+							],
+							"lose": [
+								{
+									"op": "hp_pct",
+									"v": -0.5
+								},
+								{
+									"op": "flag",
+									"k": "a4_m1_lost"
+								},
+								{
+									"op": "text",
+									"t": "He lets the result stand. He is not in a hurry."
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_talk"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Show him the empty page. You are not in his book.",
+					"hint": "Needs the memory of a blank page, or Su Jiu's last secret",
+					"req": {
+						"any": [
+							{
+								"meta": [
+									"t_blank"
+								]
+							},
+							{
+								"flags": [
+									"a4_sujiu_secret"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "magistrate_met"
+						},
+						{
+							"op": "flag",
+							"k": "a4_unfiled"
+						},
+						{
+							"op": "cult",
+							"v": 40
+						},
+						{
+							"op": "event",
+							"id": "a4_gate_talk"
+						}
+					],
+					"after": "He turns his lap desk toward you, finds the place, and holds the brush above it for a very long time. “So it is true,” he says, gently. “How inconvenient for both of us.”"
+				},
+				{
+					"label": "Greet him, and ask what became of the ones before you",
+					"hint": "Heart test; failure is the fight",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "magistrate_met"
+						},
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 11,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 50
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_talk"
+								}
+							],
+							"fail": [
+								{
+									"op": "battle",
+									"enemy": "magistrate_1",
+									"scale": 1.2,
+									"win": [
+										{
+											"op": "flag",
+											"k": "a4_m1_won"
+										},
+										{
+											"op": "event",
+											"id": "a4_gate_talk"
+										}
+									],
+									"lose": [
+										{
+											"op": "hp_pct",
+											"v": -0.5
+										},
+										{
+											"op": "event",
+											"id": "a4_gate_talk"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_gate_talk",
+			"kind": "chain",
+			"act": 4,
+			"title": "He Explains It Kindly",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "He lays the lap desk across his knees and uncaps a brush. The thing about him is how reasonable he is. He explains it as one might explain a drain: the sky needs mending, the mending needs a soul, the soul must be whole and unspoken for, and in all the ages of Dahuang there has been one such soul, and it is yours. He is sorry you were hidden. Nobody was cruel. The previous Registrar loved you; this is agreed on all sides. “I do not wish you pain,” he says. “I wish you to sign.” He holds out the brush. Behind him the door lets in a draught that smells of rain and old paper.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"gate"
+			],
+			"choices": [
+				{
+					"label": "Take the brush and sign. (Filed: the sky is mended; you are the mortar.)",
+					"hint": "Anyone may choose this; nobody will remember you",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_filed"
+						}
+					]
+				},
+				{
+					"label": "Say: I will go down. (Mortal Dust: the sky goes on cracking; you keep a small life.)",
+					"hint": "Needs someone who trusts you completely (bond 8)",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"ally_xiaohe"
+								],
+								"rel": {
+									"xiaohe": 8
+								}
+							},
+							{
+								"flags": [
+									"ally_yunzhi"
+								],
+								"rel": {
+									"yunzhi": 8
+								}
+							},
+							{
+								"flags": [
+									"ally_sujiu"
+								],
+								"rel": {
+									"sujiu": 8
+								}
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_mortal_dust"
+						}
+					]
+				},
+				{
+					"label": "Refuse, and ask to see the rest of him",
+					"hint": "The second form; the page and the offer",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_gate_form2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_gate_form2",
+			"kind": "chain",
+			"act": 4,
+			"title": "A Room of Clerks",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "He sighs, not unkindly, and the brush goes into his sleeve. The wall behind him goes on a long way into a room that has no walls: desks, thousands of them, a clerk at each, a quiet like the quiet of a counting-house at the turn of the year. The Magistrate is among them now, taller, the plain grey softened to a pale gold, each hand holding a different scroll. He speaks with all their voices at once, and every one is courteous. “You will forgive me,” he says. “I must be thorough. I must be very sure that the patch will hold.”",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"gate"
+			],
+			"choices": [
+				{
+					"label": "Meet him, and break his ledger",
+					"hint": "A great fight, not a lethal one",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "magistrate_2",
+							"scale": 1.0,
+							"win": [
+								{
+									"op": "flag",
+									"k": "a4_m2_won"
+								},
+								{
+									"op": "cult",
+									"v": 120
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_offer"
+								}
+							],
+							"lose": [
+								{
+									"op": "hp_pct",
+									"v": -0.5
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_offer"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Walk through the desks without answering to anything",
+					"hint": "Needs to be unfiled",
+					"req": {
+						"flags": [
+							"a4_unfiled"
+						]
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 60
+						},
+						{
+							"op": "event",
+							"id": "a4_gate_offer"
+						}
+					],
+					"after": "A hundred clerks look up and a hundred pens stop. None of them can find your line. You pass among them like a draught through a library."
+				}
+			]
+		},
+		{
+			"id": "a4_gate_offer",
+			"kind": "chain",
+			"act": 4,
+			"title": "A Seat, and a Page",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "The room has gone quiet. He stands alone among the desks, a little rumpled for the first time, a page slipped from the scroll in his hand and floating down through the dust like a leaf. He catches it and holds it out as if it were a wish. “I will make you an offer,” the Magistrate says. “Not the patch. A seat: my own. Registrar of the Hall. You would sit where she sat, and decide whose names are mended and whom to spare. I am tired. I am only a clerk.” The page is face down, and the back of it is ink, black as old water. “That one,” he adds, “is not mine to give.”",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"gate",
+				"truth"
+			],
+			"choices": [
+				{
+					"label": "Turn the page over and read it",
+					"hint": "Needs eight pages of the truth: most of what you have found",
+					"req": {
+						"meta": [
+							"t_blank",
+							"t_filing",
+							"t_crack",
+							"t_brush",
+							"t_mother",
+							"t_wheel"
+						],
+						"any": [
+							{
+								"meta": [
+									"t_heng",
+									"t_ye"
+								]
+							},
+							{
+								"meta": [
+									"t_heng",
+									"t_xiaohe"
+								]
+							},
+							{
+								"meta": [
+									"t_heng",
+									"t_mo_arm"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi",
+									"t_ye"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi",
+									"t_xiaohe"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi",
+									"t_mo_arm"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_origin"
+						},
+						{
+							"op": "cult",
+							"v": 150
+						},
+						{
+							"op": "flag",
+							"k": "a4_origin"
+						},
+						{
+							"op": "event",
+							"id": "a4_gate_form3"
+						}
+					],
+					"after": "It is one line. The first Blank Night was not a night. It was the first one to climb the stair, and she is still up there, holding the weight, and the Canopy is her body."
+				},
+				{
+					"label": "Decline the seat. Say nothing.",
+					"hint": "On to the third form",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_gate_form3"
+						}
+					]
+				},
+				{
+					"label": "Sign now and be done. (Filed.)",
+					"hint": "The sky is mended; you are the mortar",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_filed"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_gate_form3",
+			"kind": "chain",
+			"act": 4,
+			"title": "The Sky Leans Down",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "He stops being a man. The sky comes down to look: the grey ceiling leans, and its seams strain like stitches in a sack, and a voice with no mouth says your name in a tone of immense, patient fatigue. This is the third form: not him, but the thing he was always the hand of. It is not angry. It is a very old wound that has been told it must keep still. You will not defeat it with a better sword. You may only hold your place for as long as it takes to be counted.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"gate"
+			],
+			"choices": [
+				{
+					"label": "Stand, and strike back",
+					"hint": "A great fight, not a lethal one",
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_heng_holds"
+								]
+							},
+							"then": [
+								{
+									"op": "hp_pct",
+									"v": 0.3
+								},
+								{
+									"op": "text",
+									"t": "Behind you on the stair, someone is counting steps aloud, and nothing is coming up."
+								}
+							]
+						},
+						{
+							"op": "battle",
+							"enemy": "magistrate_3",
+							"scale": 1.0,
+							"win": [
+								{
+									"op": "flag",
+									"k": "a4_m3_won"
+								},
+								{
+									"op": "cult",
+									"v": 200
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_choice"
+								}
+							],
+							"lose": [
+								{
+									"op": "hp_pct",
+									"v": -0.6
+								},
+								{
+									"op": "event",
+									"id": "a4_gate_choice"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Hold up the Brush and draw a line it must read",
+					"hint": "Needs the Brush; the line costs a year of life",
+					"req": {
+						"items": [
+							"writ_brush"
+						]
+					},
+					"fx": [
+						{
+							"op": "life",
+							"v": -1
+						},
+						{
+							"op": "flag",
+							"k": "a4_brush_drawn"
+						},
+						{
+							"op": "cult",
+							"v": 150
+						},
+						{
+							"op": "event",
+							"id": "a4_gate_choice"
+						}
+					],
+					"after": "One stroke, in plain ink. The sky stops leaning. It reads the line the way a very old person reads a child's first letter, slowly, moving its lips."
+				},
+				{
+					"label": "Close your eyes and wait to be counted",
+					"hint": "Heart test; failure wounds",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 10,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 100
+								},
+								{
+									"op": "text",
+									"t": "It counts you. It gets a number. It does not like the number, but it does not argue."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.7
+								}
+							]
+						},
+						{
+							"op": "event",
+							"id": "a4_gate_choice"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_gate_choice",
+			"kind": "chain",
+			"act": 4,
+			"title": "What the Stone Says",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "It is done, or it is paused, which at this scale is the same. The sky has drawn back to a hand's breadth above your head and is waiting, as the clerk waited, for you to pick up whichever thing you pick up. The door stands open on nothing. Under your palm the Gate's threshold is warm, and you understand that this is the one moment in which you will ever have a choice that no page recorded in advance. Every cost is written plainly on the stone, and every one of them is true.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"gate",
+				"choice"
+			],
+			"choices": [
+				{
+					"label": "Break the Gate by force (cost: the Canopy falls, every ascended is unmade, and you stand alone in a clean sky)",
+					"hint": "Needs Spirit Transformation; a lethal fight against the Dao's avatar",
+					"req": {
+						"realm_min": 5
+					},
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_slayer"
+						}
+					]
+				},
+				{
+					"label": "Write the Blank Writ (cost: the Brush burns away, your own name goes in last, and you will not read the new book)",
+					"hint": "Needs what you remember, the Brush, and someone who would be named",
+					"req": {
+						"meta": [
+							"t_filing",
+							"t_crack",
+							"t_brush"
+						],
+						"any": [
+							{
+								"meta": [
+									"t_heng"
+								],
+								"flags": [
+									"ally_xiaohe"
+								]
+							},
+							{
+								"meta": [
+									"t_heng"
+								],
+								"flags": [
+									"ally_moshan"
+								]
+							},
+							{
+								"meta": [
+									"t_heng"
+								],
+								"flags": [
+									"ally_yunzhi"
+								]
+							},
+							{
+								"meta": [
+									"t_heng"
+								],
+								"flags": [
+									"ally_sujiu"
+								]
+							},
+							{
+								"meta": [
+									"t_heng"
+								],
+								"flags": [
+									"ally_xiaoheng"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi"
+								],
+								"flags": [
+									"ally_xiaohe"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi"
+								],
+								"flags": [
+									"ally_moshan"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi"
+								],
+								"flags": [
+									"ally_yunzhi"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi"
+								],
+								"flags": [
+									"ally_sujiu"
+								]
+							},
+							{
+								"meta": [
+									"t_yunzhi"
+								],
+								"flags": [
+									"ally_xiaoheng"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_blank_writ"
+						}
+					]
+				},
+				{
+					"label": "Take the Dao's seat (cost: your name, everyone's name, and whatever it was that ate at you)",
+					"hint": "Needs corruption 70 and Ye Wujin's bargain",
+					"req": {
+						"corrupt_min": 70,
+						"flags": [
+							"ye_accepted"
+						]
+					},
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_netherworld"
+						}
+					]
+				},
+				{
+					"label": "Put the Brush down and choose a quieter way",
+					"hint": "Filing, going home, or simply the years",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_gate_quiet"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_gate_quiet",
+			"kind": "chain",
+			"act": 4,
+			"title": "The Quieter Doors",
+			"art": "gate",
+			"text": "There are quieter doors. The stair is still there, and the lamp-boy, and the long way down. You can sign, and the sky will be mended, and nobody will say you were not loved. Or you can turn round with whoever will take your arm, and let the Canopy do what it was always going to do, a little at a time, slowly, over a thousand years of ordinary rain. Or you can sit down on the step with your hands on your knees and simply decline to be anything at all, and let the years take you the way a tide takes a shoe.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"gate",
+				"choice"
+			],
+			"choices": [
+				{
+					"label": "Sign. Be the mortar. (Filed: the sky mends; nobody remembers you.)",
+					"hint": "Open to anyone",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_filed"
+						}
+					]
+				},
+				{
+					"label": "Go down with the one who trusts you. (Mortal Dust: the sky cracks on; you keep a small life.)",
+					"hint": "Needs someone who trusts you completely (bond 8)",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"ally_xiaohe"
+								],
+								"rel": {
+									"xiaohe": 8
+								}
+							},
+							{
+								"flags": [
+									"ally_yunzhi"
+								],
+								"rel": {
+									"yunzhi": 8
+								}
+							},
+							{
+								"flags": [
+									"ally_sujiu"
+								],
+								"rel": {
+									"sujiu": 8
+								}
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_end_mortal_dust"
+						}
+					]
+				},
+				{
+					"label": "Sit on the step and let the years have you. (No ending: the life simply runs out.)",
+					"hint": "You are not remembered, and you are not filed",
+					"fx": [
+						{
+							"op": "text",
+							"t": "You sit. The clouds go by below, the way they do. Nobody comes to tell you anything. It is the first quiet you have had since the Blank Night."
+						},
+						{
+							"op": "die",
+							"cause": "old_age"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_end_filed",
+			"kind": "chain",
+			"act": 4,
+			"title": "Filed",
+			"art": "gate",
+			"text": "You sign. The brush is warm and slightly damp, and it writes your name in a hand that is nearly your own. Nothing hurts. Far above, a seam closes with the sound of a page turning in an empty room. In the nine provinces a woman hanging out washing finds she has stopped, for no reason, and looks up at a sky that is whole. She will mention it at dinner. By spring she will not be sure. Your shoes stay on the threshold, toes to the sky, and a young clerk comes and lifts them, and writes a line, and the line is neat.",
+			"req": {},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"ending"
+			],
+			"choices": [
+				{
+					"label": "Sign with your own name",
+					"hint": "Ending: Filed",
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_yz_goes"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Yun Zhi is sent home, slowly, with the grey sword unused on her back."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_xh_goes"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Xiao He is let through the door at the foot of the stair, with a flask of tea nobody refilled."
+								}
+							]
+						},
+						{
+							"op": "ending",
+							"id": "end_filed"
+						}
+					]
+				},
+				{
+					"label": "Sign with the beggar's mark, one stroke and no name",
+					"hint": "Ending: Filed; needs to have known Old Mo",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"ally_moshan"
+								]
+							},
+							{
+								"flags": [
+									"mo_master"
+								]
+							},
+							{
+								"meta": [
+									"t_mo_arm"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "text",
+							"t": "One stroke: the mark of a clerk who once put his pen down. The Magistrate looks at it a long time, and files it anyway."
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "ending",
+							"id": "end_filed"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_end_slayer",
+			"kind": "chain",
+			"act": 4,
+			"title": "The Seam Gives Way",
+			"art": "gate",
+			"portrait": "siming",
+			"text": "You set the point of the blade against the seam where it is thinnest and lamp-lit from the other side. It will not come down quietly. The Dao has no face, and borrows yours in the grey of old paper, polite and patient, and does not step aside. It does not wish to fight. It will, if you insist, do exactly as much as it must, and no more. Behind it, very small, you can see the nine provinces, rice-green and brown, all of them going on with their washing. You can hear the thread begin to part, a long way off, like an animal turning in its sleep.",
+			"req": {
+				"realm_min": 5
+			},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"ending"
+			],
+			"choices": [
+				{
+					"label": "Break it",
+					"hint": "A lethal fight; the Canopy comes down if you win",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "dao_avatar",
+							"scale": 1.0,
+							"lethal": true,
+							"win": [
+								{
+									"op": "text",
+									"t": "The grey comes apart in sheets, like wet paper, and falls, and strikes nothing, because there is nothing below that is not already made of it."
+								},
+								{
+									"op": "text",
+									"t": "When the light comes in it is a clean cold blue, very far off. The desks are ash. The Wheel has stopped with one page in its teeth. It is very quiet."
+								},
+								{
+									"op": "ending",
+									"id": "end_slayer"
+								}
+							],
+							"lose": [
+								{
+									"op": "die",
+									"cause": "slain"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Lower the blade",
+					"hint": "Back to the quieter doors",
+					"fx": [
+						{
+							"op": "event",
+							"id": "a4_gate_quiet"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_end_blank_writ",
+			"kind": "chain",
+			"act": 4,
+			"title": "A Plain Hand",
+			"art": "gate",
+			"portrait": "siming",
+			"req": {
+				"meta": [
+					"t_filing",
+					"t_crack",
+					"t_brush"
+				],
+				"any": [
+					{
+						"meta": [
+							"t_heng"
+						],
+						"flags": [
+							"ally_xiaohe"
+						]
+					},
+					{
+						"meta": [
+							"t_heng"
+						],
+						"flags": [
+							"ally_moshan"
+						]
+					},
+					{
+						"meta": [
+							"t_heng"
+						],
+						"flags": [
+							"ally_yunzhi"
+						]
+					},
+					{
+						"meta": [
+							"t_heng"
+						],
+						"flags": [
+							"ally_sujiu"
+						]
+					},
+					{
+						"meta": [
+							"t_heng"
+						],
+						"flags": [
+							"ally_xiaoheng"
+						]
+					},
+					{
+						"meta": [
+							"t_yunzhi"
+						],
+						"flags": [
+							"ally_xiaohe"
+						]
+					},
+					{
+						"meta": [
+							"t_yunzhi"
+						],
+						"flags": [
+							"ally_moshan"
+						]
+					},
+					{
+						"meta": [
+							"t_yunzhi"
+						],
+						"flags": [
+							"ally_yunzhi"
+						]
+					},
+					{
+						"meta": [
+							"t_yunzhi"
+						],
+						"flags": [
+							"ally_sujiu"
+						]
+					},
+					{
+						"meta": [
+							"t_yunzhi"
+						],
+						"flags": [
+							"ally_xiaoheng"
+						]
+					}
+				]
+			},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"ending"
+			],
+			"text": "The Brush is lighter than the pieces were. You hold it over the Gate's threshold, over the stone where a thousand ascenders signed, and it is not ink that gathers on the tip but the colour of what is not yet decided. You write a name. It is plain: no flourish, a hand any child could read. Then another, and a third: a baker who gave you a heel of bread once, a boy at a well, a ferryman. Each is someone who was never asked. The seams pull tight one by one, not with a soul but with a list, a very long list, of people who chose to be there. The Magistrate takes his spectacles off. “It is not very efficient,” he says, with real wonder.",
+			"choices": [
+				{
+					"label": "Write every name yourself, in your own hand",
+					"hint": "Ending: The Blank Writ",
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_xh_goes"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Xiao He's is the sixth. You do not need to spell it."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_yz_goes"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Yun Zhi's is the seventh, and at the end of it you put the sword down."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_heng_shoes"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Xiao Heng's is written early. You make sure of it."
+								}
+							]
+						},
+						{
+							"op": "text",
+							"t": "Your own goes last, in the margin, small. The Brush is ash by the time you lift your hand."
+						},
+						{
+							"op": "ending",
+							"id": "end_blank_writ"
+						}
+					]
+				},
+				{
+					"label": "Let Old Mo write the first line with his stump",
+					"hint": "Ending: The Blank Writ; he is at your side",
+					"req": {
+						"flags": [
+							"ally_moshan"
+						]
+					},
+					"fx": [
+						{
+							"op": "text",
+							"t": "The stump moves over the stone and writes a single name, which is his own, and then, below it, in a firmer hand: *the clerk who blanked her.*"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "text",
+							"t": "He gives you the Brush back. His grin has forty years of tiredness in it, and none of the drunk."
+						},
+						{
+							"op": "ending",
+							"id": "end_blank_writ"
+						}
+					]
+				},
+				{
+					"label": "Begin with the name of the one who was filed",
+					"hint": "Ending: The Blank Writ; needs Xiao Heng's shoes",
+					"req": {
+						"flags": [
+							"a4_heng_shoes"
+						]
+					},
+					"fx": [
+						{
+							"op": "text",
+							"t": "Xiao Heng, in your plainest hand, with no gold and no ruler. Below your feet, on the stair, a pair of white shoes quietly turn to face down."
+						},
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "ending",
+							"id": "end_blank_writ"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_end_mortal_dust",
+			"kind": "chain",
+			"act": 4,
+			"title": "Rice and Rain",
+			"art": "village",
+			"req": {
+				"any": [
+					{
+						"flags": [
+							"ally_xiaohe"
+						],
+						"rel": {
+							"xiaohe": 8
+						}
+					},
+					{
+						"flags": [
+							"ally_yunzhi"
+						],
+						"rel": {
+							"yunzhi": 8
+						}
+					},
+					{
+						"flags": [
+							"ally_sujiu"
+						],
+						"rel": {
+							"sujiu": 8
+						}
+					}
+				]
+			},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"ending"
+			],
+			"text": "You turn round. The Magistrate does not stop you; he is not that kind of clerk. He writes a short note, and inclines his head, and says the Registry will keep your page open, in case. The stair down is longer than the stair up, and easier, and the people at the bottom are talking about dinner. There is rice. There is rain on a tiled roof, not a drama, the dull friendly drum of it. Somebody has left a lamp in a window. Above you the Canopy goes on cracking, as it always has, a hair a year, and for the first time you are only a person looking up at weather.",
+			"choices": [
+				{
+					"label": "Go down together, and go home",
+					"hint": "Ending: Mortal Dust",
+					"fx": [
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_xh_goes"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Xiao He walks ahead with her satchel, scolding the road."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_yz_stays"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "At the third landing Yun Zhi picks up the grey sword, looks at it, and leaves it, again, where it is."
+								}
+							]
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"a4_sujiu_kept"
+								]
+							},
+							"then": [
+								{
+									"op": "text",
+									"t": "Su Jiu bills you for the descent. You pay it gladly. It is the cheapest thing you have ever bought."
+								}
+							]
+						},
+						{
+							"op": "ending",
+							"id": "end_mortal_dust"
+						}
+					]
+				},
+				{
+					"label": "Stop at the first inn and order rice",
+					"hint": "Ending: Mortal Dust",
+					"fx": [
+						{
+							"op": "text",
+							"t": "It comes in a chipped bowl. It is hot, and plain, and exactly as much as you wanted. You eat it very slowly, with everyone you love, while it rains."
+						},
+						{
+							"op": "ending",
+							"id": "end_mortal_dust"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a4_end_netherworld",
+			"kind": "chain",
+			"act": 4,
+			"title": "A Seat Too High",
+			"art": "netherworld",
+			"portrait": "ye",
+			"req": {
+				"corrupt_min": 70,
+				"flags": [
+					"ye_accepted"
+				]
+			},
+			"weight": 1,
+			"tags": [
+				"act4",
+				"ending"
+			],
+			"text": "The seat is too high. You know it before you climb: the arms are made for a bigger hand, the back for a taller spine, and the cushion has a hollow in it that fits no one who ever lived. Ye Wujin has not been consulted. He stands to one side with the tea still steaming, and bows, and his bow is perfect, and something in the tilt of it says he planned this a long time and is not certain what he feels now it is done. The Nine Netherworlds lean down to look at you. Everything you ever swallowed, you can taste again. It has your name on it.",
+			"choices": [
+				{
+					"label": "Sit",
+					"hint": "Ending: Nine Netherworlds",
+					"fx": [
+						{
+							"op": "text",
+							"t": "It fits, after a while, the way a coat fits a corpse. The Gate, below you, becomes a small bright thing, like a coin at the bottom of a well."
+						},
+						{
+							"op": "ending",
+							"id": "end_netherworld"
+						}
+					]
+				},
+				{
+					"label": "Sit, and pour tea for two",
+					"hint": "Ending: Nine Netherworlds",
+					"fx": [
+						{
+							"op": "text",
+							"t": "Ye Wujin takes the cup. He does not drink it. He looks at it, and then at you, and for the first time he does not smile."
+						},
+						{
+							"op": "rel",
+							"k": "ye",
+							"v": 2
+						},
+						{
+							"op": "ending",
+							"id": "end_netherworld"
+						}
+					]
+				}
+			]
+		}
+	]
+}

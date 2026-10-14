@@ -1,0 +1,109 @@
+{
+	"_schema": "method: id zh en elem cult_mult passive_cult stat? hp_pct? req? text",
+	"methods": [
+		{
+			"id": "breath_basic",
+			"zh": "吐纳基本法",
+			"en": "Basic Breathing",
+			"elem": "none",
+			"cult_mult": 1.0,
+			"passive_cult": 0,
+			"text": "The breathing every village child half-learns. No bonus, no cost."
+		},
+		{
+			"id": "azure_sword_canon",
+			"zh": "青霄剑经",
+			"en": "Azure Sword Canon",
+			"elem": "metal",
+			"cult_mult": 1.2,
+			"passive_cult": 0,
+			"stat": {
+				"speed": 1
+			},
+			"text": "Cultivation x1.2 (and +3% per metal root point); Speed +1. A discipline of straight lines."
+		},
+		{
+			"id": "herb_life_art",
+			"zh": "百草长生诀",
+			"en": "Hundred-Herb Longevity Art",
+			"elem": "wood",
+			"cult_mult": 1.1,
+			"passive_cult": 4,
+			"hp_pct": 0.1,
+			"text": "Cultivation x1.1; a trickle of 4 cultivation every term; max HP +10%. Slow, and it keeps."
+		},
+		{
+			"id": "rogue_wind_step",
+			"zh": "逍遥步法",
+			"en": "Wanderer's Wind-Step",
+			"elem": "none",
+			"cult_mult": 1.1,
+			"passive_cult": 3,
+			"stat": {
+				"speed": 2
+			},
+			"text": "Cultivation x1.1; Speed +2; 3 cultivation every term as you walk. No sect has ever owned it."
+		},
+		{
+			"id": "nine_netherworld_scripture",
+			"zh": "九幽经",
+			"en": "Nine-Netherworld Scripture",
+			"elem": "water",
+			"cult_mult": 1.5,
+			"passive_cult": 0,
+			"stat": {
+				"spirit": 2
+			},
+			"hp_pct": -0.12,
+			"text": "Cultivation x1.5; Spirit +2; max HP -12%. Fast, and it feeds on you a little at a time."
+		},
+		{
+			"id": "five_elements_scripture",
+			"zh": "五行真经",
+			"en": "Five-Elements Scripture",
+			"elem": "none",
+			"cult_mult": 1.3,
+			"passive_cult": 2,
+			"stat": {
+				"insight": 1
+			},
+			"req": {
+				"roots": {
+					"metal": 1,
+					"wood": 1,
+					"water": 1,
+					"fire": 1,
+					"earth": 1
+				}
+			},
+			"text": "Cultivation x1.3; Insight +1; 2 cultivation a term. Needs every root at 1 or more: it is a method for the evenly gifted."
+		},
+		{
+			"id": "blank_writ_art",
+			"zh": "无字真诀",
+			"en": "Art of the Blank Writ",
+			"elem": "none",
+			"cult_mult": 1.6,
+			"passive_cult": 6,
+			"stat": {
+				"insight": 2,
+				"heart": 1
+			},
+			"req": {
+				"any": [
+					{
+						"meta": [
+							"t_brush"
+						]
+					},
+					{
+						"meta": [
+							"w_h_blank_art"
+						]
+					}
+				]
+			},
+			"text": "Cultivation x1.6; Insight +2, Heart +1; 6 cultivation a term. It is not written down anywhere. That is the method."
+		}
+	]
+}

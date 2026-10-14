@@ -1,0 +1,1658 @@
+{
+ "events": [
+  {
+   "id": "a3_r_sect_decline",
+   "kind": "random",
+   "act": 3,
+   "title": "A Hall Without Footsteps",
+   "art": "sect",
+   "portrait": "elder",
+   "text": "The training hall of a mountain sect you pass through has forty mats and four disciples. The rest ascended on the quota, or fled it. The old gatekeeper sweeps the same square of floor in the same slow arc, as if the dust were the last of the students. He asks nothing of you. He does not look up. The banner above the dais still says the sect will outlast the sky, and from here you can see the wall behind it, where the paint has begun to come off in long grey strips.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "sect",
+    "act3"
+   ],
+   "choices": [
+    {
+     "label": "Teach the four who remain for a season",
+     "hint": "Cult +12",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 12
+      },
+      {
+       "op": "notice",
+       "v": 3
+      }
+     ],
+     "after": "They are quick, and frightened, and very grateful to be corrected."
+    },
+    {
+     "label": "Take what the library no longer needs",
+     "hint": "Stones +25",
+     "fx": [
+      {
+       "op": "stone",
+       "v": 25
+      }
+     ],
+     "after": "The shelves give up their jade slips with a sound like cut grass. The gatekeeper keeps sweeping around your feet."
+    },
+    {
+     "label": "Leave stones for the kitchen",
+     "hint": "Costs 20 stones, Fortune +1",
+     "cost": {
+      "stone": 20
+     },
+     "fx": [
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      }
+     ],
+     "after": "He looks at the coins for a long time before he decides they are not a bribe."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_trib_seen",
+   "kind": "random",
+   "act": 3,
+   "title": "Someone Else's Lightning",
+   "art": "wilds",
+   "text": "From the ledge you can see the whole valley, and in the middle of it a stranger's tribulation: nine strokes, white, each a little taller than the last. The stranger stands inside it in a ring of salt and does not run. The thunder is late by a count of three. Between the third stroke and the fourth you notice the sky is not smooth. There is a seam in it, a long hair-fine line, running from the horizon straight through the clouds, and each bolt is arriving along it, as if the lightning were following stitches.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "wilds",
+    "act3",
+    "crack"
+   ],
+   "choices": [
+    {
+     "label": "Study the pattern of the strokes",
+     "hint": "Cult +15",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "insight",
+       "dc": 8,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 18
+        }
+       ],
+       "fail": [
+        {
+         "op": "cult",
+         "v": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Follow the seam with your eyes, not the bolts",
+     "hint": "Needs Spirit 8; Cult +10",
+     "req": {
+      "stats": {
+       "spirit": 8
+      }
+     },
+     "fx": [
+      {
+       "op": "truth",
+       "id": "t_crack"
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "It runs on past the edge of the sky. You can see now what holds the stitches, and that it has been under strain a long time."
+    },
+    {
+     "label": "Go down afterwards and bury what is left",
+     "hint": "Heart +1, Notice -3",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": -3
+      }
+     ],
+     "after": "There is not much. There is a purse of salt and a sealed letter to someone who will not be told."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_core_vault",
+   "kind": "random",
+   "act": 3,
+   "title": "A Dead Core's Vault",
+   "art": "ruin",
+   "text": "Behind a landslide, in a mountain that has no name on any map, there is a door of cold gold set in the rock. Someone's life work, shut in the dark with a ward that still hums. A Golden Core made this for the day it would be needed, and then did not live to open it, or did not want to. The door has no handle. It has a keyhole the exact shape of a sleeve, and a small, polite engraving: for the one who comes after.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 1,
+   "tags": [
+    "ruin",
+    "act3",
+    "loot"
+   ],
+   "choices": [
+    {
+     "label": "Pick the ward apart, thread by thread",
+     "hint": "Insight test; failure burns",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "insight",
+       "dc": 10,
+       "pass": [
+        {
+         "op": "stone",
+         "v": 35
+        },
+        {
+         "op": "item",
+         "id": "pill_body"
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.3
+        },
+        {
+         "op": "stone",
+         "v": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Put your sleeve in the keyhole",
+     "hint": "Fortune test",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "fortune",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "stone",
+         "v": 25
+        },
+        {
+         "op": "cult",
+         "v": 18
+        }
+       ],
+       "fail": [
+        {
+         "op": "cult",
+         "v": 6
+        }
+       ]
+      }
+     ],
+     "after": "The door considers you for a long breath, and decides something, privately."
+    },
+    {
+     "label": "Leave it shut. Some doors are the grave.",
+     "hint": "Heart +1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 8
+      }
+     ],
+     "after": "You lay a stone on the sill, the way travellers do for the dead, and walk on lighter than you came."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_blood_debt",
+   "kind": "random",
+   "act": 3,
+   "title": "A Debt of Blood",
+   "art": "town",
+   "portrait": "villager",
+   "text": "A woman waits at the inn door with a ledger of her own, ruled in a shaking hand. She is not asking for coin. Her husband carried a pike on a wall in the quota war; the Core who broke the wall did not know his name and there is no reason she should expect them to. She wants it read aloud, once, in front of someone who could have stopped it. She does not say that is you. She is simply holding the ledger open at the page, like a door.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3,
+    "flags": [
+     "sect_war"
+    ]
+   },
+   "weight": 2,
+   "tags": [
+    "town",
+    "act3",
+    "war"
+   ],
+   "choices": [
+    {
+     "label": "Hear it to the end, standing",
+     "hint": "Heart +1, Cult +10",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "It is eleven lines. The last one is what he had for breakfast. You will remember it as the longest hour of that year."
+    },
+    {
+     "label": "Pay what can be paid",
+     "hint": "Costs 25 stones, Notice -3",
+     "cost": {
+      "stone": 25
+     },
+     "fx": [
+      {
+       "op": "notice",
+       "v": -3
+      },
+      {
+       "op": "cult",
+       "v": 12
+      }
+     ],
+     "after": "She counts it, closes the ledger on the coins, and says it is not enough, and that she will take it."
+    },
+    {
+     "label": "Take the pledge she offers: his pike-blade",
+     "hint": "Corruption +5; a blade that remembers",
+     "fx": [
+      {
+       "op": "item",
+       "id": "blade_blood"
+      },
+      {
+       "op": "corrupt",
+       "v": 5
+      }
+     ],
+     "after": "“It remembers,” she says, as if warning you of a draught. The edge is dull and warm and listens to you breathe."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_xiaohe_reunion",
+   "kind": "random",
+   "act": 3,
+   "title": "Xiao He, Grown",
+   "art": "valley",
+   "portrait": "xiaohe",
+   "text": "The dispensary smells of ginger and wet slate. She is at the long table pounding something bitter, sleeves rolled, hair tied up in a cloth, and for the length of a breath you see the small girl on the step with her bowl. Then she looks up and sees you, and her whole face does something no healer's face should do in front of patients. “You are thin,” Xiao He says, accusingly. “You are thin and you glow. Sit down. Your pulse is a liar.” You sit. She holds your wrist with two cold fingers, and does not let go.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3,
+    "flags": [
+     "ally_xiaohe"
+    ]
+   },
+   "weight": 3,
+   "tags": [
+    "valley",
+    "act3",
+    "xiaohe"
+   ],
+   "choices": [
+    {
+     "label": "Let her treat you, as long as she likes",
+     "hint": "Heal fully, a bond",
+     "fx": [
+      {
+       "op": "hp_pct",
+       "v": 1.0
+      },
+      {
+       "op": "rel",
+       "k": "xiaohe",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "The tea is awful. By the end of the second cup your hands have stopped doing the thing they do."
+    },
+    {
+     "label": "Tell her what the sky is made of",
+     "hint": "A bond, Notice +8",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "xiaohe",
+       "v": 2
+      },
+      {
+       "op": "notice",
+       "v": 8
+      },
+      {
+       "op": "flag",
+       "k": "a3_xh_told"
+      }
+     ],
+     "after": "She listens the way she used to listen to the wind through the roof, with her head a little on one side. “So,” she says finally, “we need more thread.”"
+    },
+    {
+     "label": "Ask her to leave the valley and come away with you",
+     "hint": "Notice +10; she may follow",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "xiaohe",
+       "v": 1
+      },
+      {
+       "op": "notice",
+       "v": 10
+      },
+      {
+       "op": "offer",
+       "card": "c_xiaohe_letter",
+       "expires": 4
+      }
+     ],
+     "after": "“And leave my patients?” she says. Then: “Ask me again when the winter ends.” She presses a folded paper into your hand. “Do not read it yet.”"
+    }
+   ]
+  },
+  {
+   "id": "a3_r_ferryman",
+   "kind": "random",
+   "act": 3,
+   "title": "A Ferryman Asks No Fare",
+   "art": "wilds",
+   "text": "The ferryman at the grey crossing is the first you have met who does not hold out a hand. He poles in slow strokes, pale and attentive as a heron. When you reach for your purse he shakes his head with real regret. Fares are taken on the far bank, he says. It is not up to him. The far bank is a white strand with a low building on it, very tidy, with a lamp in every window. Nobody is on the strand. The boat behind you is full of people who all look as if they have just been asked a kind question.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "wilds",
+    "act3",
+    "registry"
+   ],
+   "choices": [
+    {
+     "label": "Cross, and see whose building it is",
+     "hint": "Notice +5, Cult +15",
+     "fx": [
+      {
+       "op": "notice",
+       "v": 5
+      },
+      {
+       "op": "cult",
+       "v": 15
+      }
+     ],
+     "after": "At the lamp-lit door a young clerk takes your sleeve, looks at your hands, and says with real embarrassment that you are not on today's list."
+    },
+    {
+     "label": "Ask him whose boat it is",
+     "hint": "Needs Spirit 8; he gives you a coin to pass on",
+     "req": {
+      "stats": {
+       "spirit": 8
+      }
+     },
+     "fx": [
+      {
+       "op": "offer",
+       "card": "c_ferry_coin",
+       "expires": 5
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "“Not mine,” he says. He gives you a coin of grey jade and tells you to give it to the next one who asks that question."
+    },
+    {
+     "label": "Wait for dawn and a boat with a fare",
+     "hint": "HP +30%, Notice -3",
+     "fx": [
+      {
+       "op": "hp_pct",
+       "v": 0.3
+      },
+      {
+       "op": "notice",
+       "v": -3
+      }
+     ],
+     "after": "By dawn the white strand is gone, and the ferryman with it, and the river runs the way rivers do."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_sujiu_face",
+   "kind": "random",
+   "act": 3,
+   "title": "Her Real Face",
+   "art": "town",
+   "portrait": "sujiu",
+   "text": "On the roof of a closed tea house Su Jiu has taken the mask off. It sits beside her on the tiles, painted and smiling. The face under it is older than you had thought and less sly, with a faint tiredness about the mouth, as if she has been laughing for a long time at something no one else heard. Her tails lie round her in a heap, eight, and the place where the ninth should be is bare. “Do not look at that one,” she says. “It was a good price. I would take it again.” She pours you wine.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3,
+    "rel": {
+     "sujiu": 2
+    }
+   },
+   "weight": 2,
+   "tags": [
+    "town",
+    "act3",
+    "sujiu"
+   ],
+   "choices": [
+    {
+     "label": "Say nothing and drink",
+     "hint": "A bond, Cult +10",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": 2
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "The wine is good, and the silence is better. At the end of the cup she says, to the tiles: “You know, you are the first who did not try to buy it.”"
+    },
+    {
+     "label": "Tell her the face suits her",
+     "hint": "A bond; she laughs",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": 1
+      },
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      }
+     ],
+     "after": "She laughs, and it is not the market laugh. It is smaller and more surprised. She puts the mask back on, then takes it off again."
+    },
+    {
+     "label": "Offer to buy back the ninth tail",
+     "hint": "Costs 30 stones; a great bond",
+     "cost": {
+      "stone": 30
+     },
+     "fx": [
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": 3
+      },
+      {
+       "op": "offer",
+       "card": "c_fox_mask",
+       "expires": 4
+      },
+      {
+       "op": "flag",
+       "k": "a3_sujiu_tail"
+      }
+     ],
+     "after": "“It is not for sale,” she says. And then: “It was never for sale. I was only waiting to see who would ask.”"
+    }
+   ]
+  },
+  {
+   "id": "a3_r_child_back",
+   "kind": "random",
+   "act": 3,
+   "title": "The Child Who Came Back",
+   "art": "village",
+   "portrait": "villager",
+   "text": "She was nine when the quota took her. She came home at midnight, three winters later, barefoot, with ink to the second knuckle and all her vowels in the wrong places. The village leaves a bowl on her step and does not look at her too directly. She says she is fine. She says it is very quiet up there, and very orderly, and nobody is cross. She says it in a tone that is exactly right. Then she turns her face a little toward you, as if listening for the page you are on.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "village",
+    "act3",
+    "ascended"
+   ],
+   "choices": [
+    {
+     "label": "Ask her what is up there",
+     "hint": "Heart test; the answer costs",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "heart",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 20
+        },
+        {
+         "op": "notice",
+         "v": 4
+        }
+       ],
+       "fail": [
+        {
+         "op": "stat",
+         "k": "heart",
+         "v": -1
+        },
+        {
+         "op": "cult",
+         "v": 8
+        }
+       ]
+      }
+     ],
+     "after": "She tells you in a clear, kind voice. You will not repeat it to anyone."
+    },
+    {
+     "label": "Take her to a healer, and sit with her",
+     "hint": "Costs 2 herbs; a kindness",
+     "cost": {
+      "herb": 2
+     },
+     "fx": [
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 1
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      }
+     ],
+     "after": "The healer says there is nothing wrong with her at all, and watches the child for a long time with her hand over her own mouth."
+    },
+    {
+     "label": "Leave a bowl and go",
+     "hint": "Notice -3",
+     "fx": [
+      {
+       "op": "notice",
+       "v": -3
+      },
+      {
+       "op": "cult",
+       "v": 6
+      }
+     ],
+     "after": "It is not much. You tell yourself it is what the bowl is for."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_empty_temple",
+   "kind": "random",
+   "act": 3,
+   "title": "The Temple Nobody Keeps",
+   "art": "wilds",
+   "text": "The incense has burned an hour at most. The offerings are fresh, three peaches and a bowl of rice still steaming, and the lamps are trimmed. There is no one in the courtyard, no one on the stair, nobody breathing in the hall. The niche above the altar is empty: not stripped, but never filled, a space the size of a person left politely blank. Someone comes here every day, you think, to look after a god who has not arrived. You put your hand flat on the altar. It is as warm as a cheek.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "wilds",
+    "act3",
+    "strange"
+   ],
+   "choices": [
+    {
+     "label": "Sit in the hall and cultivate",
+     "hint": "Cult +15; a heart-demon risk",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "heart",
+       "dc": 8,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 20
+        }
+       ],
+       "fail": [
+        {
+         "op": "cult",
+         "v": 8
+        },
+        {
+         "op": "hp_pct",
+         "v": -0.2
+        },
+        {
+         "op": "text",
+         "t": "Something in the empty niche turns to watch you, and is sorry."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Add your peach to the three",
+     "hint": "Costs 10 stones, Fortune +1",
+     "cost": {
+      "stone": 10
+     },
+     "fx": [
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      }
+     ],
+     "after": "The lamp nearest you leans toward the offering, and then, very slightly, toward you."
+    },
+    {
+     "label": "Take the nearest lamp",
+     "hint": "Notice +8; the lamp is a soul-lantern",
+     "fx": [
+      {
+       "op": "item",
+       "id": "lantern_soul"
+      },
+      {
+       "op": "notice",
+       "v": 8
+      }
+     ],
+     "after": "It is lighter than it should be. The flame inside has your height, and when you look back the other lamps have gone out."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_beggar_ageless",
+   "kind": "random",
+   "act": 3,
+   "title": "The Beggar Who Does Not Age",
+   "art": "town",
+   "portrait": "moshan",
+   "text": "He is sitting where he always sits: the shady side of the well, one sleeve pinned, the gourd between his knees. You first saw him at fifteen, in a market that is now a pasture for oxen. He has not got a day older. The grey is exactly the grey it was, and the same flies find the same spot on his ear. He has a patient look, the look of a man who has been waiting for the thing you are about to say, and has decided to let you say it badly.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "town",
+    "act3",
+    "moshan"
+   ],
+   "choices": [
+    {
+     "label": "Share his gourd and say nothing",
+     "hint": "Rel +1, Cult +12",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "moshan",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 12
+      }
+     ],
+     "after": "It is thin sour wine, and you finish it. He nods as if you had finally passed a very old, very small test."
+    },
+    {
+     "label": "Ask how long he has been walking",
+     "hint": "Needs Spirit 8",
+     "req": {
+      "stats": {
+       "spirit": 8
+      }
+     },
+     "fx": [
+      {
+       "op": "rel",
+       "k": "moshan",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 15
+      },
+      {
+       "op": "notice",
+       "v": 3
+      }
+     ],
+     "after": "“Long enough to get the hang of it,” he says. “It is not that I do not age. It is that nobody wrote me down as someone who should.”"
+    },
+    {
+     "label": "Press a few coins into his hand",
+     "hint": "Costs 8 stones, Fortune +1",
+     "cost": {
+      "stone": 8
+     },
+     "fx": [
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      },
+      {
+       "op": "rel",
+       "k": "moshan",
+       "v": 1
+      }
+     ],
+     "after": "He writes a small mark in the dust with the stump of his arm and scuffs it out before you can read it. “Pay-in-advance,” he says."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_forged_writ",
+   "kind": "random",
+   "act": 3,
+   "title": "A Writ for Sale",
+   "art": "town",
+   "portrait": "merchant",
+   "text": "The forger's stall is a cloth on a barrel and a pot of ink with a good deal of skin on it. He sells small slips of Registry paper, perfectly ruled, each one promising some number of years. Three, five, an optimistic nine. He lowers his voice. “Not for your own, sir. For your mother, say. For the person you would hold the light for.” The slips are not blank. Each one has a name at the top, in a hand you know from the lists on the gate. All of them are crossed out and written again.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "town",
+    "act3",
+    "registry"
+   ],
+   "choices": [
+    {
+     "label": "Buy a slip, for luck",
+     "hint": "Costs 20 stones; Fortune test",
+     "cost": {
+      "stone": 20
+     },
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "fortune",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "life",
+         "v": 1
+        }
+       ],
+       "fail": [
+        {
+         "op": "notice",
+         "v": 12
+        }
+       ]
+      }
+     ],
+     "after": "The ink is wet longer than it should be."
+    },
+    {
+     "label": "Report him to the first inspector you meet",
+     "hint": "Notice -10, Stones +15",
+     "fx": [
+      {
+       "op": "notice",
+       "v": -10
+      },
+      {
+       "op": "stone",
+       "v": 15
+      },
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": -1
+      }
+     ],
+     "after": "The inspector thanks you for your civic care and walks off to look at the barrel. You do not hear any screaming. That is the part that stays."
+    },
+    {
+     "label": "Ask him to forge you a blank one",
+     "hint": "Needs the memory of a blank page",
+     "req": {
+      "meta": [
+       "t_blank"
+      ]
+     },
+     "fx": [
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "notice",
+       "v": -6
+      }
+     ],
+     "after": "He tries three times. “I cannot copy what is not there,” he says, and looks at you with sudden terrified respect, and gives it to you for nothing."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_price_revive",
+   "kind": "random",
+   "act": 3,
+   "title": "What a Resurrection Costs",
+   "art": "village",
+   "portrait": "villager",
+   "text": "The woman has walked three days with a bundle on her back, and the bundle is a boy of about seven. He has been dead four nights. She does not say so, or does not need to. She says only that she has heard that a Golden Core can sew a soul back by the hem, and she has brought the hem. She has brought a sack of coin as well. It is clearly her whole life, in small change. She looks at you with an expression you are not equipped for, and holds out the boy.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 1,
+   "tags": [
+    "village",
+    "act3",
+    "death"
+   ],
+   "choices": [
+    {
+     "label": "Try, and pay in years",
+     "hint": "Life -1; Spirit test",
+     "fx": [
+      {
+       "op": "life",
+       "v": -1
+      },
+      {
+       "op": "roll",
+       "stat": "spirit",
+       "dc": 10,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 25
+        },
+        {
+         "op": "flag",
+         "k": "a3_revived_boy"
+        },
+        {
+         "op": "text",
+         "t": "He breathes, and opens his eyes, and there is no line on him. You know that look. You are not sure it is a gift."
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.3
+        },
+        {
+         "op": "text",
+         "t": "The thread runs out of your hands. You hold her, afterwards, until she stops asking."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Tell her the truth, gently, and sit with her",
+     "hint": "Heart +1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 8
+      }
+     ],
+     "after": "She does not shout. She asks if you could hold him a while so that she can wash her face."
+    },
+    {
+     "label": "Send her to Granny Qingnang for his burial herbs",
+     "hint": "Rel +1 with Qingnang",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 1
+      },
+      {
+       "op": "stone",
+       "v": -10
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      }
+     ],
+     "after": "You give her the stones for the road. Qingnang will swear at her kindly for an hour, and then do it right."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_qingnang_patient",
+   "kind": "random",
+   "act": 3,
+   "title": "The Patient She Cannot Reach",
+   "art": "valley",
+   "portrait": "qingnang",
+   "text": "The flood took the bridge in the night. On the far bank a woodcutter lies under a sheet of tarp with a leg like a split gourd, and on the near bank Granny Qingnang is cursing the river in a voice that could skin a goat. “Heaven's flat arse,” she says, “and every fish in it. Forty years, and I have never lost one I could put a hand on.” She is holding a satchel in both arms like a baby. Her eyes are perfectly dry, and she does not look at you.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "valley",
+    "act3",
+    "qingnang"
+   ],
+   "choices": [
+    {
+     "label": "Take the satchel across the flood",
+     "hint": "Agility test; failure is a soaking",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "speed",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "rel",
+         "k": "qingnang",
+         "v": 2
+        },
+        {
+         "op": "cult",
+         "v": 15
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.3
+        },
+        {
+         "op": "rel",
+         "k": "qingnang",
+         "v": 1
+        }
+       ]
+      }
+     ],
+     "after": "She watches every step as if you were a thread she was passing through a needle."
+    },
+    {
+     "label": "Carry her across on your back",
+     "hint": "Rel +3, a scolding",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 3
+      },
+      {
+       "op": "hp_pct",
+       "v": -0.1
+      },
+      {
+       "op": "item",
+       "id": "pill_healing"
+      }
+     ],
+     "after": "She is lighter than she sounds, and her fists hammer your shoulder blades the whole way. At the far bank she swears at you for ten minutes, and gives you a pill."
+    },
+    {
+     "label": "Ask her to teach you the knot that closes a vein",
+     "hint": "Needs Insight 9; Cult +25",
+     "req": {
+      "stats": {
+       "insight": 9
+      }
+     },
+     "fx": [
+      {
+       "op": "cult",
+       "v": 25
+      },
+      {
+       "op": "rel",
+       "k": "qingnang",
+       "v": 1
+      },
+      {
+       "op": "stat",
+       "k": "insight",
+       "v": 1
+      }
+     ],
+     "after": "“Watch my fingers, you great useless peach,” she says, and for once nobody is dying while she shows you."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_manual_fire",
+   "kind": "random",
+   "act": 3,
+   "title": "The Pyre of Unread Scrolls",
+   "art": "sect",
+   "portrait": "elder",
+   "text": "The sect's old librarian is burning the shelves. Not in anger. He feeds the pyre a scroll at a time, bowing to each, and when you ask he says only that no one is left to read them, and a book unread is a trap for the next fool. The flames take a treatise on tides, then a book of lullabies, then a thin red-bound manual with a phoenix on the cover. The pyre is hot enough to curl your sleeves. The librarian's eyes have the wetness of the smoke and perhaps something else.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "sect",
+    "act3",
+    "loot"
+   ],
+   "choices": [
+    {
+     "label": "Snatch the red manual from the fire",
+     "hint": "Agility test; a few burns",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "speed",
+       "dc": 8,
+       "pass": [
+        {
+         "op": "item",
+         "id": "manual_fire"
+        }
+       ],
+       "fail": [
+        {
+         "op": "hp_pct",
+         "v": -0.2
+        },
+        {
+         "op": "item",
+         "id": "manual_fire"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Buy the cart's worth before it burns",
+     "hint": "Costs 25 stones, Cult +10",
+     "cost": {
+      "stone": 25
+     },
+     "fx": [
+      {
+       "op": "item",
+       "id": "manual_fire"
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "He is gentle about it. “Thank you,” he says, as though you had paid his debt."
+    },
+    {
+     "label": "Carry the rest of the shelves to the pyre with him",
+     "hint": "Heart +1, Cult +12",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 12
+      }
+     ],
+     "after": "Some books are lighter than they look. At the end he hands you one without a title, and says he hopes it is useless."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_toll_bridge",
+   "kind": "random",
+   "act": 3,
+   "title": "The Tithe on the Bridge",
+   "art": "town",
+   "portrait": "clerk",
+   "text": "The bridge into the next province has a booth at its mouth and a clerk in the booth, and the clerk has a very small abacus. Every traveller leaves a year. He takes it quite gently, from the breath at the lips, as one takes a pinch of salt from a cellar. A line of oxcarts waits behind a family who are trying to bargain it down to a month. The clerk is sympathetic. The clerk is sorry. The clerk, when he looks up at you, looks for a long moment at the place where your tithe ought to show.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "town",
+    "act3",
+    "registry"
+   ],
+   "choices": [
+    {
+     "label": "Pay in stones. The Registry takes anything that counts.",
+     "hint": "Costs 20 stones",
+     "cost": {
+      "stone": 20
+     },
+     "fx": [
+      {
+       "op": "notice",
+       "v": -3
+      },
+      {
+       "op": "cult",
+       "v": 8
+      }
+     ],
+     "after": "He weighs the coin and finds, to his visible relief, that it is a form he is allowed to take."
+    },
+    {
+     "label": "Argue the tithe down",
+     "hint": "Heart test; failure costs both ways",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "heart",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 15
+        }
+       ],
+       "fail": [
+        {
+         "op": "stone",
+         "v": -10
+        },
+        {
+         "op": "notice",
+         "v": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Hold out your empty hand and let him look",
+     "hint": "Needs the memory of a blank page",
+     "req": {
+      "meta": [
+       "t_blank"
+      ]
+     },
+     "fx": [
+      {
+       "op": "cult",
+       "v": 15
+      },
+      {
+       "op": "notice",
+       "v": -5
+      }
+     ],
+     "after": "He looks at the place where your year should come out, and the abacus clicks, and clicks, and finds nothing to move. He waves you through, white to the lips."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_heng_letter",
+   "kind": "random",
+   "act": 3,
+   "title": "A Letter in Perfect Hand",
+   "art": "town",
+   "portrait": "xiaoheng",
+   "text": "The letter has been written with a ruler laid under every line. Even the spaces are measured. Xiao Heng's hand is the hand of someone who has never had to copy out anything he did not first understand. It says he is well. It says the Registry is polite. It says he has begun to count, at night, the number of times he has been told he is perfect, and has stopped at nine thousand. It asks nothing of you. Beneath the signature, in a smaller and more crooked hand, a single line has been added and nearly rubbed out.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3,
+    "any": [
+     {
+      "flags": [
+       "heng_warned"
+      ]
+     },
+     {
+      "flags": [
+       "heng_place"
+      ]
+     },
+     {
+      "flags": [
+       "heng_lost"
+      ]
+     }
+    ]
+   },
+   "weight": 2,
+   "tags": [
+    "town",
+    "act3",
+    "heng"
+   ],
+   "choices": [
+    {
+     "label": "Go to the third lantern bridge, where he suggests",
+     "hint": "Rel +1, Cult +12",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "xiaoheng",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 12
+      }
+     ],
+     "after": "He is already there, twenty minutes early, feeding crumbs to a duck with a look of grave absorption. Neither of you says anything useful. It helps."
+    },
+    {
+     "label": "Write back, and write it badly",
+     "hint": "Costs 5 stones, Rel +1",
+     "cost": {
+      "stone": 5
+     },
+     "fx": [
+      {
+       "op": "rel",
+       "k": "xiaoheng",
+       "v": 1
+      },
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      }
+     ],
+     "after": "Three blots and a crossed-out word. You send it anyway. The reply comes within the hour, and it has a blot in it too."
+    },
+    {
+     "label": "Burn it unread",
+     "hint": "Notice -3, Rel -1",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "xiaoheng",
+       "v": -1
+      },
+      {
+       "op": "notice",
+       "v": -3
+      }
+     ],
+     "after": "It burns with a very clean flame. You find you can still see the rubbed line in the ash."
+    }
+   ]
+  },
+  {
+   "id": "a3_r_rain_fields",
+   "kind": "random",
+   "act": 3,
+   "title": "Rain on Unfiled Fields",
+   "art": "village",
+   "portrait": "villager",
+   "text": "Past the last Registry marker the road goes to mud, and the fields beyond are not on anyone's list. Millet and bean, a goat on a rope, a wedding in a barn with a very bad drummer. Nobody here has ascended. Nobody knows what the word is for. They ask you to sit, and you sit, and a grandmother puts a bowl in your hands and tells you at length about a hen. The rain comes down on the thatch like handfuls of rice. For the first time in two realms, nobody is looking at the sky.",
+   "req": {
+    "realm_min": 3,
+    "realm_max": 3
+   },
+   "weight": 2,
+   "tags": [
+    "village",
+    "act3",
+    "mortal"
+   ],
+   "choices": [
+    {
+     "label": "Stay for the wedding",
+     "hint": "HP +40%, Notice -10",
+     "fx": [
+      {
+       "op": "hp_pct",
+       "v": 0.4
+      },
+      {
+       "op": "notice",
+       "v": -10
+      },
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      }
+     ],
+     "after": "You dance badly. They do not mind. A child asks if your hands are cold, and finds they are not."
+    },
+    {
+     "label": "Help bring in the beans",
+     "hint": "Stones +15, Cult +8",
+     "fx": [
+      {
+       "op": "stone",
+       "v": 15
+      },
+      {
+       "op": "cult",
+       "v": 8
+      }
+     ],
+     "after": "They pay you in beans, and more than the beans are worth."
+    },
+    {
+     "label": "Teach a child the first breath",
+     "hint": "Cult +10; Fortune +1",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 10
+      },
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      }
+     ],
+     "after": "She breathes in, solemnly, and out, with a small cloud of surprise. You wonder what she will be written down as, if anyone ever finds her."
+    }
+   ]
+  },
+  {
+   "id": "a3_c_letter",
+   "kind": "chain",
+   "act": 3,
+   "title": "A Recipe, Unread",
+   "art": "valley",
+   "portrait": "xiaohe",
+   "text": "The paper is folded small, the way she folded everything, as if paper were precious and wanted looking after. You open it at last. It is a recipe: ginger, three kinds of bark, a pinch of something she has drawn rather than named. Beneath it, in her blunt hand, a single line that has been pressed hard enough to dent the page. Come when it is over. Bring appetite. There is a smear of something green at the corner. You are fairly sure it is a thumbprint.",
+   "req": {},
+   "weight": 1,
+   "tags": [
+    "act3",
+    "xiaohe",
+    "chance"
+   ],
+   "choices": [
+    {
+     "label": "Brew it now, wherever you are",
+     "hint": "HP +100%, Cult +15",
+     "fx": [
+      {
+       "op": "hp_pct",
+       "v": 1.0
+      },
+      {
+       "op": "cult",
+       "v": 15
+      },
+      {
+       "op": "rel",
+       "k": "xiaohe",
+       "v": 1
+      }
+     ],
+     "after": "It is revolting. It is exactly the taste of being told to sit still."
+    },
+    {
+     "label": "Keep it folded for later",
+     "hint": "Heart +1",
+     "fx": [
+      {
+       "op": "stat",
+       "k": "heart",
+       "v": 1
+      },
+      {
+       "op": "flag",
+       "k": "a3_letter_xh"
+      }
+     ],
+     "after": "You put it in your sleeve beside the other promises. This one, at least, is in a hand you can read."
+    }
+   ]
+  },
+  {
+   "id": "a3_c_ferry",
+   "kind": "chain",
+   "act": 3,
+   "title": "The Next to Ask",
+   "art": "wilds",
+   "portrait": "villager",
+   "text": "She is about eleven, with a wet plait and the stern face of a child who has been told to wait. She stands at the empty ferry-stage with her shoes in her hand and asks you, because you are the only person on the bank, whose boat that is. You have a grey coin in your sleeve that was handed to you for exactly this. It is a small thing, jade-grey, with a hole in the middle, and it is a very strange weight, the weight of a question carried a long way.",
+   "req": {},
+   "weight": 1,
+   "tags": [
+    "act3",
+    "wilds",
+    "chance"
+   ],
+   "choices": [
+    {
+     "label": "Give her the coin and the question",
+     "hint": "Cult +20, Fortune +1",
+     "fx": [
+      {
+       "op": "cult",
+       "v": 20
+      },
+      {
+       "op": "stat",
+       "k": "fortune",
+       "v": 1
+      }
+     ],
+     "after": "She turns it over, looks through the hole at the river, and asks a better question than you did. Then she goes down to the water, and you do not follow."
+    },
+    {
+     "label": "Keep it. It is worth something to someone.",
+     "hint": "Stones +20",
+     "fx": [
+      {
+       "op": "stone",
+       "v": 20
+      }
+     ],
+     "after": "She watches you pocket it with the look of a person who will remember that you did."
+    }
+   ]
+  },
+  {
+   "id": "a3_c_ledger",
+   "kind": "chain",
+   "act": 3,
+   "title": "A Torn Page",
+   "art": "registry",
+   "portrait": "clerk",
+   "text": "The page was in your sleeve when you woke, folded in four, with a corner torn as if it had been ripped from a bound book in a hurry. A column of names. Three you know. Beside each, in a plain neat hand, the same single word: applied. Beside the fourth, which is blank, someone has made a very small mark in pencil, and then rubbed it out, and then, you notice, made it again. You hold the paper to the lamp and it is warm, as though someone had just let go.",
+   "req": {},
+   "weight": 1,
+   "tags": [
+    "act3",
+    "registry",
+    "chance"
+   ],
+   "choices": [
+    {
+     "label": "Memorise every name",
+     "hint": "Insight test; the cost is in what you remember",
+     "fx": [
+      {
+       "op": "roll",
+       "stat": "insight",
+       "dc": 9,
+       "pass": [
+        {
+         "op": "cult",
+         "v": 25
+        }
+       ],
+       "fail": [
+        {
+         "op": "stat",
+         "k": "heart",
+         "v": -1
+        },
+        {
+         "op": "cult",
+         "v": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Burn it before anyone finds it",
+     "hint": "Notice -8",
+     "fx": [
+      {
+       "op": "notice",
+       "v": -8
+      }
+     ],
+     "after": "It will not burn, quite. You have to hold it in the flame until the pencil mark goes. The names stay till the last."
+    },
+    {
+     "label": "Take it to your sect elders",
+     "hint": "Notice +8, Rel +1",
+     "fx": [
+      {
+       "op": "notice",
+       "v": 8
+      },
+      {
+       "op": "rel",
+       "k": "xuanxiao",
+       "v": 1
+      },
+      {
+       "op": "cult",
+       "v": 15
+      }
+     ],
+     "after": "The elder reads it standing, and sits down. “Where did you get this,” he says, very quietly, the way a man asks a doctor how long."
+    }
+   ]
+  },
+  {
+   "id": "a3_c_mask",
+   "kind": "chain",
+   "act": 3,
+   "title": "A Mask on the Pillow",
+   "art": "town",
+   "portrait": "sujiu",
+   "text": "Someone has left a fox's mask on your pillow: painted paper, a little cracked at the nose, with a thread of red silk through the eyeholes. It is not the one she wears. It is lighter, and older, and carries on the inside a thin, dry smell of sandalwood and the stair of a tea house. There is no note. There never is, with her. There is only a price scratched on the inner brow, in fox-fire, and a second line, much smaller: for the one who asked.",
+   "req": {},
+   "weight": 1,
+   "tags": [
+    "act3",
+    "sujiu",
+    "chance"
+   ],
+   "choices": [
+    {
+     "label": "Wear it",
+     "hint": "Notice -10; the mask is yours",
+     "fx": [
+      {
+       "op": "item",
+       "id": "fox_mask"
+      },
+      {
+       "op": "notice",
+       "v": -10
+      }
+     ],
+     "after": "It fits as if it had been waiting for your face. Through the eyeholes the Registry looks as dull and normal as an old tax roll."
+    },
+    {
+     "label": "Take it back to her",
+     "hint": "Rel +2",
+     "fx": [
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": 2
+      },
+      {
+       "op": "cult",
+       "v": 10
+      }
+     ],
+     "after": "She looks at it for a long time. “I wondered where that went,” she says, very lightly. She does not, for once, name a price."
+    },
+    {
+     "label": "Sell it in the market",
+     "hint": "Stones +30, Rel -1",
+     "fx": [
+      {
+       "op": "stone",
+       "v": 30
+      },
+      {
+       "op": "rel",
+       "k": "sujiu",
+       "v": -1
+      }
+     ],
+     "after": "A dealer pays without haggling, and looks at you as if you had sold a tooth."
+    }
+   ]
+  }
+ ]
+}

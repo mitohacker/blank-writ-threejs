@@ -1,0 +1,71 @@
+{
+	"_schema": "ending: id zh en text art req?",
+	"endings": [
+		{
+			"id": "end_filed",
+			"zh": "归档",
+			"en": "Filed",
+			"text": "The Gate opens as gently as the door of a house you grew up in. You walk through with the clerk at your elbow and feel the Canopy take your weight like a hand taking a bowl. The crack closes. Below, rain falls on Blue-stone Village for the first time in nine years, and a girl who was never written down looks up and cannot say why she is crying. You are very quiet now. You are the mortar. You hold.",
+			"art": "ending_end_filed",
+			"req": {
+				"realm_min": 4
+			}
+		},
+		{
+			"id": "end_slayer",
+			"zh": "弑天",
+			"en": "Heaven-Slayer",
+			"text": "The Magistrate's last form breaks, and the Gate breaks with it, and then the sky. The Canopy comes down in long sheets, like paper from a burning house. You stand in the middle of it, hollow in a way you did not know a person could be hollow, and nine provinces look up at true stars for the first time. Nobody cheers. They are counting what the old sky was holding up, and what it was holding back.",
+			"art": "ending_end_slayer",
+			"req": {
+				"realm_min": 5
+			}
+		},
+		{
+			"id": "end_blank_writ",
+			"zh": "无字天书",
+			"en": "The Blank Writ",
+			"text": "You take up the Brush and write nothing. For a long moment the Registry waits. Then you write one line: that every name is its owner's to choose. The ledgers burn white. Somewhere, Xiao He is arguing with a merchant about the price of ginger, and nobody can tell her how long she has, and she is furious about it, and happier than she has ever been. You are still blank. It turns out that is what a page is for.",
+			"art": "ending_end_blank_writ",
+			"req": {
+				"meta": [
+					"t_filing",
+					"t_crack",
+					"t_brush"
+				],
+				"any": [
+					{
+						"meta": [
+							"t_heng"
+						]
+					},
+					{
+						"meta": [
+							"t_yunzhi"
+						]
+					}
+				]
+			}
+		},
+		{
+			"id": "end_mortal_dust",
+			"zh": "红尘",
+			"en": "Mortal Dust",
+			"text": "You turn from the Gate. The Magistrate does not stop you; he only writes something down. You walk the long stair back toward the smell of woodsmoke and boiled millet. There is a house with a leaking roof, and someone has kept the stove lit. You will grow old here, cough in winter, and be buried under a plain stone, and the Registry will not know the date. Nobody will be saved. You will be missed for exactly as long as you were loved.",
+			"art": "ending_end_mortal_dust",
+			"req": {
+				"realm_min": 4
+			}
+		},
+		{
+			"id": "end_netherworld",
+			"zh": "魔尊",
+			"en": "Nine Netherworlds",
+			"text": "Ye Wujin kneels, and you cannot tell whether it is surrender or reverence. The Dao's vacant seat is warm. You take it, and it fits, and that is the horror of it: the Registry was built to hold exactly this shape. The Nine Netherworlds sing your name from underneath the world. For the first time in ten thousand years something in the sky laughs, and it is your laugh, and the sky is learning your appetite.",
+			"art": "ending_end_netherworld",
+			"req": {
+				"corrupt_min": 70
+			}
+		}
+	]
+}

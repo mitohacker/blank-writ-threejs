@@ -1,0 +1,2168 @@
+{
+	"events": [
+		{
+			"id": "a1_azure_1",
+			"kind": "chain",
+			"act": 1,
+			"title": "A Thousand and Eight Steps",
+			"art": "sect",
+			"portrait": "yunzhi",
+			"text": "The Azure Sky Mountain has one thousand and eight steps, and a sect's worth of applicants are on them in the dark before dawn, carrying their lives in bundles. At the six-hundredth a girl in plain grey sits with a sword across her knees, neither climbing nor resting. “I'm not tired,” she says, to nobody. “I'm early.” Ahead of you a boy has gone down against the rail with a turned ankle, and the gate-disciple at the top has said the gate closes at first light. The steps are not kind about arithmetic.",
+			"tags": [
+				"sect",
+				"azure"
+			],
+			"choices": [
+				{
+					"label": "Climb without stopping",
+					"hint": "Your legs against the clock.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "text",
+									"t": "You make the gate with the dark still in the corners. They write your name first, and look at your feet."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.25
+								},
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "text",
+									"t": "You make the gate on your hands and knees. They write your name anyway, in smaller letters."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_2",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Carry the boy with the ankle",
+					"hint": "The gate shuts at light.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "yunzhi",
+									"v": 1
+								},
+								{
+									"op": "stat",
+									"k": "heart",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "At the six-hundredth the girl with the sword stands up without being asked and takes his other arm. She says nothing. At the top the gate-disciple looks at the sun, then at the three of you, and writes three names."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "You make the gate with the last of the dark, and the boy never says thank you. The gate-disciple notes that you came in late and carrying a burden, and does not say which of those he minds."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_2",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Sit a moment with the girl who is early",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "You run the last four hundred steps on borrowed breath and make the gate at the last bell."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "The gate has shut. You sleep in the porter's shed and are admitted at noon, as a servant, with an apology no one has to make."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_2",
+							"delay": 3
+						}
+					],
+					"after": "“What are you early for?” you ask her. She considers the question with her whole face. “The part where I'm useful,” she says, and picks up the sword."
+				}
+			]
+		},
+		{
+			"id": "a1_azure_2",
+			"kind": "chain",
+			"act": 1,
+			"title": "One Cut, Forty Years",
+			"art": "sect",
+			"portrait": "elder",
+			"text": "Elder Cheng teaches the outer court a single cut in a yard of raked white gravel, and has taught nothing else in forty years. “There are three hundred forms,” he says. “They are all this one, wearing hats.” He makes it: a grey stroke of nothing, and a leaf on the far wall falls in two halves. Then he watches you try for a season. Your cut is wet and eager. His is dry and has no quarrel with the leaf. At the end of it he says, without turning: “You are trying to be good at it. Stop. Be at it.”",
+			"tags": [
+				"sect",
+				"azure"
+			],
+			"choices": [
+				{
+					"label": "Cut ten thousand times",
+					"hint": "Your wrists forget the difference between ache and ownership.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "hp_pct",
+							"v": -0.1
+						},
+						{
+							"op": "card",
+							"id": "sword_practice"
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_3",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Watch him instead of the leaf",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "tech",
+									"id": "azure_slash"
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "He cuts the leaf eleven times, and on the eleventh you see that it is not the arm; it is the breath before the arm. You have it for a moment, like a coin in a fist."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "text",
+									"t": "It is a very good leaf. You watch the leaf."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_3",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Ask him for a real blade",
+					"cost": {
+						"stone": 60
+					},
+					"fx": [
+						{
+							"op": "item",
+							"id": "sword_azure"
+						},
+						{
+							"op": "queue",
+							"id": "a1_azure_3",
+							"delay": 3
+						}
+					],
+					"after": "He looks at the stones, then at you. “A sword is a very expensive way of finding out you cannot cut.” He sells it to you anyway, for a fair price. It is a fair sword."
+				}
+			]
+		},
+		{
+			"id": "a1_azure_3",
+			"kind": "chain",
+			"act": 1,
+			"title": "A Footprint in the Stone",
+			"art": "sect",
+			"portrait": "elder",
+			"text": "Once a season the elders gather the outer court under the plum tree to tell them what all this is for. Elder Cheng has a gift for it; he has never spoken of anything he did not believe. The sword-saint Ning rose in front of three hundred witnesses on the ninth of the ninth month, he says, and left one footprint in the stone of the Heaven-Watching Terrace, where you may set your own foot in it, and feel it fit, and know that it was worth it. Everyone has set a foot in it. It is a very neat footprint. It has edges, like a seal.",
+			"tags": [
+				"sect",
+				"azure"
+			],
+			"choices": [
+				{
+					"label": "Set your foot in it, like the others",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": 1
+						}
+					],
+					"after": "It fits. Of course it fits; it fits everyone. You stand there longer than you need to, because standing there is the thing that feels like being forgiven."
+				},
+				{
+					"label": "Ask why the edges are so clean",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "insight",
+									"v": 1
+								},
+								{
+									"op": "notice",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "Elder Cheng's answer is long and warm and does not contain an answer. You like him better for it, and trust the stone less."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xuanxiao",
+									"v": -1
+								},
+								{
+									"op": "text",
+									"t": "A senior takes you aside afterwards. You are told that curiosity is a virtue of the inner court."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "You know what that footprint is. Say so",
+					"req": {
+						"meta": [
+							"t_filing"
+						]
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 30
+						},
+						{
+							"op": "notice",
+							"v": 12
+						},
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": -1
+						}
+					],
+					"after": "“It is a filing mark,” you say, to the plum tree and the three hundred. The silence has weight. Elder Cheng looks, for one moment, not at you but at the stone, as at something he has loved and just been told the price of."
+				}
+			]
+		},
+		{
+			"id": "a1_azure_4",
+			"kind": "story",
+			"act": 1,
+			"title": "The Foundation Court",
+			"art": "sect",
+			"portrait": "disciple",
+			"text": "You break through at dawn, and by noon the whole Mountain knows, the way a bell knows it has been struck. The rite of Foundation is a duel in the Sword Court, three hundred disciples in grey along three sides and the Master's empty chair on the fourth. Senior Brother Lan draws as if drawing a breath. He smiles; it is a pleasant smile, a sword's worth of pleasant, and he has been waiting six years to be asked. “Don't win,” he says kindly. “Be seen.” The gravel has been raked into a perfect, expectant white.",
+			"req": {
+				"realm_min": 2,
+				"flags": [
+					"sect_azure"
+				],
+				"not_flags": [
+					"a1_done",
+					"a2_opened"
+				]
+			},
+			"prio": 45,
+			"once": true,
+			"tags": [
+				"sect",
+				"final"
+			],
+			"choices": [
+				{
+					"label": "Fight him properly",
+					"hint": "He is better than you. How much is the question.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "rival_disciple",
+							"scale": 0.7,
+							"win": [
+								{
+									"op": "cult",
+									"v": 40
+								},
+								{
+									"op": "rel",
+									"k": "xuanxiao",
+									"v": 1
+								},
+								{
+									"op": "flag",
+									"k": "a1_done"
+								},
+								{
+									"op": "queue",
+									"id": "a2_open"
+								}
+							],
+							"lose": [
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "flag",
+									"k": "a1_done"
+								},
+								{
+									"op": "queue",
+									"id": "a2_open"
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Yield at the third exchange, for the form of it",
+					"hint": "The elders approve of manners.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "You lower the blade at the third cut and bow, and the court breathes out. Lan's smile does not change. Somebody in the third row writes something down."
+				},
+				{
+					"label": "Ask to fight with the wooden sword",
+					"hint": "They will remember it either way.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "rival_disciple",
+							"scale": 0.95,
+							"win": [
+								{
+									"op": "cult",
+									"v": 50
+								},
+								{
+									"op": "stat",
+									"k": "speed",
+									"v": 1
+								},
+								{
+									"op": "notice",
+									"v": 8
+								},
+								{
+									"op": "flag",
+									"k": "a1_done"
+								},
+								{
+									"op": "queue",
+									"id": "a2_open"
+								}
+							],
+							"lose": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "notice",
+									"v": 4
+								},
+								{
+									"op": "flag",
+									"k": "a1_done"
+								},
+								{
+									"op": "queue",
+									"id": "a2_open"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_herb_1",
+			"kind": "chain",
+			"act": 1,
+			"title": "Granny Qingnang Is Rude",
+			"art": "valley",
+			"portrait": "qingnang",
+			"text": "Hundred-Herb Valley smells like a wet green fist. Granny Qingnang meets you at the drying sheds with a ladle in one hand and a dead mouse in the other, which she holds by the tail in a way that suggests an argument. “You're the new one. Don't tell me what you're good at; I've buried a hundred who were good at it.” She drops the mouse. “That rat ate a stone-bean off the wrong rack and was dead before it reached the floor. Tell me why, and you can have your supper. Say something stupid and I'll find you a thing to scrub.”",
+			"tags": [
+				"sect",
+				"herb"
+			],
+			"choices": [
+				{
+					"label": "Say the bean is poison",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "“Which poison?” she says. You do not know. “Hm,” she says. “That's the right answer to be wrong in.” It is, you gather, a compliment."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "She finds a thing for you to scrub. It is the whole drying shed. It takes a week, and you learn the shape of every rack."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_2",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Cut the mouse open and look",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "hp",
+							"v": -3
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_2",
+							"delay": 3
+						}
+					],
+					"after": "You turn the creature over with the ladle's edge. Its stomach is a small green fist. “Well,” says Granny Qingnang. “At least you don't ask permission.” She is almost smiling and quite certainly not."
+				},
+				{
+					"label": "Take the scrub brush without a word",
+					"fx": [
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_2",
+							"delay": 3
+						}
+					],
+					"after": "She watches you scrub for a quarter of an hour, and then, not looking at you, hands you a bundle of dried mugwort. “Put that in your pocket,” she says. “It's not a gift; it's in the way.”"
+				},
+				{
+					"label": "Tell her about the girl you pulled out of winter",
+					"req": {
+						"flags": [
+							"xh_saved"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 2
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a1_xh_valley"
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_2",
+							"delay": 3
+						}
+					],
+					"after": "Granny listens with her head on one side like a hen. “Winter-bloom and a stubborn child,” she says. “You'd be surprised how often that is the whole of medicine.” She sends for her in the spring, and does not say she is doing it for you."
+				}
+			]
+		},
+		{
+			"id": "a1_herb_2",
+			"kind": "chain",
+			"act": 1,
+			"title": "A Plate of Little Brown Ones",
+			"art": "valley",
+			"portrait": "qingnang",
+			"text": "A woodcutter is carried in at midnight on a door, grey as ash, his hands curled like leaves. His brother says he ate the little brown ones by the spring; his brother also says there is no money and they will take whatever they are given. Qingnang is elbow-deep in a vat of something and does not look up. “Yours,” she says. “I'm busy. If he dies he dies on your sheet, not mine.” His breath smells of rotten apples. The shelves are full of things that look the same by lamplight.",
+			"tags": [
+				"sect",
+				"herb"
+			],
+			"choices": [
+				{
+					"label": "Make the antidote from the rack by smell",
+					"hint": "One wrong jar and it is the wrong sheet.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 16
+								},
+								{
+									"op": "flag",
+									"k": "a1_woodcutter_saved"
+								},
+								{
+									"op": "text",
+									"t": "The third jar smells of nothing at all, which is the right smell. He sits up at dawn and asks for water, and then for his axe."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": -1
+								},
+								{
+									"op": "cult",
+									"v": 6
+								},
+								{
+									"op": "flag",
+									"k": "a1_woodcutter_saved"
+								},
+								{
+									"op": "text",
+									"t": "He lives, because Qingnang finally looks up and swears for a full minute. You are not forgiven. You are put in charge of the chamber-pots."
+								}
+							],
+							"crit": [
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 24
+								},
+								{
+									"op": "flag",
+									"k": "a1_woodcutter_saved"
+								},
+								{
+									"op": "item",
+									"id": "pill_antidote"
+								},
+								{
+									"op": "text",
+									"t": "You have it by the second jar, and you have enough for another, and you press the spare into your sleeve without thinking. Qingnang notices. She says nothing, which is the same as a medal."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_3",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Give him the antidote you carry",
+					"cost": {
+						"item": "pill_antidote"
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a1_woodcutter_saved"
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_3",
+							"delay": 3
+						}
+					],
+					"after": "He sits up at dawn and asks for water. His brother counts the days on his fingers and cannot pay, and goes out to chop wood for the valley for a month."
+				},
+				{
+					"label": "Drag Granny out of her vat",
+					"hint": "It will cost you her goodwill.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": -1
+						},
+						{
+							"op": "cult",
+							"v": 4
+						},
+						{
+							"op": "flag",
+							"k": "a1_woodcutter_saved"
+						},
+						{
+							"op": "text",
+							"t": "She comes, swearing, and does it in four minutes with her eyes shut. You scrub the vat for a month."
+						},
+						{
+							"op": "queue",
+							"id": "a1_herb_3",
+							"delay": 3
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_herb_3",
+			"kind": "chain",
+			"act": 1,
+			"title": "Moon-Grass on the Cliff",
+			"art": "wilds",
+			"portrait": "qingnang",
+			"text": "Nine-leaf moon-grass opens one night in the year, on the cliff above the Forest of Myriad Demons, and for that night it is worth, to anyone who knows, a small farm. Qingnang does not tell you to go. She tells you where the rope is kept. Halfway down the cliff the forest begins to make a noise, a sound like many throats being cleared, and you understand that the grass is not the only thing that wakes tonight. Below, in a gap in the pines, a man in a good coat stands beside a mule, and does not look as though he is waiting for the moon.",
+			"tags": [
+				"sect",
+				"herb"
+			],
+			"choices": [
+				{
+					"label": "Take the grass and climb back, fast",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "item",
+									"id": "herb_spirit"
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 14
+								},
+								{
+									"op": "text",
+									"t": "The forest takes a breath behind you and you are over the lip of the cliff before it can let it out."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "mat",
+									"k": "herb",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "Something takes hold of your heel on the way up. You leave it a boot and a good deal of skin."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Fight what comes",
+					"hint": "The forest does not come one at a time.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "stone_imp",
+							"scale": 0.9,
+							"win": [
+								{
+									"op": "item",
+									"id": "herb_spirit"
+								},
+								{
+									"op": "mat",
+									"k": "core",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 20
+								},
+								{
+									"op": "notice",
+									"v": 5
+								}
+							],
+							"lose": []
+						}
+					]
+				},
+				{
+					"label": "Take one leaf, and leave the rest to the forest",
+					"fx": [
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 2
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 8
+						}
+					],
+					"after": "The noise in the pines changes, a little, the way a room does when someone has said what it was waiting for them to say."
+				},
+				{
+					"label": "Sell it to the man in the good coat",
+					"hint": "Granny will count the leaves.",
+					"fx": [
+						{
+							"op": "stone",
+							"v": 45
+						},
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": -1
+						},
+						{
+							"op": "flag",
+							"k": "a1_sold_grass"
+						}
+					],
+					"after": "He does not haggle. That should have told you. The coin is heavy and quite warm, and he is gone before you have finished counting."
+				}
+			]
+		},
+		{
+			"id": "a1_herb_4",
+			"kind": "story",
+			"act": 1,
+			"title": "A Debt, Called In",
+			"art": "valley",
+			"portrait": "qingnang",
+			"text": "The day you break through, Granny Qingnang gives you a new apron, a worse temper and a ledger. “Valley debts,” she says, and opens it: a hundred and forty names in cramped brown ink, each with a number beside it that is not a price. “Every one we couldn't reach in time. The ones who died on my floor and in my arms and, twice, on my head. A healer is a person with a column. Mine's long. You'll have one now, and here's the first rule: you read it aloud, once a season, to the room. So they know somebody's counting.”",
+			"req": {
+				"realm_min": 2,
+				"flags": [
+					"sect_herb"
+				],
+				"not_flags": [
+					"a1_done",
+					"a2_opened"
+				]
+			},
+			"prio": 45,
+			"once": true,
+			"tags": [
+				"sect",
+				"final"
+			],
+			"choices": [
+				{
+					"label": "Read the names aloud",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "heart",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 30
+								},
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 2
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "rel",
+									"k": "qingnang",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "You get as far as the sixty-first before your voice goes. Granny finishes. She does not look at you, and takes the book back as if you had been entrusted with nothing."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					]
+				},
+				{
+					"label": "Ask to start a column of your own",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "She hands you the pen. It is a crow's quill, cut short from use. “One name,” she says. “Only the ones you can't forgive. If it's more than ten, you're a butcher, and if it's none, a liar.”"
+				},
+				{
+					"label": "Ask whether a name can be struck from it, and say whose",
+					"req": {
+						"flags": [
+							"xh_saved"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 25
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "“That girl is not on my ledger,” she says, flatly. “I'd know. She is on somebody else's. Keep her close, and if anyone with a scroll comes asking, send him to me.”"
+				},
+				{
+					"label": "Confess that you sold the moon-grass",
+					"req": {
+						"flags": [
+							"a1_sold_grass"
+						]
+					},
+					"cost": {
+						"stone": 20
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "She snorts. “I counted the leaves, boy. I counted them before you were back up the rope.” She takes the stones without looking at them, and puts them in the poor-box by the door."
+				}
+			]
+		},
+		{
+			"id": "a1_rogue_1",
+			"kind": "chain",
+			"act": 1,
+			"title": "A Game of Three Cups",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "The Wet Rooster has the cheapest wine in Fallen-Star Town and the best view of people regretting it. Old Mo has the corner seat as though it were deeded to him. You come in out of the rain and he does not look up. “Sit,” he says, “or don't; either way you'll owe me nothing and everyone will assume otherwise.” There are three cups on the table and a pebble. He moves them with his left hand in a pattern that is nearly visible. He is very much better at this than any drunk has a right to be. “Where is it?” he says. “Take your time. I've got till I die.”",
+			"tags": [
+				"sect",
+				"rogue"
+			],
+			"choices": [
+				{
+					"label": "Point at the middle cup",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "He lifts it. The pebble is there. He looks genuinely, briefly surprised."
+								}
+							],
+							"fail": [
+								{
+									"op": "stone",
+									"v": -3
+								},
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "Empty. He lifts the other two; also empty. He puts the pebble in his mouth and looks at you with great sadness."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_2",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Watch his hand, not the cups",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "The hand moves and the pebble does not. There was never a pebble; it is in the sleeve that isn't there. You say so. He looks at you for a long time."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 4
+								},
+								{
+									"op": "text",
+									"t": "The hand is faster than you are. He lets you know it, kindly."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_2",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Buy him a jug and say nothing",
+					"cost": {
+						"stone": 4
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_2",
+							"delay": 3
+						}
+					],
+					"after": "He puts the jug where he can see it and still does not look at you. “Hm,” he says. In Old Mo that is a paragraph."
+				},
+				{
+					"label": "You know the knot. Tie the sleeve the way a clerk would",
+					"req": {
+						"meta": [
+							"t_mo_arm"
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_met"
+						},
+						{
+							"op": "meta",
+							"k": "met_moshan"
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 3
+						},
+						{
+							"op": "stat",
+							"k": "insight",
+							"v": 1
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_2",
+							"delay": 3
+						}
+					],
+					"after": "He lets you. He does not look at you while you do it. When you are done he turns the empty cuff over once, as one would a letter that has arrived at last, and puts his cup down very carefully."
+				}
+			]
+		},
+		{
+			"id": "a1_rogue_2",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Knot in His Sleeve",
+			"art": "town",
+			"portrait": "moshan",
+			"text": "The last cup of the night. Old Mo is quiet in the way of a drunk who has stopped being drunk and would rather it were not noticed. He lays the stump of his right arm on the wet table, the sleeve knotted off at the elbow the way clerks knot their cuffs to keep out of the ink. The wine from the spilled cup runs towards it. It moves as though asked. Where the stump rests the wet draws itself into characters, thin and careful, with the hook on the heart radical and the last stroke left short. They are your characters. It is your hand. They say: not yet.",
+			"tags": [
+				"sect",
+				"rogue",
+				"truth"
+			],
+			"choices": [
+				{
+					"label": "Say nothing and refill his cup",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mo_arm"
+						},
+						{
+							"op": "flag",
+							"k": "mo_arm_seen"
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 2
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_3",
+							"delay": 3
+						}
+					],
+					"after": "He nods once at the cup. It takes you a moment to understand that it was the nod of one man to another's apprentice."
+				},
+				{
+					"label": "Ask whose hand that is",
+					"hint": "He may not like being asked.",
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mo_arm"
+						},
+						{
+							"op": "flag",
+							"k": "mo_arm_seen"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": -1
+						},
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_3",
+							"delay": 3
+						}
+					],
+					"after": "“Yours,” he says, the way people tell the weather. “It will be, anyway.” Then he laughs and drinks, and the characters run down the table's grain like any spilled thing."
+				},
+				{
+					"label": "Wipe it away with your sleeve",
+					"hint": "You will not see what it said.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "mo_arm_seen"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 1
+						},
+						{
+							"op": "notice",
+							"v": -4
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_3",
+							"delay": 3
+						}
+					],
+					"after": "The wine soaks into your cuff. When you look up he is regarding you with an expression you cannot read. “Good instinct,” he says. “Wrong time.” You never see the rest of the line."
+				},
+				{
+					"label": "You know that hand. Say so",
+					"req": {
+						"any": [
+							{
+								"meta": [
+									"t_mo_arm"
+								]
+							},
+							{
+								"flags": [
+									"a1_letter_read"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "truth",
+							"id": "t_mo_arm"
+						},
+						{
+							"op": "flag",
+							"k": "mo_arm_seen"
+						},
+						{
+							"op": "flag",
+							"k": "mo_master"
+						},
+						{
+							"op": "rel",
+							"k": "moshan",
+							"v": 3
+						},
+						{
+							"op": "tech",
+							"id": "heart_sword"
+						},
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "queue",
+							"id": "a1_rogue_3",
+							"delay": 3
+						}
+					],
+					"after": "He does not speak for a while. “Well,” he says at last. “Then you had better be taught properly.” He shows you the first of the real lessons that night, left-handed, with a cup for a sword."
+				}
+			]
+		},
+		{
+			"id": "a1_rogue_3",
+			"kind": "chain",
+			"act": 1,
+			"title": "Sixth Brother's Bench",
+			"art": "town",
+			"portrait": "villager",
+			"text": "A widow's noodle stall by the north bridge has been paying a man called Sixth Brother for the privilege of standing where it has stood for thirty years. This morning he is not asking; he is kicking the bench over. The widow is gathering bowls in her apron the way you would gather eggs in a flood. The street has developed a sudden interest in its own feet. Old Mo, a block off, is watching you and doing a very convincing impression of a drunk asleep on his feet.",
+			"tags": [
+				"sect",
+				"rogue"
+			],
+			"choices": [
+				{
+					"label": "Take the bench back and stand on it",
+					"hint": "He has friends in the doorway.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "thug",
+							"win": [
+								{
+									"op": "stone",
+									"v": 15
+								},
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "notice",
+									"v": 4
+								}
+							],
+							"lose": []
+						}
+					]
+				},
+				{
+					"label": "Pay Sixth Brother off",
+					"cost": {
+						"stone": 12
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "text",
+							"t": "The widow feeds you a bowl of noodles every morning for a season and will not hear a word about it."
+						}
+					]
+				},
+				{
+					"label": "Shout that the watch is coming (it is not)",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "notice",
+									"v": 2
+								},
+								{
+									"op": "text",
+									"t": "The street scatters like pigeons, Sixth Brother with it. You are halfway to the bridge before anyone has asked who shouted."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "text",
+									"t": "He does not believe you. He says so with a stick."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Be the third thing in the street he does not see",
+					"hint": "One of Mo's lessons.",
+					"req": {
+						"flags": [
+							"mo_master"
+						]
+					},
+					"fx": [
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "text",
+							"t": "It is not a trick; it is a way of standing. Sixth Brother kicks the bench, steps round you without a pause, and finds that the widow's purse has been taken from his pocket and put back in her apron."
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_rogue_4",
+			"kind": "story",
+			"act": 1,
+			"title": "The Dust Road",
+			"art": "wilds",
+			"portrait": "moshan",
+			"text": "The morning you break through, Old Mo hands you a purse with forty stones in it and a map of the Dust Road, which is the long way between two towns and the short way to being robbed. “Walk it,” he says, “and come back with the purse.” The road is full of children who are very, very good. A boy walks into you, sorry sorry, and you check your belt, and everything is there, and you check again, and a girl is already looking at your boots. By the third town it is a game. By the fourth you are better at it than any of them.",
+			"req": {
+				"realm_min": 2,
+				"flags": [
+					"sect_rogue"
+				],
+				"not_flags": [
+					"a1_done",
+					"a2_opened"
+				]
+			},
+			"prio": 45,
+			"once": true,
+			"tags": [
+				"sect",
+				"final"
+			],
+			"choices": [
+				{
+					"label": "Outwalk them: no stops, no talk",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 30
+								},
+								{
+									"op": "stat",
+									"k": "speed",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "You come into the last town having touched nothing and been touched by nobody. Mo is already at the Wet Rooster. “Slow,” he says. “But yours.”"
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "The purse is lighter by exactly the weight of your pride. Mo takes it back without a word and weighs it in his one hand. “It's a road,” he says. “It's not a vow.”"
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					]
+				},
+				{
+					"label": "Hire one of the children to walk beside you",
+					"cost": {
+						"stone": 5
+					},
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "She is nine, and walks at your elbow like a small and expensive wall. By the second town she has taught you three things, and you have paid her for two."
+				},
+				{
+					"label": "Pick one of them back, for the lesson",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "insight",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 25
+								},
+								{
+									"op": "rel",
+									"k": "moshan",
+									"v": 1
+								},
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "The first pocket you pick is Mo's. In it is a slip of paper with one word on it, left-handed: Good."
+								}
+							],
+							"fail": [
+								{
+									"op": "cult",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "The pocket already has a hand in it. It is not a kind hand."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a1_nether_1",
+			"kind": "chain",
+			"act": 1,
+			"title": "Three Questions at the Door",
+			"art": "netherworld",
+			"portrait": "disciple",
+			"text": "The Nine-Netherworld Hall has no gate, only a door, black on black, and a woman beside it who has smiled for so long that the smile has gone slightly ahead of her face. She asks three questions and writes none of the answers down. Who do you owe? What have you taken that was not given? What would you do for a year of life? The third she asks twice, because the first time you hesitated. Behind her the corridor goes down a long way for a building with no cellar, and it is warm in the way of a mouth.",
+			"tags": [
+				"sect",
+				"netherworld"
+			],
+			"choices": [
+				{
+					"label": "Answer honestly",
+					"hint": "The Hall prizes the truth. It also keeps it.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 14
+						},
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "corrupt",
+							"v": 3
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_2",
+							"delay": 3
+						}
+					],
+					"after": "She nods at each answer as at a bill she had expected. “Good,” she says, and for a moment the smile is entirely behind her face."
+				},
+				{
+					"label": "Lie smoothly",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "stone",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "She laughs, a little, with real pleasure, and gives you a coin. “We pay well for a good liar,” she says. “Mind you don't try it on the Hall.”"
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.15
+								},
+								{
+									"op": "corrupt",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "She smiles. The warmth in the corridor leans on you the way a hand leans on a bell, and your lie comes out of you in a long pale thread."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_2",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Ask what the year of life is worth to them",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "corrupt",
+							"v": 2
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_2",
+							"delay": 3
+						}
+					],
+					"after": "She is delighted. It has been some time since anyone asked it. “Everything,” she says. “That is the whole of the market. Come in; you will understand it faster than most.”"
+				}
+			]
+		},
+		{
+			"id": "a1_nether_2",
+			"kind": "chain",
+			"act": 1,
+			"title": "A Gift in Red Paper",
+			"art": "netherworld",
+			"portrait": "disciple",
+			"text": "On the third night a pill is left on your pillow in a twist of red paper, with no note. It is the colour of a clove and smells like warm iron. It is the sort of gift that would cost ten years in any market, and here nobody has mentioned a price, which is the price. The boy in the next cot says everybody gets one. He looks very well, and very thin, and does not sleep. You can feel the pill through the paper. It feels like someone listening.",
+			"tags": [
+				"sect",
+				"netherworld"
+			],
+			"choices": [
+				{
+					"label": "Swallow it",
+					"hint": "Heat now. A tab to pay later.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 40
+						},
+						{
+							"op": "corrupt",
+							"v": 10
+						},
+						{
+							"op": "notice",
+							"v": 6
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_3",
+							"delay": 3
+						}
+					],
+					"after": "A tide of heat, then a long clean quiet. You feel enormously capable. You also feel, very faintly, that you have been spent somewhere, and that someone has made a mark."
+				},
+				{
+					"label": "Hide it and sell it in town",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 5,
+							"pass": [
+								{
+									"op": "stone",
+									"v": 30
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "The buyer asks no questions and pays in coin that does not feel quite right in the hand. It is silver all the same."
+								}
+							],
+							"fail": [
+								{
+									"op": "notice",
+									"v": 12
+								},
+								{
+									"op": "text",
+									"t": "The buyer is a runner for the Registry's office, and very polite about it. You walk away from him with your purse intact and the feeling of having been written down."
+								}
+							]
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_3",
+							"delay": 3
+						}
+					]
+				},
+				{
+					"label": "Give it to the stray dog",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "queue",
+							"id": "a1_nether_3",
+							"delay": 3
+						}
+					],
+					"after": "The dog sleeps eleven hours and wakes with an expression of peace and no recollection of its own name. You decide you have learned something."
+				}
+			]
+		},
+		{
+			"id": "a1_nether_3",
+			"kind": "chain",
+			"act": 1,
+			"title": "The Bowl That Is Not Full",
+			"art": "netherworld",
+			"portrait": "disciple",
+			"text": "The ritual is held in the cold hour when even the Hall's lamps seem to lean away from the wall. Forty novices kneel in a ring of salt and ash round a bowl that looks like a mouth, and a teacher with a voice like paper being folded asks each of you in turn for a drop of blood and the name of a thing you have lost. The bowl is not full. It does not look as though it will be. When the teacher reaches you, the room has become very attentive.",
+			"tags": [
+				"sect",
+				"netherworld"
+			],
+			"choices": [
+				{
+					"label": "Give the drop, and name the true thing",
+					"hint": "It will remember.",
+					"fx": [
+						{
+							"op": "tech",
+							"id": "blood_rite"
+						},
+						{
+							"op": "corrupt",
+							"v": 8
+						},
+						{
+							"op": "notice",
+							"v": 8
+						}
+					]
+				},
+				{
+					"label": "Give the drop, and name something you do not value",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "cult",
+									"v": 18
+								},
+								{
+									"op": "corrupt",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "The bowl takes the name, and the blood, and does not appear to know the difference. The teacher moves on."
+								}
+							],
+							"fail": [
+								{
+									"op": "corrupt",
+									"v": 8
+								},
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "text",
+									"t": "The bowl knows. It knew before you opened your mouth. The room does not move, and the salt under your knees is very cold."
+								}
+							]
+						}
+					]
+				},
+				{
+					"label": "Refuse, and leave the ring",
+					"hint": "They will not like it.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 6
+						},
+						{
+							"op": "flag",
+							"k": "a1_nether_refused"
+						},
+						{
+							"op": "hp_pct",
+							"v": -0.15
+						}
+					],
+					"after": "Nobody stops you. A mouth like that does not need to. You walk out between forty backs, and at the door someone, very gently, salts your sleeve."
+				}
+			]
+		},
+		{
+			"id": "a1_nether_4",
+			"kind": "story",
+			"act": 1,
+			"title": "Ye Wujin Looks at You",
+			"art": "netherworld",
+			"portrait": "ye",
+			"text": "On the morning you break through, a hush goes across the Hall's court like a dropped cloth, and the novices go to their knees. Ye Wujin has come out onto the balcony of black glass, though nobody has ever seen him come out. He is younger than you expected, tired about the eyes, dressed as a scholar who has decided not to speak. He is not looking at your face. He is looking at a place just above it, and what crosses his own face is not what you braced for. It is a kind of joy. His lips move. You are forty paces below him, and you hear it perfectly: “Oh. A page that goes all the way to the edge.”",
+			"req": {
+				"realm_min": 2,
+				"flags": [
+					"sect_netherworld"
+				],
+				"not_flags": [
+					"a1_done",
+					"a2_opened"
+				]
+			},
+			"prio": 45,
+			"once": true,
+			"tags": [
+				"sect",
+				"final"
+			],
+			"choices": [
+				{
+					"label": "Go to your knees like the rest",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "ye",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 25
+						},
+						{
+							"op": "corrupt",
+							"v": 3
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "He inclines his head, perhaps a hair, as one does to a good account. “Stay,” says the voice that is not there. “I should like to see what you are for.”"
+				},
+				{
+					"label": "Meet his eyes",
+					"hint": "He will remember how it went.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "ye",
+									"v": 2
+								},
+								{
+									"op": "cult",
+									"v": 35
+								},
+								{
+									"op": "stat",
+									"k": "heart",
+									"v": 1
+								},
+								{
+									"op": "notice",
+									"v": 5
+								},
+								{
+									"op": "text",
+									"t": "He holds your gaze across the whole court for the length of a breath, and then he smiles properly, like a man handed a thing he had given up asking for."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.3
+								},
+								{
+									"op": "corrupt",
+									"v": 5
+								},
+								{
+									"op": "rel",
+									"k": "ye",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "It is like looking at the sun through a keyhole. You do not look away until he has finished. He allows you that."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					]
+				},
+				{
+					"label": "Tell him you walked out of the ring",
+					"req": {
+						"flags": [
+							"a1_nether_refused"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "ye",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "“Yes,” he says, across forty paces and four hundred bowed heads. “I heard. It is a thing the bowl has not had happen to it in a long while. It has been thinking about it ever since.” He looks, for the first time, a little tired. “So have I.”"
+				},
+				{
+					"label": "Ask what he sees",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "ye",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "notice",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "He answers without raising his voice, and the telling is so exact and so kind that you will turn it over for years: a door, with no hinge on it, and nothing written on the other side."
+				}
+			]
+		},
+		{
+			"id": "a1_net_rise",
+			"kind": "story",
+			"act": 1,
+			"title": "The Dust Settles",
+			"art": "cave",
+			"text": "The year you cross into Foundation, the dust of the road settles on your sleeves and does not come off. People look at you differently. There is the particular quiet of a room that has just been told you are somebody. You have no ceremony, no sponsor, and no senior with a drawn sword; you have a thinner thing, the feeling of having come up through a trapdoor into a larger room. Somewhere in the distance a bell is ringing a long way off, in a place that is not yours yet.",
+			"req": {
+				"realm_min": 2,
+				"not_flags": [
+					"a1_done",
+					"a2_opened"
+				]
+			},
+			"prio": 10,
+			"once": true,
+			"tags": [
+				"safety"
+			],
+			"choices": [
+				{
+					"label": "Walk on",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					]
+				},
+				{
+					"label": "Stop and look back at the road",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_open"
+						}
+					],
+					"after": "It is shorter than it felt. It always is."
+				}
+			]
+		}
+	]
+}

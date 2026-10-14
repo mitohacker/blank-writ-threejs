@@ -1,0 +1,132 @@
+{
+	"cards": [
+		{
+			"id": "c_a2_yz_goose",
+			"zh": "鹅与笑",
+			"en": "The Goose",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_yz_goose",
+			"text": "Something is about to make Yun Zhi laugh.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_yunzhi_2"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_yz_sea",
+			"zh": "海之所用",
+			"en": "What the Sea Is For",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_yz_sea",
+			"text": "Yun Zhi has a question she has asked everyone.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_yunzhi_3"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_heng_lose",
+			"zh": "教我输",
+			"en": "Teach Him to Lose",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_heng_lose",
+			"text": "Xiao Heng wants one thing nobody teaches.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_heng_2"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_fox_tail",
+			"zh": "一尾之情",
+			"en": "A Favour in Tails",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_fox_tail",
+			"text": "Su Jiu has moved her stall to the quiet end of town.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_sujiu_2"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_fox_price",
+			"zh": "金名之价",
+			"en": "The Price of a Gold Name",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_fox_price",
+			"text": "Su Jiu is waiting on the kitchen roof, with a persimmon.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_sujiu_3"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_mo_open",
+			"zh": "开瓮",
+			"en": "Open the Jar",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_mo_open",
+			"text": "Old Mo is on the step. He has been told the story is shorter now.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_mo_arm_2"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_granny_pot",
+			"zh": "婆婆的锅",
+			"en": "The Pot on the Table",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_granny_pot",
+			"text": "Granny Qingnang has a clay pot, and an opinion about you.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_qingnang_1"
+				}
+			],
+			"weight": 1
+		},
+		{
+			"id": "c_a2_master_tea",
+			"zh": "玄霄的茶",
+			"en": "Tea With the Master",
+			"cat": "chance",
+			"ap": 1,
+			"art": "card_c_a2_master_tea",
+			"text": "Master Xuanxiao has poured two cups.",
+			"fx": [
+				{
+					"op": "event",
+					"id": "a2_xuanxiao_1"
+				}
+			],
+			"weight": 1
+		}
+	]
+}

@@ -1,0 +1,458 @@
+{
+	"_about": "Every tuning number of Blank Writ. Nothing is hard-coded in the logic; the bot (tools/bot_career.gd) fits these.",
+	"stats": [
+		"body",
+		"spirit",
+		"insight",
+		"speed",
+		"fortune",
+		"heart"
+	],
+	"stat_names": {
+		"body": {
+			"zh": "体魄",
+			"en": "Body"
+		},
+		"spirit": {
+			"zh": "神识",
+			"en": "Spirit"
+		},
+		"insight": {
+			"zh": "悟性",
+			"en": "Insight"
+		},
+		"speed": {
+			"zh": "身法",
+			"en": "Agility"
+		},
+		"fortune": {
+			"zh": "机缘",
+			"en": "Fortune"
+		},
+		"heart": {
+			"zh": "道心",
+			"en": "Dao-heart"
+		}
+	},
+	"roots": [
+		"metal",
+		"wood",
+		"water",
+		"fire",
+		"earth"
+	],
+	"root_names": {
+		"metal": {
+			"zh": "金",
+			"en": "Metal"
+		},
+		"wood": {
+			"zh": "木",
+			"en": "Wood"
+		},
+		"water": {
+			"zh": "水",
+			"en": "Water"
+		},
+		"fire": {
+			"zh": "火",
+			"en": "Fire"
+		},
+		"earth": {
+			"zh": "土",
+			"en": "Earth"
+		}
+	},
+	"overcomes": {
+		"metal": "wood",
+		"wood": "earth",
+		"earth": "water",
+		"water": "fire",
+		"fire": "metal"
+	},
+	"mats": [
+		"herb",
+		"ore",
+		"core"
+	],
+	"places": [
+		"village",
+		"town",
+		"sect",
+		"valley",
+		"wilds",
+		"ruin",
+		"netherworld",
+		"registry",
+		"gate",
+		"wheel",
+		"cave"
+	],
+	"sects": [
+		"none",
+		"azure",
+		"herb",
+		"rogue",
+		"netherworld"
+	],
+	"cast": [
+		"xiaohe",
+		"moshan",
+		"yunzhi",
+		"sujiu",
+		"xiaoheng",
+		"ye",
+		"qingnang",
+		"xuanxiao",
+		"siming"
+	],
+	"portraits_generic": [
+		"hero",
+		"villager",
+		"elder",
+		"merchant",
+		"disciple",
+		"clerk"
+	],
+	"card_cats": [
+		"cultivate",
+		"craft",
+		"venture",
+		"social",
+		"rest",
+		"chance",
+		"combat"
+	],
+	"death_causes": [
+		"old_age",
+		"slain",
+		"tribulation",
+		"struck",
+		"heart_demon"
+	],
+	"meta_prefixes": [
+		"t_",
+		"met_",
+		"tal_",
+		"w_",
+		"end_",
+		"seen_"
+	],
+	"engine_flags": [
+		"inspector_40",
+		"inspector_70",
+		"hunted",
+		"breakthrough_failed",
+		"corrupt_30",
+		"corrupt_70",
+		"rewound",
+		"tribulation_passed"
+	],
+	"realms": [
+		{
+			"id": 0,
+			"zh": "凡人",
+			"en": "Mortal",
+			"layers": 1,
+			"life": 14,
+			"years": 1,
+			"ap": 2,
+			"slots": 3,
+			"need": 60,
+			"gain": 1.0,
+			"power": 1.0,
+			"tribulation": false
+		},
+		{
+			"id": 1,
+			"zh": "炼气",
+			"en": "Qi Refining",
+			"layers": 3,
+			"life": 8,
+			"years": 3,
+			"ap": 2,
+			"slots": 3,
+			"need": 260,
+			"gain": 1.0,
+			"power": 1.5,
+			"tribulation": false
+		},
+		{
+			"id": 2,
+			"zh": "筑基",
+			"en": "Foundation",
+			"layers": 3,
+			"life": 10,
+			"years": 5,
+			"ap": 3,
+			"slots": 4,
+			"need": 1000,
+			"gain": 3.5,
+			"power": 2.8,
+			"tribulation": false
+		},
+		{
+			"id": 3,
+			"zh": "金丹",
+			"en": "Golden Core",
+			"layers": 3,
+			"life": 12,
+			"years": 10,
+			"ap": 3,
+			"slots": 4,
+			"need": 6000,
+			"gain": 12.0,
+			"power": 5.5,
+			"tribulation": true
+		},
+		{
+			"id": 4,
+			"zh": "元婴",
+			"en": "Nascent Soul",
+			"layers": 3,
+			"life": 14,
+			"years": 20,
+			"ap": 3,
+			"slots": 5,
+			"need": 32000,
+			"gain": 42.0,
+			"power": 11.0,
+			"tribulation": true
+		},
+		{
+			"id": 5,
+			"zh": "化神",
+			"en": "Spirit Transformation",
+			"layers": 3,
+			"life": 16,
+			"years": 50,
+			"ap": 3,
+			"slots": 6,
+			"need": 170000,
+			"gain": 144.0,
+			"power": 22.0,
+			"tribulation": true
+		},
+		{
+			"id": 6,
+			"zh": "天门",
+			"en": "The Gate",
+			"layers": 0,
+			"life": 0,
+			"years": 50,
+			"ap": 3,
+			"slots": 6,
+			"need": 0,
+			"gain": 144.0,
+			"power": 22.0,
+			"tribulation": false
+		}
+	],
+	"layer_mult": [
+		1.0,
+		1.5,
+		2.0
+	],
+	"start": {
+		"stat": 5,
+		"hp_base": 40,
+		"hp_per_body": 12,
+		"mp_base": 20,
+		"mp_per_spirit": 8,
+		"atk_base": 6,
+		"atk_per": 1.2,
+		"def_base": 2,
+		"def_per_body": 1.5,
+		"spd_base": 8,
+		"spd_per": 1.2,
+		"crit_base": 0.05,
+		"crit_per_fortune": 0.004,
+		"cdmg": 1.5,
+		"dodge_per_speed": 0.008,
+		"dodge_cap": 0.4,
+		"cult_per_insight": 0.06,
+		"root_cult": 0.03,
+		"root_dmg": 0.06,
+		"hand": 5,
+		"swap": 1,
+		"stone": 20,
+		"bag": 24
+	},
+	"tiers": {
+		"names": [
+			"normal",
+			"fine",
+			"rare",
+			"supreme"
+		],
+		"mult": [
+			1.0,
+			1.4,
+			1.9,
+			2.8
+		],
+		"odds": [
+			60,
+			28,
+			10,
+			2
+		],
+		"fortune_shift": 0.8
+	},
+	"breakthrough": {
+		"base": 0.4,
+		"per_insight": 0.012,
+		"per_heart": 0.008,
+		"min": 0.15,
+		"max": 0.95,
+		"fail_hp_pct": 0.5,
+		"fail_cult_loss": 0.15,
+		"demon_chance": 0.2
+	},
+	"notice": {
+		"inspector_40": 40,
+		"inspector_70": 70,
+		"hunt": 100,
+		"decay_per_term": 1,
+		"rest_decay": 6
+	},
+	"enemy_base": {
+		"hp": [
+			100,
+			200,
+			460,
+			1090,
+			2540,
+			5780
+		],
+		"atk": [
+			20,
+			40,
+			95,
+			225,
+			530,
+			1200
+		],
+		"def": [
+			11,
+			23,
+			56,
+			135,
+			319,
+			737
+		],
+		"spd": [
+			13,
+			16,
+			19,
+			22,
+			25,
+			28
+		],
+		"mp": [
+			20,
+			40,
+			90,
+			200,
+			450,
+			1000
+		]
+	},
+	"battle": {
+		"gauge": 100,
+		"max_ticks": 4000,
+		"variance": 0.1,
+		"def_factor": 0.6,
+		"min_dmg_frac": 0.1,
+		"weak_mult": 1.25,
+		"resist_mult": 0.8,
+		"basic_mult": 1.0,
+		"burn": 0.12,
+		"poison": 0.1,
+		"slow": 0.6,
+		"weak": 0.75,
+		"broken": 0.75,
+		"regen": 0.08,
+		"mp_regen": 0.03,
+		"pills": 2,
+		"dot_scale": 3.0,
+		"buff_up": 1.3
+	},
+	"imprints": {
+		"realm": 8,
+		"layer": 3,
+		"term": 0.5,
+		"truth": 10,
+		"ending": 50,
+		"kill": 0.3,
+		"min_first": 20
+	},
+	"story": {
+		"events_per_term": 1,
+		"second_event_chance": 0.25,
+		"offer_expires": 2
+	},
+	"run": {
+		"start_hand_cards": 10,
+		"years_start": 0
+	},
+	"stone_scale": [
+		1,
+		1,
+		2,
+		4,
+		8,
+		16,
+		16
+	],
+	"realm_stat_gain": {
+		"body": 2,
+		"spirit": 2,
+		"insight": 1,
+		"speed": 1,
+		"heart": 1
+	},
+	"talismans": {
+		"talisman_fire": {
+			"dmg": 2.2,
+			"status": "burn",
+			"elem": "fire"
+		},
+		"talisman_ward": {
+			"shield": 0.3
+		},
+		"talisman_escape": {
+			"escape": true
+		}
+	},
+	"flag_labels": {
+		"xh_saved": "Xiao He saved",
+		"xh_sick": "Xiao He ill",
+		"xh_dead": "Xiao He lost",
+		"ally_xiaohe": "Xiao He at your side",
+		"ally_yunzhi": "Yun Zhi at your side",
+		"ally_sujiu": "Su Jiu at your side",
+		"ally_xiaoheng": "Xiao Heng at your side",
+		"ally_moshan": "Mo Shan at your side",
+		"mo_met": "Met Old Mo",
+		"mo_master": "Mo Shan as master",
+		"root_tested": "Roots tested",
+		"inspector_met": "Met a clerk",
+		"contest_won": "Won the contest",
+		"ruin_found": "Found the Ruin",
+		"ruin_cleared": "Cleared the Ruin",
+		"sect_azure": "Azure Sword Sect",
+		"sect_herb": "Herb Valley",
+		"sect_rogue": "The rogue road",
+		"sect_netherworld": "Nine-Netherworld Hall",
+		"brush_found": "The Brush",
+		"ascension_known": "Knows what ascension is",
+		"heng_chosen": "Heng chosen",
+		"yz_sword": "Yun Zhi's sword",
+		"ye_accepted": "Ye's offer taken",
+		"a1_prepared": "Prepared herbs",
+		"corrupt_30": "Corruption 30",
+		"corrupt_70": "Corruption 70",
+		"hunted": "Hunted"
+	}
+}

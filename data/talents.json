@@ -1,0 +1,419 @@
+{
+	"_schema": "talent: id zh en tier text stat? root? life? stone? cards? techs? items? cult_mult? notice_rate? hp_pct? flags unlock? note?  (flags carries the talent's own id so req.flags works)",
+	"talents": [
+		{
+			"id": "tal_thick_skin",
+			"zh": "厚皮",
+			"en": "Thick Skin",
+			"tier": 1,
+			"text": "A hide like boiled leather: Body +1 and 15% more max HP.",
+			"stat": {
+				"body": 1
+			},
+			"hp_pct": 0.15,
+			"flags": [
+				"tal_thick_skin"
+			]
+		},
+		{
+			"id": "tal_early_riser",
+			"zh": "早起",
+			"en": "Early Riser",
+			"tier": 1,
+			"text": "You are up before the roosters: cultivation +8%, and Greet the Sun in your deck.",
+			"cards": [
+				"breathe_sun"
+			],
+			"cult_mult": 0.08,
+			"flags": [
+				"tal_early_riser"
+			]
+		},
+		{
+			"id": "tal_penny_pincher",
+			"zh": "算盘",
+			"en": "Penny-Pincher",
+			"tier": 1,
+			"text": "You count everything twice: +30 stones and an extra Odd Jobs card.",
+			"stone": 30,
+			"cards": [
+				"odd_jobs"
+			],
+			"flags": [
+				"tal_penny_pincher"
+			]
+		},
+		{
+			"id": "tal_light_sleeper",
+			"zh": "浅眠",
+			"en": "Light Sleeper",
+			"tier": 1,
+			"text": "You wake at the first footstep: Notice grows 15% slower and Speed +1.",
+			"stat": {
+				"speed": 1
+			},
+			"notice_rate": -0.15,
+			"flags": [
+				"tal_light_sleeper"
+			]
+		},
+		{
+			"id": "tal_hearth_wise",
+			"zh": "灶头",
+			"en": "Hearth-Wise",
+			"tier": 1,
+			"text": "Someone taught you to look after yourself: 10% more max HP and an extra Rest card.",
+			"cards": [
+				"rest"
+			],
+			"hp_pct": 0.1,
+			"flags": [
+				"tal_hearth_wise"
+			]
+		},
+		{
+			"id": "tal_scholar",
+			"zh": "书生",
+			"en": "Scholar's Eye",
+			"tier": 2,
+			"text": "You read everything, including the labels: Insight +1, a worn primer, and Comprehend the Text in your deck.",
+			"stat": {
+				"insight": 1
+			},
+			"cards": [
+				"comprehend"
+			],
+			"items": [
+				"book_primer"
+			],
+			"flags": [
+				"tal_scholar"
+			]
+		},
+		{
+			"id": "tal_iron_bones",
+			"zh": "铁骨",
+			"en": "Iron Bones",
+			"tier": 2,
+			"text": "Dense and slow: Body +2, Speed -1.",
+			"stat": {
+				"body": 2,
+				"speed": -1
+			},
+			"flags": [
+				"tal_iron_bones"
+			]
+		},
+		{
+			"id": "tal_fox_luck",
+			"zh": "狐运",
+			"en": "Fox's Luck",
+			"tier": 2,
+			"text": "Strings of chance tangle themselves round your fingers: Fortune +2 and a three-coin string.",
+			"stat": {
+				"fortune": 2
+			},
+			"items": [
+				"charm_lucky"
+			],
+			"flags": [
+				"tal_fox_luck"
+			]
+		},
+		{
+			"id": "tal_second_sight",
+			"zh": "慧眼",
+			"en": "Second Sight",
+			"tier": 2,
+			"text": "You see the seam in things: Spirit +2, and options only the perceptive can read stay open to you.",
+			"stat": {
+				"spirit": 2
+			},
+			"flags": [
+				"tal_second_sight"
+			]
+		},
+		{
+			"id": "tal_sworn",
+			"zh": "誓心",
+			"en": "Sworn Heart",
+			"tier": 2,
+			"text": "A promise you made before you could speak it: Dao-heart +2.",
+			"stat": {
+				"heart": 2
+			},
+			"flags": [
+				"tal_sworn"
+			]
+		},
+		{
+			"id": "tal_light_foot",
+			"zh": "轻身",
+			"en": "Light-Footed",
+			"tier": 2,
+			"text": "Born running: Speed +2 and you know Swift Step.",
+			"stat": {
+				"speed": 2
+			},
+			"techs": [
+				"swift_step"
+			],
+			"flags": [
+				"tal_light_foot"
+			]
+		},
+		{
+			"id": "tal_green_thumb",
+			"zh": "药缘",
+			"en": "Green Thumb",
+			"tier": 2,
+			"text": "Plants lean toward you: a Wood root of 1 and a better Gather Herbs card.",
+			"root": {
+				"wood": 1
+			},
+			"cards": [
+				"gather_herbs_plus"
+			],
+			"flags": [
+				"tal_green_thumb"
+			]
+		},
+		{
+			"id": "tal_forge_born",
+			"zh": "炉火命",
+			"en": "Forge-Born",
+			"tier": 2,
+			"text": "You were cradled by a bellows: Body +1, a Fire root of 1 and Hammer and Ore in your deck.",
+			"stat": {
+				"body": 1
+			},
+			"root": {
+				"fire": 1
+			},
+			"cards": [
+				"forge"
+			],
+			"flags": [
+				"tal_forge_born"
+			]
+		},
+		{
+			"id": "tal_gifted",
+			"zh": "天资",
+			"en": "Gifted",
+			"tier": 3,
+			"text": "A mind that sees the lesson before the teacher: Insight +3, but two terms less of life. Brilliant lives burn short.",
+			"stat": {
+				"insight": 3
+			},
+			"life": -2,
+			"flags": [
+				"tal_gifted"
+			]
+		},
+		{
+			"id": "tal_memory",
+			"zh": "宿慧",
+			"en": "Remembered Lives",
+			"tier": 3,
+			"text": "A page you once read is still open somewhere behind your eyes: Dao-heart +1, and the first term already knows one of your truths.",
+			"stat": {
+				"heart": 1
+			},
+			"flags": [
+				"tal_memory"
+			],
+			"unlock": "t_blank",
+			"note": "Unlocks once you have found any truth (the first one, Your name is not in the Registry, opens it)."
+		},
+		{
+			"id": "tal_sword_bone",
+			"zh": "剑骨",
+			"en": "Sword-Bone",
+			"tier": 3,
+			"text": "A bone like a blade: a Metal root of 4, Speed +1 and you know Azure Slash.",
+			"stat": {
+				"speed": 1
+			},
+			"root": {
+				"metal": 4
+			},
+			"techs": [
+				"azure_slash"
+			],
+			"flags": [
+				"tal_sword_bone"
+			]
+		},
+		{
+			"id": "tal_war_born",
+			"zh": "战魂",
+			"en": "War-Born",
+			"tier": 3,
+			"text": "Fists first, questions later: Body +2, Spirit +1, 10% more max HP, and you know Iron Fist.",
+			"stat": {
+				"body": 2,
+				"spirit": 1
+			},
+			"techs": [
+				"iron_fist"
+			],
+			"hp_pct": 0.1,
+			"flags": [
+				"tal_war_born"
+			]
+		},
+		{
+			"id": "tal_lucky_star",
+			"zh": "福星",
+			"en": "Lucky Star",
+			"tier": 3,
+			"text": "Somebody up there likes the look of you: Fortune +3 and +40 stones.",
+			"stat": {
+				"fortune": 3
+			},
+			"stone": 40,
+			"flags": [
+				"tal_lucky_star"
+			],
+			"unlock": "w_f_luck",
+			"note": "Unlocks when you buy A Lucky Star on the Wheel."
+		},
+		{
+			"id": "tal_wheel_marked",
+			"zh": "轮痕",
+			"en": "Wheel-Marked",
+			"tier": 4,
+			"text": "The Wheel's spokes left a groove in you: cultivation +20% and two more terms of life.",
+			"life": 2,
+			"cult_mult": 0.2,
+			"flags": [
+				"tal_wheel_marked"
+			],
+			"unlock": "t_wheel",
+			"note": "Unlocks when you learn the Wheel's truth (The Wheel was built to recycle failed patches)."
+		},
+		{
+			"id": "tal_clerk_hand",
+			"zh": "书吏之手",
+			"en": "Clerk's Hand",
+			"tier": 4,
+			"text": "You have the Registry's own pen-hold: Insight +2, Dao-heart +1, and Notice grows 30% slower.",
+			"stat": {
+				"insight": 2,
+				"heart": 1
+			},
+			"notice_rate": -0.3,
+			"flags": [
+				"tal_clerk_hand"
+			],
+			"unlock": "met_siming",
+			"note": "Unlocks after you have met the Magistrate."
+		},
+		{
+			"id": "tal_mortar_heart",
+			"zh": "铁石之心",
+			"en": "Mortar-Heart",
+			"tier": 4,
+			"text": "You know what the sky is made of, and it has stopped being able to frighten you: Dao-heart +4, Notice grows 20% slower, one less term of life.",
+			"stat": {
+				"heart": 4
+			},
+			"life": -1,
+			"notice_rate": -0.2,
+			"flags": [
+				"tal_mortar_heart"
+			],
+			"unlock": "t_filing",
+			"note": "Unlocks when you learn that Ascension is filing."
+		},
+		{
+			"id": "tal_dao_body",
+			"zh": "道体",
+			"en": "Dao-Body",
+			"tier": 4,
+			"text": "A frame the sky approves of: every stat +1 and two more terms of life.",
+			"stat": {
+				"body": 1,
+				"spirit": 1,
+				"insight": 1,
+				"speed": 1,
+				"fortune": 1,
+				"heart": 1
+			},
+			"life": 2,
+			"flags": [
+				"tal_dao_body"
+			],
+			"unlock": "end_filed",
+			"note": "Unlocks after the Filed ending."
+		},
+		{
+			"id": "tal_heaven_breaker",
+			"zh": "逆天",
+			"en": "Heaven-Breaker",
+			"tier": 4,
+			"text": "The sky is a thing you have already done once: Body +3, Spirit +2, but Notice grows 25% faster.",
+			"stat": {
+				"body": 3,
+				"spirit": 2
+			},
+			"notice_rate": 0.25,
+			"flags": [
+				"tal_heaven_breaker"
+			],
+			"unlock": "end_slayer",
+			"note": "Unlocks after the Heaven-Slayer ending."
+		},
+		{
+			"id": "tal_new_page",
+			"zh": "新页",
+			"en": "A New Page",
+			"tier": 4,
+			"text": "You have written something nobody wrote before: Insight +2, Fortune +2, Dao-heart +2, and cultivation +10%.",
+			"stat": {
+				"insight": 2,
+				"fortune": 2,
+				"heart": 2
+			},
+			"cult_mult": 0.1,
+			"flags": [
+				"tal_new_page"
+			],
+			"unlock": "end_blank_writ",
+			"note": "Unlocks after The Blank Writ ending."
+		},
+		{
+			"id": "tal_mortal_grace",
+			"zh": "红尘福",
+			"en": "Mortal Grace",
+			"tier": 4,
+			"text": "Someone, somewhere, kept a stove lit: six more terms of life, 60 stones and 15% more max HP.",
+			"life": 6,
+			"stone": 60,
+			"hp_pct": 0.15,
+			"flags": [
+				"tal_mortal_grace"
+			],
+			"unlock": "end_mortal_dust",
+			"note": "Unlocks after the Mortal Dust ending."
+		},
+		{
+			"id": "tal_ninth_hell",
+			"zh": "九幽之种",
+			"en": "Ninth-Hell Seed",
+			"tier": 4,
+			"text": "A cold seed under the breastbone: Spirit +4 and cultivation +30%, but Dao-heart -2.",
+			"stat": {
+				"spirit": 4,
+				"heart": -2
+			},
+			"cult_mult": 0.3,
+			"flags": [
+				"tal_ninth_hell"
+			],
+			"unlock": "end_netherworld",
+			"note": "Unlocks after the Nine Netherworlds ending."
+		}
+	]
+}

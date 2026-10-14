@@ -1,0 +1,30 @@
+{
+	"enemies": [
+		{
+			"id": "xiaoheng_assembly",
+			"zh": "萧衡(云梯会)",
+			"en": "Xiao Heng, at the Assembly",
+			"tier": 3,
+			"kind": "human",
+			"art": "en_xiaoheng_duel",
+			"elem": "none",
+			"hp": 1.3,
+			"atk": 1.3,
+			"def": 1.1,
+			"spd": 1.2,
+			"skills": [
+				"fated_path",
+				"heart_sword",
+				"sword_rain"
+			],
+			"loot": {
+				"stone": [
+					10,
+					20
+				]
+			},
+			"notice": 0,
+			"text": "A Foundation disciple like you, and a little better at everything. He does not seem to know it is a fight until you strike."
+		}
+	]
+}

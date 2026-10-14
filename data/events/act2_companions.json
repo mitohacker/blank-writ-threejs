@@ -1,0 +1,1534 @@
+{
+	"events": [
+		{
+			"id": "a2_yunzhi_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "Sword and Silence",
+			"art": "sect",
+			"portrait": "yunzhi",
+			"text": "She practises at dawn on the ridge where nobody goes, and she has not said a word in the time it takes the sun to clear the pines. It is not rudeness. You are standing at the edge of her circle, a sword's length from the tip of her blade at the end of every cut, and you understand you have been placed there on purpose: an instrument for her to measure by. The blade makes a sound like cloth tearing very slowly. After an hour she lowers it. 'Mm,' she says, which from her is a sentence. 'Tomorrow? A sword's length.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"not_flags": [
+					"a2_yz1_done"
+				],
+				"any": [
+					{
+						"flags": [
+							"yz_friend"
+						]
+					},
+					{
+						"sect": [
+							"azure"
+						]
+					}
+				]
+			},
+			"prio": 54,
+			"once": true,
+			"tags": [
+				"companion",
+				"yunzhi"
+			],
+			"choices": [
+				{
+					"label": "Stand where she put you, and keep silent",
+					"hint": "Patience.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 15
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz1_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_yz_goose",
+							"expires": 4
+						}
+					],
+					"after": "You stand until your legs have an opinion. At some point you stop waiting for the next cut and begin to hear the one that has already happened."
+				},
+				{
+					"label": "Ask what she hears when it sings",
+					"hint": "Needs a quiet spirit.",
+					"req": {
+						"stats": {
+							"spirit": 10
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz_hum"
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz1_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_yz_goose",
+							"expires": 4
+						}
+					],
+					"after": "'The cracked places,' she says. 'When we are near one, it -' She shuts her mouth with a click. 'That is the whole answer. I'm sorry. It's a bad one.'"
+				},
+				{
+					"label": "Pick up a stick and ask for a bout",
+					"hint": "Roll: Agility.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "speed",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "She considers the stick for a long moment, and then, with enormous care, she lets you hit her."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.1
+								},
+								{
+									"op": "text",
+									"t": "She does not hit you. The air does. You will have a very precise bruise in the shape of her opinion."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz1_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_yz_goose",
+							"expires": 4
+						}
+					],
+					"after": "'Mm,' she says. 'A sword's length.'"
+				}
+			]
+		},
+		{
+			"id": "a2_yunzhi_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Goose",
+			"art": "sect",
+			"portrait": "yunzhi",
+			"text": "The refectory goose has been stealing from the senior disciples for a decade. This morning it has picked on Brother Fen's rice cake, and Brother Fen, six feet of solemn swordsmanship, is running in a wide dignified circle with a goose three feet behind him, wings spread, honking the honk of a creature with no regrets. You are standing next to Yun Zhi. She makes a sound. It starts as a cough. She puts her sleeve to her mouth. It does not hold. She laughs, helplessly, a whole-body bright unguarded laugh that turns three heads, and then she sees them turn and goes white. 'Don't,' she says. 'The sword doesn't like it when I -' She stops. 'I've said too much.'",
+			"req": {},
+			"prio": 52,
+			"once": true,
+			"tags": [
+				"companion",
+				"yunzhi"
+			],
+			"choices": [
+				{
+					"label": "Laugh with her",
+					"hint": "It will cost her a little.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz_laughed"
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz2_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_yz_sea",
+							"expires": 4
+						}
+					],
+					"after": "You laugh. She looks at you with enormous alarm, and then the thing happens to her face again, and then you are both useless, holding the wall."
+				},
+				{
+					"label": "Say nothing and stand so no one sees her face",
+					"hint": "A shoulder like a door.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "notice",
+							"v": -2
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz2_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_yz_sea",
+							"expires": 4
+						}
+					],
+					"after": "You turn your shoulder. She laughs into it all the way down, and when she is done she does not say thank you. She puts a hand on your sleeve for the length of a breath, which is more."
+				},
+				{
+					"label": "Ask what the sword doesn't like",
+					"hint": "A question she will answer slowly.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz_sword_asked"
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz2_done"
+						},
+						{
+							"op": "offer",
+							"card": "c_a2_yz_sea",
+							"expires": 4
+						}
+					],
+					"after": "'When I forget,' she says. 'It goes quiet, then. And it is louder after.' She watches the goose go by. 'I try to be careful. I am told I'm very good at it.'"
+				}
+			]
+		},
+		{
+			"id": "a2_yunzhi_3",
+			"kind": "chain",
+			"act": 2,
+			"title": "What the Sea Is For",
+			"art": "sect",
+			"portrait": "yunzhi",
+			"text": "She asks it at the edge of the cloud-sea below the peak, where the mist fills the valley so thickly you could believe it was water. 'You've seen it,' she says. Not a question; she has taken your silence for an answer. 'The real one. What is it like? I have asked everyone. They say: big. They say: blue. They say it's a great deal of water.' She is holding the hilt as if it were a child's hand. 'Nobody says what it is for.' Beneath your feet the mountain makes its low sound, the plate on the table, and her sword answers it faintly from the sheath.",
+			"req": {},
+			"prio": 48,
+			"once": true,
+			"tags": [
+				"companion",
+				"yunzhi"
+			],
+			"choices": [
+				{
+					"label": "Tell her what you know of water, truthfully",
+					"hint": "Honest, and it is not much.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"yunzhi": 6
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "yz_bond"
+								},
+								{
+									"op": "tech",
+									"id": "heart_sword"
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz3_done"
+						}
+					],
+					"after": "You say: it moves when you do not. It is cold at the edge and cold at the bottom and between them, for a little way, warm. She asks where the warm part is. You say you do not know. She nods as if that were the best answer."
+				},
+				{
+					"label": "Promise to take her there, when this is over",
+					"hint": "A promise is a debt.",
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_yz_promise"
+						},
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": 2
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"yunzhi": 6
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "yz_bond"
+								},
+								{
+									"op": "tech",
+									"id": "heart_sword"
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz3_done"
+						}
+					],
+					"after": "'When this is over,' she repeats, trying the words like a blade. 'Mm.' It is the first time you have heard her say a thing she was not sure of."
+				},
+				{
+					"label": "Tell her the sea is dull, and spare her",
+					"hint": "A kind lie. It has a cost.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "yunzhi",
+							"v": -1
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz_lied"
+						},
+						{
+							"op": "flag",
+							"k": "a2_yz3_done"
+						}
+					],
+					"after": "She says: 'Oh.' She nods slowly, like someone putting a thing down, and you understand you have taken away the one thing on the road she was looking forward to."
+				}
+			]
+		},
+		{
+			"id": "a2_heng_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Ledger of Favours",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "Xiao Heng has come to pay you. He stands at your door with a basket of persimmons, a small ledger with a ribbon in it, and a face of such total sincerity that it is difficult to be rude to. 'I counted,' he says. 'Altogether I owe you three. A seat, a bout, and the ladder, if you count the ladder. I'd rather not count the ladder.' He shows you the column: a neat hand, three small ticks, and where your name should be, an empty square. 'The ink won't hold it. I thought it was my brush.' He smiles, worried. 'It isn't fair, you know, how easy it keeps being. I'd like to be fair, if someone could show me how.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"a2_contest_done",
+					"crack_heard"
+				],
+				"not_flags": [
+					"a2_heng1_done"
+				]
+			},
+			"prio": 55,
+			"once": true,
+			"tags": [
+				"companion",
+				"xiaoheng"
+			],
+			"choices": [
+				{
+					"label": "Let him pay: take the persimmons",
+					"hint": "Accepting is a kindness.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "stone",
+							"v": 20
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_heng_3",
+							"delay": 7
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"heng_friend"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_heng_lose",
+									"expires": 4
+								}
+							],
+							"else": [
+								{
+									"op": "queue",
+									"id": "a2_heng_2r",
+									"delay": 3
+								}
+							]
+						}
+					],
+					"after": "They are very good persimmons. You eat one in front of him so he can see it done. He writes: one persimmon, accepted."
+				},
+				{
+					"label": "Tell him the ink isn't his fault",
+					"hint": "True, and strange.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng_ink"
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_heng_3",
+							"delay": 7
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"heng_friend"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_heng_lose",
+									"expires": 4
+								}
+							],
+							"else": [
+								{
+									"op": "queue",
+									"id": "a2_heng_2r",
+									"delay": 3
+								}
+							]
+						}
+					],
+					"after": "'Whose is it, then?' he asks, honestly. You find you cannot answer, and he writes that down too."
+				},
+				{
+					"label": "Tell him to stop counting: it is how he hides",
+					"hint": "Roll: Dao-heart. He may not thank you.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "heart",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 2
+								},
+								{
+									"op": "flag",
+									"k": "a2_heng_stopped"
+								},
+								{
+									"op": "text",
+									"t": "He closes the ledger and looks at it, and for the first time seems to see his own hand."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": -1
+								},
+								{
+									"op": "text",
+									"t": "'I see,' he says, very politely, and somehow you are the one who has been rude."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_heng_3",
+							"delay": 7
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"heng_friend"
+								]
+							},
+							"then": [
+								{
+									"op": "offer",
+									"card": "c_a2_heng_lose",
+									"expires": 4
+								}
+							],
+							"else": [
+								{
+									"op": "queue",
+									"id": "a2_heng_2r",
+									"delay": 3
+								}
+							]
+						}
+					],
+					"after": "It is not an easy thing to say to a man holding persimmons."
+				}
+			]
+		},
+		{
+			"id": "a2_heng_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "Teach Me to Lose",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "He has asked to be taught something nobody teaches. 'Not how to win,' Xiao Heng says, shaking out his sleeves in the practice yard, which has quietly emptied. 'I do that on my own, rather too well. I want to lose. Just once, properly, so I know what it is. I know it is rude to ask. But everyone I fight lets me through at the last moment, or the wind does, or a root.' He looks at his hands as if they belonged to somebody else. 'I am afraid I have never noticed anything. I think you have to be losing to notice.'",
+			"req": {},
+			"prio": 51,
+			"once": true,
+			"tags": [
+				"companion",
+				"xiaoheng"
+			],
+			"choices": [
+				{
+					"label": "Spar him, and don't let him through",
+					"hint": "A friendly fight; it never ends the life.",
+					"fx": [
+						{
+							"op": "battle",
+							"enemy": "xiaoheng_assembly",
+							"win": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 2
+								},
+								{
+									"op": "stat",
+									"k": "speed",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 15
+								},
+								{
+									"op": "text",
+									"t": "He lies on the flagstones and laughs until he is crying. 'Oh,' he says. 'So that is what it is.'"
+								}
+							],
+							"lose": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								},
+								{
+									"op": "text",
+									"t": "The wind turns your last strike aside. He apologises to it, and to you, and for some reason to the sky."
+								}
+							],
+							"scale": 0.35
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng2_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"xiaoheng": 4
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_xiaoheng"
+								},
+								{
+									"op": "item",
+									"id": "ledger_favour"
+								}
+							]
+						}
+					],
+					"after": "He draws, and with a small shock you see he is nervous."
+				},
+				{
+					"label": "Teach him dice, honestly",
+					"hint": "Roll: Fortune, against his.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "fortune",
+							"dc": 9,
+							"pass": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 2
+								},
+								{
+									"op": "stone",
+									"v": 30
+								},
+								{
+									"op": "text",
+									"t": "You win. He is delighted past all reason. He has to sit down on the step."
+								}
+							],
+							"fail": [
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								},
+								{
+									"op": "stone",
+									"v": -10
+								},
+								{
+									"op": "text",
+									"t": "He wins six throws running, apologising each time, and gives your money back. It is worse than losing."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng2_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"xiaoheng": 4
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_xiaoheng"
+								},
+								{
+									"op": "item",
+									"id": "ledger_favour"
+								}
+							]
+						}
+					],
+					"after": "The dice come up before you have finished thinking it."
+				},
+				{
+					"label": "Tell him to ask for help. That is the lesson.",
+					"hint": "The kindest thing and the hardest.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng_asked"
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng2_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"rel": {
+									"xiaoheng": 4
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_xiaoheng"
+								},
+								{
+									"op": "item",
+									"id": "ledger_favour"
+								}
+							]
+						}
+					],
+					"after": "He thinks about it for a long time. 'Oh,' he says. 'But who would...' 'Me,' you say. His face does a surprising thing."
+				}
+			]
+		},
+		{
+			"id": "a2_heng_2r",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Door That Opened for Him",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "There is a pill-room in the Hall of Elders that opens once a generation, for one disciple, and the door is not a door but a judgement. You and Xiao Heng reach it the same morning, from opposite stairs. The lock turns for him with a small contented sound. He stands in the doorway and looks at you, and at the lock, and at you. 'It was meant for you,' he says, stricken. 'I'd feel awful. Please take it. I mean, I'll go in and then I'll not, I'll just -' You have never wanted to hit someone so much for being so kind.",
+			"req": {},
+			"prio": 51,
+			"once": true,
+			"tags": [
+				"companion",
+				"xiaoheng"
+			],
+			"choices": [
+				{
+					"label": "Take what he leaves, and swallow your pride",
+					"hint": "Free, and it costs.",
+					"fx": [
+						{
+							"op": "item",
+							"id": "pill_body"
+						},
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": -1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng2_done"
+						}
+					],
+					"after": "It is a very good pill. It sits in your stomach like a coin you did not earn."
+				},
+				{
+					"label": "Refuse. You will open your own door.",
+					"hint": "Pride is a currency too.",
+					"fx": [
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_refused_heng"
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng2_done"
+						}
+					],
+					"after": "'Oh,' he says. 'Of course. I'm sorry. I'll go in, then.' He does not, quite, but the door shuts behind him like a mouth."
+				},
+				{
+					"label": "Pick the lock while he watches",
+					"hint": "Roll: Agility. The ward bites.",
+					"fx": [
+						{
+							"op": "roll",
+							"stat": "speed",
+							"dc": 7,
+							"pass": [
+								{
+									"op": "item",
+									"id": "pill_body"
+								},
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 10
+								},
+								{
+									"op": "text",
+									"t": "The lock gives with a grudging click. He claps. He actually claps."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.2
+								},
+								{
+									"op": "rel",
+									"k": "xiaoheng",
+									"v": 1
+								},
+								{
+									"op": "notice",
+									"v": 3
+								},
+								{
+									"op": "text",
+									"t": "A ward bites you to the elbow. He apologises to it."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng2_done"
+						}
+					],
+					"after": "He watches with his hands clasped, like a man at a recital."
+				}
+			]
+		},
+		{
+			"id": "a2_heng_3",
+			"kind": "chain",
+			"act": 2,
+			"title": "Being Carried",
+			"art": "sect",
+			"portrait": "xiaoheng",
+			"text": "He has stopped sleeping, he says, which for Xiao Heng is a remarkable thing to admit: a man for whom sleep has always come on time, like a bill. You sit on the wall above the practice yard in the long blue of the evening. 'Do you ever feel,' he says, 'carried? As if everyone has been so careful with you that you have never touched the ground? I put a foot down and it is always already there.' Beneath the wall the mountain makes its low sound. 'It is not meant to be this easy,' he says. 'I am afraid I am being used for something.'",
+			"req": {},
+			"prio": 47,
+			"once": true,
+			"tags": [
+				"companion",
+				"xiaoheng"
+			],
+			"choices": [
+				{
+					"label": "Tell him what you saw",
+					"hint": "You remember.",
+					"req": {
+						"any": [
+							{
+								"flags": [
+									"a2_heng_saw"
+								]
+							},
+							{
+								"meta": [
+									"t_heng"
+								]
+							}
+						]
+					},
+					"fx": [
+						{
+							"op": "flag",
+							"k": "a2_heng_told"
+						},
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "notice",
+							"v": 3
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng3_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"heng_friend"
+								],
+								"rel": {
+									"xiaoheng": 4
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_xiaoheng"
+								}
+							]
+						}
+					],
+					"after": "He does not move for a long time. 'Whose name was it?' he says at last. You say you think you know. He nods, and looks at his hands."
+				},
+				{
+					"label": "Tell him he has been very lucky, and nothing else",
+					"hint": "True, as far as it goes.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng3_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"heng_friend"
+								],
+								"rel": {
+									"xiaoheng": 4
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_xiaoheng"
+								}
+							]
+						}
+					],
+					"after": "'Luck,' he says. 'Yes. That's what the elders say. In the same words, all of them.' He laughs at that, not happily."
+				},
+				{
+					"label": "Say nothing. Sit with him.",
+					"hint": "It is enough, sometimes.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaoheng",
+							"v": 2
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_heng3_done"
+						},
+						{
+							"op": "if",
+							"req": {
+								"flags": [
+									"heng_friend"
+								],
+								"rel": {
+									"xiaoheng": 4
+								}
+							},
+							"then": [
+								{
+									"op": "flag",
+									"k": "ally_xiaoheng"
+								}
+							]
+						}
+					],
+					"after": "The wall is still warm from the day. He puts his hands between his knees. After a while he says, quietly, 'Thank you for not telling me it's fine.'"
+				}
+			]
+		},
+		{
+			"id": "a2_xiaohe_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "Counting Your Pulse",
+			"art": "valley",
+			"portrait": "xiaohe",
+			"text": "Xiao He has grown into the sort of person who takes your wrist without asking and counts. Her lips move. She has a satchel of the valley's herbs that clink like a small bad conscience, and a scar on her thumb from a root that fought back. 'Too fast,' she says. 'Too fast, and a little thin on the left. You've been carrying something heavy and calling it nothing.' Her eyes come up. They have the same look they had in the winter, when she was small and sick and worried about you. 'Sit,' she says. 'It isn't a request.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"ally_xiaohe",
+					"a2_contest_done"
+				],
+				"not_flags": [
+					"a2_xh1_done"
+				]
+			},
+			"prio": 53,
+			"once": true,
+			"tags": [
+				"companion",
+				"xiaohe"
+			],
+			"choices": [
+				{
+					"label": "Sit and let her tend you",
+					"hint": "Be looked after.",
+					"fx": [
+						{
+							"op": "hp_pct",
+							"v": 0.5
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_xiaohe_2",
+							"delay": 4
+						}
+					],
+					"after": "She works in silence, in a small cloud of smell: mint, burnt rice, camphor. When she is done she does not let go of your wrist for a moment longer than the count."
+				},
+				{
+					"label": "Tell her what you have seen: the sound, the names",
+					"hint": "She will carry it too.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh_told"
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_xiaohe_2",
+							"delay": 4
+						}
+					],
+					"after": "She does not say it can't be true. She puts down the wrist and picks up the other and counts that one too, for a good long time. 'Then I'll study harder,' she says."
+				},
+				{
+					"label": "Ask what she has been studying",
+					"hint": "She loves to be asked.",
+					"fx": [
+						{
+							"op": "mat",
+							"k": "herb",
+							"v": 4
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh_research"
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh1_done"
+						},
+						{
+							"op": "queue",
+							"id": "a2_xiaohe_2",
+							"delay": 4
+						}
+					],
+					"after": "'The cough,' she says. 'The winter one. I'm trying to make a thing that stops it before it starts.' She does not say what it cost to get the sample. Her hands do."
+				}
+			]
+		},
+		{
+			"id": "a2_xiaohe_2",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Clerk at the Infirmary Door",
+			"art": "valley",
+			"portrait": "clerk",
+			"text": "The clerk is waiting at the infirmary door when you come to look in on her, and he is exactly as you remember: the grey sleeve, the lamp, the way he holds his scroll as if it might spill. He is not looking at you. He is looking at Xiao He, who is washing her hands, and he has a very kind face. 'A clerical matter,' he says to no one. 'A correction. Her winter has been re-dated. The entry was found to be incomplete, and will be amended.' He lets the scroll unroll a little. 'Not this year. Nothing so crude. Only the date.'",
+			"req": {},
+			"prio": 49,
+			"once": true,
+			"tags": [
+				"companion",
+				"xiaohe",
+				"inspector"
+			],
+			"choices": [
+				{
+					"label": "Stand beside her and let him write it",
+					"hint": "She will know you did not look away.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh_dated"
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh2_done"
+						}
+					],
+					"after": "He writes the date. It is a good hand, clear and level. She dries her fingers on her apron, and takes yours, and does not say anything at all."
+				},
+				{
+					"label": "Pay him to lose the page",
+					"hint": "Costs stones. He remembers faces.",
+					"cost": {
+						"stone": 40
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": 5
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh_bribed"
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh2_done"
+						}
+					],
+					"after": "He accepts with the small bow of a man whose hands are not his own. 'A filing error,' he agrees, 'is the oldest sort.'"
+				},
+				{
+					"label": "Read him her original line, word for word",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_xiaohe"
+						]
+					},
+					"fx": [
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh_protected"
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh2_done"
+						}
+					],
+					"after": "He loses his place. 'That is not,' he says, 'in my copy.' 'It is in mine,' you say, and recite the next line too. He rolls the scroll up with the speed of a man putting out a fire."
+				},
+				{
+					"label": "Step between them. 'File me instead.'",
+					"hint": "Needs a steady heart.",
+					"req": {
+						"stats": {
+							"heart": 9
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xiaohe",
+							"v": 2
+						},
+						{
+							"op": "notice",
+							"v": 8
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh_marked"
+						},
+						{
+							"op": "flag",
+							"k": "a2_xh2_done"
+						}
+					],
+					"after": "He looks at you with a courteous regret. 'There's no line for you,' he says. 'That is rather the difficulty.' He ticks something beside her name anyway, and goes."
+				}
+			]
+		},
+		{
+			"id": "a2_qingnang_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "The Pot on the Table",
+			"art": "valley",
+			"portrait": "qingnang",
+			"text": "Granny Qingnang sets a clay pot on the table between you and takes off the lid. The smell is rotting plum and a closed room. 'Drink it,' she says, 'and I'll tell you what it is.' She has a long wooden spoon. 'If you don't, I'll tell you anyway, but you won't believe me. I have lost none I could reach. It's the ones I couldn't reach who keep me up, the dung-beetle's cousins.' She does not smile. 'Drink. Or leave. Or lie to me, and I'll know.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"a2_opened"
+				],
+				"not_flags": [
+					"a2_qn1_done"
+				],
+				"any": [
+					{
+						"sect": [
+							"herb"
+						]
+					},
+					{
+						"rel": {
+							"qingnang": 2
+						}
+					},
+					{
+						"flags": [
+							"ally_xiaohe"
+						]
+					}
+				]
+			},
+			"prio": 50,
+			"once": true,
+			"tags": [
+				"companion",
+				"qingnang"
+			],
+			"choices": [
+				{
+					"label": "Drink it",
+					"hint": "Roll: Body. Fail and you are very ill.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "roll",
+							"stat": "body",
+							"dc": 6,
+							"pass": [
+								{
+									"op": "stat",
+									"k": "body",
+									"v": 1
+								},
+								{
+									"op": "cult",
+									"v": 8
+								},
+								{
+									"op": "text",
+									"t": "It tastes of plum and a closed room and, underneath, faintly, of iron. You keep it down."
+								}
+							],
+							"fail": [
+								{
+									"op": "hp_pct",
+									"v": -0.4
+								},
+								{
+									"op": "item",
+									"id": "pill_antidote"
+								},
+								{
+									"op": "text",
+									"t": "You do not keep it down. She sets your head in her lap without comment and puts an antidote in your fist."
+								}
+							]
+						},
+						{
+							"op": "flag",
+							"k": "a2_qn1_done"
+						}
+					],
+					"after": "She watches the cup go up like a woman watching weather."
+				},
+				{
+					"label": "Ask what's in it first",
+					"hint": "Needs a quick mind.",
+					"req": {
+						"stats": {
+							"insight": 8
+						}
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 1
+						},
+						{
+							"op": "cult",
+							"v": 12
+						},
+						{
+							"op": "tech",
+							"id": "spring_rain"
+						},
+						{
+							"op": "flag",
+							"k": "a2_qn1_done"
+						}
+					],
+					"after": "'Finally,' she says. 'A patient with a nose.' She lets the lid down, and, while she is about it, teaches you the thing she meant to teach the last idiot."
+				},
+				{
+					"label": "Tell her you've had someone you couldn't reach, too",
+					"hint": "It is a true thing to say.",
+					"fx": [
+						{
+							"op": "rel",
+							"k": "qingnang",
+							"v": 2
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_qn1_done"
+						}
+					],
+					"after": "She is quiet for a very long time. 'Sit,' she says. 'No, not there, you'll sit on the rue.' She makes you tea. It is terrible. She stays."
+				}
+			]
+		},
+		{
+			"id": "a2_xuanxiao_1",
+			"kind": "chain",
+			"act": 2,
+			"title": "Tea With the Master",
+			"art": "sect",
+			"portrait": "xuanxiao",
+			"text": "Master Xuanxiao pours the tea himself, because he says a man should know how his tea is made. It is very good tea. He asks nothing about your cultivation. He asks whether you are sleeping, whether the food is warm, whether you have somewhere to be afraid. 'Everyone is afraid before the Core,' he says, comfortably. 'It is only a wall. On the far side the road is quite plain. I have walked it with nine hundred disciples and come back alone every time, because they did not come back. They went.' His eyes shine. 'I can send you on it more gently than anyone. Be at ease.'",
+			"req": {
+				"realm_min": 2,
+				"realm_max": 2,
+				"flags": [
+					"crack_heard"
+				],
+				"not_flags": [
+					"a2_xx1_done"
+				],
+				"any": [
+					{
+						"sect": [
+							"azure"
+						]
+					},
+					{
+						"rel": {
+							"xuanxiao": 1
+						}
+					}
+				]
+			},
+			"prio": 46,
+			"once": true,
+			"tags": [
+				"companion",
+				"xuanxiao"
+			],
+			"choices": [
+				{
+					"label": "Bow and accept his blessing",
+					"hint": "A mark you cannot see.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 20
+						},
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": 2
+						},
+						{
+							"op": "notice",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_xx1_done"
+						}
+					],
+					"after": "His thumb on your brow is warm. It leaves no mark you can see, which does not mean it leaves none."
+				},
+				{
+					"label": "Ask what 'went' means: where do they go?",
+					"hint": "He loves a good question.",
+					"fx": [
+						{
+							"op": "cult",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_xx_asked"
+						},
+						{
+							"op": "flag",
+							"k": "a2_xx1_done"
+						}
+					],
+					"after": "'Up,' he says, and the way he says it is so full of light that you do not, for the moment, notice that he has not answered."
+				},
+				{
+					"label": "Say the word 'filing' and watch his hands",
+					"hint": "You remember.",
+					"req": {
+						"meta": [
+							"t_filing"
+						]
+					},
+					"fx": [
+						{
+							"op": "rel",
+							"k": "xuanxiao",
+							"v": -2
+						},
+						{
+							"op": "notice",
+							"v": 10
+						},
+						{
+							"op": "stat",
+							"k": "heart",
+							"v": 1
+						},
+						{
+							"op": "flag",
+							"k": "a2_xx1_done"
+						}
+					],
+					"after": "His hands go still on the teapot. When he looks up the kindness is all still there, and nothing is behind it."
+				},
+				{
+					"label": "Thank him and decline, politely",
+					"hint": "Safe.",
+					"fx": [
+						{
+							"op": "notice",
+							"v": -3
+						},
+						{
+							"op": "stone",
+							"v": 10
+						},
+						{
+							"op": "flag",
+							"k": "a2_xx1_done"
+						}
+					],
+					"after": "'Of course,' he says. 'Of course. There is no hurry.' There is a very slight stress on the word no."
+				}
+			]
+		}
+	]
+}

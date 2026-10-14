@@ -1,0 +1,99 @@
+{
+	"_schema": "origin: id zh en text stat? root? stone? cards? items? flags? rel? place unlock?",
+	"origins": [
+		{
+			"id": "orphan",
+			"zh": "孤儿",
+			"en": "Orphan",
+			"place": "village",
+			"stat": {
+				"body": 1
+			},
+			"rel": {
+				"xiaohe": 1
+			},
+			"text": "A foundling of Blue-stone Village with a sister who is not blood: the headman's other orphan, who has decided you are hers."
+		},
+		{
+			"id": "apprentice",
+			"zh": "药童",
+			"en": "Herbalist's Apprentice",
+			"place": "town",
+			"root": {
+				"wood": 1
+			},
+			"cards": [
+				"alchemy"
+			],
+			"items": [
+				"herb_spirit"
+			],
+			"text": "Fallen-Star Town's herbalist took you in at seven and has taught you the smell of every leaf on his shelves. You can already refine a pill."
+		},
+		{
+			"id": "heir",
+			"zh": "没落公子",
+			"en": "Fallen Heir",
+			"place": "village",
+			"stone": 60,
+			"stat": {
+				"insight": 1,
+				"body": -1
+			},
+			"items": [
+				"sword_iron"
+			],
+			"text": "The last of a ruined line, with a draughty manor, an unpaid steward, a good education and a rusted family sword."
+		},
+		{
+			"id": "beggar",
+			"zh": "乞儿",
+			"en": "Beggar",
+			"place": "town",
+			"stat": {
+				"speed": 1,
+				"heart": 1
+			},
+			"items": [
+				"knife_beggar"
+			],
+			"rel": {
+				"moshan": 1
+			},
+			"text": "You sleep under the Fallen-Star gate. A one-armed drunk shares his gourd and his lessons, and does not say why."
+		},
+		{
+			"id": "foundling",
+			"zh": "戏班弃婴",
+			"en": "Troupe Foundling",
+			"place": "town",
+			"stat": {
+				"fortune": 1,
+				"speed": 1
+			},
+			"rel": {
+				"sujiu": 1
+			},
+			"text": "Left in a props-box by a travelling opera, raised on cheap applause, and watched over by a fox you could swear is smiling."
+		},
+		{
+			"id": "gravekeeper",
+			"zh": "守墓人",
+			"en": "Gravekeeper",
+			"place": "village",
+			"unlock": "t_blank",
+			"stat": {
+				"heart": 2,
+				"spirit": 1,
+				"speed": -1
+			},
+			"items": [
+				"lantern_soul"
+			],
+			"cards": [
+				"heart_mirror"
+			],
+			"text": "You keep the hill of stones above Blue-stone, where a grey clerk once walked past you without seeing you, and you have been counting ever since."
+		}
+	]
+}
