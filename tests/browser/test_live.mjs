@@ -35,6 +35,15 @@ await page.waitForFunction(() => document.getElementById("boot")?.classList.cont
 ok((await page.evaluate(() => window.__bw.screen_name)) === "title", "the title screen shows");
 mkdirSync("shots", { recursive: true });
 await page.screenshot({ path: "shots/live_title.png" });
+{
+  // a first visit with no choice saved opens in Traditional Chinese
+  const p2 = await (await browser.newContext({ viewport: { width: 1280, height: 720 }, locale: "en-US" })).newPage();
+  await p2.goto(URL_BASE + "?fresh=1", { waitUntil: "load" });
+  await p2.waitForFunction(() => document.getElementById("boot")?.classList.contains("gone"), null, { timeout: 60000 });
+  const d = await p2.evaluate(() => ({ lang: document.documentElement.lang, title: document.title }));
+  ok(d.lang === "zh-Hant" && d.title === "無字命", `the default language is Traditional Chinese (${JSON.stringify(d)})`);
+  await p2.close();
+}
 await page.click("[data-id=new]");
 await sleep(500);
 await page.click("[data-id=begin]");

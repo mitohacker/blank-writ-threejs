@@ -570,7 +570,8 @@ if (!fs.existsSync(dump_path)) {
   // Godot's sort_custom is unstable; the port runs the same introsort, so even events of one priority come out in Godot's order
   same(D.story_ids, G.orders.story_ids, "story events in Godot's (unstable) priority order");
   same(D.random_ids, G.orders.random_ids, "random events in the same order");
-  ok(L.zh_count() === G.zh_count, `Chinese table size equals Godot's (${L.zh_count()} vs ${G.zh_count})`);
+  // the web build adds a few lines of its own (data/i18n/zh_web.json: materials in the bag)
+  ok(L.zh_count() >= G.zh_count && L.zh_count() <= G.zh_count + 20, `Chinese table is Godot's plus the web build's own lines (${L.zh_count()} vs ${G.zh_count})`);
   same([-1, 0, 1, 2, 3, 4, 5, 6, 7, 8].map((r) => D.realm(r).id), G.realm_dump, "D.realm clamps like the GDScript");
   ok(Txt.cost_line({ herb: 3, stone: 5 }) === "3 herb, 5 stone", "cost_line prints whole numbers without .0 (Godot printed 3.0: kept as a deliberate fix)");
 

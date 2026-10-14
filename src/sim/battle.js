@@ -180,7 +180,7 @@ export class Battle {
   }
 
   static _act(u, foe, rng, R, over, root_dmg) {
-    const fr = { a: u.side === "p" ? 0 : 1, skill: "Strike", zh: "普攻", dmg: 0, crit: false, miss: false, heal: 0, text: [] };
+    const fr = { a: u.side === "p" ? 0 : 1, skill: "Strike", zh: L.zh("普攻"), dmg: 0, crit: false, miss: false, heal: 0, text: [] };
     const text = fr.text;
     const lost = Battle._tick_statuses(u, R, text);
     if (float(u.hp) <= 0.0) {
@@ -278,7 +278,7 @@ export class Battle {
     }
     if (pre_text.length > 0) {
       frames.push({
-        a: 0, skill: "Talisman", zh: "符", dmg: 0, crit: false, miss: false, heal: 0, text: pre_text,
+        a: 0, skill: "Talisman", zh: L.zh("符"), dmg: 0, crit: false, miss: false, heal: 0, text: pre_text,
         php: int(player.hp), ehp: int(enemy.hp), pmp: int(player.mp), emp: int(enemy.mp),
       });
     }

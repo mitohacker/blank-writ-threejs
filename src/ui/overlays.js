@@ -115,8 +115,34 @@ export const Overlays = {
     const fill = () => {
       sc.textContent = "";
       const ids = Object.keys(run.bag).sort();
+      // materials first: they are not items, so they were missing from the bag altogether
+      {
+        const h = label(L.t("Materials"), 24, "#33261a");
+        h.style.position = "static";
+        h.style.fontWeight = "700";
+        h.style.marginBottom = "4px";
+        sc.appendChild(h);
+        const r = line_row(1160, 60);
+        let mx = 0;
+        for (const k of ["herb", "ore", "core"]) {
+          const ic = Art.icon("res_" + k);
+          if (ic) add(r, at(tex_rect(ic, 48, 48), mx, 6));
+          add(r, at(label(`${L.t(k)}  x${int((run.mats || {})[k] || 0)}`, 24, "#1f170f"), mx + 58, 14));
+          mx += 380;
+        }
+        sc.appendChild(r);
+        const hint = label(L.t("Materials: herbs, ore and cores are spent by craft and venture cards."), 17, "#59472f");
+        hint.style.position = "static";
+        hint.style.marginBottom = "14px";
+        sc.appendChild(hint);
+        const h2 = label(L.t("Items"), 24, "#33261a");
+        h2.style.position = "static";
+        h2.style.fontWeight = "700";
+        h2.style.marginBottom = "4px";
+        sc.appendChild(h2);
+      }
       if (ids.length === 0) {
-        const l = label(L.t("Nothing here yet. Wander, hunt, trade."), 24, "#4d4033");
+        const l = label(L.t("No items yet. Wander, hunt, trade."), 22, "#4d4033");
         l.style.position = "static";
         sc.appendChild(l);
       }

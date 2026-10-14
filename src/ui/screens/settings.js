@@ -10,10 +10,10 @@ import * as X from "../ui_extra.js";
 
 const PANEL_POS = [360, 120];
 const PANEL_SIZE = [1200, 840];
-const LANG_BTN = [380, 96];
+const LANG_BTN = [330, 96];
 
-const LANGS = (L.LANGS && L.LANGS.length ? L.LANGS : ["en", "zh"]);
-const NATIVE_NAMES = L.NATIVE_NAMES || { en: "English", zh: "中文" };
+const LANGS = L.LANGS; // zh-Hant (the default), zh-Hans, en
+const NATIVE_NAMES = L.NATIVE_NAMES;
 
 export default class SettingsScreen extends Screen {
   async setup(main, args = {}) {
@@ -59,17 +59,17 @@ export default class SettingsScreen extends Screen {
       const on = L.lang === id;
       if (on) root.appendChild(X.ring_box([pos[0] + x - 6, pos[1] + 58], [LANG_BTN[0] + 12, LANG_BTN[1] + 12], X.GOLD, 4, 14, 8));
       // the name is written in its own language, whichever one is showing
-      const b = button(String(NATIVE_NAMES[id] ?? id), LANG_BTN[0], LANG_BTN[1], { font_size: 40, onclick: () => this._pick_language(id) });
+      const b = button(String(NATIVE_NAMES[id] ?? id), LANG_BTN[0], LANG_BTN[1], { font_size: 38, onclick: () => this._pick_language(id) });
       X.place(b, [pos[0] + x, pos[1] + 64]);
       b.dataset.lang = id;
       root.appendChild(b);
-      x += LANG_BTN[0] + 40;
+      x += LANG_BTN[0] + 30;
     }
   }
 
-  _pick_language(id) {
+  async _pick_language(id) {
     if (id === L.lang) return;
-    this.main.set_language(id);
+    await this.main.set_language(id);
     this.main.goto("settings", { back: this._back_to });
   }
 

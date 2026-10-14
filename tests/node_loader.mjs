@@ -42,6 +42,10 @@ let _game = null;
 export async function load_game({ lang = "en", persist = false } = {}) {
   const D = await BWData.load(fetch_json);
   await L.load(fetch_json, D.i18n_files);
+  // the Traditional tables, and the data's names follow the language ("zh" = Simplified here, as in the first release)
+  const hant = await Promise.all((D.i18n_hant_files || []).map((f) => fetch_json(f)));
+  L.load_tables_hant(hant);
+  L.link(D);
   L.set_lang(lang);
   const store = new MemoryStore();
   const meta = new Meta(D, store);

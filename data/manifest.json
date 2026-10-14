@@ -39,6 +39,18 @@
   "zh_content_4.json",
   "zh_content_5.json",
   "zh_ui.json",
-  "zh_ui_screens.json"
+  "zh_ui_screens.json",
+  "zh_web.json"
+ ],
+ "i18n_hant": [
+  "zh_content_0.json",
+  "zh_content_1.json",
+  "zh_content_2.json",
+  "zh_content_3.json",
+  "zh_content_4.json",
+  "zh_content_5.json",
+  "zh_ui.json",
+  "zh_ui_screens.json",
+  "zh_web.json"
  ]
 }

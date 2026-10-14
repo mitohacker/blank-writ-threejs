@@ -109,12 +109,12 @@ export class Txt {
   }
 
   static tier_zh(t) {
-    return ["普", "良", "精", "绝"][clampi(t, 0, 3)];
+    return L.zh(["普", "良", "精", "绝"][clampi(t, 0, 3)]);
   }
 
   /** The tier word in the shown language (a single glyph in Chinese, the quality name in English). */
   static tier_name(t) {
-    if (L.is_zh()) return ["普通", "优良", "精品", "绝品"][clampi(t, 0, 3)];
+    if (L.is_zh()) return L.zh(["普通", "优良", "精品", "绝品"][clampi(t, 0, 3)]);
     return [L.t("Plain"), L.t("Fine"), L.t("Rare"), L.t("Supreme")][clampi(t, 0, 3)];
   }
 
@@ -126,7 +126,7 @@ export class Txt {
     const zh = { cultivate: "修炼", craft: "炼制", venture: "历练", social: "交游", rest: "休养", chance: "机缘", combat: "斗法" };
     const en = { cultivate: "Cultivate", craft: "Craft", venture: "Venture", social: "Social", rest: "Rest", chance: "Chance", combat: "Combat" };
     const m = L.is_zh() ? zh : en;
-    return has(m, cat) ? m[cat] : cat;
+    return has(m, cat) ? (L.is_zh() ? L.zh(m[cat]) : m[cat]) : cat;
   }
 
   /** Kept for old callers. */

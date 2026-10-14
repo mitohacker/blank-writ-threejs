@@ -8,7 +8,9 @@ const LANGS = process.argv[2] ? [process.argv[2]] : ["en", "zh"];
 const SHOTS = "shots/menus";
 const CJK = /[㐀-鿿豈-﫿]/;
 const LATIN_RUN = /[A-Za-z]{3,}/;
-const ZH_LATIN_OK = new Set(["English"]);   // the language chooser writes each language in its own words
+const ZH_LATIN_OK = new Set(["English"]);
+// this test calls its Chinese "zh" = Simplified (zh-Hans); the page has three languages (Traditional is tested in test_hant_ui.mjs)
+const CODE = { en: "en", zh: "zh-Hans" };   // the language chooser writes each language in its own words
 
 let failures = 0;
 let checks = 0;
@@ -50,7 +52,7 @@ function single_language(lang, texts, where) {
   const bad = [];
   for (const t of texts) {
     if (lang === "en") {
-      if (CJK.test(t) && t !== "中文") bad.push(t);
+      if (CJK.test(t) && t !== "简体中文" && t !== "繁體中文") bad.push(t);
     } else {
       const runs = t.match(/[A-Za-z]{3,}/g) || [];
       if (runs.some((r) => !ZH_LATIN_OK.has(r))) bad.push(t);
@@ -93,10 +95,10 @@ async function open_ok(opts) {
       const st = await g.page
         .evaluate(async () => {
           const { L } = await import("/src/sim/loc.js");
-          return { errors: window.__bw && window.__bw.D ? window.__bw.D.errors.length : 99, zh: L.zh_count() };
+          return { errors: window.__bw && window.__bw.D ? window.__bw.D.errors.length : 99, zh: L.zh_count(), lang: L.lang };
         })
         .catch(() => ({ errors: 99, zh: 0 }));
-      if (st.errors === 0 && st.zh > 1000) return g;
+      if (st.errors === 0 && (st.lang === "en" || st.zh > 1000)) return g;   // the Chinese tables load only when a Chinese language is on
       console.log(`  (boot ${attempt + 1}: content incomplete ${JSON.stringify(st)}, retrying)`);
       last = new Error("content incomplete");
     } catch (e) {
@@ -111,7 +113,7 @@ async function open_ok(opts) {
 
 async function run_lang(lang) {
   note(`--- ${lang} ---`);
-  const g = await open_ok({ query: `screen=title&fresh=1&lang=${lang}`, width: 1920, height: 1080 });
+  const g = await open_ok({ query: `screen=title&fresh=1&lang=${CODE[lang]}`, width: 1920, height: 1080 });
   const page = g.page;
   try {
     await sleep(600);
@@ -138,7 +140,7 @@ async function run_lang(lang) {
     await goto(page, "title");
     const title_texts = await screen_ok(page, lang, "title", "title");
     const n_buttons = await ev(page, () => document.querySelectorAll('#stage [data-id]').length);
-    check(n_buttons === 5, `title has 5 buttons without a saved life (${n_buttons})`);
+    check(n_buttons === 4, `title has 4 buttons without a saved life (no Quit in the browser) (${n_buttons})`);
     check(title_texts.some((t) => (lang === "en" ? /Imprints 0/.test(t) : /轮回印 0/.test(t))), "title: stats line shows the imprints");
     // a hover text
     await page.hover('[data-id="wheel"]');
@@ -371,7 +373,7 @@ async function run_lang(lang) {
     // ===================================================================================================================
     note("settings");
     await page.click('[data-id="settings"]');
-    await page.waitForSelector('[data-lang="zh"]', { timeout: 8000 });
+    await page.waitForSelector('[data-lang="zh-Hans"]', { timeout: 8000 });
     await sleep(300);
     await screen_ok(page, lang, "settings", "settings");
     // volume by a real click on the slider
@@ -395,18 +397,18 @@ async function run_lang(lang) {
     check((await ev(page, () => window.__bw.meta.options.muted)) === false, "settings: unmute");
     // language: switch to the other one and back
     const other = lang === "en" ? "zh" : "en";
-    await page.click(`[data-lang="${other}"]`);
-    await page.waitForFunction((o) => window.__bw.meta.options.lang === o && document.querySelector('[data-lang]'), other, { timeout: 8000 });
+    await page.click(`[data-lang="${CODE[other]}"]`);
+    await page.waitForFunction((o) => window.__bw.meta.options.lang === o && document.querySelector('[data-lang]'), CODE[other], { timeout: 8000 });
     await sleep(500);
     const heading_texts = await visible_texts(page);
     check(other === "zh" ? heading_texts.includes("设置") : heading_texts.includes("Settings"), `settings: the screen is rebuilt in ${other}`);
     single_language(other, heading_texts, `settings after switching to ${other}`);
     await shot(page, `${SHOTS}/settings_${lang}_to_${other}.png`);
-    check((await ev(page, () => window.__bw.meta.options.lang)) === other, "settings: the language is saved in the profile options");
-    await page.click(`[data-lang="${lang}"]`);
-    await page.waitForFunction((o) => window.__bw.meta.options.lang === o, lang, { timeout: 8000 });
+    check((await ev(page, () => window.__bw.meta.options.lang)) === CODE[other], "settings: the language is saved in the profile options");
+    await page.click(`[data-lang="${CODE[lang]}"]`);
+    await page.waitForFunction((o) => window.__bw.meta.options.lang === o, CODE[lang], { timeout: 8000 });
     await sleep(500);
-    check((await ev(page, () => window.__bw.meta.options.lang)) === lang, "settings: switched back");
+    check((await ev(page, () => window.__bw.meta.options.lang)) === CODE[lang], "settings: switched back");
     // Esc goes back to the title
     await page.keyboard.press("Escape");
     await sleep(500);
@@ -430,7 +432,7 @@ async function run_lang(lang) {
 
 async function run_death_ending(lang) {
   note(`--- ${lang}: death and ending ---`);
-  const g = await open_ok({ query: `screen=death&fresh=1&lang=${lang}&autoplay=12&seed=77`, width: 1920, height: 1080 });
+  const g = await open_ok({ query: `screen=death&fresh=1&lang=${CODE[lang]}&autoplay=12&seed=77`, width: 1920, height: 1080 });
   const page = g.page;
   try {
     await page.waitForSelector("[data-paid]", { timeout: 15000 });
@@ -489,7 +491,7 @@ async function run_death_ending(lang) {
 async function run_continue(lang) {
   note(`--- ${lang}: continue ---`);
   // not fresh: the profile and the run live in this context's localStorage
-  const g = await open_ok({ query: `screen=title&lang=${lang}`, width: 1920, height: 1080 });
+  const g = await open_ok({ query: `screen=title&lang=${CODE[lang]}`, width: 1920, height: 1080 });
   const page = g.page;
   try {
     await sleep(800);
@@ -513,7 +515,7 @@ async function run_continue(lang) {
     });
     await sleep(500);
     const n = await ev(page, () => document.querySelectorAll("#stage [data-id]").length);
-    check(n === 6, `continue: a saved life adds the Continue button (${n} buttons)`);
+    check(n === 5, `continue: a saved life adds the Continue button (${n} buttons)`);
     const texts = await visible_texts(page);
     single_language(lang, texts, "title with a saved life");
     await shot(page, `${SHOTS}/title_continue_${lang}.png`);
@@ -536,7 +538,7 @@ async function run_continue(lang) {
 
 async function run_noart(lang) {
   note(`--- ${lang}: no pictures (stand-in boxes) ---`);
-  const g = await open_game({ query: `screen=title&fresh=1&lang=${lang}`, width: 1920, height: 1080 });
+  const g = await open_game({ query: `screen=title&fresh=1&lang=${CODE[lang]}`, width: 1920, height: 1080 });
   const page = g.page;
   try {
     // every picture "does not exist": the manifest is empty, so Art returns null and the screens draw their stand-ins
@@ -550,7 +552,7 @@ async function run_noart(lang) {
       ["screen=death&fresh=1&autoplay=12&seed=77", "death"],
     ];
     for (const [q, name] of visits) {
-      await page.goto(`http://127.0.0.1:8712/index.html?${q}&lang=${lang}`);
+      await page.goto(`http://127.0.0.1:8712/index.html?${q}&lang=${CODE[lang]}`);
       await page.waitForFunction(() => document.getElementById("boot")?.classList.contains("gone"), null, { timeout: 20000 }).catch(() => {});
       await sleep(500);
       const texts = await visible_texts(page);

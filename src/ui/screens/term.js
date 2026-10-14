@@ -291,6 +291,22 @@ export default class TermScreen extends Screen {
     const iic = Art.icon("res_imprint");
     if (iic) add(root, at(tex_rect(iic, 44, 44), 1220, 986));
     this._lbl.imprints = add(root, at(label("", 26, "#ffd1b3"), 1270, 988));
+    // materials: what a beast's core is. Craft and venture cards spend them; the bag lists them too (it used to show nothing for them)
+    {
+      const mp = add(root, at(panel("panel_dark", 24, "#121010d9"), 1522, 806, 372, 126));
+      mp.classList.add("hit");
+      mp.title = L.t("Materials: herbs, ore and cores are spent by craft and venture cards.");
+      add(root, at(label(L.t("Materials"), 15, "#b3b3bf"), 1544, 814));
+      this._mat_lbl = {};
+      let mx = 1544;
+      for (const k of ["herb", "ore", "core"]) {
+        const ic = Art.icon("res_" + k);
+        if (ic) add(root, at(tex_rect(ic, 40, 40), mx, 838));
+        this._mat_lbl[k] = add(root, at(label("0", 26, "#f2e6bf"), mx + 48, 842));
+        add(root, at(label(L.t(k), 15, "#b3b3bf"), mx, 884));
+        mx += 116;
+      }
+    }
     add(root, at(label(L.t("stones"), 15, "#b3b3bf"), 1146, 1022));
     add(root, at(label(L.t("imprints"), 15, "#ccb3a6"), 1270, 1022));
     this._swap_btn = button(L.t("Swap a card"), 250, 68, { font_size: 24, onclick: () => this._toggle_swap() });
@@ -327,6 +343,7 @@ export default class TermScreen extends Screen {
       this._stats_lbl[k].textContent = `${L.stat_name(D, k)} ${int(roundi(v))}`;
     }
     this._lbl.stone.textContent = String(run.stone);
+    for (const k of Object.keys(this._mat_lbl || {})) this._mat_lbl[k].textContent = String(int((run.mats || {})[k] || 0));
     this._lbl.imprints.textContent = String(main.meta.imprints);
     this._lbl.year.textContent = sprintf(L.t("Year %d"), run.year + 1);
     const tline = sprintf(L.t("Term %d   %s"), run.term, L.place_name(String(run.place)));

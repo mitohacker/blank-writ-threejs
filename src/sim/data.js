@@ -9,6 +9,7 @@
 // `i18n` the names in data/i18n/. Like the GDScript, every `<stem>*.json` is merged (in name order) into one table per stem.
 
 import { clampf, get, godot_sort_custom, has, int, is_dict, str } from "./util.js";
+import { convert as hant } from "./hant.js";
 
 const DATA_DIR = "data";
 
@@ -31,6 +32,9 @@ export class BWData {
     this.random_ids = [];
     this.errors = [];
     this.i18n_files = [];
+    this.i18n_hant_files = [];
+    this._zh_nodes = []; // [object, its Simplified `zh`] for every named thing: the names follow the script on show (set_script)
+    this._hant = false;
     this.manifest = { files: [], events: [], i18n: [] };
     this._fetch = null;
   }
@@ -62,6 +66,7 @@ export class BWData {
     const files = names(manifest.files);
     const event_files = names(manifest.events);
     this.i18n_files = names(manifest.i18n).map((n) => `${DATA_DIR}/i18n/${n}`);
+    this.i18n_hant_files = names(manifest.i18n_hant).map((n) => `${DATA_DIR}/i18n/hant/${n}`);
 
     // every file is fetched at once (a static host answers in parallel), then merged in name order like the GDScript's loop
     const wanted = [...new Set([`${DATA_DIR}/rules.json`, ...files.map((n) => `${DATA_DIR}/${n}`), ...event_files.map((n) => `${DATA_DIR}/events/${n}`)])];
@@ -114,6 +119,30 @@ export class BWData {
     }
     // Godot's sort_custom is not stable: the same algorithm gives the same order among events of one priority
     godot_sort_custom(this.story_ids, (a, b) => int(get(this.events[a], "prio", 0)) > int(get(this.events[b], "prio", 0)));
+    // the names written in Simplified (`zh`), so they can be shown in Traditional
+    this._zh_nodes = [];
+    this._hant = false;
+    for (const part of [this.rules, this.cards, this.techs, this.methods, this.enemies, this.items, this.talents, this.origins, this.truths, this.endings, this.wheel, this.events]) {
+      this._collect_zh(part, 0);
+    }
+  }
+
+  _collect_zh(o, depth) {
+    if (depth > 8 || o === null || typeof o !== "object") return;
+    if (Array.isArray(o)) {
+      for (const v of o) this._collect_zh(v, depth + 1);
+      return;
+    }
+    if (typeof o.zh === "string" && /[一-鿿]/.test(o.zh)) this._zh_nodes.push([o, o.zh]);
+    for (const k of Object.keys(o)) if (k !== "zh") this._collect_zh(o[k], depth + 1);
+  }
+
+  /** the names (`zh` fields) in Traditional (true) or Simplified (false); idempotent */
+  set_script(is_hant) {
+    is_hant = !!is_hant;
+    if (is_hant === this._hant) return;
+    this._hant = is_hant;
+    for (const [o, simp] of this._zh_nodes) o.zh = is_hant ? hant(simp) : simp;
   }
 
   async _read_json(path) {

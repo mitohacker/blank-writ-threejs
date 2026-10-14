@@ -14,7 +14,7 @@
 import { World } from "./gfx/world.js";
 import { Art } from "./ui/art.js";
 import { A } from "./audio.js";
-import { L } from "./sim/loc.js";
+import { L, normalize_lang, DEFAULT_LANG } from "./sim/loc.js";
 import { BWData } from "./sim/data.js";
 import { Meta } from "./sim/meta.js";
 import { Run } from "./sim/run.js";
@@ -93,18 +93,19 @@ export class Main {
     await A.init();
     say("story");
     this.D = await BWData.load(fetch_json);
-    await L.load(fetch_json, this.D.i18n_files || []);
+    L.setup(fetch_json, this.D);
     this.meta = new Meta(this.D, this.store);
     this.meta.load_profile();
     if ("fresh" in this.args) {
       this.meta.reset();
       this.meta.save_enabled = false;
     }
-    // the language and the volumes are preferences of the profile (Settings); ?lang=zh overrides for one visit
-    let lang = this.args.lang || ("fresh" in this.args ? "en" : this.meta.options.lang);
-    if (!lang) lang = (navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
-    L.set_lang(lang);
-    document.documentElement.lang = L.lang === "zh" ? "zh" : "en";
+    // the language and the volumes are preferences of the profile (Settings). The game opens in Traditional Chinese; ?lang= overrides for
+    // one visit (a bare "zh" there means Traditional; the "zh" a first-release save holds is Simplified). A fresh profile ignores the saved one.
+    const asked = normalize_lang(this.args.lang || "", "zh-Hant");
+    const saved = "fresh" in this.args || !this.meta.options.lang ? "" : normalize_lang(this.meta.options.lang, "zh-Hans");
+    await L.use(asked || saved || DEFAULT_LANG);
+    this._lang_chrome();
     this.apply_audio_options();
     // fade layer on top of the stage
     this.fade = document.createElement("div");
@@ -115,7 +116,12 @@ export class Main {
     if (start === "term" || start === "death" || start === "ending") this._demo_run(start);
     else await this.goto(start);
     document.getElementById("boot")?.classList.add("gone");
-    document.title = L.lang === "zh" ? "无字命" : "Blank Writ";
+  }
+
+  /** the page's own language (fonts, the tab title) follows the game's */
+  _lang_chrome() {
+    document.documentElement.lang = L.lang;
+    document.title = L.lang === "zh-Hant" ? "無字命" : L.lang === "zh-Hans" ? "无字命" : "Blank Writ";
   }
 
   // ---- demo / test entry (port of _demo_run) ------------------------------------------------------------------------------
@@ -264,13 +270,12 @@ export class Main {
     A.set_volumes(Number(o.music_vol ?? 70), Number(o.sfx_vol ?? 90), !!o.muted);
   }
 
-  /** Settings picks the language: remember it; the caller rebuilds its screen */
-  set_language(l) {
-    L.set_lang(l);
+  /** Settings picks the language ("zh-Hant" | "zh-Hans" | "en"): load its tables, remember it; the caller rebuilds its screen */
+  async set_language(l) {
+    await L.use(l);
     this.meta.options.lang = L.lang;
     this.meta.save();
-    document.documentElement.lang = L.lang === "zh" ? "zh" : "en";
-    document.title = L.lang === "zh" ? "无字命" : "Blank Writ";
+    this._lang_chrome();
   }
 }
 

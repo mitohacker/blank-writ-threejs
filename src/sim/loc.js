@@ -1,20 +1,36 @@
 // Localization (port of scripts/bw_loc.gd): ONE language is shown at a time (Settings picks it). Every string the player reads goes
 // through L.t(english).
 //
-//   L.t("Bag")                       -> "Bag" / "背包"
+//   L.t("Bag")                       -> "Bag" / "背包" (简体) / "背包" (繁體)
 //   L.f("%d terms left", [n])        -> translate the format first, then fill it in
 //   L.name_of(entity)                -> entity.zh in Chinese, entity.en otherwise (cards, items, enemies, techniques, talents ...)
 //   L.stat_name(D, "body") / L.root_name(D, "fire") / L.realm_name(D, 2) / L.place_name("village")
 //
-// The Chinese table is {English string: Chinese string}, merged from every data/i18n/zh*.json (zh_content_*.json for the story and
-// rules text, zh_ui*.json for the interface). A string with no entry is shown in English, so a missing line never breaks a screen.
-// The tables are loaded once: `await L.load(fetch_json, D.i18n_files)` in the browser, `L.load_tables([obj, ...])` in Node.
+// Three languages: "zh-Hant" (繁體, the default of the game), "zh-Hans" (简体) and "en". The Chinese table is {English string: Chinese
+// string}, merged from every data/i18n/zh*.json (Simplified; zh_content_*.json for the story and rules text, zh_ui*.json for the
+// interface) and, for Traditional, from the same names under data/i18n/hant/ (converted ahead of time by tools/build_hant.py). A string
+// with no entry is shown in English, so a missing line never breaks a screen. Names live in the data's `zh` fields: BWData.set_script(hant)
+// rewrites them for the script on show.
+//   browser: `L.setup(fetch_json, D)` then `await L.use("zh-Hant")`;  Node: `L.load_tables([obj, ...])` (Simplified) and
+//   `L.load_tables_hant([...])`, then `L.set_lang(...)`.
 
 import { sprintf } from "./fmt.js";
 import { capitalize, clampi, get, has, str } from "./util.js";
+import { convert as hant } from "./hant.js";
 
-const LANGS = ["en", "zh"];
-const NATIVE_NAMES = { en: "English", zh: "中文" };
+const LANGS = ["zh-Hant", "zh-Hans", "en"];
+const NATIVE_NAMES = { "zh-Hant": "繁體中文", "zh-Hans": "简体中文", en: "English" };
+export const DEFAULT_LANG = "zh-Hant";
+
+/** any spelling of a language -> one of LANGS; a bare "zh" means `bare_zh` ("zh-Hans" is what the first release saved), "" = unknown */
+export function normalize_lang(l, bare_zh = "zh-Hans") {
+  const s = String(l || "").trim().toLowerCase().replace("_", "-");
+  if (s === "en" || s.startsWith("en-")) return "en";
+  if (["zh-hant", "tc", "trad", "zh-tw", "zh-hk", "zh-mo", "cht"].includes(s)) return "zh-Hant";
+  if (["zh-hans", "sc", "simp", "zh-cn", "zh-sg", "chs"].includes(s)) return "zh-Hans";
+  if (s === "zh" || s.startsWith("zh-")) return bare_zh;
+  return "";
+}
 
 const CAST = {
   xiaohe: ["Xiao He", "小禾"],
@@ -71,17 +87,33 @@ export class L {
   static NATIVE_NAMES = NATIVE_NAMES;
   static CAST = CAST;
   static lang = "en";
-  static _zh = new Map();
+  static _zh = new Map();          // Simplified: {English: 简体}
+  static _hant = new Map();        // Traditional: {English: 繁體}
   static _loaded = false;
+  static _loaded_hant = false;
   static _fetch = null;
   static _files = [];
+  static _files_hant = [];
+  static _D = null;
 
+  /** "en" | "zh-Hant" | "zh-Hans"; a bare "zh" means Simplified here (the first release's saves and the Node tests) */
   static set_lang(l) {
-    L.lang = LANGS.includes(l) ? l : "en";
+    L.lang = normalize_lang(l, "zh-Hans") || "en";
+    if (L._D) L._D.set_script(L.lang === "zh-Hant");
   }
 
+  /** a Chinese language (either script) */
   static is_zh() {
-    return L.lang === "zh";
+    return L.lang === "zh-Hant" || L.lang === "zh-Hans";
+  }
+
+  static is_hant() {
+    return L.lang === "zh-Hant";
+  }
+
+  /** a string written in Simplified in the code, in the script on show */
+  static zh(s) {
+    return L.lang === "zh-Hant" ? hant(s) : s;
   }
 
   /** merges the Chinese tables (an array of {english: chinese} objects); later files win */
@@ -93,6 +125,56 @@ export class L {
       }
     }
     L._loaded = true;
+  }
+
+  /** the Traditional tables (same keys) */
+  static load_tables_hant(tables) {
+    L._hant = new Map();
+    for (const v of tables) {
+      if (v && typeof v === "object" && !Array.isArray(v)) {
+        for (const k of Object.keys(v)) L._hant.set(k, String(v[k]));
+      }
+    }
+    L._loaded_hant = true;
+  }
+
+  /** browser: remembers where the tables are (D.i18n_files / D.i18n_hant_files) and links the data so names follow the script */
+  static setup(fetch_json, D) {
+    L._fetch = fetch_json;
+    L._files = [...(D.i18n_files || [])].sort();
+    L._files_hant = [...(D.i18n_hant_files || [])].sort();
+    L._loaded = false;
+    L._loaded_hant = false;
+    L.link(D);
+  }
+
+  /** the data whose names follow the language (setup() does this; Node tests call it themselves) */
+  static link(D) {
+    L._D = D;
+    if (D) D.set_script(L.lang === "zh-Hant");
+  }
+
+  /** switches the language, fetching the tables of its script when they are not loaded yet */
+  static async use(l) {
+    const n = normalize_lang(l, "zh-Hans") || "en";
+    if (n === "zh-Hant" && !L._loaded_hant && L._fetch) await L._fetch_tables(L._files_hant, true);
+    if (n === "zh-Hans" && !L._loaded && L._fetch) await L._fetch_tables(L._files, false);
+    L.set_lang(n);
+    return L.lang;
+  }
+
+  static async _fetch_tables(files, is_hant) {
+    const tables = await Promise.all(
+      files.map(async (f) => {
+        try {
+          return await L._fetch(f);
+        } catch (e) {
+          return null; // a missing table only means more English
+        }
+      }),
+    );
+    if (is_hant) L.load_tables_hant(tables);
+    else L.load_tables(tables);
   }
 
   /** browser: fetches every file (paths relative to the site root, "data/i18n/zh_ui.json") and merges them in name order */
@@ -114,20 +196,27 @@ export class L {
 
   static async reload() {
     L._loaded = false;
-    if (L._fetch) await L.load(L._fetch, L._files);
+    L._loaded_hant = false;
+    if (L._fetch) await L.use(L.lang);
   }
 
   /** How many English strings have a Chinese line (for tests / the settings screen). */
   static zh_count() {
-    return L._zh.size;
+    return L.lang === "zh-Hant" ? L._hant.size : L._zh.size;
   }
 
   static has_zh(en) {
-    return L._zh.has(en);
+    return L.lang === "zh-Hant" ? L._hant.has(en) : L._zh.has(en);
   }
 
   static t(en) {
     if (L.lang === "en" || en === "" || en === null || en === undefined) return en;
+    if (L.lang === "zh-Hant") {
+      const h = L._hant.get(en);
+      if (h !== undefined) return h;
+      const z0 = L._zh.get(en); // a Simplified line that has no converted twin yet: convert it on the fly
+      return z0 === undefined ? en : hant(z0);
+    }
     const z = L._zh.get(en);
     return z === undefined ? en : z;
   }
@@ -140,7 +229,7 @@ export class L {
   /** The shown name of a data entity: {en: "...", zh: "..."}. */
   static name_of(e) {
     if (e === null || e === undefined) return "";
-    if (L.lang === "zh" && str(get(e, "zh", "")) !== "") return String(e.zh);
+    if (L.is_zh() && str(get(e, "zh", "")) !== "") return String(e.zh);
     return str(get(e, "en", get(e, "zh", get(e, "id", ""))));
   }
 
@@ -148,7 +237,7 @@ export class L {
   static cast_name(id) {
     id = str(id);
     const pair = has(CAST, id) ? CAST[id] : [capitalize(id), capitalize(id)];
-    return L.lang === "zh" ? pair[1] : pair[0];
+    return L.is_zh() ? L.zh(pair[1]) : pair[0];
   }
 
   static stat_name(D, key) {
@@ -165,21 +254,21 @@ export class L {
 
   static elem_name(e) {
     e = str(e);
-    const m = L.lang === "zh" ? ELEM_ZH : ELEM_EN;
-    return has(m, e) ? m[e] : capitalize(e);
+    const m = L.is_zh() ? ELEM_ZH : ELEM_EN;
+    return has(m, e) ? (L.is_zh() ? L.zh(m[e]) : m[e]) : capitalize(e);
   }
 
   static place_name(place) {
     place = str(place);
-    const m = L.lang === "zh" ? PLACE_ZH : PLACE_EN;
-    return has(m, place) ? m[place] : capitalize(place);
+    const m = L.is_zh() ? PLACE_ZH : PLACE_EN;
+    return has(m, place) ? (L.is_zh() ? L.zh(m[place]) : m[place]) : capitalize(place);
   }
 
   /** "Qi Refining 3" / "炼气三层": realm name and layer. */
   static realm_label(D, realm, layer) {
     const n = L.realm_name(D, realm);
     if (realm === 0) return n;
-    if (L.lang === "zh") return sprintf("%s%s层", n, ["", "一", "二", "三"][clampi(layer, 0, 3)]);
+    if (L.is_zh()) return sprintf("%s%s", n, L.zh(["", "一", "二", "三"][clampi(layer, 0, 3)] + "层"));
     return sprintf("%s %d", n, layer);
   }
 }

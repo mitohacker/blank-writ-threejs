@@ -132,7 +132,10 @@ def build_data() -> dict:
 		shutil.copy(f, out / "i18n" / f.name)
 	# the web build's own tables (zh_web*.json, written here, not in the Godot project) are listed too
 	i18n = sorted(f.name for f in (out / "i18n").glob("zh*.json"))
-	(out / "manifest.json").write_text(json.dumps({"files": files, "events": events, "i18n": i18n}, indent=1), encoding="utf-8", newline="\n")
+	# the Traditional tables are made by tools/build_hant.py (run it after this); keep them listed
+	hant_dir = out / "i18n" / "hant"
+	hant = sorted(f.name for f in hant_dir.glob("zh*.json")) if hant_dir.exists() else []
+	(out / "manifest.json").write_text(json.dumps({"files": files, "events": events, "i18n": i18n, "i18n_hant": hant}, indent=1), encoding="utf-8", newline="\n")
 	return {"data files": len(files), "events": len(events), "i18n": len(i18n)}
 
 

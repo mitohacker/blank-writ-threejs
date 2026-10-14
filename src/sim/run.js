@@ -1413,7 +1413,7 @@ export class Run {
   _heart_demon(ctx) {
     const d = this.derived();
     const shadow = {
-      name: "heart_demon", zh: "心魔", en: "Heart-demon", hp: float(d.max_hp) * 0.8, hp_max: float(d.max_hp) * 0.8,
+      name: "heart_demon", zh: L.zh("心魔"), en: "Heart-demon", hp: float(d.max_hp) * 0.8, hp_max: float(d.max_hp) * 0.8,
       mp: float(d.max_mp) * 0.5, mp_max: float(d.max_mp) * 0.5, atk: float(d.atk) * 0.8, def: float(d.def) * 0.8,
       spd: float(d.spd), crit: 0.05, cdmg: 1.5, dodge: 0.0, elem: "none", skills: [], art: "en_ghost",
     };
@@ -1423,7 +1423,7 @@ export class Run {
     res.enemy_id = "heart_demon";
     res.enemy_name = L.t("Heart-demon");
     res.enemy_en = "Heart-demon";
-    res.enemy_zh = "心魔";
+    res.enemy_zh = L.zh("心魔");
     res.enemy_art = "en_heart_demon";
     ctx.battles.push(res);
     this.hp = Math.max(1.0, float(res.p_hp));

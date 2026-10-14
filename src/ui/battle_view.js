@@ -240,11 +240,11 @@ export class BattleView {
     else if (int(f.dmg, 0) > 0) A.sfx(f.crit ? "b_crit" : Math.random() < 0.5 ? "b_slash" : "b_hit");
     for (const t of f.text || []) {
       const ts = String(t);
-      if (/burn|灼烧|poison|中毒/.test(ts)) {
+      if (/burn|灼烧|灼燒|poison|中毒/.test(ts)) {
         A.sfx("b_burn");
         break;
       }
-      if (/stun|眩晕/.test(ts)) {
+      if (/stun|眩晕|眩暈/.test(ts)) {
         A.sfx("b_stun");
         break;
       }
